@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import ModalSignUp from "../components/ModalSignUp";
 
 function Header() {
   const [top, setTop] = useState(true);
@@ -15,7 +16,7 @@ function Header() {
 
   return (
     <header
-      className={`fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${
+      className={`fixed w-full z-10 md:bg-opacity-90 transition duration-300 ease-in-out ${
         !top && "bg-white backdrop-blur-sm shadow-lg"
       }`}
     >
@@ -52,11 +53,9 @@ function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/signup">
-                  <a className="px-5 py-3 text-gray-200 bg-gray-900 hover:bg-gray-800 ml-3">
-                    Sign up
-                  </a>
-                </Link>
+                <div className="px-5 py-3 text-gray-200 bg-gray-900 hover:bg-gray-800 ml-3">
+                  <ModalSignUp />
+                </div>
               </li>
             </ul>
           </nav>
