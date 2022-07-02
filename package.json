@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format:check": "prettier --check 'pages/**/*.{js, jsx}'",
-    "format:write": "prettier --write 'pages/**/*.{js, jsx}'"
+    "format:check": "prettier --check 'src/**/*.{js, jsx}'",
+    "format:write": "prettier --write 'src/**/*.{js, jsx}'"
   },
   "dependencies": {
     "moralis": "^1.8.1",
