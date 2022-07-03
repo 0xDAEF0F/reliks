@@ -1,4 +1,4 @@
-/* This example requires Tailwind CSS v2.0+ */
+// need to make this dynamic
 const steps = [
   { name: 'Step 1', href: '#', status: 'current' },
   { name: 'Step 2', href: '#', status: 'upcoming' },

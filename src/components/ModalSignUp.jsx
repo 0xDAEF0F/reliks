@@ -2,9 +2,33 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import BulletSteps from './BulletSteps'
 import { AiOutlineClose } from 'react-icons/ai'
+import { useMoralis } from 'react-moralis'
 
 export default function Example() {
   const [open, setOpen] = useState(false)
+
+  const {
+    authenticate,
+    isAuthenticated,
+    isAuthenticating,
+    user,
+    account,
+    logout,
+  } = useMoralis()
+
+  const login = async () => {
+    if (!isAuthenticated) {
+      await authenticate({ signingMessage: 'Log in using Moralis' })
+        .then(function (user) {
+          console.log('logged in user:', user)
+          console.log(user.get('ethAddress'))
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    }
+    console.log(user, account)
+  }
 
   return (
     <>
@@ -61,7 +85,7 @@ export default function Example() {
                       className='text-2xl leading-6 font-medium text-gray-900'>
                       Authenticate with wallet
                     </Dialog.Title>
-                    <button className='mt-5'>
+                    <button className='mt-5' onClick={login}>
                       <img
                         className='w-8'
                         src='/metamask-fox.svg'
