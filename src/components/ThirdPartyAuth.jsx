@@ -4,15 +4,15 @@ export default function AuthWallet() {
       <h2 className='text-2xl leading-6 font-medium text-gray-900'>
         Connect your account
       </h2>
-      <button>
-        <div className='flex'>
+      <div className='mt-5'>
+        <button>
           <img
-            className='w-20 mt-5 transform transition duration-500 hover:scale-105 focus:outline-none'
+            className='w-20 transform transition duration-500 hover:scale-105 focus:outline-none'
             src='/ytLogo.png'
             alt='Youtube Logo'
           />
-        </div>
-      </button>
+        </button>
+      </div>
     </div>
   )
 }

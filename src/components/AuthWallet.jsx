@@ -1,4 +1,4 @@
-function AuthWallet({ login }) {
+export default function AuthWallet({ login }) {
   return (
     <div className='flex justify-center flex-col'>
       <h2 className='text-2xl leading-6 font-medium text-gray-900'>
@@ -13,4 +13,3 @@ function AuthWallet({ login }) {
     </div>
   )
 }
-export default AuthWallet
