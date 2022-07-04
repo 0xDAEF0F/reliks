@@ -3,6 +3,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import BulletSteps from './BulletSteps'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useMoralis } from 'react-moralis'
+import AuthWallet from './AuthWallet'
+import ThirdPartyAuth from './ThirdPartyAuth'
 
 export default function Example() {
   const [open, setOpen] = useState(false)
@@ -84,25 +86,8 @@ export default function Example() {
                   <div className='mt-3 text-center sm:mt-0 sm:text-left'>
                     <BulletSteps current={1} total={3} />
                     <br />
-                    <div className='flex justify-center flex-col'>
-                      <Dialog.Title
-                        as='h2'
-                        className='text-2xl leading-6 font-medium text-gray-900'>
-                        Authenticate with wallet
-                      </Dialog.Title>
-                      <button
-                        className='flex mt-5 bg-gradient-to-r from-orange-500 to-orange-300 py-4 px-4 rounded-lg transform transition duration-500 hover:scale-105 w-full focus:outline-none'
-                        onClick={login}>
-                        <img
-                          className='w-8'
-                          src='/metamask-fox.svg'
-                          alt='metamask'
-                        />
-                        <p className='text-xl text-white font-semibold pl-2'>
-                          MetaMask
-                        </p>
-                      </button>
-                    </div>
+                    {/* <AuthWallet /> */}
+                    <ThirdPartyAuth />
                   </div>
                 </div>
               </div>
