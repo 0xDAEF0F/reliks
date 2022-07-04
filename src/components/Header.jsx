@@ -69,9 +69,7 @@ function Header() {
                 </Link>
               </li>
               <li>
-                <div className='px-5 py-3 text-gray-200 bg-gray-900 hover:bg-gray-800 ml-3'>
-                  <ModalSignUp />
-                </div>
+                <ModalSignUp />
               </li>
             </ul>
           </nav>

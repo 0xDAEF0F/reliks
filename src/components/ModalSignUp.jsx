@@ -33,7 +33,11 @@ export default function Example() {
   return (
     <>
       {/* Button to open modal*/}
-      <button onClick={() => setOpen(true)}>Sign Up</button>
+      <button
+        className='px-5 py-3 text-gray-200 bg-gray-900 hover:bg-gray-800 ml-3'
+        onClick={() => setOpen(true)}>
+        Sign Up
+      </button>
 
       {/* Modal */}
       <Transition.Root show={open} as={Fragment}>
@@ -41,7 +45,7 @@ export default function Example() {
           as='div'
           className='fixed z-10 inset-0 overflow-y-auto'
           onClose={setOpen}>
-          <div className='flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>
+          <div className='flex items-end -center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>
             <Transition.Child
               as={Fragment}
               enter='ease-out duration-300'
@@ -67,7 +71,7 @@ export default function Example() {
               leave='ease-in duration-200'
               leaveFrom='opacity-100 translate-y-0 sm:scale-100'
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'>
-              <div className='inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6'>
+              <div className='inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-fullll sm:p-6 sm:px-10'>
                 <div className='hidden sm:block absolute top-0 right-0 pt-4 pr-6'>
                   <button
                     type='button'
@@ -77,21 +81,28 @@ export default function Example() {
                   </button>
                 </div>
                 <div className='sm:flex sm:items-start'>
-                  <div className='mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left'>
+                  <div className='mt-3 text-center sm:mt-0 sm:text-left'>
                     <BulletSteps />
                     <br />
-                    <Dialog.Title
-                      as='h2'
-                      className='text-2xl leading-6 font-medium text-gray-900'>
-                      Authenticate with wallet
-                    </Dialog.Title>
-                    <button className='mt-5' onClick={login}>
-                      <img
-                        className='w-8'
-                        src='/metamask-fox.svg'
-                        alt='metamask'
-                      />
-                    </button>
+                    <div className='flex justify-center flex-col'>
+                      <Dialog.Title
+                        as='h2'
+                        className='text-2xl leading-6 font-medium text-gray-900'>
+                        Authenticate with wallet
+                      </Dialog.Title>
+                      <button
+                        className='flex mt-5 bg-gradient-to-r from-orange-500 to-orange-300 py-4 px-4 rounded-lg transform transition duration-500 hover:scale-105 w-full focus:outline-none'
+                        onClick={login}>
+                        <img
+                          className='w-8'
+                          src='/metamask-fox.svg'
+                          alt='metamask'
+                        />
+                        <p className='text-xl text-white font-semibold pl-2'>
+                          MetaMask
+                        </p>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

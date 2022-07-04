@@ -8,7 +8,7 @@ const steps = [
 
 export default function Example() {
   return (
-    <nav className='flex items-center justify-center' aria-label='Progress'>
+    <nav className='flex items-center' aria-label='Progress'>
       <p className='text-sm font-medium'>
         Step {steps.findIndex((step) => step.status === 'current') + 1} of{' '}
         {steps.length}
