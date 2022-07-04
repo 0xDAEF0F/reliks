@@ -11,12 +11,16 @@ export const oauth2Client = new google.auth.OAuth2(
   'http://localhost:3000/api/callback'
 )
 
-const authorizationUrl = oauth2Client.generateAuthUrl({
-  access_type: 'offline',
-  scope: 'https://www.googleapis.com/auth/youtube.readonly',
-  include_granted_scopes: true,
-})
-
 export default function handler(req, res) {
+  // TODO: base64 state object
+  const state = req.query.state
+
+  const authorizationUrl = oauth2Client.generateAuthUrl({
+    access_type: 'offline',
+    scope: 'https://www.googleapis.com/auth/youtube.readonly',
+    include_granted_scopes: true,
+    state: state,
+  })
+
   res.send(authorizationUrl)
 }

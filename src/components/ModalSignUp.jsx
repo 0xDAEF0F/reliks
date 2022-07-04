@@ -18,7 +18,7 @@ export default function Example() {
 
   const login = async () => {
     if (!isAuthenticated) {
-      await authenticate({ signingMessage: 'Log in using Moralis' })
+      await authenticate({ signingMessage: 'Log to DApp' })
         .then(function (user) {
           console.log('logged in user:', user)
           console.log(user.get('ethAddress'))
@@ -82,7 +82,7 @@ export default function Example() {
                 </div>
                 <div className='sm:flex sm:items-start'>
                   <div className='mt-3 text-center sm:mt-0 sm:text-left'>
-                    <BulletSteps />
+                    <BulletSteps current={1} total={3} />
                     <br />
                     <div className='flex justify-center flex-col'>
                       <Dialog.Title

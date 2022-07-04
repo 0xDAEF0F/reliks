@@ -1,51 +1,31 @@
-// need to make this dynamic
-const steps = [
-  { name: 'Step 1', href: '#', status: 'current' },
-  { name: 'Step 2', href: '#', status: 'upcoming' },
-  { name: 'Step 3', href: '#', status: 'upcoming' },
-  { name: 'Step 4', href: '#', status: 'upcoming' },
-]
+import PropTypes from 'prop-types'
+import { range } from 'lodash'
 
-export default function Example() {
+export default function BulletSteps({ current, total }) {
   return (
     <nav className='flex items-center' aria-label='Progress'>
       <p className='text-sm font-medium'>
-        Step {steps.findIndex((step) => step.status === 'current') + 1} of{' '}
-        {steps.length}
+        Step {current} of {total}
       </p>
-      <ol role='list' className='ml-8 flex items-center space-x-5'>
-        {steps.map((step) => (
-          <li key={step.name}>
-            {step.status === 'complete' ? (
-              <a
-                href={step.href}
-                className='block w-2.5 h-2.5 bg-indigo-600 rounded-full hover:bg-indigo-900'>
-                <span className='sr-only'>{step.name}</span>
-              </a>
-            ) : step.status === 'current' ? (
-              <a
-                href={step.href}
-                className='relative flex items-center justify-center'
-                aria-current='step'>
-                <span className='absolute w-5 h-5 p-px flex' aria-hidden='true'>
-                  <span className='w-full h-full rounded-full bg-indigo-200' />
-                </span>
-                <span
-                  className='relative block w-2.5 h-2.5 bg-indigo-600 rounded-full'
-                  aria-hidden='true'
-                />
-                <span className='sr-only'>{step.name}</span>
-              </a>
-            ) : (
-              <a
-                href={step.href}
-                className='block w-2.5 h-2.5 bg-gray-200 rounded-full hover:bg-gray-400'>
-                <span className='sr-only'>{step.name}</span>
-              </a>
-            )}
-          </li>
-        ))}
+      <ol role='list' className='ml-5 flex items-center space-x-5'>
+        {range(total).map((i) => {
+          const step = i + 1
+          return (
+            <li key={i}>
+              {current >= step ? (
+                <span className='block w-2.5 h-2.5 bg-indigo-600 rounded-full'></span>
+              ) : (
+                <span className='block w-2.5 h-2.5 bg-gray-200 rounded-full'></span>
+              )}
+            </li>
+          )
+        })}
       </ol>
     </nav>
   )
+}
+
+BulletSteps.propTypes = {
+  current: PropTypes.number,
+  total: PropTypes.number,
 }

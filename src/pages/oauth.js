@@ -3,7 +3,11 @@ import Axios from 'axios'
 
 function Oauth() {
   function callApi() {
-    Axios.get('/api/loginyt').then((res) => (window.location = res.data))
+    // need to retrieve the current state of the flow
+    // so we can receive in callback
+    Axios.get('/api/loginyt?state=hello').then(
+      (res) => (window.location = res.data)
+    )
   }
   return (
     <div>
