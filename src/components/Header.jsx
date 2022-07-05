@@ -19,7 +19,7 @@ function Header() {
 
   return (
     <header
-      className={`fixed w-full z-10 md:bg-opacity-90 transition duration-300 ease-in-out ${
+      className={`fixed w-full z-10 md:bg-opacity-90 ${
         !top &&
         'bg-white dark:bg-black backdrop-blur-sm shadow-lg dark:bg-opacity-90 dark:shadow-sm dark:shadow-zinc-700'
       }`}>
