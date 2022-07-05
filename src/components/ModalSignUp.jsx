@@ -36,6 +36,8 @@ export default function ModalSignUp() {
 
     if (!user.getEmail()) return 3
 
+    // if it passes all then return flag that
+    // indicates its finished so a modal no longer appears
     return 1
   }
 
@@ -46,6 +48,16 @@ export default function ModalSignUp() {
     window.location = url
   }
 
+  const submitPersonalInfo = async ({ username, email }) => {
+    user.set('username', username)
+    user.set('email', email)
+    const user = await user.save().catch((err) => {
+      // handle error
+      console.log(err)
+    })
+    if (user) return user
+  }
+
   const Modal = () => {
     switch (calculateStep()) {
       case 1:
@@ -53,8 +65,7 @@ export default function ModalSignUp() {
       case 2:
         return <ThirdPartyAuth connectYoutube={connectYoutube} />
       case 3:
-        // need to pass submit handler
-        return <CreatorInfo />
+        return <CreatorInfo submit={submitPersonalInfo} />
     }
   }
 

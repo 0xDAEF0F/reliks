@@ -11,8 +11,8 @@ export const oauth2Client = new google.auth.OAuth2(
   'http://localhost:3000/api/callback'
 )
 
+// TODO: Encode with another function
 export default function handler(req, res) {
-  // TODO: Encode with another function
   const state = btoa(req.query.state)
 
   const authorizationUrl = oauth2Client.generateAuthUrl({
