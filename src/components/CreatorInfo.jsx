@@ -68,7 +68,7 @@ export default function CreatorInfo() {
             />
           </div>
           <div>
-            <button className='text-white dark:text-black shadow-sm bg-indigo-500 focus:ring-indigo-500 border-gray-300 focus:border-indigo-500 w-full border rounded-md py-1 mt-4'>
+            <button className='text-white dark:text-black shadow-sm bg-indigo-600 focus:ring-indigo-6 00 border-gray-300 focus:border-indigo-500 w-full border rounded-md py-1 mt-4'>
               Sign up
             </button>
           </div>

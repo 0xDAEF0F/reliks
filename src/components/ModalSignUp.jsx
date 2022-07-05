@@ -87,9 +87,9 @@ export default function Example() {
                   <div className='mt-3 text-center sm:mt-0 sm:text-left'>
                     <BulletSteps current={1} total={3} />
                     <br />
-                    {/* <AuthWallet /> */}
+                    <AuthWallet />
                     {/* <ThirdPartyAuth /> */}
-                    <CreatorInfo />
+                    {/* <CreatorInfo /> */}
                   </div>
                 </div>
               </div>
