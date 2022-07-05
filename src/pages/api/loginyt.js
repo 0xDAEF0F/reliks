@@ -12,8 +12,8 @@ export const oauth2Client = new google.auth.OAuth2(
 )
 
 export default function handler(req, res) {
-  // TODO: base64 state object
-  const state = req.query.state
+  // TODO: Encode with another function
+  const state = btoa(req.query.state)
 
   const authorizationUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline',

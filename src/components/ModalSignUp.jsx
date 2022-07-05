@@ -1,3 +1,4 @@
+import Axios from 'axios'
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import BulletSteps from './BulletSteps'
@@ -7,30 +8,54 @@ import AuthWallet from './AuthWallet'
 import ThirdPartyAuth from './ThirdPartyAuth'
 import CreatorInfo from './CreatorInfo'
 
-export default function Example() {
+export default function ModalSignUp() {
   const [open, setOpen] = useState(false)
 
-  const {
-    authenticate,
-    isAuthenticated,
-    isAuthenticating,
-    user,
-    account,
-    logout,
-  } = useMoralis()
+  // isAuthenticating, logout, account not used currently
+  const { authenticate, isAuthenticated, user } = useMoralis()
 
   const login = async () => {
     if (!isAuthenticated) {
-      await authenticate({ signingMessage: 'Log to DApp' })
+      await authenticate({ signingMessage: 'Log in to DApp' })
         .then(function (user) {
           console.log('logged in user:', user)
-          console.log(user.get('ethAddress'))
         })
         .catch(function (error) {
           console.log(error)
         })
     }
-    console.log(user, account)
+    console.log('user authenticated', user)
+  }
+
+  // calculates the step a creator is on signing process
+  const calculateStep = () => {
+    if (!isAuthenticated) return 1
+
+    const verifiedSocialPlatforms = user.get('verifiedSocialPlatforms')
+    if (!verifiedSocialPlatforms || verifiedSocialPlatforms.length < 1) return 2
+
+    if (!user.getEmail()) return 3
+
+    return 1
+  }
+
+  const connectYoutube = async () => {
+    // can substitute for userId
+    const userWallet = user.get('ethAddress')
+    const url = (await Axios.get(`/api/loginyt?state=${userWallet}`)).data
+    window.location = url
+  }
+
+  const Modal = () => {
+    switch (calculateStep()) {
+      case 1:
+        return <AuthWallet login={login} />
+      case 2:
+        return <ThirdPartyAuth connectYoutube={connectYoutube} />
+      case 3:
+        // need to pass submit handler
+        return <CreatorInfo />
+    }
   }
 
   return (
@@ -66,6 +91,7 @@ export default function Example() {
               aria-hidden='true'>
               &#8203;
             </span>
+
             <Transition.Child
               as={Fragment}
               enter='ease-out duration-300'
@@ -85,11 +111,9 @@ export default function Example() {
                 </div>
                 <div className='sm:flex sm:items-start'>
                   <div className='mt-3 text-center sm:mt-0 sm:text-left'>
-                    <BulletSteps current={1} total={3} />
+                    <BulletSteps current={calculateStep()} total={3} />
                     <br />
-                    <AuthWallet />
-                    {/* <ThirdPartyAuth /> */}
-                    {/* <CreatorInfo /> */}
+                    {Modal()}
                   </div>
                 </div>
               </div>

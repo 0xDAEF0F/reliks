@@ -1,14 +1,12 @@
 import { oauth2Client } from './loginyt'
 
+// TODO: Decode with another function
 export default async function handler(req, res) {
+  // exchange code for tokens
   const code = req.query.code
-
-  if (!code) return res.send('unauthenticated')
+  const state = atob(req.query.state)
 
   const { tokens } = await oauth2Client.getToken(code)
 
-  // do something with tokens
-  // console.log(tokens)
-
-  res.send('authenticated')
+  res.json({ tokens, state })
 }
