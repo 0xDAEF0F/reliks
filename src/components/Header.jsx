@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import ModalSignUp from '../components/ModalSignUp'
 import { useTheme } from 'next-themes'
-import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5'
+import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi'
 
 function Header() {
   const [top, setTop] = useState(true)
@@ -50,9 +50,9 @@ function Header() {
                 className='hover:bg-gray-50 dark:hover:bg-zinc-900 px-1 py-1 border dark:border-zinc-800 rounded-md'
                 onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
                 {theme === 'light' ? (
-                  <IoMoonOutline className='text-black' size={20} />
+                  <HiOutlineMoon size={20} />
                 ) : (
-                  <IoSunnyOutline className='text-white' size={20} />
+                  <HiOutlineSun size={20} />
                 )}
               </button>
             </ul>
