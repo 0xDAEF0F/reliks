@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import ModalSignUp from '../components/ModalSignUp'
 import { useTheme } from 'next-themes'
-import { FaRegLightbulb, FaRegMoon } from 'react-icons/fa'
+import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5'
 
 function Header() {
   const [top, setTop] = useState(true)
@@ -20,7 +20,8 @@ function Header() {
   return (
     <header
       className={`fixed w-full z-10 md:bg-opacity-90 transition duration-300 ease-in-out ${
-        !top && 'backdrop-blur-sm shadow-lg'
+        !top &&
+        'bg-white dark:bg-black backdrop-blur-sm shadow-lg dark:bg-opacity-90 dark:shadow-sm dark:shadow-zinc-700'
       }`}>
       <div className='max-w-6xl mx-auto px-5 sm:px-6'>
         <div className='flex items-center justify-between h-16 md:h-20'>
@@ -46,17 +47,12 @@ function Header() {
                 <a>Tutorials</a>
               </Link>
               <button
+                className='hover:bg-gray-50 dark:hover:bg-zinc-900 px-1 py-1 border dark:border-zinc-800 rounded-md'
                 onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
                 {theme === 'light' ? (
-                  <FaRegLightbulb
-                    className='text-gray-500 hover:text-white'
-                    size={28}
-                  />
+                  <IoMoonOutline className='text-black' size={20} />
                 ) : (
-                  <FaRegMoon
-                    className='text-gray-500 hover:text-purple-500'
-                    size={28}
-                  />
+                  <IoSunnyOutline className='text-white' size={20} />
                 )}
               </button>
             </ul>
