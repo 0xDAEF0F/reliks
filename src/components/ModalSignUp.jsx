@@ -5,6 +5,7 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { useMoralis } from 'react-moralis'
 import AuthWallet from './AuthWallet'
 import ThirdPartyAuth from './ThirdPartyAuth'
+import CreatorInfo from './CreatorInfo'
 
 export default function Example() {
   const [open, setOpen] = useState(false)
@@ -87,7 +88,8 @@ export default function Example() {
                     <BulletSteps current={1} total={3} />
                     <br />
                     {/* <AuthWallet /> */}
-                    <ThirdPartyAuth />
+                    {/* <ThirdPartyAuth /> */}
+                    <CreatorInfo />
                   </div>
                 </div>
               </div>
