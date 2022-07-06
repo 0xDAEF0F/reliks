@@ -4,9 +4,12 @@ import ModalSignUp from '../components/ModalSignUp'
 import { useTheme } from 'next-themes'
 import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi'
 
+import { useMoralis } from 'react-moralis'
+
 function Header() {
   const [top, setTop] = useState(true)
   const { theme, setTheme } = useTheme()
+  const { user, isAuthenticated, logout } = useMoralis()
 
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
@@ -46,6 +49,7 @@ function Header() {
               <Link href=''>
                 <a>Tutorials</a>
               </Link>
+
               <button
                 className='hover:bg-gray-50 dark:hover:bg-zinc-900 px-1 py-1 border dark:border-zinc-800 rounded-md'
                 onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
@@ -56,18 +60,25 @@ function Header() {
                 )}
               </button>
             </ul>
-            <ul className='flex flex-grow justify-end flex-wrap items-center'>
-              <li>
-                <Link href='/signin'>
-                  <a className='font-medium text-gray-600 hover:text-gray-900 flex items-center transition duration-150 ease-in-out'>
-                    Sign in
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <ModalSignUp />
-              </li>
-            </ul>
+            {!isAuthenticated && !user?.getUsername() ? (
+              <ul className='flex flex-grow justify-end flex-wrap items-center'>
+                <li>
+                  <Link href='/signin'>
+                    <a className='font-medium text-gray-600 hover:text-gray-900 flex items-center transition duration-150 ease-in-out'>
+                      Sign in
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <ModalSignUp />
+                </li>
+              </ul>
+            ) : (
+              <div className='flex items-center flex-grow justify-end flex-wrap gap-4'>
+                <Link href='/profile'>Profile</Link>
+                <button onClick={() => logout()}>Logout</button>
+              </div>
+            )}
           </nav>
         </div>
       </div>

@@ -62,14 +62,22 @@ export default function ModalSignUp() {
     window.location = url
   }
 
-  const submitPersonalInfo = async ({ username, email }) => {
+  const submitPersonalInfo = async (username, email) => {
     user.set('username', username)
     user.set('email', email)
-    const user = await user.save().catch((err) => {
+
+    const saveUser = await user.save().catch((err) => {
       // handle error
       console.log(err)
     })
-    if (user) return user
+
+    if (saveUser) setOpen(false)
+    if (saveUser) return saveUser
+  }
+
+  function CloseModal() {
+    setOpen(false)
+    return <></>
   }
 
   const Modal = () => {
@@ -81,7 +89,7 @@ export default function ModalSignUp() {
       case 3:
         return <CreatorInfo submit={submitPersonalInfo} />
       case 4:
-        return <></>
+        return <CloseModal />
     }
   }
 
