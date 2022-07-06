@@ -1,5 +1,5 @@
 import { Menu, Transition, Switch } from '@headlessui/react'
-import { Fragment } from 'react'
+import { Fragment, forwardRef } from 'react'
 import { useMoralis } from 'react-moralis'
 import { HiChevronUp, HiMoon } from 'react-icons/hi'
 import { CgProfile } from 'react-icons/cg'
@@ -7,6 +7,19 @@ import { FaUserAlt } from 'react-icons/fa'
 import { BsFillGearFill } from 'react-icons/bs'
 import { IoLogOut } from 'react-icons/io5'
 import { useTheme } from 'next-themes'
+import Link from 'next/link'
+
+// eslint-disable-next-line react/display-name
+const MyLink = forwardRef((props, ref) => {
+  let { href, children, ...rest } = props
+  return (
+    <Link href={href}>
+      <a ref={ref} {...rest}>
+        {children}
+      </a>
+    </Link>
+  )
+})
 
 export default function ProfileDropdownMenu() {
   const { theme, setTheme } = useTheme()
@@ -40,29 +53,31 @@ export default function ProfileDropdownMenu() {
             <div className='px-1 py-1 '>
               <Menu.Item>
                 {({ active }) => (
-                  <button
+                  <MyLink
+                    href='/profile'
                     className={`${
                       active ? 'bg-gray-100 dark:bg-gray-700' : ''
                     } group flex items-center w-full rounded-md px-2 py-2 text-sm gap-2`}>
                     <FaUserAlt />
                     <p>Profile</p>
-                  </button>
+                  </MyLink>
                 )}
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
-                  <button
+                  <MyLink
+                    href='/settings'
                     className={`${
                       active ? 'bg-gray-100 dark:bg-gray-700' : ''
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm gap-2`}>
                     <BsFillGearFill />
                     <p>Settings</p>
-                  </button>
+                  </MyLink>
                 )}
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
-                  <button
+                  <a
                     onClick={() =>
                       setTheme(theme === 'light' ? 'dark' : 'light')
                     }
@@ -99,7 +114,7 @@ export default function ProfileDropdownMenu() {
                         )}
                       />
                     </Switch>
-                  </button>
+                  </a>
                 )}
               </Menu.Item>
             </div>
