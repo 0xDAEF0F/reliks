@@ -13,13 +13,10 @@ export const oauth2Client = new google.auth.OAuth2(
 
 // TODO: Encode with another function
 export default function handler(req, res) {
-  const state = btoa(req.query.state)
-
   const authorizationUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline',
     scope: 'https://www.googleapis.com/auth/youtube.readonly',
     include_granted_scopes: true,
-    state: state,
   })
 
   res.send(authorizationUrl)

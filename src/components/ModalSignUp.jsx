@@ -10,15 +10,14 @@ import CreatorInfo from './CreatorInfo'
 import { useRouter } from 'next/router'
 
 export default function ModalSignUp() {
-  // wallet, tokens in query params
   const { query } = useRouter()
   const [open, setOpen] = useState(false)
   // isAuthenticating, logout, account not used currently
   const { authenticate, isAuthenticated, user } = useMoralis()
 
-  // tracks for redirection and query params
+  // tracks for changes in tokens query param
   useEffect(() => {
-    if (!query.wallet || !isAuthenticated) return
+    if (!query.tokens || !isAuthenticated) return
     linkYoutubeWithUser()
     setOpen(true)
   }, [query.tokens])
@@ -37,8 +36,7 @@ export default function ModalSignUp() {
   }
 
   const linkYoutubeWithUser = async () => {
-    const { wallet, tokens } = query
-    user.set('youtubeCredentials', { wallet, tokens: JSON.parse(tokens) })
+    user.set('youtubeCredentials', JSON.parse(query.tokens))
     user.set('verifiedSocialPlatforms', ['youtube'])
     await user.save().catch((err) => {
       // handle err
@@ -60,9 +58,7 @@ export default function ModalSignUp() {
   }
 
   const connectYoutube = async () => {
-    // can substitute for userId
-    const userWallet = user.get('ethAddress')
-    const url = (await Axios.get(`/api/loginyt?state=${userWallet}`)).data
+    const url = (await Axios.get(`/api/loginyt`)).data
     window.location = url
   }
 

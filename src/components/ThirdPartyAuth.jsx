@@ -15,7 +15,6 @@ export default function AuthWallet({ connectYoutube }) {
             Continue with Google
           </p>
         </button>
-
         <button className='flex justify-center items-center mt-5 bg-purple-800 shadow-md py-2 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 hover:brightness-95'>
           <Image
             width={16}
