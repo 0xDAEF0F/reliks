@@ -4,9 +4,11 @@ import { oauth2Client } from './loginyt'
 export default async function handler(req, res) {
   // exchange code for tokens
   const code = req.query.code
-  const state = atob(req.query.state)
+  const wallet = atob(req.query.state)
 
   const { tokens } = await oauth2Client.getToken(code)
 
-  res.json({ tokens, state })
+  res.redirect(
+    `http://localhost:3000?wallet=${wallet}&tokens=${JSON.stringify(tokens)}`
+  )
 }

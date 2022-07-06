@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import BulletSteps from './BulletSteps'
 import { AiOutlineClose } from 'react-icons/ai'
@@ -7,12 +7,21 @@ import { useMoralis } from 'react-moralis'
 import AuthWallet from './AuthWallet'
 import ThirdPartyAuth from './ThirdPartyAuth'
 import CreatorInfo from './CreatorInfo'
+import { useRouter } from 'next/router'
 
 export default function ModalSignUp() {
+  // wallet, tokens in query params
+  const { query } = useRouter()
   const [open, setOpen] = useState(false)
-
   // isAuthenticating, logout, account not used currently
   const { authenticate, isAuthenticated, user } = useMoralis()
+
+  // tracks for redirection and query params
+  useEffect(() => {
+    if (!query.wallet || !isAuthenticated) return
+    linkYoutubeWithUser()
+    setOpen(true)
+  }, [query.tokens])
 
   const login = async () => {
     if (!isAuthenticated) {
@@ -27,6 +36,16 @@ export default function ModalSignUp() {
     console.log('user authenticated', user)
   }
 
+  const linkYoutubeWithUser = async () => {
+    const { wallet, tokens } = query
+    user.set('youtubeCredentials', { wallet, tokens: JSON.parse(tokens) })
+    user.set('verifiedSocialPlatforms', ['youtube'])
+    await user.save().catch((err) => {
+      // handle err
+      console.log(err)
+    })
+  }
+
   // calculates the step a creator is on signing process
   const calculateStep = () => {
     if (!isAuthenticated) return 1
@@ -36,9 +55,8 @@ export default function ModalSignUp() {
 
     if (!user.getEmail()) return 3
 
-    // if it passes all then return flag that
-    // indicates its finished so a modal no longer appears
-    return 1
+    // all steps completed
+    return 4
   }
 
   const connectYoutube = async () => {
@@ -66,6 +84,8 @@ export default function ModalSignUp() {
         return <ThirdPartyAuth connectYoutube={connectYoutube} />
       case 3:
         return <CreatorInfo submit={submitPersonalInfo} />
+      case 4:
+        return <></>
     }
   }
 
