@@ -6,10 +6,12 @@ import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi'
 
 import { useMoralis } from 'react-moralis'
 
+import ProfileDropdownMenu from './ProfileDropdownMenu'
+
 function Header() {
   const [top, setTop] = useState(true)
   const { theme, setTheme } = useTheme()
-  const { user, isAuthenticated, logout } = useMoralis()
+  const { user, authenticate, isAuthenticated, logout } = useMoralis()
 
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
@@ -19,6 +21,19 @@ function Header() {
     window.addEventListener('scroll', scrollHandler)
     return () => window.removeEventListener('scroll', scrollHandler)
   }, [top])
+
+  const login = async () => {
+    if (!isAuthenticated) {
+      await authenticate({ signingMessage: 'Log in to DApp' })
+        .then(function (user) {
+          console.log('logged in user:', user)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    }
+    console.log('user authenticated', user)
+  }
 
   return (
     <header
@@ -49,34 +64,36 @@ function Header() {
               <Link href=''>
                 <a>Tutorials</a>
               </Link>
-
-              <button
-                className='hover:bg-gray-50 dark:hover:bg-zinc-900 px-1 py-1 border dark:border-zinc-800 rounded-md'
-                onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-                {theme === 'light' ? (
-                  <HiOutlineMoon size={20} />
-                ) : (
-                  <HiOutlineSun size={20} />
-                )}
-              </button>
+              {!isAuthenticated && !user?.getUsername() ? (
+                <button
+                  className='hover:bg-gray-50 dark:hover:bg-zinc-900 px-1 py-1 border dark:border-zinc-800 rounded-md'
+                  onClick={() =>
+                    setTheme(theme === 'light' ? 'dark' : 'light')
+                  }>
+                  {theme === 'light' ? (
+                    <HiOutlineMoon size={20} />
+                  ) : (
+                    <HiOutlineSun size={20} />
+                  )}
+                </button>
+              ) : null}
             </ul>
             {!isAuthenticated && !user?.getUsername() ? (
               <ul className='flex flex-grow justify-end flex-wrap items-center'>
                 <li>
-                  <Link href='/signin'>
-                    <a className='font-medium text-gray-600 hover:text-gray-900 flex items-center transition duration-150 ease-in-out'>
-                      Sign in
-                    </a>
-                  </Link>
+                  <button
+                    onClick={() => login()}
+                    className='font-medium text-gray-600 hover:text-gray-900 flex items-center transition duration-150 ease-in-out'>
+                    Sign in
+                  </button>
                 </li>
                 <li>
                   <ModalSignUp />
                 </li>
               </ul>
             ) : (
-              <div className='flex items-center flex-grow justify-end flex-wrap gap-4'>
-                <Link href='/profile'>Profile</Link>
-                <button onClick={() => logout()}>Logout</button>
+              <div className='flex items-center flex-grow justify-end flex-wrap'>
+                <ProfileDropdownMenu />
               </div>
             )}
           </nav>
