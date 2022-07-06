@@ -99,7 +99,7 @@ export default function ModalSignUp() {
       <button
         className='px-5 py-3 text-gray-200 bg-gray-900 hover:bg-gray-800 ml-3'
         onClick={() => setOpen(true)}>
-        Sign Up
+        Sign Up As Creator
       </button>
 
       {/* Modal */}

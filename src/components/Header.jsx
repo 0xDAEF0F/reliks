@@ -61,9 +61,7 @@ function Header() {
               <Link href=''>
                 <a>Blog</a>
               </Link>
-              <Link href=''>
-                <a>Tutorials</a>
-              </Link>
+              <ModalSignUp />
               {!isAuthenticated && !user?.getUsername() ? (
                 <button
                   className='hover:bg-gray-50 dark:hover:bg-zinc-900 px-1 py-1 border dark:border-zinc-800 rounded-md'
@@ -83,12 +81,10 @@ function Header() {
                 <li>
                   <button
                     onClick={() => login()}
-                    className='font-medium text-gray-600 hover:text-gray-900 flex items-center transition duration-150 ease-in-out'>
-                    Sign in
+                    className='px-5 py-3 text-gray-200 bg-gray-900
+                    hover:bg-gray-800 ml-3'>
+                    Sign In
                   </button>
-                </li>
-                <li>
-                  <ModalSignUp />
                 </li>
               </ul>
             ) : (
