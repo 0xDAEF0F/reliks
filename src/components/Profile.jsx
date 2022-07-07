@@ -8,13 +8,13 @@ function Profile() {
     navigator.clipboard.writeText(publicKey)
   }
   return (
-    <div className='max-w-6xl mx-auto pt-20 sm:px-6'>
+    <div className='max-w-7xl mx-auto pt-32 sm:pt-20 sm:px-6'>
       <div className='border-b-2 pb-2'>
         <div className='relative bg-cover'>
           {/* to fix responsiveness and convert it to next Image */}
           <img src='/wp.png' className='h-80 w-full rounded-lg' alt='logo' />
         </div>
-        <div className='flex justify-between items-start mx-10 pt-2'>
+        <div className='flex justify-between items-start mx-2 md:mx-10 pt-2'>
           <div className='flex'>
             <div className='h-40 w-40'>
               {/* to fix responsiveness and convert it to next Image */}
