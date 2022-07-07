@@ -55,13 +55,16 @@ function Header() {
           <nav className='hidden md:flex md:flex-grow'>
             <ul className='flex flex-grow flex-wrap items-center justify-end space-x-10'>
               <Link href=''>
-                <a>About us</a>
+                <a>Explore</a>
               </Link>
 
               <Link href=''>
-                <a>Blog</a>
+                <a>Stats</a>
               </Link>
-              <ModalSignUp />
+              <Link href=''>
+                <a>About us</a>
+              </Link>
+
               {!isAuthenticated && !user?.getUsername() ? (
                 <button
                   className='hover:bg-gray-50 dark:hover:bg-zinc-900 px-1 py-1 border dark:border-zinc-800 rounded-md'
