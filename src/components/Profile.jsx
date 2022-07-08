@@ -51,7 +51,7 @@ function Profile() {
               </div>
             </div>
           </div>
-          <div className='flex justify-end mr-4 mb-4 md:mr-0'>
+          <div className='flex justify-end mr-4 mb-4 md:mr-0 pt-2'>
             <button className='flex gap-2 items-center bg-gray-200 hover:brightness-95 px-2 py-1 border rounded'>
               <FaPen size={14} />
               <p className='text-gray-800 font-medium whitespace-nowrap'>
