@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaPen } from 'react-icons/fa'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function Profile() {
   let publicKey = '0x8a1b5f0ac1c070be13559df36c3092093402389402'
@@ -54,9 +55,11 @@ function Profile() {
           <div className='flex justify-end mr-4 mb-4 md:mr-0 pt-2'>
             <button className='flex gap-2 items-center bg-gray-200 hover:brightness-95 px-2 py-1 border rounded'>
               <FaPen size={14} />
-              <p className='text-gray-800 font-medium whitespace-nowrap'>
-                Edit profile
-              </p>
+              <Link href='profile/settings'>
+                <a className='text-gray-800 font-medium whitespace-nowrap'>
+                  Edit profile
+                </a>
+              </Link>
             </button>
           </div>
         </div>
