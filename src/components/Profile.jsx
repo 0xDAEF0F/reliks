@@ -22,7 +22,7 @@ function Profile() {
               {/* to fix responsiveness and convert it to next Image */}
               <img
                 className='p-2 block border rounded-full bg-white'
-                src='./googleLogo.png'
+                src='/pp.jpeg'
                 alt='logo'
               />
             </div>
