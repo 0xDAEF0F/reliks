@@ -66,7 +66,7 @@ export default function ProfileDropdownMenu() {
               <Menu.Item>
                 {({ active }) => (
                   <MyLink
-                    href='/settings'
+                    href='profile/settings'
                     className={`${
                       active ? 'bg-gray-100 dark:bg-gray-700' : ''
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm gap-2`}>
