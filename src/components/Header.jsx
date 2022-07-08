@@ -55,14 +55,20 @@ function Header() {
           <nav className='hidden md:flex md:flex-grow'>
             <ul className='flex flex-grow flex-wrap items-center justify-end space-x-10'>
               <Link href=''>
-                <a>Explore</a>
+                <a className='text-gray-600 hover:text-black dark:text-gray-300 rounded-3xl hover:bg-gray-50 hover:brightness-95 px-4 py-1 transition duration-100'>
+                  Explore
+                </a>
               </Link>
 
               <Link href=''>
-                <a>Stats</a>
+                <a className='text-gray-600 hover:text-black dark:text-gray-300 rounded-3xl hover:bg-gray-50 hover:brightness-95 px-4 py-1 transition duration-100'>
+                  Stats
+                </a>
               </Link>
               <Link href=''>
-                <a>About us</a>
+                <a className='text-gray-600 hover:text-black dark:text-gray-300 rounded-3xl hover:bg-gray-50 hover:brightness-95 px-4 py-1 transition duration-100'>
+                  About us
+                </a>
               </Link>
 
               {!isAuthenticated && !user?.getUsername() ? (

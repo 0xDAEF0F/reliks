@@ -34,9 +34,12 @@ export default function ProfileDropdownMenu() {
     <div>
       <Menu as='div' className='relative inline-block text-left'>
         <div>
-          <Menu.Button className='inline-flex items-center w-full justify-center rounded-md hover:opacity-80 text-sm font-medium  focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'>
-            <CgProfile className='ml-2 -mr-1 h-8 w-8 ' aria-hidden='true' />
-            <HiChevronUp className='ml-2 -mr-1 h-5 w-5' aria-hidden='true' />
+          <Menu.Button className='hover:ring-2 ring-offset-2 ring-black focus:ring-2 justify-center rounded-full'>
+            <img
+              className='w-12 h-12 p-1 block border dark:border-zinc-700 rounded-full bg-white dark:bg-black'
+              src='/pp.jpeg'
+              alt='logo'
+            />
           </Menu.Button>
         </div>
         <Transition
