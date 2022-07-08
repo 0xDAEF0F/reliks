@@ -8,24 +8,26 @@ function Profile() {
     navigator.clipboard.writeText(publicKey)
   }
   return (
-    <div className='max-w-7xl mx-auto pt-32 sm:pt-20 sm:px-6'>
-      <div className='border-b-2 pb-2'>
-        <div className='relative bg-cover'>
-          {/* to fix responsiveness and convert it to next Image */}
-          <img src='/wp.png' className='h-80 w-full rounded-lg' alt='logo' />
-        </div>
-        <div className='flex justify-between items-start mx-2 md:mx-10 pt-2'>
-          <div className='flex'>
-            <div className='h-40 w-40'>
+    <div className='max-w-7xl mx-auto pt-20 sm:pt-20 sm:px-6'>
+      <div>
+        {/* to fix responsiveness and convert it to next Image */}
+        <img
+          src='/wp.png'
+          className='h-52 md:h-80 w-full rounded-lg'
+          alt='logo'
+        />
+        <div className='md:flex md:justify-between items-start mx-auto md:mx-10 pt-2 border-b-2 h-full md:h-36'>
+          <div className='flex items-center flex-col md:flex-row'>
+            <div className='relative h-40 w-40 -inset-y-10'>
               {/* to fix responsiveness and convert it to next Image */}
               <img
-                className='p-2 block border rounded-full'
+                className='p-2 block border rounded-full bg-white'
                 src='./googleLogo.png'
                 alt='logo'
               />
             </div>
-            <div className='p-4 pt-5 '>
-              <p className='text-2xl lg:text-3xl font-semibold'>Test User</p>
+            <div className='text-center md:text-left -mt-10 md:-mt-16 ml-0 md:ml-2'>
+              <p className='text-3xl font-semibold'>Test User</p>
               <div>
                 <button
                   onClick={copy2Clipboard}
@@ -49,12 +51,14 @@ function Profile() {
               </div>
             </div>
           </div>
-          <button className='flex gap-2 items-center bg-gray-200 hover:brightness-95 px-2 py-1 border rounded'>
-            <FaPen size={14} />
-            <p className='text-gray-800 font-medium whitespace-nowrap'>
-              Edit profile
-            </p>
-          </button>
+          <div className='flex justify-end mr-4 mb-4 md:mr-0'>
+            <button className='flex gap-2 items-center bg-gray-200 hover:brightness-95 px-2 py-1 border rounded'>
+              <FaPen size={14} />
+              <p className='text-gray-800 font-medium whitespace-nowrap'>
+                Edit profile
+              </p>
+            </button>
+          </div>
         </div>
       </div>
     </div>
