@@ -2,12 +2,32 @@ import React from 'react'
 import { FaPen } from 'react-icons/fa'
 import Image from 'next/image'
 import Link from 'next/link'
+import { createWhaleFactory } from '../util/deployWhale'
+import Moralis from 'moralis'
 
 function Profile() {
   let publicKey = '0x8a1b5f0ac1c070be13559df36c3092093402389402'
   function copy2Clipboard() {
     navigator.clipboard.writeText(publicKey)
   }
+
+  const deployWhale = async () => {
+    try {
+      const WhaleFactory = await createWhaleFactory()
+      const contract = await WhaleFactory.deploy(
+        '0x9367d8c5Db2Eeb7dFA2504aB30323d3FAa4c015a',
+        3,
+        Moralis.web3Library.utils.parseEther('1')
+      )
+      console.log('contract address: ', contract.address)
+      await contract.deployed()
+      console.log('contract deployed succesfully.')
+    } catch (err) {
+      // handle error
+      console.log(err)
+    }
+  }
+
   return (
     <div className='max-w-7xl mx-auto pt-20 sm:pt-20 sm:px-6'>
       <div>
@@ -64,6 +84,12 @@ function Profile() {
           </div>
         </div>
       </div>
+      <br />
+      <button
+        onClick={deployWhale}
+        className='text-lg border rounded bg-gray-200 px-3'>
+        yolo
+      </button>
     </div>
   )
 }
