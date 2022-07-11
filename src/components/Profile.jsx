@@ -6,7 +6,9 @@ import Moralis from 'moralis'
 import ModalWhaleContract from './ModalWhaleContract'
 
 function Profile() {
-  let publicKey = '0x8a1b5f0ac1c070be13559df36c3092093402389402'
+  // TODO: Change dynamically
+  const publicKey = '0x8a1b5f0ac1c070be13559df36c3092093402389402'
+
   function copy2Clipboard() {
     navigator.clipboard.writeText(publicKey)
   }

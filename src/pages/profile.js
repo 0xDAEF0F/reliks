@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../components/Header'
 import Banner from '../components/Banner'
 import Profile from '../components/Profile'
+import { useMoralis } from 'react-moralis'
+import { useRouter } from 'next/router'
 
-function profile() {
+function ProfilePage() {
+  const { isAuthenticated } = useMoralis()
+  const router = useRouter()
+
+  useEffect(() => {
+    !isAuthenticated ? router.push('/') : ''
+  }, [])
+
   return (
     <>
       <Header />
@@ -13,4 +22,4 @@ function profile() {
   )
 }
 
-export default profile
+export default ProfilePage
