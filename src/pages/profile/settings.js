@@ -5,11 +5,11 @@ import Settings from '../../components/Settings'
 
 function profile() {
   return (
-    <div>
+    <>
       <Header />
       <Banner />
       <Settings />
-    </div>
+    </>
   )
 }
 

@@ -4,10 +4,10 @@ import NextPlaceHolder from '../components/NextPlaceHolder'
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Header />
       <Banner />
       <NextPlaceHolder />
-    </div>
+    </>
   )
 }

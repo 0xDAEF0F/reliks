@@ -1,8 +1,8 @@
 import { Menu, Transition, Switch } from '@headlessui/react'
 import { Fragment, forwardRef } from 'react'
 import { useMoralis } from 'react-moralis'
-import { HiChevronUp, HiMoon } from 'react-icons/hi'
-import { CgProfile } from 'react-icons/cg'
+import ModalWhaleContract from './ModalWhaleContract'
+import { HiMoon } from 'react-icons/hi'
 import { FaUserAlt } from 'react-icons/fa'
 import { BsFillGearFill } from 'react-icons/bs'
 import { IoLogOut } from 'react-icons/io5'
@@ -86,7 +86,7 @@ export default function ProfileDropdownMenu() {
                     }
                     className={`${
                       active ? 'bg-gray-100 dark:bg-gray-700' : ''
-                    } group flex justify-between w-full items-center rounded-md px-2 py-2 text-sm`}>
+                    } group flex justify-between w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer`}>
                     <div className='flex items-center gap-2 justify-end'>
                       <HiMoon size={18} />
                       <p>Night Mode</p>

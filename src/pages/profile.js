@@ -5,11 +5,11 @@ import Profile from '../components/Profile'
 
 function profile() {
   return (
-    <div>
+    <>
       <Header />
       <Banner />
       <Profile />
-    </div>
+    </>
   )
 }
 
