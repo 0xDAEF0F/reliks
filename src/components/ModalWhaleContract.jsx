@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react'
+import Image from 'next/image'
 import { Dialog, Transition } from '@headlessui/react'
 import { useForm } from 'react-hook-form'
 import { AiOutlineClose } from 'react-icons/ai'
@@ -115,10 +116,11 @@ export default function ModalWhaleContract() {
                           </label>
                           <div className='mt-1 relative rounded-md shadow-sm'>
                             <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                              <span className='text-gray-500 sm:text-sm'>
-                                <img
-                                  className='h-3'
-                                  src='./ethereum.svg'
+                              <span className='flex items-centertext-gray-500 sm:text-sm'>
+                                <Image
+                                  width={9}
+                                  height={14}
+                                  src='/ethereum.svg'
                                   alt='eth'
                                 />
                               </span>
