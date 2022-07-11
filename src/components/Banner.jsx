@@ -19,11 +19,10 @@ export default function Banner() {
               </span>
               <p className='ml-3 font-medium text-white truncate'>
                 <span className='md:hidden'>
-                  Officia ullamco proident minim eu anim aliquip velit mollit
-                  labore sunt ullamco eu proident voluptate.
+                  Sign up as a Creator to create Strategies and much more!
                 </span>
                 <span className='hidden md:inline'>
-                  Aliqua quis non do fugiat ipsum duis duis ipsum proident elit.
+                  Sign up as a Creator to create Strategies and much more!
                 </span>
               </p>
             </div>
