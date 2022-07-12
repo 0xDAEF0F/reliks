@@ -9,7 +9,7 @@ module.exports = {
     colors: {
       mauve: '#28282B',
       white: '#ffffff',
-      dark: '#000000',
+      black: '#000000',
       light: {
         violet1: '#fdfcfe',
         violet2: '#fbfaff',

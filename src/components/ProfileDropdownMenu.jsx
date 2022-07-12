@@ -33,9 +33,9 @@ export default function ProfileDropdownMenu() {
     <div>
       <Menu as='div' className='relative inline-block text-left'>
         <div>
-          <Menu.Button className='hover:ring-2 ring-light-violet7 dark:ring-darkMode-violet7 justify-center rounded-full'>
+          <Menu.Button className='hover:ring-2 ring-black dark:ring-white justify-center rounded-full'>
             <img
-              className='w-12 h-12 p-1 block shadow-md rounded-full bg-white dark:bg-dark'
+              className='w-12 h-12 p-1 block shadow-md rounded-full bg-white dark:bg-black'
               src='/pp.jpeg'
               alt='logo'
             />
