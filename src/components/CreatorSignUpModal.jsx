@@ -7,6 +7,7 @@ import { useMoralis } from 'react-moralis'
 import AuthWallet from './AuthWallet'
 import ThirdPartyAuth from './ThirdPartyAuth'
 import { useRouter } from 'next/router'
+import toast from 'react-hot-toast'
 
 export default function CreatorSignUpModal() {
   const { query } = useRouter()
@@ -17,10 +18,10 @@ export default function CreatorSignUpModal() {
   // tracks for changes in tokens query param
   useEffect(() => {
     if (query.creatorFlow === 'fail') {
-      alert('fail creator process please try again')
+      toast.error('fail creator process please try again')
     }
     if (query.creatorFlow === 'success') {
-      alert('succesfully creator validation')
+      toast.success('succesfully creator validation')
     }
   }, [query.creatorFlow])
 
