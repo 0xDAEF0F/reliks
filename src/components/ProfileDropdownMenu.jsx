@@ -49,7 +49,7 @@ export default function ProfileDropdownMenu() {
           leave='transition ease-in duration-75'
           leaveFrom='transform opacity-100 scale-100'
           leaveTo='transform opacity-0 scale-95'>
-          <Menu.Items className='absolute right-0 mt-2 w-56 origin-top-right divide-y divide-light-bordergray dark:divide-darkMode-bordergray rounded-md bg-white dark:bg-mauve shadow-lg ring-1 ring-dark ring-opacity-5 focus:outline-none'>
+          <Menu.Items className='absolute right-0 mt-2 w-56 origin-top-right divide-y divide-light-bordergray dark:divide-darkMode-bordergray rounded-md bg-white dark:bg-mauve shadow-lg ring-opacity-5 focus:outline-none'>
             <div className='px-1 py-1 '>
               <Menu.Item>
                 <MyLink
