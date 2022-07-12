@@ -1,7 +1,6 @@
 import { Menu, Transition, Switch } from '@headlessui/react'
 import { Fragment, forwardRef } from 'react'
 import { useMoralis } from 'react-moralis'
-import ModalWhaleContract from './ModalWhaleContract'
 import { HiMoon } from 'react-icons/hi'
 import { FaUserAlt } from 'react-icons/fa'
 import { BsFillGearFill } from 'react-icons/bs'
@@ -34,9 +33,9 @@ export default function ProfileDropdownMenu() {
     <div>
       <Menu as='div' className='relative inline-block text-left'>
         <div>
-          <Menu.Button className='hover:ring-2 ring-offset-2 ring-black focus:ring-2 justify-center rounded-full'>
+          <Menu.Button className='hover:ring-2 ring-light-violet7 dark:ring-darkMode-violet7 justify-center rounded-full'>
             <img
-              className='w-12 h-12 p-1 block border dark:border-zinc-700 rounded-full bg-white dark:bg-black'
+              className='w-12 h-12 p-1 block shadow-md rounded-full bg-white dark:bg-dark'
               src='/pp.jpeg'
               alt='logo'
             />
@@ -50,90 +49,72 @@ export default function ProfileDropdownMenu() {
           leave='transition ease-in duration-75'
           leaveFrom='transform opacity-100 scale-100'
           leaveTo='transform opacity-0 scale-95'>
-          <Menu.Items
-            static
-            className='absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 dark:divide-zinc-800 rounded-md bg-white dark:bg-zinc-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+          <Menu.Items className='absolute right-0 mt-2 w-56 origin-top-right divide-y divide-light-bordergray dark:divide-darkMode-bordergray rounded-md bg-white dark:bg-mauve shadow-lg ring-1 ring-dark ring-opacity-5 focus:outline-none'>
             <div className='px-1 py-1 '>
               <Menu.Item>
-                {({ active }) => (
-                  <MyLink
-                    href='/profile'
-                    className={`${
-                      active ? 'bg-gray-100 dark:bg-gray-700' : ''
-                    } group flex items-center w-full rounded-md px-2 py-2 text-sm gap-2`}>
-                    <FaUserAlt />
-                    <p>Profile</p>
-                  </MyLink>
-                )}
+                <MyLink
+                  href='/profile'
+                  className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex items-center w-full rounded-md px-2 py-2 text-sm gap-2'>
+                  <FaUserAlt />
+                  <p>Profile</p>
+                </MyLink>
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
-                  <MyLink
-                    href='/profile/settings'
-                    className={`${
-                      active ? 'bg-gray-100 dark:bg-gray-700' : ''
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm gap-2`}>
-                    <BsFillGearFill />
-                    <p>Settings</p>
-                  </MyLink>
-                )}
+                <MyLink
+                  href='/profile/settings'
+                  className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex w-full items-center rounded-md px-2 py-2 text-sm gap-2'>
+                  <BsFillGearFill />
+                  <p>Settings</p>
+                </MyLink>
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
-                  <a
-                    onClick={() =>
+                <a
+                  onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+                  className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex justify-between w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer'>
+                  <div className='flex items-center gap-2 justify-end'>
+                    <HiMoon size={18} />
+                    <p>Night Mode</p>
+                  </div>
+                  <Switch
+                    checked={theme === 'dark'}
+                    onChange={() =>
                       setTheme(theme === 'light' ? 'dark' : 'light')
                     }
-                    className={`${
-                      active ? 'bg-gray-100 dark:bg-gray-700' : ''
-                    } group flex justify-between w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer`}>
-                    <div className='flex items-center gap-2 justify-end'>
-                      <HiMoon size={18} />
-                      <p>Night Mode</p>
-                    </div>
-                    <Switch
-                      checked={theme === 'dark'}
-                      onChange={() =>
-                        setTheme(theme === 'light' ? 'dark' : 'light')
-                      }
-                      className=' group relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
-                      <span className='sr-only'>Use night mode</span>
-                      <span
-                        aria-hidden='true'
-                        className='pointer-events-none absolute w-full h-full rounded-md'
-                      />
-                      <span
-                        aria-hidden='true'
-                        className={classNames(
-                          theme === 'dark' ? 'bg-indigo-600' : 'bg-gray-200',
-                          'pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200'
-                        )}
-                      />
-                      <span
-                        aria-hidden='true'
-                        className={classNames(
-                          theme === 'dark' ? 'translate-x-5' : 'translate-x-0',
-                          'pointer-events-none absolute left-0 inline-block h-5 w-5 border border-gray-200 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200'
-                        )}
-                      />
-                    </Switch>
-                  </a>
-                )}
+                    className='relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-violet7 dark:focus:ring-darkMode-violet7'>
+                    <span className='sr-only'>Use night mode</span>
+                    <span
+                      aria-hidden='true'
+                      className='pointer-events-none absolute w-full h-full rounded-md'
+                    />
+                    <span
+                      aria-hidden='true'
+                      className={classNames(
+                        theme === 'dark'
+                          ? 'bg-darkMode-violet9'
+                          : 'bg-light-violet9',
+                        'pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200'
+                      )}
+                    />
+                    <span
+                      aria-hidden='true'
+                      className={classNames(
+                        theme === 'dark' ? 'translate-x-5' : 'translate-x-0',
+                        'pointer-events-none absolute left-0 inline-block h-5 w-5 border border-light-violet7 dark:border-darkMode-violet7 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200'
+                      )}
+                    />
+                  </Switch>
+                </a>
               </Menu.Item>
             </div>
 
             <div className='px-1 py-1'>
               <Menu.Item>
-                {({ active }) => (
-                  <button
-                    onClick={() => logout()}
-                    className={`${
-                      active ? 'bg-gray-100 dark:bg-gray-700' : ''
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm gap-2`}>
-                    <IoLogOut size={20} />
-                    <p>Logout</p>
-                  </button>
-                )}
+                <button
+                  onClick={() => logout()}
+                  className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex w-full items-center rounded-md px-2 py-2 text-sm gap-2'>
+                  <IoLogOut size={20} />
+                  <p>Logout</p>
+                </button>
               </Menu.Item>
             </div>
           </Menu.Items>

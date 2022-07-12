@@ -81,7 +81,7 @@ export default function ModalSignUp() {
   }
 
   const Modal = () => {
-    switch (calculateStep()) {
+    switch (3) {
       case 1:
         return <AuthWallet login={login} />
       case 2:
@@ -97,7 +97,7 @@ export default function ModalSignUp() {
     <>
       {/* Button to open modal*/}
       <button
-        className='flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50'
+        className='flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-light-violet11 bg-white hover:bg-light-violet4 active:bg-light-violet5'
         onClick={() => setOpen(true)}>
         Sign Up As Creator
       </button>
@@ -135,11 +135,11 @@ export default function ModalSignUp() {
               leave='ease-in duration-200'
               leaveFrom='opacity-100 translate-y-0 sm:scale-100'
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'>
-              <div className='inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-fullll sm:p-6 sm:px-10'>
+              <div className='inline-block align-bottom bg-white dark:bg-mauve rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-fullll sm:p-6 sm:px-10'>
                 <div className='hidden sm:block absolute top-0 right-0 pt-4 pr-6'>
                   <button
                     type='button'
-                    className='bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                    className='rounded-md dark:text-darkMode-gray text-light-gray focus:outline-none focus:ring-2 focus:ring-light-violet7 dark:focus:ring-darkMode-violet7'
                     onClick={() => setOpen(false)}>
                     <AiOutlineClose size={18} />
                   </button>

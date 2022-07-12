@@ -1,12 +1,48 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    colors: {
+      mauve: '#28282B',
+      white: '#ffffff',
+      dark: '#000000',
+      light: {
+        violet1: '#fdfcfe',
+        violet2: '#fbfaff',
+        violet3: '#f5f2ff',
+        violet4: '#ede9fe',
+        violet5: '#e4defc',
+        violet6: '#d7cff9',
+        violet7: '#c4b8f3',
+        violet8: '#aa99ec',
+        violet9: '#6e56cf',
+        violet10: '#644fc1',
+        violet11: '#5746af',
+        violet12: '#20134b',
+        bordergray: '#E5E8EC',
+        gray: '#353836',
+      },
+      darkMode: {
+        violet1: '#17151f',
+        violet2: '#1c172b',
+        violet3: '#251e40',
+        violet4: '#2c2250',
+        violet5: '#32275f',
+        violet6: '#392c72',
+        violet7: '#443592',
+        violet8: '#5842c3',
+        violet9: '#6e56cf',
+        violet10: '#7c66dc',
+        violet11: '#9e8cfc',
+        violet12: '#f1eefe',
+        bordergray: '#4C505C',
+        gray: '#E5E8EB',
+      },
+    },
   },
-  plugins: [require("@tailwindcss/forms")],
-};
+  plugins: [require('@tailwindcss/forms')],
+}

@@ -39,7 +39,7 @@ function Header() {
     <header
       className={`fixed w-full z-10 md:bg-opacity-90 ${
         !top &&
-        'bg-white dark:bg-black backdrop-blur-sm shadow-lg dark:bg-opacity-90 dark:shadow-sm dark:shadow-zinc-700'
+        'bg-light-violet1 dark:bg-darkMode-violet1 backdrop-blur-sm shadow-lg dark:bg-opacity-90 dark:shadow-sm dark:shadow-zinc-700'
       }`}>
       <div className='max-w-6xl mx-auto px-5 sm:px-6'>
         <div className='flex items-center justify-between h-16 md:h-20'>
@@ -55,25 +55,25 @@ function Header() {
           <nav className='hidden md:flex md:flex-grow'>
             <ul className='flex flex-grow flex-wrap items-center justify-end space-x-10'>
               <Link href=''>
-                <a className='text-gray-600 dark:hover:text-black hover:text-black dark:text-gray-300 rounded-3xl hover:bg-gray-50 hover:brightness-95 px-4 py-1 transition duration-100'>
+                <a className='font-semibold text-dark dark:text-white opacity-70 hover:opacity-100 transition duration-100'>
                   Explore
                 </a>
               </Link>
 
               <Link href=''>
-                <a className='text-gray-600 dark:hover:text-black hover:text-black dark:text-gray-300 rounded-3xl hover:bg-gray-50 hover:brightness-95 px-4 py-1 transition duration-100'>
+                <a className='font-semibold text-dark dark:text-white opacity-70 hover:opacity-100 transition duration-100'>
                   Stats
                 </a>
               </Link>
               <Link href=''>
-                <a className='text-gray-600 dark:hover:text-black hover:text-black dark:text-gray-300 rounded-3xl hover:bg-gray-50 hover:brightness-95 px-4 py-1 transition duration-100'>
+                <a className='font-semibold text-dark dark:text-white opacity-70 hover:opacity-100 transition duration-100'>
                   About us
                 </a>
               </Link>
 
               {!isAuthenticated && !user?.getUsername() ? (
                 <button
-                  className='text-gray-600 dark:hover:text-black hover:text-black dark:text-gray-300 rounded-3xl hover:bg-gray-50 hover:brightness-95 px-4 py-1 transition duration-100'
+                  className=' dark:hover:text-black hover:text-black dark: rounded-3xl hover:bg-gray-50 hover:brightness-95 px-4 py-1 transition duration-100'
                   onClick={() =>
                     setTheme(theme === 'light' ? 'dark' : 'light')
                   }>
@@ -90,7 +90,7 @@ function Header() {
                 <li>
                   <button
                     onClick={() => login()}
-                    className='px-5 py-3 text-gray-200 bg-gray-900
+                    className='px-5 py-3  bg-gray-900
                     hover:bg-gray-800 ml-3'>
                     Sign In
                   </button>
