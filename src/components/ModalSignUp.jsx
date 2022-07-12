@@ -81,7 +81,7 @@ export default function ModalSignUp() {
   }
 
   const Modal = () => {
-    switch (3) {
+    switch (calculateStep()) {
       case 1:
         return <AuthWallet login={login} />
       case 2:
