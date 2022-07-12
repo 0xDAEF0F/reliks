@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import ModalSignUp from '../components/ModalSignUp'
 import { useTheme } from 'next-themes'
 import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi'
 
 import { useMoralis } from 'react-moralis'
 
 import ProfileDropdownMenu from './ProfileDropdownMenu'
+import MobileMenu from './MobileMenu'
 
 function Header() {
   const [top, setTop] = useState(true)
@@ -101,6 +101,7 @@ function Header() {
               </div>
             )}
           </nav>
+          <MobileMenu />
         </div>
       </div>
     </header>
