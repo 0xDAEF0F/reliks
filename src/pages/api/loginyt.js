@@ -11,12 +11,18 @@ export const oauth2Client = new google.auth.OAuth2(
   'http://localhost:3000/api/callback'
 )
 
-// TODO: Encode with another function
+const scopes = [
+  'https://www.googleapis.com/auth/youtube.readonly',
+  'https://www.googleapis.com/auth/userinfo.email',
+  'https://www.googleapis.com/auth/userinfo.profile',
+]
+
 export default function handler(req, res) {
   const authorizationUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline',
-    scope: 'https://www.googleapis.com/auth/youtube.readonly',
+    scope: scopes,
     include_granted_scopes: true,
+    state: req.query.state,
   })
 
   res.send(authorizationUrl)

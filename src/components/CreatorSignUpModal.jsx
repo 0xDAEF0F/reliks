@@ -6,10 +6,9 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { useMoralis } from 'react-moralis'
 import AuthWallet from './AuthWallet'
 import ThirdPartyAuth from './ThirdPartyAuth'
-import CreatorInfo from './CreatorInfo'
 import { useRouter } from 'next/router'
 
-export default function ModalSignUp() {
+export default function CreatorSignUpModal() {
   const { query } = useRouter()
   const [open, setOpen] = useState(false)
   // isAuthenticating, logout, account not used currently
@@ -17,10 +16,13 @@ export default function ModalSignUp() {
 
   // tracks for changes in tokens query param
   useEffect(() => {
-    if (!query.tokens || !isAuthenticated) return
-    linkYoutubeWithUser()
-    setOpen(true)
-  }, [query.tokens])
+    if (query.creatorFlow === 'fail') {
+      alert('fail creator process please try again')
+    }
+    if (query.creatorFlow === 'success') {
+      alert('succesfully creator validation')
+    }
+  }, [query.creatorFlow])
 
   const login = async () => {
     if (!isAuthenticated) {
@@ -35,15 +37,6 @@ export default function ModalSignUp() {
     console.log('user authenticated', user)
   }
 
-  const linkYoutubeWithUser = async () => {
-    user.set('youtubeCredentials', JSON.parse(query.tokens))
-    user.set('verifiedSocialPlatforms', ['youtube'])
-    await user.save().catch((err) => {
-      // handle err
-      console.log(err)
-    })
-  }
-
   // calculates the step a creator is on signing process
   const calculateStep = () => {
     if (!isAuthenticated) return 1
@@ -51,28 +44,14 @@ export default function ModalSignUp() {
     const verifiedSocialPlatforms = user.get('verifiedSocialPlatforms')
     if (!verifiedSocialPlatforms || verifiedSocialPlatforms.length < 1) return 2
 
-    if (!user.getEmail()) return 3
-
     // all steps completed
-    return 4
+    return 3
   }
 
   const connectYoutube = async () => {
-    const url = (await Axios.get(`/api/loginyt`)).data
+    const url = (await Axios.get(`/api/loginyt?state=${user.getUsername()}`))
+      .data
     window.location = url
-  }
-
-  const submitPersonalInfo = async (username, email) => {
-    user.set('username', username)
-    user.set('email', email)
-
-    const saveUser = await user.save().catch((err) => {
-      // handle error
-      console.log(err)
-    })
-
-    if (saveUser) setOpen(false)
-    if (saveUser) return saveUser
   }
 
   function CloseModal() {
@@ -87,8 +66,6 @@ export default function ModalSignUp() {
       case 2:
         return <ThirdPartyAuth connectYoutube={connectYoutube} />
       case 3:
-        return <CreatorInfo submit={submitPersonalInfo} />
-      case 4:
         return <CloseModal />
     }
   }
@@ -146,7 +123,7 @@ export default function ModalSignUp() {
                 </div>
                 <div className='sm:flex sm:items-start'>
                   <div className='mt-3 text-center sm:mt-0 sm:text-left'>
-                    <BulletSteps current={calculateStep()} total={3} />
+                    <BulletSteps current={calculateStep()} total={2} />
                     <br />
                     {Modal()}
                   </div>
