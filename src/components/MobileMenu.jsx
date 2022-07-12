@@ -43,7 +43,7 @@ export default function MobileMenu() {
                 ? 'flex flex-col absolute w-full h-screen mt-10 left-0 bg-light-violet2 dark:bg-darkMode-violet2 z-10 px-5'
                 : 'hidden'
             }>
-            <ul className='mt-5'>
+            <ul className='mt-14'>
               <li className='mb-5 lg:hidden'>
                 <LinkChevron
                   title={'Explore'}
