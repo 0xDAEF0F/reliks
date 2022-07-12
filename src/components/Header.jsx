@@ -73,7 +73,7 @@ function Header() {
 
               {!isAuthenticated && !user?.getUsername() ? (
                 <button
-                  className=' dark:hover:text-black hover:text-black dark: rounded-3xl hover:bg-gray-50 hover:brightness-95 px-4 py-1 transition duration-100'
+                  className='font-semibold text-black dark:text-white opacity-70 hover:opacity-100 transition duration-100'
                   onClick={() =>
                     setTheme(theme === 'light' ? 'dark' : 'light')
                   }>
@@ -90,8 +90,7 @@ function Header() {
                 <li>
                   <button
                     onClick={() => login()}
-                    className='px-5 py-3  bg-gray-900
-                    hover:bg-gray-800 ml-3'>
+                    className='text-white bg-mauve px-5 py-3'>
                     Sign In
                   </button>
                 </li>
