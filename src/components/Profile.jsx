@@ -27,7 +27,7 @@ function Profile() {
             <div className='relative h-40 w-40 -inset-y-10'>
               {/* to fix responsiveness and convert it to next Image */}
               <img
-                className='p-2 block shadow-md dark:shadow-black rounded-full bg-white dark:bg-dark'
+                className='p-2 block shadow-md dark:shadow-black rounded-full bg-white dark:bg-black'
                 src='/pp.jpeg'
                 alt='logo'
               />
@@ -38,7 +38,7 @@ function Profile() {
                 <button
                   onClick={copy2Clipboard}
                   title='Copy'
-                  className='dark:bg-darkMode-violet3 dark:hover:bg-darkMode-violet4 dark:active:bg-darkMode-violet5 bg-light-violet3 hover:bg-light-violet4 active:bg-light-violet5 rounded-full mt-1 py-1 px-2 w-36 h-auto'>
+                  className='dark:hover:text-darkMode-gray dark:bg-darkMode-violet3 dark:hover:bg-darkMode-violet4 dark:active:bg-darkMode-violet5 bg-light-violet3 hover:bg-light-violet4 active:bg-light-violet5 rounded-full mt-1 py-1 px-2 w-36 h-auto'>
                   <div className='flex justify-between items-center'>
                     <Image
                       src='/ethereum.svg'
@@ -46,18 +46,20 @@ function Profile() {
                       width={30}
                       height={30}
                     />
-                    <p className='text-sm font-semibold pl-1 truncate hover:text-black'>
+                    <p className='text-sm font-semibold pl-1 truncate'>
                       {publicKey}
                     </p>
                   </div>
                 </button>
-                <p className='mt-1 ml-2 text-sm'>Joined July 2022</p>
+                <p className='text-light-gray dark:text-darkMode-gray  mt-1 ml-2 text-sm'>
+                  Joined July 2022
+                </p>
               </div>
             </div>
           </div>
           <div className='flex justify-end mr-4 mb-4 md:mr-0 mt-2'>
             <Link href='profile/settings'>
-              <a className=' text-white font-medium whitespace-nowrap flex gap-2 items-center bg-light-violet9 hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:hover:bg-light-violet10 px-2 py-1 rounded'>
+              <a className=' text-white font-medium whitespace-nowrap flex gap-2 items-center bg-light-violet9 hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:hover:bg-darkMode-violet10 px-2 py-1 rounded'>
                 <FaPen color='white' size={14} />
                 Edit profile
               </a>

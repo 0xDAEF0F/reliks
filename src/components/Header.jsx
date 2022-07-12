@@ -11,7 +11,7 @@ import ProfileDropdownMenu from './ProfileDropdownMenu'
 function Header() {
   const [top, setTop] = useState(true)
   const { theme, setTheme } = useTheme()
-  const { user, authenticate, isAuthenticated, logout } = useMoralis()
+  const { user, authenticate, isAuthenticated } = useMoralis()
 
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {

@@ -89,9 +89,7 @@ export default function ProfileDropdownMenu() {
                     <span
                       aria-hidden='true'
                       className={classNames(
-                        theme === 'dark'
-                          ? 'bg-darkMode-violet9'
-                          : 'bg-light-violet9',
+                        theme === 'dark' ? 'bg-darkMode-violet9' : 'bg-black',
                         'pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200'
                       )}
                     />

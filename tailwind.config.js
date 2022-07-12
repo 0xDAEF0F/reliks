@@ -10,6 +10,10 @@ module.exports = {
       mauve: '#28282B',
       white: '#ffffff',
       black: '#000000',
+      error: '#cc0000',
+      success: '#22bb33',
+      warning: '#f7ce00',
+      info: '#5fd4f4',
       light: {
         violet1: '#fdfcfe',
         violet2: '#fbfaff',

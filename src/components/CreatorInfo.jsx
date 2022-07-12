@@ -35,7 +35,7 @@ export default function CreatorInfo({ submit }) {
               {errors.username?.type === 'isAvailable' && (
                 <div className='flex items-center'>
                   <FiAlertTriangle color='red' />
-                  <p className='text-red-400 text-xs pl-1'>Username is taken</p>
+                  <p className='text-error text-xs pl-1'>Username is taken</p>
                 </div>
               )}
             </div>
@@ -60,7 +60,7 @@ export default function CreatorInfo({ submit }) {
               {errors.email?.type === 'required' && (
                 <div className='flex items-center'>
                   <FiAlertTriangle color='red' />
-                  <p className='text-red-400 text-xs pl-1'>Email is required</p>
+                  <p className='text-error text-xs pl-1'>Email is required</p>
                 </div>
               )}
             </div>
