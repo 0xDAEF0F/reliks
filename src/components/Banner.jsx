@@ -1,11 +1,19 @@
 import { useState } from 'react'
 import { HiOutlineSpeakerphone, HiX } from 'react-icons/hi'
 import CreatorSignUpModal from './CreatorSignUpModal'
+import { useMoralis } from 'react-moralis'
 
 export default function Banner() {
+  const { user } = useMoralis()
+  function isCreator() {
+    const verifiedSocialPlatforms = user?.get('verifiedSocialPlatforms')
+    if (verifiedSocialPlatforms?.length > 0) return true
+    return false
+  }
+
   const [open, setOpen] = useState(true)
   return (
-    <div className={`pt-16 md:pt-20 ${open ? '' : 'hidden'}`}>
+    <div className={`pt-16 md:pt-20 ${!open || isCreator() ? 'hidden' : ''}`}>
       <div className='bg-light-violet9 dark:bg-light-violet9 fixed  w-full'>
         <div className='max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8'>
           <div className='flex items-center justify-between flex-wrap'>
