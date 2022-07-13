@@ -7,10 +7,11 @@ import toast from 'react-hot-toast'
 function Profile() {
   const { user } = useMoralis()
 
-  const publicKey = user && user.get('ethAddress')
+  const youtubeCreds = user && user.get('youtubeCredentials')
+  const userAddress = user && user.get('ethAddress')
 
   function copy2Clipboard() {
-    navigator.clipboard.writeText(publicKey)
+    navigator.clipboard.writeText(userAddress)
     toast.success('Address copied to clipboard.')
   }
 
@@ -20,7 +21,7 @@ function Profile() {
         {/* to fix responsiveness and convert it to next Image */}
         <div>
           <img
-            src='/wp.png'
+            src={youtubeCreds?.coverPhoto || '/wp.png'}
             className='h-52 md:h-80 w-full rounded-lg'
             alt='logo'
           />
@@ -31,12 +32,14 @@ function Profile() {
               {/* to fix responsiveness and convert it to next Image */}
               <img
                 className='p-2 block shadow-md dark:shadow-black rounded-full bg-white dark:bg-black'
-                src='/pp.jpeg'
+                src={youtubeCreds?.pfp || '/pp.jpeg'}
                 alt='logo'
               />
             </div>
             <div className='text-center md:text-left -mt-10 md:-mt-16 ml-0 md:ml-2'>
-              <p className='text-3xl font-semibold'>Test User</p>
+              <p className='text-3xl font-semibold'>
+                {youtubeCreds?.channelTitle}
+              </p>
               <div>
                 <button
                   onClick={copy2Clipboard}
@@ -50,12 +53,13 @@ function Profile() {
                       height={30}
                     />
                     <p className='text-sm font-semibold pl-1 truncate'>
-                      {publicKey}
+                      {userAddress}
                     </p>
                   </div>
                 </button>
                 <p className='text-light-gray dark:text-darkMode-gray  mt-1 ml-2 text-sm'>
-                  Joined July 2022
+                  Joined:{' '}
+                  {user && new Date(user.get('createdAt')).toLocaleDateString()}
                 </p>
               </div>
             </div>

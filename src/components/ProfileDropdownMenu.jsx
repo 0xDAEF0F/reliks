@@ -23,6 +23,8 @@ export default function ProfileDropdownMenu() {
   const { theme, setTheme } = useTheme()
   const { logout, user } = useMoralis()
 
+  const youtubeCreds = user && user.get('youtubeCredentials')
+
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
@@ -40,7 +42,7 @@ export default function ProfileDropdownMenu() {
           <Menu.Button className='hover:ring-2 ring-black dark:ring-white justify-center rounded-full'>
             <img
               className='w-12 h-12 p-1 block shadow-md rounded-full bg-white dark:bg-black'
-              src='/pp.jpeg'
+              src={youtubeCreds?.pfp || '/pp.jpeg'}
               alt='logo'
             />
           </Menu.Button>

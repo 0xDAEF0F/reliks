@@ -6,12 +6,17 @@ import { useMoralis } from 'react-moralis'
 import { useRouter } from 'next/router'
 
 function ProfilePage() {
-  const { isInitialized, isAuthenticated } = useMoralis()
+  const { isInitialized, isAuthenticated, user } = useMoralis()
   const router = useRouter()
 
+  function isCreator() {
+    const verifiedSocialPlatforms = user.get('verifiedSocialPlatforms')
+    if (verifiedSocialPlatforms.length > 0) return true
+    return false
+  }
+
   useEffect(() => {
-    const isAuth = () => (!isAuthenticated ? router.push('/') : null)
-    isInitialized && isAuth()
+    isInitialized && isAuthenticated && isCreator() ? null : router.push('/')
   }, [isInitialized, isAuthenticated])
 
   return (
