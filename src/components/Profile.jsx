@@ -28,10 +28,10 @@ function Profile() {
         </div>
         <div className='md:flex md:justify-between items-start mx-auto md:mx-10 pt-2 h-full md:h-36'>
           <div className='flex items-center flex-col md:flex-row'>
-            <div className='relative h-40 w-40 -inset-y-10'>
+            <div className='relative -inset-y-10'>
               {/* to fix responsiveness and convert it to next Image */}
               <img
-                className='p-2 block shadow-md dark:shadow-black rounded-full bg-white dark:bg-black'
+                className='h-36 w-36 p-2  shadow-md dark:shadow-black rounded-full bg-white dark:bg-black'
                 src={youtubeCreds?.pfp || '/pp.jpeg'}
                 alt='logo'
               />
