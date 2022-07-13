@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.3",
+    "await-to-js": "^3.0.0",
     "axios": "^0.27.2",
     "googleapis": "^104.0.0",
     "lodash": "^4.17.21",

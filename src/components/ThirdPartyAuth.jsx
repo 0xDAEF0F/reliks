@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function AuthWallet({ connectYoutube }) {
+export default function SocialAppAuth({ connectYoutube }) {
   return (
     <div className='flex justify-center flex-col'>
       <h2 className='text-2xl leading-6 font-medium '>Connect your account</h2>

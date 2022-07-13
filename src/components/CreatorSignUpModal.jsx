@@ -8,6 +8,7 @@ import AuthWallet from './AuthWallet'
 import ThirdPartyAuth from './ThirdPartyAuth'
 import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
+import to from 'await-to-js'
 
 export default function CreatorSignUpModal() {
   const { query } = useRouter()
@@ -26,16 +27,15 @@ export default function CreatorSignUpModal() {
   }, [query.creatorFlow])
 
   const login = async () => {
-    if (!isAuthenticated) {
-      await authenticate({ signingMessage: 'Log in to DApp' })
-        .then(function (user) {
-          console.log('logged in user:', user)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+    if (isAuthenticated) {
+      toast.success('Already Signed In.')
+      return
     }
-    console.log('user authenticated', user)
+    const [, usr] = await to(
+      authenticate({ signingMessage: 'Please Sign Message to Log In.' })
+    )
+    if (usr) toast.success('Succesfully Signed In.')
+    if (!usr) toast.error(`Could not sign in. Please try again.`)
   }
 
   // calculates the step a creator is on signing process

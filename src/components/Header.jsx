@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi'
-
 import { useMoralis } from 'react-moralis'
-
 import ProfileDropdownMenu from './ProfileDropdownMenu'
 import MobileMenu from './MobileMenu'
+import toast from 'react-hot-toast'
+import to from 'await-to-js'
 
 function Header() {
   const [top, setTop] = useState(true)
@@ -23,16 +23,15 @@ function Header() {
   }, [top])
 
   const login = async () => {
-    if (!isAuthenticated) {
-      await authenticate({ signingMessage: 'Log in to DApp' })
-        .then(function (user) {
-          console.log('logged in user:', user)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+    if (isAuthenticated) {
+      toast.success('Already Signed In.')
+      return
     }
-    console.log('user authenticated', user)
+    const [, usr] = await to(
+      authenticate({ signingMessage: 'Please Sign Message to Log In.' })
+    )
+    if (usr) toast.success('Succesfully Signed In.')
+    if (!usr) toast.error(`Could not sign in. Please try again.`)
   }
 
   return (
