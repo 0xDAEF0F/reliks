@@ -21,11 +21,16 @@ const MyLink = forwardRef((props, ref) => {
 
 export default function ProfileDropdownMenu() {
   const { theme, setTheme } = useTheme()
-
-  const { logout } = useMoralis()
+  const { logout, user } = useMoralis()
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
+  }
+
+  function isCreator() {
+    const verifiedSocialPlatforms = user.get('verifiedSocialPlatforms')
+    if (verifiedSocialPlatforms.length > 0) return true
+    return false
   }
 
   return (
@@ -50,14 +55,17 @@ export default function ProfileDropdownMenu() {
           leaveTo='transform opacity-0 scale-95'>
           <Menu.Items className='absolute right-0 mt-2 w-56 origin-top-right divide-y divide-light-bordergray dark:divide-darkMode-bordergray rounded-md bg-white dark:bg-mauve shadow-lg ring-opacity-5 focus:outline-none'>
             <div className='px-1 py-1 '>
-              <Menu.Item>
-                <MyLink
-                  href='/profile'
-                  className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex items-center w-full rounded-md px-2 py-2 text-sm gap-2'>
-                  <FaUserAlt />
-                  <p>Profile</p>
-                </MyLink>
-              </Menu.Item>
+              {/* Profile only available to creators */}
+              {isCreator() ? (
+                <Menu.Item>
+                  <MyLink
+                    href='/profile'
+                    className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex items-center w-full rounded-md px-2 py-2 text-sm gap-2'>
+                    <FaUserAlt />
+                    <p>Profile</p>
+                  </MyLink>
+                </Menu.Item>
+              ) : null}
               <Menu.Item>
                 <a
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
