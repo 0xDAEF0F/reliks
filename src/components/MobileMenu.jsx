@@ -40,7 +40,7 @@ export default function MobileMenu() {
           <nav
             className={
               isNavOpen
-                ? 'flex flex-col absolute w-full h-screen mt-10 left-0 bg-light-violet2 dark:bg-darkMode-violet2 z-10 px-5'
+                ? 'flex flex-col absolute w-full h-screen mt-12 left-0 bg-light-violet2 dark:bg-darkMode-violet2 z-10 px-5'
                 : 'hidden'
             }>
             <ul className='mt-14'>

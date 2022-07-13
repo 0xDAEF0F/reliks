@@ -90,7 +90,7 @@ function Header() {
                   <button
                     onClick={() => login()}
                     className='text-white bg-mauve px-5 py-3'>
-                    Sign In
+                    Connect wallet
                   </button>
                 </li>
               </ul>

@@ -17,11 +17,13 @@ function Profile() {
     <div className='max-w-7xl mx-auto pt-20 sm:pt-20 sm:px-6'>
       <div>
         {/* to fix responsiveness and convert it to next Image */}
-        <img
-          src='/wp.png'
-          className='h-52 md:h-80 w-full rounded-lg'
-          alt='logo'
-        />
+        <div>
+          <img
+            src='/wp.png'
+            className='h-52 md:h-80 w-full rounded-lg'
+            alt='logo'
+          />
+        </div>
         <div className='md:flex md:justify-between items-start mx-auto md:mx-10 pt-2 h-full md:h-36'>
           <div className='flex items-center flex-col md:flex-row'>
             <div className='relative h-40 w-40 -inset-y-10'>
