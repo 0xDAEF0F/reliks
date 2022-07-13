@@ -25,7 +25,7 @@ function Abstract() {
               <div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0'>
                 {/* To fix lightMode asset */}
                 <img
-                  className='w-full lg:absolute lg:inset-y-0 lg:left-0 h-80 lg:h-full lg:max-w-none'
+                  className='w-full lg:absolute -z-10 lg:inset-y-0 lg:left-0 h-80 lg:h-full lg:max-w-none'
                   src='/asset.svg'
                   alt=''
                 />
