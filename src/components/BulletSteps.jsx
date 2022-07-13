@@ -13,9 +13,9 @@ export default function BulletSteps({ current, total }) {
           return (
             <li key={i}>
               {current >= step ? (
-                <span className='block w-2.5 h-2.5 bg-indigo-600 rounded-full'></span>
+                <span className='block w-2.5 h-2.5 bg-light-violet11 dark:bg-darkMode-violet11 rounded-full'></span>
               ) : (
-                <span className='block w-2.5 h-2.5 bg-gray-200 rounded-full'></span>
+                <span className='block w-2.5 h-2.5 bg-light-bordergray dark:bg-darkMode-bordergray rounded-full'></span>
               )}
             </li>
           )
