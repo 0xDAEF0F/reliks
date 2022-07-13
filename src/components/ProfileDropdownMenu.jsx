@@ -3,7 +3,6 @@ import { Fragment, forwardRef } from 'react'
 import { useMoralis } from 'react-moralis'
 import { HiMoon } from 'react-icons/hi'
 import { FaUserAlt } from 'react-icons/fa'
-import { BsFillGearFill } from 'react-icons/bs'
 import { IoLogOut } from 'react-icons/io5'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
@@ -57,14 +56,6 @@ export default function ProfileDropdownMenu() {
                   className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex items-center w-full rounded-md px-2 py-2 text-sm gap-2'>
                   <FaUserAlt />
                   <p>Profile</p>
-                </MyLink>
-              </Menu.Item>
-              <Menu.Item>
-                <MyLink
-                  href='/profile/settings'
-                  className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex w-full items-center rounded-md px-2 py-2 text-sm gap-2'>
-                  <BsFillGearFill />
-                  <p>Settings</p>
                 </MyLink>
               </Menu.Item>
               <Menu.Item>

@@ -1,6 +1,7 @@
 import { ThemeProvider } from 'next-themes'
 import '../styles/globals.css'
 import { MoralisProvider } from 'react-moralis'
+import { Toaster } from 'react-hot-toast'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -10,6 +11,7 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider
         forcedTheme={Component.theme || undefined}
         attribute='class'>
+        <Toaster />
         <Component {...pageProps} />
       </ThemeProvider>
     </MoralisProvider>

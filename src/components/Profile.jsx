@@ -1,16 +1,17 @@
 import React from 'react'
-import { FaPen } from 'react-icons/fa'
 import Image from 'next/image'
-import Link from 'next/link'
-import Moralis from 'moralis'
 import ModalWhaleContract from './ModalWhaleContract'
+import { useMoralis } from 'react-moralis'
+import toast from 'react-hot-toast'
 
 function Profile() {
-  // TODO: Change dynamically
-  const publicKey = '0x8a1b5f0ac1c070be13559df36c3092093402389402'
+  const { user } = useMoralis()
+
+  const publicKey = user && user.get('ethAddress')
 
   function copy2Clipboard() {
     navigator.clipboard.writeText(publicKey)
+    toast.success('Address copied to clipboard.')
   }
 
   return (
@@ -60,15 +61,9 @@ function Profile() {
             </div>
           </div>
           <div className='flex justify-end mr-4 mb-4 md:mr-0 mt-2'>
-            <Link href='profile/settings'>
-              <a className=' text-white font-medium whitespace-nowrap flex gap-2 items-center bg-light-violet9 hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:hover:bg-darkMode-violet10 px-2 py-1 rounded'>
-                <FaPen color='white' size={14} />
-                Edit profile
-              </a>
-            </Link>
+            <ModalWhaleContract />
           </div>
         </div>
-        <ModalWhaleContract />
       </div>
       <br />
     </div>
