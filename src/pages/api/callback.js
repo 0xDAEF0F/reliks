@@ -56,11 +56,12 @@ export default async function handler(req, res) {
         },
       }
     )
+    if (!res2.data.items) throw new Error('User has no channel.')
     const channel = res2.data.items[0]
-    const pfp = channel.snippet.thumbnails.default.url
-    const channelTitle = channel.brandingSettings.channel.title
-    const bio = channel.brandingSettings.channel.description
-    const coverPhoto = channel.brandingSettings.image.bannerExternalUrl
+    const pfp = channel?.snippet?.thumbnails?.default?.url
+    const channelTitle = channel?.brandingSettings?.channel?.title
+    const bio = channel?.brandingSettings?.channel?.description
+    const coverPhoto = channel?.brandingSettings?.image?.bannerExternalUrl
     youtubeCredentials.pfp = pfp
     youtubeCredentials.channelTitle = channelTitle
     youtubeCredentials.bio = bio
@@ -76,6 +77,8 @@ export default async function handler(req, res) {
 
     res.redirect('http://localhost:3000?creatorFlow=success')
   } catch (err) {
+    if (err.message === 'User has no channel.')
+      return res.redirect('http://localhost:3000?creatorFlow=nochannel')
     res.redirect('http://localhost:3000?creatorFlow=fail')
   }
 }

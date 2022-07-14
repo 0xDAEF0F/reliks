@@ -15,6 +15,9 @@ export default function Home() {
     if (query.creatorFlow === 'fail') {
       toast.error('fail creator process please try again')
     }
+    if (query.creatorFlow === 'nochannel') {
+      toast.error('Please create a Youtube channel.')
+    }
     if (query.creatorFlow === 'success') {
       toast.success('succesfully creator validation')
       // need to pull user data from db again
