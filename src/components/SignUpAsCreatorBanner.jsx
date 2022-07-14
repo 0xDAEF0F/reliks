@@ -15,7 +15,9 @@ export default function SignUpAsCreatorBanner() {
   const [open, setOpen] = useState(true)
   return (
     <div
-      className={`pt-16 md:pt-20 ${!open || isCreator() ? 'invisible' : ''}`}>
+      className={`pt-16 md:pt-20 ${
+        !open || isCreator() ? 'md:invisible hidden md:block' : ''
+      }`}>
       <div className='bg-light-violet9 dark:bg-light-violet9 fixed  w-full'>
         <div className='max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8'>
           <div className='flex items-center justify-between flex-wrap'>

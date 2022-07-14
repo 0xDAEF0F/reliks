@@ -2,6 +2,9 @@ import { Switch } from '@headlessui/react'
 import { useState } from 'react'
 import LinkChevron from './LinkChevron'
 import { useTheme } from 'next-themes'
+import { useMoralis } from 'react-moralis'
+import toast from 'react-hot-toast'
+import to from 'await-to-js'
 
 export default function MobileMenu() {
   const [isNavOpen, setIsNavOpen] = useState(false)
@@ -9,6 +12,27 @@ export default function MobileMenu() {
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
+  }
+
+  const { logout, user, isAuthenticated, authenticate } = useMoralis()
+
+  function isCreator() {
+    const verifiedSocialPlatforms = user?.get('verifiedSocialPlatforms')
+    if (verifiedSocialPlatforms?.length > 0) return true
+    return false
+  }
+
+  const login = async () => {
+    console.log('object')
+    if (isAuthenticated) {
+      toast.success('Already Signed In.')
+      return
+    }
+    const [, usr] = await to(
+      authenticate({ signingMessage: 'Please Sign Message to Log In.' })
+    )
+    if (usr) toast.success('Succesfully Signed In.')
+    if (!usr) toast.error(`Could not sign in. Please try again.`)
   }
 
   return (
@@ -43,28 +67,25 @@ export default function MobileMenu() {
                 ? 'flex flex-col absolute w-full h-screen mt-12 left-0 bg-light-violet2 dark:bg-darkMode-violet2 z-10 px-5'
                 : 'hidden'
             }>
-            <ul className='mt-14'>
-              <li className='mb-5 lg:hidden'>
+            <ul className='mt-10 space-y-10'>
+              <li>
                 <LinkChevron
                   title={'Explore'}
                   to={'/explore'}
                   xClass='w-full'
                 />
               </li>
-              <li className='mb-5 lg:hidden'>
+              <li>
                 <LinkChevron title={'Stats'} to={'/stats'} xClass='w-full' />
               </li>
-
-              <li className='mb-5 lg:hidden'>
+              <li>
                 <LinkChevron title={'About us'} to={'/about'} xClass='w-full' />
               </li>
               <li>
                 <a
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-                  className='opacity-60 text-black dark:text-white hover:opacity-100 text-base font-medium hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex justify-between w-full items-center rounded-md px-2 py-2 cursor-pointer'>
-                  <div className='flex items-center gap-2 justify-end'>
-                    <p>Night Mode</p>
-                  </div>
+                  className='opacity-60 text-black dark:text-white hover:opacity-100 text-base font-medium hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex justify-between w-full items-center rounded-md px-1 py-2 cursor-pointer'>
+                  <p>Night Mode</p>
                   <Switch
                     checked={theme === 'dark'}
                     onChange={() =>
@@ -92,6 +113,36 @@ export default function MobileMenu() {
                     />
                   </Switch>
                 </a>
+              </li>
+              <li>
+                {isCreator() ? (
+                  <LinkChevron
+                    title={'Profile'}
+                    to={'/profile'}
+                    xClass='w-full'
+                  />
+                ) : null}
+              </li>
+              <li>
+                {isAuthenticated ? (
+                  <button
+                    className='cursor-pointer hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 opacity-60 text-black dark:text-white hover:opacity-100 pl-1 py-3 rounded-md text-base font-semibold flex items-center w-full ml-1'
+                    onClick={() => {
+                      logout()
+                      setIsNavOpen(false)
+                    }}>
+                    Logout
+                  </button>
+                ) : (
+                  <button
+                    className='cursor-pointer hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 opacity-60 text-black dark:text-white hover:opacity-100 pl-1 py-3 rounded-md text-base font-semibold flex items-center w-full ml-1'
+                    onClick={() => {
+                      login()
+                      setIsNavOpen(false)
+                    }}>
+                    Connect wallet
+                  </button>
+                )}
               </li>
             </ul>
           </nav>

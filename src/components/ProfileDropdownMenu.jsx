@@ -45,8 +45,8 @@ export default function ProfileDropdownMenu() {
             <Image
               src={youtubeCreds?.pfp || '/pp.jpg'}
               className='rounded-full block bg-white p-1'
-              width={50}
-              height={50}
+              width={40}
+              height={40}
               alt='pp'
             />
           </Menu.Button>
