@@ -1,33 +1,32 @@
-import React, { useEffect } from 'react'
-import Header from '../components/Header'
-import SignUpAsCreatorBanner from '../components/SignUpAsCreatorBanner'
-import { useMoralis } from 'react-moralis'
+import React, { useEffect, useState } from 'react'
+import Axios from 'axios'
+import Header from '../../components/Header'
+import SignUpAsCreatorBanner from '../../components/SignUpAsCreatorBanner'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import ModalWhaleContract from '../components/ModalWhaleContract'
+import ModalWhaleContract from '../../components/ModalWhaleContract'
 import toast from 'react-hot-toast'
 
 function Profile() {
   const router = useRouter()
-  const { isInitialized, isAuthenticated, user } = useMoralis()
+  const [user, setUser] = useState({})
 
+  // monitor for username slug
   useEffect(() => {
-    isInitialized && isAuthenticated && isCreator() ? null : router.push('/')
-  }, [isInitialized, isAuthenticated])
-
-  function isCreator() {
-    const verifiedSocialPlatforms = user.get('verifiedSocialPlatforms')
-    if (verifiedSocialPlatforms.length > 0) return true
-    return false
-  }
+    if (!router.query?.username) return
+    Axios.post('/api/getCreatorInformation', {
+      username: router.query.username,
+    })
+      .then((res) => (!res.data ? router.push('/') : setUser(res.data)))
+      .catch(() => router.push('/'))
+  }, [router.query])
 
   function copy2Clipboard() {
     navigator.clipboard.writeText(userAddress)
     toast.success('Address copied to clipboard.')
   }
 
-  const youtubeCreds = user && user.get('youtubeCredentials')
-  const userAddress = user && user.get('ethAddress')
+  const userAddress = user.ethAddress
   const options = { year: 'numeric', month: 'long' }
 
   return (
@@ -36,7 +35,7 @@ function Profile() {
       <SignUpAsCreatorBanner />
       <div className='max-w-7xl mx-auto pt-20 sm:pt-20 sm:px-6'>
         <Image
-          src={youtubeCreds?.coverPhoto || '/wp.png'}
+          src={user.coverPhoto || '/wp.png'}
           className='rounded-lg'
           width={1240}
           height={320}
@@ -47,7 +46,7 @@ function Profile() {
             <div className='relative -inset-y-10'>
               <div className='rounded-full shadow-md'>
                 <Image
-                  src={youtubeCreds?.pfp || '/pp.jpg'}
+                  src={user.pfp || '/pp.jpg'}
                   className='rounded-full'
                   width={150}
                   height={150}
@@ -56,9 +55,7 @@ function Profile() {
               </div>
             </div>
             <div className='text-center md:text-left -mt-10 md:-mt-16 ml-0 md:ml-2'>
-              <p className='text-3xl font-semibold'>
-                {youtubeCreds?.channelTitle}
-              </p>
+              <p className='text-3xl font-semibold'>{user.channelTitle}</p>
               <div>
                 <button
                   onClick={copy2Clipboard}
@@ -79,7 +76,7 @@ function Profile() {
                 <p className='text-light-gray dark:text-darkMode-gray  mt-1 ml-2 text-sm'>
                   Joined:{' '}
                   {user &&
-                    new Date(user.get('createdAt')).toLocaleDateString(
+                    new Date(user.createdAt).toLocaleDateString(
                       undefined,
                       options
                     )}
@@ -91,7 +88,6 @@ function Profile() {
             <ModalWhaleContract />
           </div>
         </div>
-
         <br />
       </div>
     </>
