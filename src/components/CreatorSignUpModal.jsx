@@ -1,12 +1,11 @@
 import Axios from 'axios'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import BulletSteps from './BulletSteps'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useMoralis } from 'react-moralis'
-import AuthWallet from './AuthWallet'
+import { AuthWeb3 } from './AuthWeb3'
 import ThirdPartyAuth from './ThirdPartyAuth'
-import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
 import to from 'await-to-js'
 
@@ -52,7 +51,7 @@ export default function CreatorSignUpModal() {
   const Modal = () => {
     switch (calculateStep()) {
       case 1:
-        return <AuthWallet login={login} />
+        return <AuthWeb3 login={login} />
       case 2:
         return <ThirdPartyAuth connectYoutube={connectYoutube} />
       case 3:

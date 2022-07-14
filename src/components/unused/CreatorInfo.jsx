@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { FiAlertTriangle } from 'react-icons/fi'
-import { schema } from '../util/schema'
+import { schema } from '../../util/schema'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 export default function CreatorInfo({ submit }) {

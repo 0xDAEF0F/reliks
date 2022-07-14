@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function AuthWallet({ login }) {
+export function AuthWeb3({ login }) {
   return (
     <div className='flex justify-center flex-col'>
       <h2 className='text-2xl leading-6 font-medium '>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import Banner from '../components/Banner'
+import SignUpAsCreatorBanner from '../components/SignUpAsCreatorBanner'
 import Header from '../components/Header'
-import Abstract from '../components/Abstract'
+import { AppAbstract } from '../components/AppAbstract'
 import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
 import { useMoralis } from 'react-moralis'
@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Banner />
-      <Abstract />
+      <SignUpAsCreatorBanner />
+      <AppAbstract />
     </>
   )
 }

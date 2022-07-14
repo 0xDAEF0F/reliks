@@ -3,7 +3,7 @@ import { HiOutlineSpeakerphone, HiX } from 'react-icons/hi'
 import CreatorSignUpModal from './CreatorSignUpModal'
 import { useMoralis } from 'react-moralis'
 
-export default function Banner() {
+export default function SignUpAsCreatorBanner() {
   const { user } = useMoralis()
 
   function isCreator() {

@@ -11,7 +11,7 @@ import to from 'await-to-js'
 function Header() {
   const [top, setTop] = useState(true)
   const { theme, setTheme } = useTheme()
-  const { user, authenticate, isAuthenticated } = useMoralis()
+  const { authenticate, isAuthenticated } = useMoralis()
 
   // detect whether user has scrolled the page down by 10px
   useEffect(() => {
@@ -42,23 +42,21 @@ function Header() {
       }`}>
       <div className='max-w-6xl mx-auto px-5 sm:px-6'>
         <div className='flex items-center justify-between h-16 md:h-20'>
-          {/* Site branding */}
+          {/* App name & logo */}
           <div className='flex-shrink-0 mr-4'>
-            {/* Logo */}
             <Link href='/' className='block' aria-label='Cruip'>
               <a>Logo</a>
             </Link>
           </div>
-
           {/* Site navigation */}
           <nav className='hidden md:flex md:flex-grow'>
             <ul className='flex flex-grow flex-wrap items-center justify-end space-x-10'>
+              {/* TEMPORARY LINKS*/}
               <Link href=''>
                 <a className='font-semibold text-black dark:text-white opacity-70 hover:opacity-100 transition duration-100'>
                   Explore
                 </a>
               </Link>
-
               <Link href=''>
                 <a className='font-semibold text-black dark:text-white opacity-70 hover:opacity-100 transition duration-100'>
                   Stats
@@ -69,8 +67,8 @@ function Header() {
                   About us
                 </a>
               </Link>
-
-              {!isAuthenticated && !user?.getUsername() ? (
+              {/* END TEMPORARY LINKS */}
+              {!isAuthenticated ? (
                 <button
                   className='font-semibold text-black dark:text-white opacity-70 hover:opacity-100 transition duration-100'
                   onClick={() =>
@@ -84,20 +82,20 @@ function Header() {
                 </button>
               ) : null}
             </ul>
-            {!isAuthenticated && !user?.getUsername() ? (
+            {isAuthenticated ? (
+              <div className='flex items-center flex-grow justify-end flex-wrap'>
+                <ProfileDropdownMenu />
+              </div>
+            ) : (
               <ul className='flex flex-grow justify-end flex-wrap items-center'>
                 <li>
                   <button
                     onClick={() => login()}
                     className='text-white bg-mauve px-5 py-3'>
-                    Connect wallet
+                    Connect Wallet
                   </button>
                 </li>
               </ul>
-            ) : (
-              <div className='flex items-center flex-grow justify-end flex-wrap'>
-                <ProfileDropdownMenu />
-              </div>
             )}
           </nav>
           <MobileMenu />

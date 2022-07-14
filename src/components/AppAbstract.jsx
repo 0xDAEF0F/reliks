@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Abstract() {
+export function AppAbstract() {
   return (
     <main>
       <div className='pt-28 lg:overflow-hidden'>
@@ -39,5 +39,3 @@ function Abstract() {
     </main>
   )
 }
-
-export default Abstract
