@@ -7,6 +7,7 @@ import { IoLogOut } from 'react-icons/io5'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import toast from 'react-hot-toast'
+import Image from 'next/image'
 
 // eslint-disable-next-line react/display-name
 const MyLink = forwardRef((props, ref) => {
@@ -40,11 +41,13 @@ export default function ProfileDropdownMenu() {
     <div>
       <Menu as='div' className='relative inline-block text-left'>
         <div>
-          <Menu.Button className='hover:ring-2 ring-black dark:ring-white justify-center rounded-full'>
-            <img
-              className='w-12 h-12 p-1 block shadow-md rounded-full bg-white dark:bg-black'
+          <Menu.Button className='shadow-md rounded-full pt-1 px-1 hover:opacity-90'>
+            <Image
               src={youtubeCreds?.pfp || '/pp.jpeg'}
-              alt='logo'
+              className='rounded-full block bg-white p-1'
+              width={50}
+              height={50}
+              alt='pp'
             />
           </Menu.Button>
         </div>
