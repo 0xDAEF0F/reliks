@@ -127,8 +127,9 @@ export default function MobileMenu() {
                 {isAuthenticated ? (
                   <button
                     className='cursor-pointer hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 opacity-60 text-black dark:text-white hover:opacity-100 pl-1 py-3 rounded-md text-base font-semibold flex items-center w-full ml-1'
-                    onClick={() => {
-                      logout()
+                    onClick={async () => {
+                      await logout()
+                      toast.success('Logged out succesfully.')
                       setIsNavOpen(false)
                     }}>
                     Logout
