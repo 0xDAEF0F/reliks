@@ -11,20 +11,9 @@ import toast from 'react-hot-toast'
 import to from 'await-to-js'
 
 export default function CreatorSignUpModal() {
-  const { query } = useRouter()
   const [open, setOpen] = useState(false)
   // isAuthenticating, logout, account not used currently
   const { authenticate, isAuthenticated, user } = useMoralis()
-
-  // tracks for changes in tokens query param
-  useEffect(() => {
-    if (query.creatorFlow === 'fail') {
-      toast.error('fail creator process please try again')
-    }
-    if (query.creatorFlow === 'success') {
-      toast.success('succesfully creator validation')
-    }
-  }, [query.creatorFlow])
 
   const login = async () => {
     if (isAuthenticated) {

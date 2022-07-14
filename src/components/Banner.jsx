@@ -5,6 +5,7 @@ import { useMoralis } from 'react-moralis'
 
 export default function Banner() {
   const { user } = useMoralis()
+
   function isCreator() {
     const verifiedSocialPlatforms = user?.get('verifiedSocialPlatforms')
     if (verifiedSocialPlatforms?.length > 0) return true
