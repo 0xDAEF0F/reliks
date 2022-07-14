@@ -1,6 +1,9 @@
 import Image from 'next/image'
+import toast from 'react-hot-toast'
 
 export default function SocialAppAuth({ connectYoutube }) {
+  const notSupportedToast = () =>
+    toast.error('Twitch not yet supported. Please try with Youtube.')
   return (
     <div className='flex justify-center flex-col'>
       <h2 className='text-2xl leading-6 font-medium '>Connect your account</h2>
@@ -11,7 +14,9 @@ export default function SocialAppAuth({ connectYoutube }) {
           <Image width={16} height={16} src='/googleLogo.png' alt='metamask' />
           <p className='text-sm font-semibold pl-2'>Continue with Youtube</p>
         </button>
-        <button className='flex justify-center items-center mt-5 bg-[#5d2e93] shadow-md py-2 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 hover:brightness-90'>
+        <button
+          onClick={notSupportedToast}
+          className='flex justify-center items-center mt-5 bg-[#5d2e93] shadow-md py-2 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 hover:brightness-90'>
           <Image
             width={16}
             height={16}
