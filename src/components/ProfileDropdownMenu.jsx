@@ -65,7 +65,7 @@ export default function ProfileDropdownMenu() {
               {isCreator() ? (
                 <Menu.Item>
                   <MyLink
-                    href='/profile'
+                    href={`/profile/${user.getUsername()}`}
                     className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex items-center w-full rounded-md px-2 py-2 text-sm gap-2'>
                     <FaUserAlt />
                     <p>Profile</p>
