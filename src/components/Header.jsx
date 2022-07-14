@@ -74,11 +74,7 @@ function Header() {
                   onClick={() =>
                     setTheme(theme === 'light' ? 'dark' : 'light')
                   }>
-                  {theme === 'light' ? (
-                    <HiOutlineMoon size={20} />
-                  ) : (
-                    <HiOutlineSun size={20} />
-                  )}
+                  <HiOutlineSun className='dark:fill-white' size={20} />
                 </button>
               ) : null}
             </ul>
