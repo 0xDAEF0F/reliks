@@ -47,7 +47,7 @@ function Profile() {
             <div className='relative -inset-y-10'>
               <div className='rounded-full shadow-md'>
                 <Image
-                  src={youtubeCreds?.pfp || '/pp.jpeg'}
+                  src={youtubeCreds?.pfp || '/pp.jpg'}
                   className='rounded-full'
                   width={150}
                   height={150}

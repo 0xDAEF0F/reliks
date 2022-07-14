@@ -43,7 +43,7 @@ export default function ProfileDropdownMenu() {
         <div>
           <Menu.Button className='shadow-md rounded-full pt-1 px-1 hover:opacity-90'>
             <Image
-              src={youtubeCreds?.pfp || '/pp.jpeg'}
+              src={youtubeCreds?.pfp || '/pp.jpg'}
               className='rounded-full block bg-white p-1'
               width={50}
               height={50}
