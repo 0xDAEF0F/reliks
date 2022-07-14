@@ -28,6 +28,7 @@ function Profile() {
 
   const youtubeCreds = user && user.get('youtubeCredentials')
   const userAddress = user && user.get('ethAddress')
+  const options = { year: 'numeric', month: 'long' }
 
   return (
     <>
@@ -77,7 +78,11 @@ function Profile() {
                 </button>
                 <p className='text-light-gray dark:text-darkMode-gray  mt-1 ml-2 text-sm'>
                   Joined:{' '}
-                  {user && new Date(user.get('createdAt')).toLocaleDateString()}
+                  {user &&
+                    new Date(user.get('createdAt')).toLocaleDateString(
+                      undefined,
+                      options
+                    )}
                 </p>
               </div>
             </div>
