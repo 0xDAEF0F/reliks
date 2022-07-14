@@ -35,23 +35,25 @@ function Profile() {
       <SignUpAsCreatorBanner />
       <div className='max-w-7xl mx-auto pt-20 sm:pt-20 sm:px-6'>
         <div>
-          {/* to fix responsiveness and convert it to next Image */}
-          <div>
-            <img
-              src={youtubeCreds?.coverPhoto || '/wp.png'}
-              className='h-52 md:h-80 w-full rounded-lg'
-              alt='logo'
-            />
-          </div>
+          <Image
+            src={youtubeCreds?.coverPhoto || '/wp.png'}
+            className='rounded-lg'
+            width={1240}
+            height={320}
+            alt='banner'
+          />
           <div className='md:flex md:justify-between items-start mx-auto md:mx-10 pt-2 h-full md:h-36'>
             <div className='flex items-center flex-col md:flex-row'>
               <div className='relative -inset-y-10'>
-                {/* to fix responsiveness and convert it to next Image */}
-                <img
-                  className='h-36 w-36 p-2  shadow-md dark:shadow-black rounded-full bg-white dark:bg-black'
-                  src={youtubeCreds?.pfp || '/pp.jpeg'}
-                  alt='logo'
-                />
+                <div className='rounded-full shadow-md'>
+                  <Image
+                    src={youtubeCreds?.pfp || '/pp.jpeg'}
+                    className='rounded-full'
+                    width={150}
+                    height={150}
+                    alt='pp'
+                  />
+                </div>
               </div>
               <div className='text-center md:text-left -mt-10 md:-mt-16 ml-0 md:ml-2'>
                 <p className='text-3xl font-semibold'>
