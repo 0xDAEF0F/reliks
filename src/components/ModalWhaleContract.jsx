@@ -69,7 +69,7 @@ export default function ModalWhaleContract() {
               leave='ease-in duration-200'
               leaveFrom='opacity-100 translate-y-0 sm:scale-100'
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'>
-              <div className='inline-block align-bottom bg-white dark:bg-mauve rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-fullll sm:p-10 sm:px-10'>
+              <div className='inline-block align-bottom bg-white dark:bg-mauve rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:p-10 sm:px-10'>
                 <div className='hidden sm:block absolute top-0 right-0 pt-4 pr-6'>
                   <button
                     type='button'
@@ -79,7 +79,7 @@ export default function ModalWhaleContract() {
                   </button>
                 </div>
                 <div className='sm:flex sm:items-start'>
-                  <div className='mt-3 text-center sm:mt-0 sm:text-left'>
+                  <div className='mt-3 sm:mt-0 text-left'>
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <h2 className='text-2xl leading-6 font-medium'>
                         Whale Strategy
