@@ -4,28 +4,29 @@ import { Dialog, Transition } from '@headlessui/react'
 import { useForm } from 'react-hook-form'
 import { AiOutlineClose } from 'react-icons/ai'
 import { createWhaleFactory } from '../util/deployWhale'
+import toast from 'react-hot-toast'
 
 export default function ModalWhaleContract() {
   const [open, setOpen] = useState(false)
   const { handleSubmit, register } = useForm()
 
-  const deployWhale = async () => {
+  const deployWhale = async ({ whaleCount, price }) => {
     try {
       const WhaleFactory = await createWhaleFactory()
       const contract = await WhaleFactory.deploy(
-        '0x9367d8c5Db2Eeb7dFA2504aB30323d3FAa4c015a',
-        3,
-        Moralis.web3Library.utils.parseEther('1')
+        process.env.APP_ADDRESS,
+        whaleCount,
+        price
       )
-      console.log('contract address: ', contract.address)
+      toast.success('contract address: ', contract.address)
       await contract.deployed()
-      console.log('contract deployed succesfully.')
+      toast.success('contract deployed succesfully.')
     } catch (err) {
-      // handle error
-      console.log(err)
+      toast.error('could not deploy contract')
     }
   }
-  const onSubmit = (data) => console.log(data.whales, data.price)
+
+  const onSubmit = (data) => deployWhale(data)
 
   return (
     <>
