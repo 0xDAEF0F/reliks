@@ -6,6 +6,7 @@ import { FaUserAlt } from 'react-icons/fa'
 import { IoLogOut } from 'react-icons/io5'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
+import toast from 'react-hot-toast'
 
 // eslint-disable-next-line react/display-name
 const MyLink = forwardRef((props, ref) => {
@@ -109,7 +110,10 @@ export default function ProfileDropdownMenu() {
             <div className='px-1 py-1'>
               <Menu.Item>
                 <button
-                  onClick={() => logout()}
+                  onClick={async () => {
+                    await logout()
+                    toast.success('Logged out succesfully.')
+                  }}
                   className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex w-full items-center rounded-md px-2 py-2 text-sm gap-2'>
                   <IoLogOut size={20} />
                   <p>Logout</p>
