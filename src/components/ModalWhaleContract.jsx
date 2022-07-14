@@ -32,18 +32,15 @@ export default function ModalWhaleContract() {
     <>
       {/* Button to open modal*/}
       <button
-        className='text-white bg-light-violet9 hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:hover:bg-light-violet10 px-2 py-1 rounded '
+        className='rounded bg-light-violet9 px-2 py-1 text-white hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:hover:bg-light-violet10 '
         onClick={() => setOpen(true)}>
         Whale Strategy
       </button>
 
       {/* Modal */}
       <Transition.Root show={open} as={Fragment}>
-        <Dialog
-          as='div'
-          className='fixed z-50 inset-0 overflow-y-auto'
-          onClose={setOpen}>
-          <div className='flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>
+        <Dialog as='div' className='fixed inset-0 z-50 overflow-y-auto' onClose={setOpen}>
+          <div className='flex min-h-screen items-center justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0'>
             <Transition.Child
               as={Fragment}
               enter='ease-out duration-300'
@@ -57,7 +54,7 @@ export default function ModalWhaleContract() {
 
             {/* This element is to trick the browser into centering the modal contents. */}
             <span
-              className='hidden sm:inline-block sm:align-middle sm:h-screen'
+              className='hidden sm:inline-block sm:h-screen sm:align-middle'
               aria-hidden='true'>
               &#8203;
             </span>
@@ -70,22 +67,20 @@ export default function ModalWhaleContract() {
               leave='ease-in duration-200'
               leaveFrom='opacity-100 translate-y-0 sm:scale-100'
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'>
-              <div className='inline-block align-bottom bg-white dark:bg-mauve rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:p-10 sm:px-10'>
-                <div className='hidden sm:block absolute top-0 right-0 pt-4 pr-6'>
+              <div className='inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all dark:bg-mauve sm:my-8 sm:max-w-lg sm:p-10 sm:px-10 sm:align-middle'>
+                <div className='absolute top-0 right-0 hidden pt-4 pr-6 sm:block'>
                   <button
                     type='button'
-                    className='rounded-md dark:text-darkMode-gray text-light-gray focus:outline-none focus:ring-2 focus:ring-light-violet7 dark:focus:ring-darkMode-violet7'
+                    className='rounded-md text-light-gray focus:outline-none focus:ring-2 focus:ring-light-violet7 dark:text-darkMode-gray dark:focus:ring-darkMode-violet7'
                     onClick={() => setOpen(false)}>
                     <AiOutlineClose size={18} />
                   </button>
                 </div>
                 <div className='sm:flex sm:items-start'>
-                  <div className='mt-3 sm:mt-0 text-left'>
+                  <div className='mt-3 text-left sm:mt-0'>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                      <h2 className='text-2xl leading-6 font-medium'>
-                        Whale Strategy
-                      </h2>
-                      <div className='w-48 mt-5 mx-auto flex flex-col gap-4'>
+                      <h2 className='text-2xl font-medium leading-6'>Whale Strategy</h2>
+                      <div className='mx-auto mt-5 flex w-48 flex-col gap-4'>
                         {/* number of whales */}
                         <div>
                           <div className=''>
@@ -101,7 +96,7 @@ export default function ModalWhaleContract() {
                               type='text'
                               name='whales'
                               id='whales'
-                              className='bg-white dark:bg-mauve shadow-sm focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 w-full sm:text-sm border-light-bordergray dark:border-darkMode-bordergray rounded-md'
+                              className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:border-light-violet7 focus:ring-light-violet7 dark:border-darkMode-bordergray dark:bg-mauve dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                               placeholder='20'
                             />
                           </div>
@@ -113,8 +108,8 @@ export default function ModalWhaleContract() {
                             className='block text-sm font-medium text-light-gray dark:text-darkMode-gray'>
                             Price
                           </label>
-                          <div className='mt-1 relative rounded-md shadow-sm'>
-                            <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+                          <div className='relative mt-1 rounded-md shadow-sm'>
+                            <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
                               <span className='flex items-center sm:text-sm'>
                                 <Image
                                   width={9}
@@ -129,10 +124,10 @@ export default function ModalWhaleContract() {
                               type='text'
                               name='price'
                               id='price'
-                              className='bg-white dark:bg-mauve shadow-sm focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 border-light-bordergray dark:border-darkMode-bordergray w-full sm:text-sm rounded-md pl-7 pr-12'
+                              className='w-full rounded-md border-light-bordergray bg-white pl-7 pr-12 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 dark:border-darkMode-bordergray dark:bg-mauve dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                               placeholder='0.0'
                             />
-                            <div className='absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none'>
+                            <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
                               <span className=' sm:text-sm' id='price-currency'>
                                 ETH
                               </span>
@@ -141,7 +136,7 @@ export default function ModalWhaleContract() {
                         </div>
                         <div>
                           <input
-                            className='text-white dark:text-mauve cursor-pointer shadow-sm bg-light-violet9 hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:hover:bg-darkMode-violet10 focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 w-full border rounded-md py-1 mt-4'
+                            className='mt-4 w-full cursor-pointer rounded-md border bg-light-violet9 py-1 text-white shadow-sm hover:bg-light-violet10 focus:border-light-violet7 focus:ring-light-violet7 dark:bg-darkMode-violet9 dark:text-mauve dark:hover:bg-darkMode-violet10 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7'
                             type='submit'
                             value='Deploy Contract'
                           />

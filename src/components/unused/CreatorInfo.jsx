@@ -14,8 +14,8 @@ export default function CreatorInfo({ submit }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h2 className='text-2xl leading-6 font-medium '>Fill your Information</h2>
-      <div className='w-48 mt-5 mx-auto flex flex-col gap-1'>
+      <h2 className='text-2xl font-medium leading-6 '>Fill your Information</h2>
+      <div className='mx-auto mt-5 flex w-48 flex-col gap-1'>
         {/* username */}
         <div>
           <label htmlFor='username' className='block text-sm font-medium '>
@@ -28,14 +28,14 @@ export default function CreatorInfo({ submit }) {
               type='text'
               name='username'
               id='username'
-              className='bg-white dark:bg-mauve shadow-sm focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 w-full sm:text-sm border-light-bordergray dark:border-darkMode-bordergray rounded-md'
+              className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:border-light-violet7 focus:ring-light-violet7 dark:border-darkMode-bordergray dark:bg-mauve dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
               placeholder='chad4269'
             />
             <div className='h-4 pt-1'>
               {errors.username?.type === 'isAvailable' && (
                 <div className='flex items-center'>
                   <FiAlertTriangle color='red' />
-                  <p className='text-error text-xs pl-1'>Username is taken</p>
+                  <p className='pl-1 text-xs text-error'>Username is taken</p>
                 </div>
               )}
             </div>
@@ -52,7 +52,7 @@ export default function CreatorInfo({ submit }) {
               type='email'
               name='email'
               id='email'
-              className='bg-white dark:bg-mauve shadow-sm focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 w-full sm:text-sm border-light-bordergray dark:border-darkMode-bordergray rounded-md'
+              className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:border-light-violet7 focus:ring-light-violet7 dark:border-darkMode-bordergray dark:bg-mauve dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
               placeholder='you@example.com'
               aria-describedby='email-optional'
             />
@@ -60,7 +60,7 @@ export default function CreatorInfo({ submit }) {
               {errors.email?.type === 'required' && (
                 <div className='flex items-center'>
                   <FiAlertTriangle color='red' />
-                  <p className='text-error text-xs pl-1'>Email is required</p>
+                  <p className='pl-1 text-xs text-error'>Email is required</p>
                 </div>
               )}
             </div>
@@ -68,7 +68,7 @@ export default function CreatorInfo({ submit }) {
         </div>
         <div>
           <input
-            className='text-white dark:text-mauve cursor-pointer shadow-sm bg-light-violet9 hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:hover:bg-darkMode-violet10 focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 w-full border rounded-md py-1 mt-2'
+            className='mt-2 w-full cursor-pointer rounded-md border bg-light-violet9 py-1 text-white shadow-sm hover:bg-light-violet10 focus:border-light-violet7 focus:ring-light-violet7 dark:bg-darkMode-violet9 dark:text-mauve dark:hover:bg-darkMode-violet10 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7'
             type='submit'
           />
         </div>

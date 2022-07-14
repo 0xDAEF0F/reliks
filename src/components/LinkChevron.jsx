@@ -5,7 +5,7 @@ export default function LinkChevron({ title, to, xClass }) {
   return (
     <Link href={to}>
       <a
-        className={`cursor-pointer hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 opacity-60 text-black dark:text-white hover:opacity-100 pl-1 py-3 rounded-md text-base font-semibold flex items-center ${xClass}`}>
+        className={`flex cursor-pointer items-center rounded-md py-3 pl-1 text-base font-semibold text-black opacity-60 hover:bg-light-violet5 hover:opacity-100 dark:text-white dark:hover:bg-darkMode-violet5 ${xClass}`}>
         {title}
       </a>
     </Link>

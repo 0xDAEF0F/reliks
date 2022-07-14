@@ -48,7 +48,7 @@ export default function MobileMenu() {
               </div>
             ) : (
               <svg
-                className='h-8 w-8 text-gray-600'
+                className='text-gray-600 h-8 w-8'
                 viewBox='0 0 24 24'
                 fill='none'
                 stroke='currentColor'
@@ -64,16 +64,12 @@ export default function MobileMenu() {
           <nav
             className={
               isNavOpen
-                ? 'flex flex-col absolute w-full h-screen mt-12 left-0 bg-light-violet2 dark:bg-darkMode-violet2 z-10 px-5'
+                ? 'absolute left-0 z-10 mt-12 flex h-screen w-full flex-col bg-light-violet2 px-5 dark:bg-darkMode-violet2'
                 : 'hidden'
             }>
             <ul className='mt-10 space-y-10'>
               <li>
-                <LinkChevron
-                  title={'Explore'}
-                  to={'/explore'}
-                  xClass='w-full'
-                />
+                <LinkChevron title={'Explore'} to={'/explore'} xClass='w-full' />
               </li>
               <li>
                 <LinkChevron title={'Stats'} to={'/stats'} xClass='w-full' />
@@ -84,31 +80,29 @@ export default function MobileMenu() {
               <li>
                 <a
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-                  className='opacity-60 text-black dark:text-white hover:opacity-100 text-base font-medium hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex justify-between w-full items-center rounded-md px-1 py-2 cursor-pointer'>
+                  className='flex w-full cursor-pointer items-center justify-between rounded-md px-1 py-2 text-base font-medium text-black opacity-60 hover:bg-light-violet5 hover:opacity-100 dark:text-white dark:hover:bg-darkMode-violet5'>
                   <p>Night Mode</p>
                   <Switch
                     checked={theme === 'dark'}
-                    onChange={() =>
-                      setTheme(theme === 'light' ? 'dark' : 'light')
-                    }
-                    className='relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-violet7 dark:focus:ring-darkMode-violet7'>
+                    onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+                    className='relative inline-flex h-5 w-10 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-light-violet7 focus:ring-offset-2 dark:focus:ring-darkMode-violet7'>
                     <span className='sr-only'>Use night mode</span>
                     <span
                       aria-hidden='true'
-                      className='pointer-events-none absolute w-full h-full rounded-md'
+                      className='pointer-events-none absolute h-full w-full rounded-md'
                     />
                     <span
                       aria-hidden='true'
                       className={classNames(
                         theme === 'dark' ? 'bg-darkMode-violet9' : 'bg-black',
-                        'pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200'
+                        'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out'
                       )}
                     />
                     <span
                       aria-hidden='true'
                       className={classNames(
                         theme === 'dark' ? 'translate-x-5' : 'translate-x-0',
-                        'pointer-events-none absolute left-0 inline-block h-5 w-5 border border-black dark:border-darkMode-violet7 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200'
+                        'pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-black bg-white shadow ring-0 transition-transform duration-200 ease-in-out dark:border-darkMode-violet7'
                       )}
                     />
                   </Switch>
@@ -116,17 +110,13 @@ export default function MobileMenu() {
               </li>
               <li>
                 {isCreator() ? (
-                  <LinkChevron
-                    title={'Profile'}
-                    to={'/profile'}
-                    xClass='w-full'
-                  />
+                  <LinkChevron title={'Profile'} to={'/profile'} xClass='w-full' />
                 ) : null}
               </li>
               <li>
                 {isAuthenticated ? (
                   <button
-                    className='cursor-pointer hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 opacity-60 text-black dark:text-white hover:opacity-100 pl-1 py-3 rounded-md text-base font-semibold flex items-center w-full ml-1'
+                    className='ml-1 flex w-full cursor-pointer items-center rounded-md py-3 pl-1 text-base font-semibold text-black opacity-60 hover:bg-light-violet5 hover:opacity-100 dark:text-white dark:hover:bg-darkMode-violet5'
                     onClick={async () => {
                       await logout()
                       toast.success('Logged out succesfully.')
@@ -136,7 +126,7 @@ export default function MobileMenu() {
                   </button>
                 ) : (
                   <button
-                    className='cursor-pointer hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 opacity-60 text-black dark:text-white hover:opacity-100 pl-1 py-3 rounded-md text-base font-semibold flex items-center w-full ml-1'
+                    className='ml-1 flex w-full cursor-pointer items-center rounded-md py-3 pl-1 text-base font-semibold text-black opacity-60 hover:bg-light-violet5 hover:opacity-100 dark:text-white dark:hover:bg-darkMode-violet5'
                     onClick={() => {
                       login()
                       setIsNavOpen(false)

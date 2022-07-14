@@ -37,14 +37,11 @@ export default async function handler(req, res) {
     youtubeCredentials.refreshToken = tokens.refresh_token
 
     // 1. get user information
-    const res1 = await Axios.get(
-      'https://www.googleapis.com/oauth2/v3/userinfo',
-      {
-        headers: {
-          Authorization: `Bearer ${tokens.access_token}`,
-        },
-      }
-    )
+    const res1 = await Axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+      headers: {
+        Authorization: `Bearer ${tokens.access_token}`,
+      },
+    })
     youtubeCredentials.name = res1.data.name
 
     // 2. get channel information

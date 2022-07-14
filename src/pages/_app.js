@@ -8,9 +8,7 @@ function MyApp({ Component, pageProps }) {
     <MoralisProvider
       serverUrl='https://rsrqtfhqsfhm.usemoralis.com:2053/server'
       appId='VoMFmmbGFfVC3GEOPQxOZvJctC6VYMDwyIu44ba0'>
-      <ThemeProvider
-        forcedTheme={Component.theme || undefined}
-        attribute='class'>
+      <ThemeProvider forcedTheme={Component.theme || undefined} attribute='class'>
         <Toaster />
         <Component {...pageProps} />
       </ThemeProvider>

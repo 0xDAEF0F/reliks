@@ -36,14 +36,14 @@ function Header() {
 
   return (
     <header
-      className={`fixed w-full z-10 md:bg-opacity-90 ${
+      className={`fixed z-10 w-full md:bg-opacity-90 ${
         !top &&
-        'bg-light-violet1 dark:bg-darkMode-violet1 backdrop-blur-sm shadow-lg dark:bg-opacity-90 dark:shadow-sm dark:shadow-zinc-700'
+        'dark:shadow-zinc-700 bg-light-violet1 shadow-lg backdrop-blur-sm dark:bg-darkMode-violet1 dark:bg-opacity-90 dark:shadow-sm'
       }`}>
-      <div className='max-w-6xl mx-auto px-5 sm:px-6'>
-        <div className='flex items-center justify-between h-16 md:h-20'>
+      <div className='mx-auto max-w-6xl px-5 sm:px-6'>
+        <div className='flex h-16 items-center justify-between md:h-20'>
           {/* App name & logo */}
-          <div className='flex-shrink-0 mr-4'>
+          <div className='mr-4 flex-shrink-0'>
             <Link href='/' className='block' aria-label='Cruip'>
               <a>Logo</a>
             </Link>
@@ -53,41 +53,39 @@ function Header() {
             <ul className='flex flex-grow flex-wrap items-center justify-end space-x-10'>
               {/* TEMPORARY LINKS*/}
               <Link href=''>
-                <a className='font-semibold text-black dark:text-white opacity-70 hover:opacity-100 transition duration-100'>
+                <a className='font-semibold text-black opacity-70 transition duration-100 hover:opacity-100 dark:text-white'>
                   Explore
                 </a>
               </Link>
               <Link href=''>
-                <a className='font-semibold text-black dark:text-white opacity-70 hover:opacity-100 transition duration-100'>
+                <a className='font-semibold text-black opacity-70 transition duration-100 hover:opacity-100 dark:text-white'>
                   Stats
                 </a>
               </Link>
               <Link href=''>
-                <a className='font-semibold text-black dark:text-white opacity-70 hover:opacity-100 transition duration-100'>
+                <a className='font-semibold text-black opacity-70 transition duration-100 hover:opacity-100 dark:text-white'>
                   About us
                 </a>
               </Link>
               {/* END TEMPORARY LINKS */}
               {!isAuthenticated ? (
                 <button
-                  className='font-semibold text-black dark:text-white opacity-70 hover:opacity-100 transition duration-100'
-                  onClick={() =>
-                    setTheme(theme === 'light' ? 'dark' : 'light')
-                  }>
+                  className='font-semibold text-black opacity-70 transition duration-100 hover:opacity-100 dark:text-white'
+                  onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
                   <HiOutlineSun className='dark:fill-white' size={20} />
                 </button>
               ) : null}
             </ul>
             {isAuthenticated ? (
-              <div className='flex items-center flex-grow justify-end flex-wrap'>
+              <div className='flex flex-grow flex-wrap items-center justify-end'>
                 <ProfileDropdownMenu />
               </div>
             ) : (
-              <ul className='flex flex-grow justify-end flex-wrap items-center'>
+              <ul className='flex flex-grow flex-wrap items-center justify-end'>
                 <li>
                   <button
                     onClick={() => login()}
-                    className='text-white bg-mauve px-5 py-3'>
+                    className='bg-mauve px-5 py-3 text-white'>
                     Connect Wallet
                   </button>
                 </li>

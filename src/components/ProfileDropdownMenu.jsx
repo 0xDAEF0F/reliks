@@ -41,10 +41,10 @@ export default function ProfileDropdownMenu() {
     <div>
       <Menu as='div' className='relative inline-block text-left'>
         <div>
-          <Menu.Button className='shadow-md rounded-full pt-1 px-1 hover:opacity-90'>
+          <Menu.Button className='rounded-full px-1 pt-1 shadow-md hover:opacity-90'>
             <Image
               src={youtubeCreds?.pfp || '/pp.jpg'}
-              className='rounded-full block bg-white p-1'
+              className='block rounded-full bg-white p-1'
               width={40}
               height={40}
               alt='pp'
@@ -59,14 +59,14 @@ export default function ProfileDropdownMenu() {
           leave='transition ease-in duration-75'
           leaveFrom='transform opacity-100 scale-100'
           leaveTo='transform opacity-0 scale-95'>
-          <Menu.Items className='absolute right-0 mt-2 w-56 origin-top-right divide-y divide-light-bordergray dark:divide-darkMode-bordergray rounded-md bg-white dark:bg-mauve shadow-lg ring-opacity-5 focus:outline-none'>
+          <Menu.Items className='absolute right-0 mt-2 w-56 origin-top-right divide-y divide-light-bordergray rounded-md bg-white shadow-lg ring-opacity-5 focus:outline-none dark:divide-darkMode-bordergray dark:bg-mauve'>
             <div className='px-1 py-1 '>
               {/* Profile only available to creators */}
               {isCreator() ? (
                 <Menu.Item>
                   <MyLink
                     href={`/profile/${user.getUsername()}`}
-                    className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex items-center w-full rounded-md px-2 py-2 text-sm gap-2'>
+                    className='flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm hover:bg-light-violet5 dark:hover:bg-darkMode-violet5'>
                     <FaUserAlt />
                     <p>Profile</p>
                   </MyLink>
@@ -75,34 +75,32 @@ export default function ProfileDropdownMenu() {
               <Menu.Item>
                 <a
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-                  className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex justify-between w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer'>
-                  <div className='flex items-center gap-2 justify-end'>
+                  className='flex w-full cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm hover:bg-light-violet5 dark:hover:bg-darkMode-violet5'>
+                  <div className='flex items-center justify-end gap-2'>
                     <HiMoon size={18} />
                     <p>Night Mode</p>
                   </div>
                   <Switch
                     checked={theme === 'dark'}
-                    onChange={() =>
-                      setTheme(theme === 'light' ? 'dark' : 'light')
-                    }
-                    className='relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-violet7 dark:focus:ring-darkMode-violet7'>
+                    onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+                    className='relative inline-flex h-5 w-10 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-light-violet7 focus:ring-offset-2 dark:focus:ring-darkMode-violet7'>
                     <span className='sr-only'>Use night mode</span>
                     <span
                       aria-hidden='true'
-                      className='pointer-events-none absolute w-full h-full rounded-md'
+                      className='pointer-events-none absolute h-full w-full rounded-md'
                     />
                     <span
                       aria-hidden='true'
                       className={classNames(
                         theme === 'dark' ? 'bg-darkMode-violet9' : 'bg-black',
-                        'pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200'
+                        'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out'
                       )}
                     />
                     <span
                       aria-hidden='true'
                       className={classNames(
                         theme === 'dark' ? 'translate-x-5' : 'translate-x-0',
-                        'pointer-events-none absolute left-0 inline-block h-5 w-5 border border-light-violet7 dark:border-darkMode-violet7 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200'
+                        'pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-light-violet7 bg-white shadow ring-0 transition-transform duration-200 ease-in-out dark:border-darkMode-violet7'
                       )}
                     />
                   </Switch>
@@ -117,7 +115,7 @@ export default function ProfileDropdownMenu() {
                     await logout()
                     toast.success('Logged out succesfully.')
                   }}
-                  className='hover:bg-light-violet5 dark:hover:bg-darkMode-violet5 flex w-full items-center rounded-md px-2 py-2 text-sm gap-2'>
+                  className='flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm hover:bg-light-violet5 dark:hover:bg-darkMode-violet5'>
                   <IoLogOut size={20} />
                   <p>Logout</p>
                 </button>

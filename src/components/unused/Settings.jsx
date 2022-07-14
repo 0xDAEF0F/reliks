@@ -3,19 +3,19 @@ import React from 'react'
 function EditProfile() {
   return (
     <section className='pt-28'>
-      <div className='mx-auto container max-w-4xl md:w-3/4 px-5'>
-        <p className='text-4xl font-bold mb-10 ml-5'>Edit your profile</p>
+      <div className='container mx-auto max-w-4xl px-5 md:w-3/4'>
+        <p className='mb-10 ml-5 text-4xl font-bold'>Edit your profile</p>
 
-        <div className='bg-white dark:bg-mauve  space-y-6 rounded-xl shadow-md'>
-          <div className='flex content-center pr-10 pt-10 justify-end'>
+        <div className='space-y-6 rounded-xl  bg-white shadow-md dark:bg-mauve'>
+          <div className='flex content-center justify-end pr-10 pt-10'>
             <p className='text-red-700'>*</p>
-            <p className=' text-sm font-normal pl-1'>Required</p>
+            <p className=' pl-1 text-sm font-normal'>Required</p>
           </div>
-          <div className='md:inline-flex  space-y-4 md:space-y-0  w-full p-4 items-center'>
-            <h2 className='md:w-1/3 max-w-sm mx-auto text-2xl font-medium text-light-gray dark:text-darkMode-gray'>
+          <div className='w-full  items-center space-y-4  p-4 md:inline-flex md:space-y-0'>
+            <h2 className='mx-auto max-w-sm text-2xl font-medium text-light-gray dark:text-darkMode-gray md:w-1/3'>
               Enter your information
             </h2>
-            <div className='md:w-2/3 mx-auto max-w-sm space-y-5'>
+            <div className='mx-auto max-w-sm space-y-5 md:w-2/3'>
               <div>
                 <div className='flex justify-between'>
                   <div className='flex justify-start'>
@@ -30,7 +30,7 @@ function EditProfile() {
                     type='text'
                     name='username'
                     id='username'
-                    className='bg-white dark:bg-mauve shadow-sm focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 w-full sm:text-sm border-light-bordergray dark:border-darkMode-bordergray rounded-md'
+                    className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:border-light-violet7 focus:ring-light-violet7 dark:border-darkMode-bordergray dark:bg-mauve dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                     placeholder='chad4269'
                   />
                 </div>
@@ -40,16 +40,16 @@ function EditProfile() {
                 <textarea
                   typeof='text'
                   placeholder='Text your story!'
-                  className='bg-white dark:bg-mauve shadow-sm focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 w-full sm:text-sm border-light-bordergray dark:border-darkMode-bordergray rounded-md'
+                  className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:border-light-violet7 focus:ring-light-violet7 dark:border-darkMode-bordergray dark:bg-mauve dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                 />
               </div>
             </div>
           </div>
-          <div className='md:inline-flex space-y-4 md:space-y-0 w-full p-4 items-center'>
-            <h2 className='md:w-1/3 max-w-sm mx-auto text-2xl font-medium'>
+          <div className='w-full items-center space-y-4 p-4 md:inline-flex md:space-y-0'>
+            <h2 className='mx-auto max-w-sm text-2xl font-medium md:w-1/3'>
               Receive email notifications
             </h2>
-            <div className='md:w-2/3 max-w-sm mx-auto'>
+            <div className='mx-auto max-w-sm md:w-2/3'>
               <div>
                 <label htmlFor='email' className='block text-sm font-medium '>
                   Email
@@ -59,7 +59,7 @@ function EditProfile() {
                     type='email'
                     name='email'
                     id='email'
-                    className='bg-white dark:bg-mauve shadow-sm focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 w-full sm:text-sm border-light-bordergray dark:border-darkMode-bordergray rounded-md'
+                    className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:border-light-violet7 focus:ring-light-violet7 dark:border-darkMode-bordergray dark:bg-mauve dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                     placeholder='you@example.com'
                     aria-describedby='email-optional'
                   />
@@ -153,42 +153,42 @@ function EditProfile() {
               </div>
             </div>
           </div> */}
-          <div className='md:inline-flex space-y-4 md:space-y-0 w-full p-4 items-center'>
-            <h2 className='md:w-1/3 max-w-sm mx-auto text-2xl font-medium'>
+          <div className='w-full items-center space-y-4 p-4 md:inline-flex md:space-y-0'>
+            <h2 className='mx-auto max-w-sm text-2xl font-medium md:w-1/3'>
               Add your social media links
             </h2>
-            <div className='flex flex-col gap-1 md:w-2/3 max-w-sm mx-auto'>
+            <div className='mx-auto flex max-w-sm flex-col gap-1 md:w-2/3'>
               <label className='block text-sm font-medium '>Links</label>
-              <div className='w-full inline-flex rounded-md'>
+              <div className='inline-flex w-full rounded-md'>
                 <input
                   type='text'
                   name=''
                   id=''
-                  className='bg-white dark:bg-mauve shadow-sm focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 w-full sm:text-sm border-light-bordergray dark:border-darkMode-bordergray rounded-md'
+                  className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:border-light-violet7 focus:ring-light-violet7 dark:border-darkMode-bordergray dark:bg-mauve dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                   placeholder='Youtube'
                 />
               </div>
-              <div className='w-full inline-flex rounded-md'>
+              <div className='inline-flex w-full rounded-md'>
                 <input
                   type='text'
                   name=''
                   id=''
-                  className='bg-white dark:bg-mauve shadow-sm focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 w-full sm:text-sm border-light-bordergray dark:border-darkMode-bordergray rounded-md'
+                  className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:border-light-violet7 focus:ring-light-violet7 dark:border-darkMode-bordergray dark:bg-mauve dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                   placeholder='Twitch'
                 />
               </div>
-              <div className='w-full inline-flex rounded-md'>
+              <div className='inline-flex w-full rounded-md'>
                 <input
                   type='text'
                   name=''
                   id=''
-                  className='bg-white dark:bg-mauve shadow-sm focus:ring-light-violet7 focus:border-light-violet7 dark:focus:ring-darkMode-violet7 dark:focus:border-darkMode-violet7 w-full sm:text-sm border-light-bordergray dark:border-darkMode-bordergray rounded-md'
+                  className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:border-light-violet7 focus:ring-light-violet7 dark:border-darkMode-bordergray dark:bg-mauve dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                   placeholder='Tik tok'
                 />
               </div>
-              <div className='md:inline-flex w-full space-y-4 md:space-y-0 pt-10  justify-end'>
+              <div className='w-full justify-end space-y-4 pt-10 md:inline-flex  md:space-y-0'>
                 <div className=''>
-                  <button className='text-white bg-light-violet9 dark:bg-darkMode-violet9 w-full mx-auto max-w-sm rounded-md text-center bg-blue-00 py-2 px-4 inline-flex items-center focus:outline-none md:float-right justify-center'>
+                  <button className='bg-blue-00 mx-auto inline-flex w-full max-w-sm items-center justify-center rounded-md bg-light-violet9 py-2 px-4 text-center text-white focus:outline-none dark:bg-darkMode-violet9 md:float-right'>
                     Save
                   </button>
                 </div>

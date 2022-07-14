@@ -220,20 +220,18 @@ const bytecode = {
       parameterSlots: 1,
       returnSlots: 1,
     },
-    revert_error_c1322bf8034eace5e0b5c7295db60986aa89aae5e0ea0873e4689e076861a5db:
-      {
-        entryPoint: null,
-        id: null,
-        parameterSlots: 0,
-        returnSlots: 0,
-      },
-    revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b:
-      {
-        entryPoint: 333,
-        id: null,
-        parameterSlots: 0,
-        returnSlots: 0,
-      },
+    revert_error_c1322bf8034eace5e0b5c7295db60986aa89aae5e0ea0873e4689e076861a5db: {
+      entryPoint: null,
+      id: null,
+      parameterSlots: 0,
+      returnSlots: 0,
+    },
+    revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b: {
+      entryPoint: 333,
+      id: null,
+      parameterSlots: 0,
+      returnSlots: 0,
+    },
     validator_revert_t_address: {
       entryPoint: 338,
       id: null,
