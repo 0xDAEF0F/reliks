@@ -1,4 +1,5 @@
 import Moralis from 'moralis/node'
+import { extractCreatorPublicInformation } from '../../util/getLastCreators'
 
 // TODO: Move to .env
 const serverUrl = 'https://rsrqtfhqsfhm.usemoralis.com:2053/server'
@@ -23,15 +24,7 @@ export default async function handler(req, res) {
       return res.send(false)
     }
     // response with creator profile information
-    const youtubeCredentials = user.get('youtubeCredentials')
-    const ethAddress = user.get('ethAddress')
-    const createdAt = user.get('createdAt')
-    return res.json({
-      ...youtubeCredentials,
-      refreshToken: null,
-      ethAddress,
-      createdAt,
-    })
+    return res.json(extractCreatorPublicInformation(user))
   } catch (err) {
     res.status(500).send(err)
   }

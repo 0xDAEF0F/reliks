@@ -1,80 +1,50 @@
 import Header from '../components/Header'
 import Image from 'next/image'
+import { getLastCreators } from '../util/getLastCreators'
 
-const creators = [
-  {
-    id: 1,
-    name: 'Creator 1',
-    joined: 'Joined: July 2022',
-    href: '#',
-    profilePictureSrc: '/pp.jpg',
-    profilePictureAlt: '',
-    bannerSrc: '/wp.png',
-    bannerAlt: '',
-  },
-  {
-    id: 2,
-    name: 'Creator 2',
-    joined: 'Joined: July 2022',
-    href: '#',
-    profilePictureSrc: '/pp.jpg',
-    profilePictureAlt: '',
-    bannerSrc: '/wp.png',
-    bannerAlt: '',
-  },
-  {
-    id: 3,
-    name: 'Creator 3',
-    joined: 'Joined: July 2022',
-    href: '#',
-    profilePictureSrc: '/pp.jpg',
-    profilePictureAlt: '',
-    bannerSrc: '/wp.png',
-    bannerAlt: '',
-  },
-]
-
-export default function explore() {
+export default function explore({ creators }) {
   return (
     <>
       <Header />
-      <div className='max-w-3xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
-        <h2 id='products-heading' className='text-4xl font-semibold my-5'>
+      <div className='mx-auto max-w-3xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
+        <h2 id='products-heading' className='my-5 text-4xl font-semibold'>
           Explore Creators
         </h2>
 
-        <div className='grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 2xl:grid-cols-4 xl:gap-x-8'>
-          {creators.map((creator) => (
+        <div className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 2xl:grid-cols-4'>
+          {creators.map((creator, i) => (
             <a
-              key={creator.id}
-              href={creator.href}
-              className='bg-light-violet2 dark:bg-darkMode-violet2 shadow-md rounded-md hover:opacity-80'>
-              <div className='w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-w-2 sm:aspect-h-3'>
+              key={i}
+              href={`/profile/${creator.username}`}
+              className='rounded-md bg-light-violet2 shadow-md hover:opacity-80 dark:bg-darkMode-violet2'>
+              <div className='aspect-w-1 aspect-h-1 sm:aspect-w-2 sm:aspect-h-3 w-full overflow-hidden rounded-lg'>
                 <Image
-                  src={creator.bannerSrc}
+                  src={creator.coverPhoto}
                   width={800}
                   height={400}
-                  alt={creator.imageAlt}
-                  className='w-full h-full object-center object-cover'
+                  // TODO: CHANGE
+                  alt='temporary alt'
+                  className='h-full w-full object-cover object-center'
                 />
               </div>
               <div className='relative -inset-5 -mb-3'>
                 <div className='ml-10 flex items-center '>
-                  <div className='pt-1 px-1 dark:bg-black bg-white rounded-lg shadow-md'>
+                  <div className='rounded-lg bg-white px-1 pt-1 shadow-md dark:bg-black'>
                     <Image
-                      src={creator.profilePictureSrc}
-                      className='w-full h-full object-center object-cover rounded-lg'
+                      src={creator.pfp}
+                      className='h-full w-full rounded-lg object-cover object-center'
                       width={80}
                       height={80}
-                      alt={creator.profilePictureAlt}
+                      // TODO: CHANGE
+                      alt='temporary alt'
                     />
                   </div>
                   <div className='mt-2 ml-2'>
-                    <p className='text-xl text-light-violet12 dark:text-darkMode-violet12 font-bold'>
+                    <p className='text-xl font-bold text-light-violet12 dark:text-darkMode-violet12'>
                       {creator.name}
                     </p>
                     <p className='text-xs text-light-gray dark:text-darkMode-gray'>
-                      {creator.joined}
+                      Joined: {creator.createdAt}
                     </p>
                   </div>
                 </div>
@@ -85,4 +55,13 @@ export default function explore() {
       </div>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const creators = await getLastCreators(6)
+  return {
+    props: {
+      creators,
+    },
+  }
 }
