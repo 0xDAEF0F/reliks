@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { GiSpermWhale, GiOpenTreasureChest } from 'react-icons/gi'
-import { TbBadges } from 'react-icons/tb'
+import { TbBadges, TbArrowNarrowDown } from 'react-icons/tb'
 
 const strategies = [
   {
@@ -27,6 +29,16 @@ const strategies = [
   },
 ]
 export function AppAbstract() {
+  const [top, setTop] = useState(true)
+
+  useEffect(() => {
+    const scrollHandler = () => {
+      window.pageYOffset > 10 ? setTop(false) : setTop(true)
+    }
+    window.addEventListener('scroll', scrollHandler)
+    return () => window.removeEventListener('scroll', scrollHandler)
+  }, [top])
+  
   return (
     <main>
       <div className='pt-24 md:pt-20 lg:overflow-hidden'>
@@ -40,11 +52,18 @@ export function AppAbstract() {
                     your favorite creator.
                   </span>
                 </h1>
-                <p className='mt-3 text-base text-light-gray dark:text-darkMode-gray sm:mt-5 sm:text-xl lg:text-lg xl:text-xl'>
+                <p className='mt-3 mb-2 text-base text-light-gray dark:text-darkMode-gray sm:mt-5 sm:text-xl lg:text-lg xl:text-xl'>
                   Meldrop is a platform for content creators to connect with their fan
                   base, get supported, and in return, grant rewards in the form of NFTs
                   and token drops.
                 </p>
+
+                <Link href='https://alkaline-ceres-b4f.notion.site/Light-Paper-8e94cdbc4d944705aed046465d4de9ea'>
+                  <a target='_blank' className='text-xl text-light-violet10 hover:text-light-violet11 dark:text-darkMode-violet10 dark:hover:text-darkMode-violet11'>
+                    Lite Paper&nbsp;&rarr;
+                  </a>
+                </Link>
+
               </div>
             </div>
             <div className='mx-auto mt-12 lg:relative lg:m-0'>
@@ -57,6 +76,10 @@ export function AppAbstract() {
                 />
               </div>
             </div>
+          </div>
+          <div className={`${!top ? 'invisible' : 'flex flex-col items-center animate-pulse transition ease-in-out duration-1000'}`}>
+            <p>Scroll down to see more</p>
+            <TbArrowNarrowDown />
           </div>
           <div className='mt-28'>
             <div className='relative pb-32'>
