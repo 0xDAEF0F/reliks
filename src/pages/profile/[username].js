@@ -66,13 +66,14 @@ function Profile() {
                   title='Copy'
                   className='mt-1 h-auto w-36 rounded-full bg-light-violet3 py-1 px-2 hover:bg-light-violet4 active:bg-light-violet5 dark:bg-darkMode-violet3 dark:hover:bg-darkMode-violet4 dark:hover:text-darkMode-gray dark:active:bg-darkMode-violet5'>
                   <div className='flex items-center justify-between'>
-                    <Image
-                      src='/ethereum.svg'
-                      alt='MetaMask logo'
-                      width={30}
-                      height={30}
-                    />
-                    <p className='truncate pl-1 text-sm font-semibold'>{userAddress}</p>
+                    <div className='relative h-5 w-5'>
+                      <Image
+                        src='/ethereum.svg'
+                        alt='MetaMask logo'
+                        layout='fill'
+                      />
+                    </div>
+                    <p className='h-5 truncate pl-1 text-sm font-semibold text-left'>{userAddress}</p>
                   </div>
                 </button>
                 <p className='mt-1 ml-2  text-sm text-light-gray dark:text-darkMode-gray'>
