@@ -52,7 +52,7 @@ function Header() {
           <nav className='hidden md:flex md:flex-grow'>
             <ul className='flex flex-grow flex-wrap items-center justify-end space-x-10'>
               {/* TEMPORARY LINKS*/}
-              <Link href='explore'>
+              <Link href='/explore'>
                 <a className='font-semibold text-black opacity-70 hover:opacity-100 transition duration-100 dark:text-white'>
                   Explore
                 </a>
