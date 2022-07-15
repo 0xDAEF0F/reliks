@@ -1,29 +1,27 @@
-import {GiSpermWhale, GiOpenTreasureChest} from 'react-icons/gi'
-import {TbBadges} from 'react-icons/tb'
-
+import { GiSpermWhale, GiOpenTreasureChest } from 'react-icons/gi'
+import { TbBadges } from 'react-icons/tb'
 
 const strategies = [
   {
-    name: 'Whale Strategy',
+    name: 'Whales Lair',
     href: '#',
     description:
-      'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
+      "Immerse within your creators' whale-exclusive discord chat room and enjoy whale-only benefits.",
     comingSoon: false,
     icon: GiSpermWhale,
   },
   {
     name: 'Badges',
     href: '#',
-    description:
-      'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
+    description: "Badges symbolize achievements earned within your creators' ecosystem.",
     comingSoon: true,
     icon: TbBadges,
   },
   {
-    name: 'Subscription Chests',
+    name: 'Chests',
     href: '#',
     description:
-      'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
+      'Chests grant you gems you can sell, trade, and exchange for limited time prizes.',
     comingSoon: true,
     icon: GiOpenTreasureChest,
   },
@@ -53,7 +51,7 @@ export function AppAbstract() {
               <div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0'>
                 {/* To fix lightMode asset */}
                 <img
-                  className='h-80 w-full lg:w-max lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:max-w-none'
+                  className='h-80 w-full lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-max lg:max-w-none'
                   src='/asset.svg'
                   alt=''
                 />
@@ -61,33 +59,43 @@ export function AppAbstract() {
             </div>
           </div>
           <div className='mt-28'>
-            <div className="relative pb-32">
-              <div className="absolute inset-0">
-                <div
-                  className="w-full h-full object-cover bg-gradient-to-r dark:from-darkMode-violet8 dark:to-darkMode-violet9 from-light-violet8 to-light-violet9  rounded-lg"
-                />
-                <div className="absolute inset-0mix-blend-multiply" aria-hidden="true" />
+            <div className='relative pb-32'>
+              <div className='absolute inset-0'>
+                <div className='h-full w-full rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 object-cover dark:from-darkMode-violet8  dark:to-darkMode-violet9' />
+                <div className='inset-0mix-blend-multiply absolute' aria-hidden='true' />
               </div>
-              <div className="relative max-w-7xl mx-auto py-12 px-4 sm:py-20 sm:px-6 lg:px-8">
-                <h1 className="text-3xl font-extrabold tracking-tight text-light-violet12 dark:text-white md:text-4xl lg:text-5xl">Strategies</h1>
-                <p className="mt-6 max-w-3xl text-xl text-light-gray dark:text-darkMode-gray opacity-80">
-                The application comprises strategies that every creator must create beforehand,
-                each providing different rewards for its user base.
+              <div className='relative mx-auto max-w-7xl py-12 px-4 sm:py-20 sm:px-6 lg:px-8'>
+                <h1 className='text-3xl font-extrabold tracking-tight text-light-violet12 dark:text-white md:text-4xl lg:text-5xl'>
+                  Strategies
+                </h1>
+                <p className='mt-6 max-w-3xl text-xl text-light-gray opacity-80 dark:text-darkMode-gray'>
+                  Join your favorite content creator in a strategy for limited-time drops,
+                  rewards, achievements, and many more benefits.
                 </p>
               </div>
             </div>
-            <section
-              className="-mt-32 max-w-7xl mx-auto relative z-10 pb-20 px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8">
+            <section className='relative z-10 mx-auto -mt-32 max-w-7xl px-4 pb-20 sm:px-6 lg:px-8'>
+              <div className='grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8'>
                 {strategies.map((strategies) => (
-                  <div key={strategies.name} className="flex flex-col bg-light-violet2 dark:bg-mauve rounded-2xl shadow-xl">
-                    <div className="flex-1 relative pt-16 px-6 pb-8 md:px-8">
-                      <div className="absolute top-0 p-5 inline-block bg-light-violet7 dark:bg-darkMode-violet7 rounded-xl shadow-lg transform -translate-y-1/2">
-                        <strategies.icon className="h-6 w-6 text-light-violet12 dark:text-darkMode-violet12" aria-hidden="true" />
+                  <div
+                    key={strategies.name}
+                    className='flex flex-col rounded-2xl bg-light-violet2 shadow-xl dark:bg-mauve'>
+                    <div className='relative flex-1 px-6 pt-16 pb-8 md:px-8'>
+                      <div className='absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-light-violet7 p-5 shadow-lg dark:bg-darkMode-violet7'>
+                        <strategies.icon
+                          className='h-6 w-6 text-light-violet12 dark:text-darkMode-violet12'
+                          aria-hidden='true'
+                        />
                       </div>
-                      <h3 className="text-xl font-medium text-light-violet11 dark:text-darkMode-violet11">{strategies.name}</h3>
-                      <p className="mt-4 text-base text-gray-500">{strategies.description}</p>
-                      <p className='text-sm mt-2 text-right text-light-violet8 dark:text-darkMode-violet8'>{strategies.comingSoon ? 'Coming soon...' : ''}</p>
+                      <h3 className='text-xl font-medium text-light-violet11 dark:text-darkMode-violet11'>
+                        {strategies.name}
+                      </h3>
+                      <p className='text-gray-500 mt-4 text-base'>
+                        {strategies.description}
+                      </p>
+                      <p className='mt-2 text-right text-sm text-light-violet8 dark:text-darkMode-violet8'>
+                        {strategies.comingSoon ? 'Coming soon...' : ''}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -96,8 +104,6 @@ export function AppAbstract() {
           </div>
         </div>
       </div>
-
-
     </main>
   )
 }
