@@ -41,12 +41,11 @@ export default function ProfileDropdownMenu() {
     <div>
       <Menu as='div' className='relative inline-block text-left'>
         <div>
-          <Menu.Button className='rounded-full px-1 pt-1 shadow-md hover:opacity-90'>
+          <Menu.Button className='relative h-12 w-12 dark:bg-black bg-white p-1 rounded-full shadow-md dark:shadow-darkMode-bordergray hover:opacity-90'>
             <Image
               src={youtubeCreds?.pfp || '/pp.jpg'}
-              className='block rounded-full bg-white p-1'
-              width={40}
-              height={40}
+              className='rounded-full'
+              layout='fill'
               alt='pp'
             />
           </Menu.Button>

@@ -33,24 +33,28 @@ function Profile() {
     <>
       <Header />
       <SignUpAsCreatorBanner />
-      <div className='mx-auto max-w-7xl pt-20 sm:px-6 sm:pt-20'>
-        <Image
-          src={user.coverPhoto || '/wp.png'}
-          className='rounded-lg'
-          width={1240}
-          height={320}
-          alt='banner'
-        />
+      <div className='mx-auto max-w-7xl pt-20 md:pt-3'>
+        <div className='block'>
+          <Image
+            src={user.coverPhoto || '/wp.png'}
+            width={900}
+            height={300}
+            quality={100}
+            className='rounded-lg'
+            layout='responsive'
+            alt='banner'
+          />
+        </div>
         <div className='mx-auto h-full items-start pt-2 md:mx-10 md:flex md:h-36 md:justify-between'>
           <div className='flex flex-col items-center md:flex-row'>
             <div className='relative -inset-y-10'>
-              <div className='rounded-full shadow-md'>
+              <div className='relative rounded-full shadow-md h-36 w-36'>
                 <Image
                   src={user.pfp || '/pp.jpg'}
                   className='rounded-full'
-                  width={150}
-                  height={150}
-                  alt='pp'
+                  quality={100}
+                  layout='fill'
+                  alt='profile picture'
                 />
               </div>
             </div>
