@@ -8,6 +8,7 @@ import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 // eslint-disable-next-line react/display-name
 const MyLink = forwardRef((props, ref) => {
@@ -24,6 +25,7 @@ const MyLink = forwardRef((props, ref) => {
 export default function ProfileDropdownMenu() {
   const { theme, setTheme } = useTheme()
   const { logout, user } = useMoralis()
+  const router = useRouter()
 
   const youtubeCreds = user && user.get('youtubeCredentials')
 
@@ -37,11 +39,17 @@ export default function ProfileDropdownMenu() {
     return false
   }
 
+  async function logOut() {
+    await logout()
+    if (router.pathname !== '/') router.push('/')
+    toast.success('Logged out succesfully.')
+  }
+
   return (
     <div>
       <Menu as='div' className='relative inline-block text-left'>
         <div>
-          <Menu.Button className='relative h-12 w-12 dark:bg-black bg-white p-1 rounded-full shadow-md dark:shadow-darkMode-bordergray hover:opacity-90'>
+          <Menu.Button className='relative h-12 w-12 rounded-full bg-white p-1 shadow-md hover:opacity-90 dark:bg-black dark:shadow-darkMode-bordergray'>
             <Image
               src={youtubeCreds?.pfp || '/pp.jpg'}
               className='rounded-full'
@@ -110,10 +118,7 @@ export default function ProfileDropdownMenu() {
             <div className='px-1 py-1'>
               <Menu.Item>
                 <button
-                  onClick={async () => {
-                    await logout()
-                    toast.success('Logged out succesfully.')
-                  }}
+                  onClick={logOut}
                   className='flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm hover:bg-light-violet5 dark:hover:bg-darkMode-violet5'>
                   <IoLogOut size={20} />
                   <p>Logout</p>
