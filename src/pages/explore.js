@@ -18,7 +18,7 @@ export default function explore({ creators }) {
                 key={i}
                 href={`/profile/${creator.username}`}
                 className='rounded-md bg-light-violet2 shadow-md hover:opacity-80 dark:bg-darkMode-violet2'>
-                <div className='aspect-w-1 aspect-h-1 sm:aspect-w-2 sm:aspect-h-3 w-full overflow-hidden rounded-lg'>
+                <div className='w-full overflow-hidden rounded-lg'>
                   <Image
                     src={creator.coverPhoto}
                     width={800}

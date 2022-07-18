@@ -32,7 +32,7 @@ export default function ModalWhaleContract() {
     <>
       {/* Button to open modal*/}
       <button
-        className='rounded bg-light-violet9 px-2 py-1 text-white hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:hover:bg-light-violet10 '
+        className='whitespace-nowrap rounded bg-light-violet9 px-2 py-1 text-white hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:hover:bg-light-violet10 '
         onClick={() => setOpen(true)}>
         Whale Strategy
       </button>
