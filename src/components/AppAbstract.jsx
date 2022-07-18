@@ -38,7 +38,7 @@ export function AppAbstract() {
     window.addEventListener('scroll', scrollHandler)
     return () => window.removeEventListener('scroll', scrollHandler)
   }, [top])
-  
+
   return (
     <main>
       <div className='pt-24 md:pt-20 lg:overflow-hidden'>
@@ -59,11 +59,12 @@ export function AppAbstract() {
                 </p>
 
                 <Link href='https://alkaline-ceres-b4f.notion.site/Light-Paper-8e94cdbc4d944705aed046465d4de9ea'>
-                  <a target='_blank' className='text-xl text-light-violet10 hover:text-light-violet11 dark:text-darkMode-violet10 dark:hover:text-darkMode-violet11'>
+                  <a
+                    target='_blank'
+                    className='text-xl text-light-violet10 hover:text-light-violet11 dark:text-darkMode-violet10 dark:hover:text-darkMode-violet11'>
                     Lite Paper&nbsp;&rarr;
                   </a>
                 </Link>
-
               </div>
             </div>
             <div className='mx-auto mt-12 lg:relative lg:m-0'>
@@ -77,7 +78,12 @@ export function AppAbstract() {
               </div>
             </div>
           </div>
-          <div className={`${!top ? 'invisible' : 'flex flex-col items-center animate-pulse transition ease-in-out duration-1000'}`}>
+          <div
+            className={`${
+              !top
+                ? 'invisible'
+                : 'flex animate-pulse flex-col items-center transition duration-1000 ease-in-out'
+            }`}>
             <p>Scroll down to see more</p>
             <TbArrowNarrowDown />
           </div>
@@ -97,7 +103,7 @@ export function AppAbstract() {
                 </p>
               </div>
             </div>
-            <section className='relative z-10 mx-auto -mt-32 max-w-7xl px-4 pb-20 sm:px-6 lg:px-8'>
+            <section className='relative z-0 mx-auto -mt-32 max-w-7xl px-4 pb-20 sm:px-6 lg:px-8'>
               <div className='grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8'>
                 {strategies.map((strategies) => (
                   <div
