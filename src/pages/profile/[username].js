@@ -49,7 +49,7 @@ function Profile() {
         </div>
         <div className='mx-auto h-full items-start rounded-b-lg bg-light-violet2 pt-4 shadow-sm  dark:bg-darkMode-violet2  md:flex md:justify-between'>
           <div className='flex flex-col items-center md:mx-10 md:flex-row'>
-            <div className='relative -inset-y-11'>
+            <div className='relative -inset-y-9'>
               <div className='relative h-24 w-24 rounded-full shadow-md'>
                 <Image
                   src={user.pfp || '/pp.jpg'}
@@ -68,7 +68,7 @@ function Profile() {
                 <button
                   onClick={copy2Clipboard}
                   title='Copy'
-                  className='mt-1 h-auto w-36 rounded-full bg-light-violet3 py-1 px-2 hover:bg-light-violet4 active:bg-light-violet5 dark:bg-darkMode-violet3 dark:hover:bg-darkMode-violet4 dark:hover:text-darkMode-gray dark:active:bg-darkMode-violet5 md:mt-3'>
+                  className='mt-1 h-auto w-36 rounded-full bg-light-violet3 py-1 px-2 hover:bg-light-violet4 active:bg-light-violet5 dark:bg-darkMode-violet3 dark:hover:bg-darkMode-violet4 dark:hover:text-darkMode-gray dark:active:bg-darkMode-violet5 md:mt-1'>
                   <div className='flex items-center justify-between'>
                     <div className='relative h-5 w-5'>
                       <Image src='/ethereum.svg' alt='MetaMask logo' layout='fill' />
