@@ -35,7 +35,7 @@ export default function ProfileDropdownMenu() {
 
   function isCreator() {
     const verifiedSocialPlatforms = user.get('verifiedSocialPlatforms')
-    if (verifiedSocialPlatforms.length > 0) return true
+    if (verifiedSocialPlatforms?.length > 0) return true
     return false
   }
 

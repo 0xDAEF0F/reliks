@@ -2,9 +2,9 @@
 import { slice, map } from 'lodash'
 import Moralis from 'moralis/node'
 
-const serverUrl = 'https://rsrqtfhqsfhm.usemoralis.com:2053/server'
-const appId = 'VoMFmmbGFfVC3GEOPQxOZvJctC6VYMDwyIu44ba0'
-const masterKey = '5wJ0FvcODyNuyKDK2NVgpaHBMc6pRhz1IGIRZL8v'
+const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL
+const appId = process.env.NEXT_PUBLIC_MORALIS_APP_ID
+const masterKey = process.env.MORALIS_MASTER_KEY
 
 Moralis.start({ serverUrl, appId, masterKey })
 
