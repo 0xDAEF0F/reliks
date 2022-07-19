@@ -37,7 +37,7 @@ function Profile() {
       <Header />
       <SignUpAsCreatorBanner />
       <div className='mx-auto max-w-6xl py-20 md:pt-0 '>
-        <div className='relative rounded-b-lg bg-light-violet2 shadow-sm dark:bg-darkMode-violet2'>
+        <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-bordergray dark:bg-darkMode-violet2'>
           <div className='block'>
             <Image
               src={user.coverPhoto || '/wp.png'}
