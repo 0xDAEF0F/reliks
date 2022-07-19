@@ -1,14 +1,7 @@
-import { useState } from 'react'
-import { Tab } from '@headlessui/react'
 import { FaDiscord } from 'react-icons/fa'
 import { MdWaterDrop } from 'react-icons/md'
 import { CgSandClock } from 'react-icons/cg'
-import { GiClothes } from 'react-icons/gi'
 import { FaPlus } from 'react-icons/fa'
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 
 const features = [
   {
@@ -28,16 +21,8 @@ const features = [
     icon: CgSandClock,
   },
 ]
-// const checklist = [
-//   'Unlimited projects',
-//   'No per user fees',
-//   'Unlimited storage',
-//   '24/7 support',
-//   'Cancel any time',
-//   '14 days free',
-// ]
 
-function Strategies() {
+export function JoinLair() {
   return (
     <div>
       <div className='mx-10 '>
@@ -107,18 +92,6 @@ function Strategies() {
                     </span>
                   </p>
                 </div>
-                {/* <ul
-                role='list'
-                className='grid gap-px overflow-hidden rounded sm:grid-cols-2'>
-                {checklist.map((item) => (
-                  <li
-                    key={item}
-                    className='bg-cyan-700 flex items-center bg-opacity-50 py-4 px-4 text-base text-white'>
-                    <CheckIcon className='text-cyan-200 h-6 w-6' aria-hidden='true' />
-                    <span className='ml-3'>{item}</span>
-                  </li>
-                ))}
-              </ul> */}
                 <a
                   href='#'
                   className='flex w-full  items-center justify-center rounded-md bg-mauve py-2 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:py-4 md:px-10'>
@@ -129,55 +102,6 @@ function Strategies() {
           </div>
         </div>
       </div>
-    </div>
-  )
-}
-
-function OwnedNft() {
-  return <div>2</div>
-}
-
-function Activity() {
-  return <div>3</div>
-}
-
-export default function Tabs() {
-  let [categories] = useState({
-    Strategies: Strategies(),
-    "Nft's": OwnedNft(),
-    Activity: Activity(),
-  })
-
-  return (
-    <div>
-      <Tab.Group>
-        <div className=''>
-          <Tab.List className='bg-gray-200 flex w-full space-x-1 rounded-xl p-1 '>
-            {Object.keys(categories).map((category) => (
-              <Tab
-                key={category}
-                className={({ selected }) =>
-                  classNames(
-                    'w-full py-2.5 text-sm font-medium leading-5',
-                    'focus:outline-none ',
-                    selected
-                      ? 'border-b-4 border-darkMode-violet6'
-                      : 'hover:bg-light-violet2 hover:brightness-90 dark:hover:bg-darkMode-violet2 dark:hover:brightness-75'
-                  )
-                }>
-                {category}
-              </Tab>
-            ))}
-          </Tab.List>
-        </div>
-        <Tab.Panels>
-          {Object.values(categories).map((category, idx) => (
-            <Tab.Panel className='mt-10 focus:outline-none' key={idx}>
-              {category}
-            </Tab.Panel>
-          ))}
-        </Tab.Panels>
-      </Tab.Group>
     </div>
   )
 }

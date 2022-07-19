@@ -4,8 +4,7 @@ import Header from '../../components/Header'
 import SignUpAsCreatorBanner from '../../components/SignUpAsCreatorBanner'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import ModalWhaleContract from '../../components/ModalWhaleContract'
-import Tabs from '../../components/Tabs'
+import { JoinLair } from '../../components/JoinLair'
 import toast from 'react-hot-toast'
 import { TiSocialYoutubeCircular } from 'react-icons/ti'
 import Link from 'next/link'
@@ -14,7 +13,7 @@ function Profile() {
   const router = useRouter()
   const [user, setUser] = useState({})
 
-  // monitor for username slug
+  // TODO: Change to getStaticProps or getServerSideProps
   useEffect(() => {
     if (!router.query?.username) return
     Axios.post('/api/getCreatorInformation', {
@@ -50,7 +49,7 @@ function Profile() {
               alt='banner'
             />
           </div>
-          <div className='mx-auto mb-2 h-full items-start border-b border-dotted border-light-violet6 pt-4 dark:border-darkMode-violet6 md:flex md:justify-between'>
+          <div className='mx-auto mb-12 h-full items-start border-b border-dotted border-light-violet6 pt-4 dark:border-darkMode-violet6 md:flex md:justify-between'>
             <div className='flex flex-col items-center md:mx-10 md:flex-row'>
               <div className='relative -inset-y-9'>
                 <div className='relative h-24 w-24 rounded-full shadow-md'>
@@ -92,7 +91,6 @@ function Profile() {
               </div>
             </div>
             <div className='mr-2 mb-2 -mt-14 flex justify-end md:mt-0 md:mr-10'>
-              {/* <Link href={USER.youtubeCredentials.channelId}> */}
               <Link href='#'>
                 <a>
                   <TiSocialYoutubeCircular
@@ -101,10 +99,9 @@ function Profile() {
                   />
                 </a>
               </Link>
-              {/* <ModalWhaleContract /> */}
             </div>
           </div>
-          <Tabs />
+          <JoinLair />
           <br />
         </div>
       </div>
