@@ -9,6 +9,8 @@ import { TiSocialYoutubeCircular } from 'react-icons/ti'
 import Link from 'next/link'
 import { CreateLair } from '../../components/CreateLair'
 // import { JoinLair } from '../../components/JoinLair'
+import NoStrategies from '../../components/NoStrategies'
+import { JoinLair } from '../../components/JoinLair'
 
 function Profile() {
   const router = useRouter()
@@ -103,8 +105,9 @@ function Profile() {
               </Link>
             </div>
           </div>
-          <CreateLair />
+          <NoStrategies />
           {/* <JoinLair /> */}
+          {/* <CreateLair /> */}
           <br />
         </div>
       </div>

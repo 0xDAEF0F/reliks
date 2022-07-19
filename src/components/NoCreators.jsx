@@ -20,10 +20,8 @@ export function NoCreators() {
       <h3 className='mt-2 text-sm font-medium text-light-violet11 dark:text-darkMode-violet11'>
         There are currently no registered creators
       </h3>
-      <p className='text-gray-500 mt-1 text-sm'>
-        Get started by signing up as a creator,
-      </p>
-      <p className='text-gray-500 mt-1 text-sm'>or help us expand.</p>
+      <p className=' mt-1 text-sm'>Get started by signing up as a creator,</p>
+      <p className='mt-1 text-sm'>or help us expand.</p>
       <div className='mt-3 flex justify-center'>
         <CreatorSignUpModal />
       </div>

@@ -62,7 +62,7 @@ export function CreateLair() {
       <div className='mx-10 '>
         <div className='relative'>
           <div className='absolute inset-0' aria-hidden='true'>
-            <div className='inset-y-0 right-0 w-1/2 bg-light-violet9 from-light-violet8 to-light-violet9 dark:bg-gradient-to-r dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
+            <div className='inset-y-0 right-0 w-1/2 bg-light-violet9 bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
           </div>
           <div className='relative mx-auto max-w-7xl lg:grid lg:grid-cols-2 lg:px-8'>
             <div className='px-4 sm:px-6 lg:px-0 lg:pr-8'>
@@ -100,20 +100,21 @@ export function CreateLair() {
                 <div className='sm:flex sm:items-start'>
                   <div className='mx-auto mt-3 text-left sm:mt-0'>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                      <h2 className='text-3xl leading-6 text-light-violet1 dark:text-darkMode-violet12'>
+                      <h2 className='text-3xl font-semibold leading-6 text-light-violet12 dark:text-darkMode-violet12'>
                         Whale Strategy
                       </h2>
-                      <div className='mx-auto mt-5 flex flex-col gap-4'>
+                      <div className='mx-auto mt-5 flex flex-col gap-5'>
                         {/* number of whales */}
-                        <div className='text-base text-light-violet1 opacity-80 dark:text-darkMode-gray'>
-                          Maximum amount of whales permitted in the lair in any given
-                          moment:
-                        </div>
+
                         <div>
-                          <div className=''>
+                          <div>
+                            <div className='text-base text-light-violet1 dark:text-darkMode-gray dark:opacity-80'>
+                              Maximum amount of whales permitted in the lair in any given
+                              moment:
+                            </div>
                             <label
                               htmlFor='whales'
-                              className='block text-sm font-bold text-white dark:text-darkMode-gray'>
+                              className='block text-sm font-bold text-light-violet12 dark:text-darkMode-violet12'>
                               Noº whales
                             </label>
                           </div>
@@ -129,13 +130,14 @@ export function CreateLair() {
                           </div>
                         </div>
                         {/* price */}
-                        <div className='text-base text-light-violet1 opacity-80 dark:text-darkMode-gray dark:opacity-75'>
-                          Initial cost of entry to the lair (before lair is full):
-                        </div>
+
                         <div>
+                          <div className='text-base text-light-violet1 dark:text-darkMode-gray dark:opacity-80'>
+                            Initial cost of entry to the lair (before lair is full):
+                          </div>
                           <label
                             htmlFor='price'
-                            className='block text-sm font-bold text-white dark:text-darkMode-gray'>
+                            className='block text-sm font-bold text-light-violet12 dark:text-darkMode-violet12'>
                             Price
                           </label>
                           <div className='relative mt-1 rounded-md shadow-sm'>
