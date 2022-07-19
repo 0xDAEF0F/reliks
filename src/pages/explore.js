@@ -8,7 +8,7 @@ export default function explore({ creators }) {
     <>
       <Header />
       <div className='mx-auto max-w-3xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 '>
-        <h2 id='products-heading' className='my-5 text-4xl font-semibold'>
+        <h2 id='products-heading' className='my-12 text-4xl font-semibold'>
           Explore Creators
         </h2>
         {creators.length > 0 ? (
