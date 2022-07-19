@@ -8,6 +8,7 @@ import MobileMenu from './MobileMenu'
 import toast from 'react-hot-toast'
 import to from 'await-to-js'
 import { AiOutlineSearch } from 'react-icons/ai'
+
 function Header() {
   const [top, setTop] = useState(true)
   const { theme, setTheme } = useTheme()
@@ -44,7 +45,7 @@ function Header() {
         <div className='flex h-16 items-center justify-between md:h-20'>
           {/* App name & logo */}
           <Link href='/' className='flex items-center'>
-            <a className='flex-shrink-0'>Logo</a>
+            <a className='flex-shrink-0'>Reliqs</a>
           </Link>
           <div className='mx-5 w-full md:mx-10'>
             <label htmlFor='search' className='sr-only'>
@@ -109,7 +110,7 @@ function Header() {
                       <li>
                         <button
                           onClick={() => login()}
-                          className='whitespace-nowrap rounded-3xl bg-light-violet9 px-5 py-2 text-light-violet1 hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:text-mauve dark:hover:bg-darkMode-violet10'>
+                          className='whitespace-nowrap rounded-3xl bg-light-violet9 px-5 py-2 text-light-violet1 hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:hover:bg-darkMode-violet10'>
                           Connect
                         </button>
                       </li>
