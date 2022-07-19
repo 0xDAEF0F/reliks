@@ -30,6 +30,7 @@ function Profile() {
   }
 
   const userAddress = user.ethAddress
+  const youtubeLink = user.youtubeCredentials?.channelId
   const options = { year: 'numeric', month: 'long' }
 
   return (
@@ -37,7 +38,7 @@ function Profile() {
       <Header />
       <SignUpAsCreatorBanner />
       <div className='mx-auto max-w-6xl py-20 md:pt-0 '>
-        <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-bordergray dark:bg-darkMode-violet2'>
+        <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-violet6 dark:bg-darkMode-violet2'>
           <div className='block'>
             <Image
               src={user.coverPhoto || '/wp.png'}
@@ -92,7 +93,7 @@ function Profile() {
               </div>
             </div>
             <div className='mr-2 mb-2 -mt-14 flex justify-end md:mt-0 md:mr-10'>
-              <Link href='#'>
+              <Link href={youtubeLink || '#'}>
                 <a>
                   <TiSocialYoutubeCircular
                     size={50}
