@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 import { createWhaleFactory } from '../util/deployWhale'
 import toast from 'react-hot-toast'
+import Moralis from 'moralis'
+import { useMoralis } from 'react-moralis'
 
 const features = [
   {
@@ -27,24 +29,34 @@ const features = [
 
 export function CreateLair() {
   const { handleSubmit, register } = useForm()
+  const { user, enableWeb3, isWeb3Enabled } = useMoralis()
 
-  const deployWhale = async ({ whaleCount, price }) => {
+  const deployWhale = async ({ whales, price }) => {
     try {
-      const WhaleFactory = await createWhaleFactory()
+      let signer
+      if (!isWeb3Enabled) {
+        const provider = await enableWeb3()
+        signer = provider.getSigner()
+      }
+      // need to pass signer to Factory with dynamic chainId's
+      const WhaleFactory = createWhaleFactory(signer)
       const contract = await WhaleFactory.deploy(
-        process.env.APP_ADDRESS,
-        whaleCount,
-        price
+        process.env.NEXT_PUBLIC_APP_ADDRESS,
+        whales,
+        Moralis.web3Library.utils.parseEther(String(price))
       )
       toast.success('contract address: ', contract.address)
       await contract.deployed()
       toast.success('contract deployed succesfully.')
+      user.add('whaleStrategy', contract.address)
+      await user.save()
     } catch (err) {
       toast.error('could not deploy contract')
     }
   }
 
   const onSubmit = (data) => deployWhale(data)
+
   return (
     <div>
       <div className='mx-10 '>
@@ -94,8 +106,8 @@ export function CreateLair() {
                       <div className='mx-auto mt-5 flex flex-col gap-4'>
                         {/* number of whales */}
                         <div className='text-base text-light-violet1 opacity-80 dark:text-darkMode-gray'>
-                          Laboris ea labore incididunt amet ea voluptate non veniam veniam
-                          quis occaecat.
+                          Maximum amount of whales permitted in the lair in any given
+                          moment:
                         </div>
                         <div>
                           <div className=''>
@@ -112,14 +124,13 @@ export function CreateLair() {
                               name='whales'
                               id='whales'
                               className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
-                              placeholder='20'
+                              placeholder='15'
                             />
                           </div>
                         </div>
                         {/* price */}
                         <div className='text-base text-light-violet1 opacity-80 dark:text-darkMode-gray dark:opacity-75'>
-                          Laboris ea labore incididunt amet ea voluptate non veniam veniam
-                          quis occaecat.
+                          Initial cost of entry to the lair (before lair is full):
                         </div>
                         <div>
                           <label
@@ -144,7 +155,7 @@ export function CreateLair() {
                               name='price'
                               id='price'
                               className='w-full rounded-md border-light-bordergray bg-white pl-8 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
-                              placeholder='0.0'
+                              placeholder='0'
                             />
                             <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
                               <span className=' sm:text-sm' id='price-currency'>

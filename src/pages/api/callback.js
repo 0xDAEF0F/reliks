@@ -2,9 +2,9 @@ import { oauth2Client } from './loginyt'
 import Moralis from 'moralis/node'
 import { fetchUserChannel, fetchUserInfo } from '../../util/google'
 
-const serverUrl = 'https://rsrqtfhqsfhm.usemoralis.com:2053/server'
-const appId = 'VoMFmmbGFfVC3GEOPQxOZvJctC6VYMDwyIu44ba0'
-const masterKey = '5wJ0FvcODyNuyKDK2NVgpaHBMc6pRhz1IGIRZL8v'
+const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL
+const appId = process.env.NEXT_PUBLIC_MORALIS_APP_ID
+const masterKey = process.env.MORALIS_MASTER_KEY
 
 Moralis.start({ serverUrl, appId, masterKey })
 
@@ -49,6 +49,7 @@ export default async function handler(req, res) {
 
     res.redirect('http://localhost:3000?creatorFlow=success')
   } catch (err) {
+    console.log(err.message)
     if (err.message === 'User has no channel.')
       return res.redirect('http://localhost:3000?creatorFlow=nochannel')
     res.redirect('http://localhost:3000?creatorFlow=fail')

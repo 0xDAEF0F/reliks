@@ -4,11 +4,11 @@ import Header from '../../components/Header'
 import SignUpAsCreatorBanner from '../../components/SignUpAsCreatorBanner'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { JoinLair } from '../../components/JoinLair'
 import toast from 'react-hot-toast'
 import { TiSocialYoutubeCircular } from 'react-icons/ti'
 import Link from 'next/link'
 import { CreateLair } from '../../components/CreateLair'
+// import { JoinLair } from '../../components/JoinLair'
 
 function Profile() {
   const router = useRouter()
@@ -104,6 +104,7 @@ function Profile() {
             </div>
           </div>
           <CreateLair />
+          {/* <JoinLair /> */}
           <br />
         </div>
       </div>

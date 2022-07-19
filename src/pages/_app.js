@@ -6,8 +6,8 @@ import { Toaster } from 'react-hot-toast'
 function MyApp({ Component, pageProps }) {
   return (
     <MoralisProvider
-      serverUrl='https://rsrqtfhqsfhm.usemoralis.com:2053/server'
-      appId='VoMFmmbGFfVC3GEOPQxOZvJctC6VYMDwyIu44ba0'>
+      serverUrl={process.env.NEXT_PUBLIC_SERVER_URL}
+      appId={process.env.NEXT_PUBLIC_MORALIS_APP_ID}>
       <ThemeProvider forcedTheme={Component.theme || undefined} attribute='class'>
         <Toaster />
         <Component {...pageProps} />
