@@ -91,7 +91,7 @@ function Strategies() {
                   <p className='relative grid grid-cols-2'>
                     <span className='flex flex-col text-center'>
                       <span className='text-5xl font-extrabold tracking-tight text-white'>
-                        $99
+                        1 ETH
                       </span>
                       <span className='text-cyan-100 mt-2 text-base font-medium'>
                         Per month
@@ -106,7 +106,7 @@ function Strategies() {
                     <span>
                       <span className='flex flex-col text-center'>
                         <span className='text-5xl font-extrabold tracking-tight text-white'>
-                          $4
+                          0.1 ETH
                         </span>
                         <span className='text-cyan-100 mt-2 text-base font-medium'>
                           Marketplace fee
