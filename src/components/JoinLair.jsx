@@ -1,7 +1,6 @@
 import { FaDiscord } from 'react-icons/fa'
 import { MdWaterDrop } from 'react-icons/md'
 import { CgSandClock } from 'react-icons/cg'
-import { FaPlus } from 'react-icons/fa'
 
 const features = [
   {
@@ -71,22 +70,20 @@ export function JoinLair() {
                         1 ETH
                       </span>
                       <span className='text-cyan-100 mt-2 text-base font-medium'>
-                        Per month
+                        Creator Fee
                       </span>
-                      <span className='sr-only'>plus</span>
+                      <br />
                     </span>
-                    <span
-                      className='pointer-events-none absolute flex h-12 w-full items-center justify-center'
-                      aria-hidden='true'>
-                      <FaPlus className='h-6 w-6 text-white' aria-hidden='true' />
+                    <span className='absolute flex h-12 w-full items-center justify-center text-5xl text-white'>
+                      ≈
                     </span>
                     <span>
                       <span className='flex flex-col text-center'>
                         <span className='text-xl font-extrabold tracking-tight text-white md:text-5xl'>
-                          0.1 ETH
+                          1500
                         </span>
                         <span className='text-cyan-100 mt-2 text-base font-medium'>
-                          Marketplace fee
+                          USD
                         </span>
                       </span>
                     </span>
@@ -95,7 +92,7 @@ export function JoinLair() {
                 <a
                   href='#'
                   className='flex w-full  items-center justify-center rounded-md bg-mauve py-2 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:py-4 md:px-10'>
-                  Mint contract
+                  Join Lair
                 </a>
               </div>
             </div>
