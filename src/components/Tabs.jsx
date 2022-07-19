@@ -90,7 +90,7 @@ function Strategies() {
                   <h2 className='sr-only'>Price</h2>
                   <p className='relative grid grid-cols-2'>
                     <span className='flex flex-col text-center'>
-                      <span className='text-5xl font-extrabold tracking-tight text-white'>
+                      <span className='text-xl font-extrabold  tracking-tight text-white md:text-5xl'>
                         1 ETH
                       </span>
                       <span className='text-cyan-100 mt-2 text-base font-medium'>
@@ -105,7 +105,7 @@ function Strategies() {
                     </span>
                     <span>
                       <span className='flex flex-col text-center'>
-                        <span className='text-5xl font-extrabold tracking-tight text-white'>
+                        <span className='text-xl font-extrabold tracking-tight text-white md:text-5xl'>
                           0.1 ETH
                         </span>
                         <span className='text-cyan-100 mt-2 text-base font-medium'>
@@ -129,7 +129,7 @@ function Strategies() {
               </ul> */}
                 <a
                   href='#'
-                  className='flex w-full  items-center justify-center rounded-md bg-mauve py-4 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:px-10'>
+                  className='flex w-full  items-center justify-center rounded-md bg-mauve py-2 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:py-4 md:px-10'>
                   Mint contract
                 </a>
               </div>

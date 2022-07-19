@@ -94,10 +94,10 @@ export function AppAbstract() {
                 <div className='inset-0mix-blend-multiply absolute' aria-hidden='true' />
               </div>
               <div className='relative mx-auto max-w-7xl py-12 px-4 sm:py-20 sm:px-6 lg:px-8'>
-                <h1 className='text-3xl font-extrabold tracking-tight text-light-violet12 dark:text-white md:text-4xl lg:text-5xl'>
+                <h1 className='text-3xl font-extrabold tracking-tight text-light-violet1 dark:text-white md:text-4xl lg:text-5xl'>
                   Strategies
                 </h1>
-                <p className='mt-6 max-w-3xl text-xl text-light-gray opacity-80 dark:text-darkMode-gray'>
+                <p className='mt-6 max-w-3xl text-xl text-light-gray dark:text-darkMode-gray dark:opacity-80'>
                   Join your favorite content creator in a strategy for limited-time drops,
                   rewards, achievements, and many more benefits.
                 </p>

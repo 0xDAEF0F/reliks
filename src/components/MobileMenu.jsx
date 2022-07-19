@@ -33,6 +33,7 @@ export default function MobileMenu() {
     )
     if (usr) toast.success('Succesfully Signed In.')
     if (!usr) toast.error(`Could not sign in. Please try again.`)
+    setIsNavOpen(false)
   }
 
   return (
@@ -71,12 +72,12 @@ export default function MobileMenu() {
               <li>
                 <LinkChevron title={'Explore'} to={'/explore'} xClass='w-full' />
               </li>
-              <li>
+              {/* <li>
                 <LinkChevron title={'Stats'} to={'/stats'} xClass='w-full' />
               </li>
               <li>
                 <LinkChevron title={'About us'} to={'/about'} xClass='w-full' />
-              </li>
+              </li> */}
               <li>
                 <a
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -110,7 +111,11 @@ export default function MobileMenu() {
               </li>
               <li>
                 {isCreator() ? (
-                  <LinkChevron title={'Profile'} to={'/profile'} xClass='w-full' />
+                  <LinkChevron
+                    title={'Profile'}
+                    to={`/profile/${user.getUsername()}`}
+                    xClass='w-full'
+                  />
                 ) : null}
               </li>
               <li>
@@ -129,7 +134,6 @@ export default function MobileMenu() {
                     className='ml-1 flex w-full cursor-pointer items-center rounded-md py-3 pl-1 text-base font-semibold text-black opacity-60 hover:bg-light-violet5 hover:opacity-100 dark:text-white dark:hover:bg-darkMode-violet5'
                     onClick={() => {
                       login()
-                      setIsNavOpen(false)
                     }}>
                     Connect wallet
                   </button>

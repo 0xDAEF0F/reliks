@@ -88,12 +88,10 @@ function Profile() {
                       new Date(user.createdAt).toLocaleDateString(undefined, options)}
                   </p>
                 </div>
-                <p className='mx-auto mt-4 w-2/4 whitespace-nowrap pb-5 md:ml-2'>
-                  {user.bio}
-                </p>
+                <p className='mx-auto mt-4 w-2/4 pb-5 md:ml-2'>{user.bio}</p>
               </div>
             </div>
-            <div className='mr-2 mb-2 flex justify-end md:mr-10'>
+            <div className='mr-2 mb-2 -mt-14 flex justify-end md:mt-0 md:mr-10'>
               {/* <Link href={USER.youtubeCredentials.channelId}> */}
               <Link href='#'>
                 <a>
