@@ -8,6 +8,7 @@ import { JoinLair } from '../../components/JoinLair'
 import toast from 'react-hot-toast'
 import { TiSocialYoutubeCircular } from 'react-icons/ti'
 import Link from 'next/link'
+import { CreateLair } from '../../components/CreateLair'
 
 function Profile() {
   const router = useRouter()
@@ -35,7 +36,7 @@ function Profile() {
     <>
       <Header />
       <SignUpAsCreatorBanner />
-      <div className='mx-auto max-w-6xl pt-20 md:pt-0 '>
+      <div className='mx-auto max-w-6xl py-20 md:pt-0 '>
         <div className='relative rounded-b-lg bg-light-violet2 shadow-sm dark:bg-darkMode-violet2'>
           <div className='block'>
             <Image
@@ -101,7 +102,7 @@ function Profile() {
               </Link>
             </div>
           </div>
-          <JoinLair />
+          <CreateLair />
           <br />
         </div>
       </div>
