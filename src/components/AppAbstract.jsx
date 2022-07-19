@@ -90,14 +90,14 @@ export function AppAbstract() {
           <div className='mt-28'>
             <div className='relative pb-32'>
               <div className='absolute inset-0'>
-                <div className='h-full w-full rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 object-cover dark:from-darkMode-violet8  dark:to-darkMode-violet9' />
+                <div className='h-full w-full rounded-lg bg-light-violet9 object-cover dark:bg-gradient-to-r dark:from-darkMode-violet8  dark:to-darkMode-violet9' />
                 <div className='inset-0mix-blend-multiply absolute' aria-hidden='true' />
               </div>
               <div className='relative mx-auto max-w-7xl py-12 px-4 sm:py-20 sm:px-6 lg:px-8'>
-                <h1 className='text-3xl font-extrabold tracking-tight text-light-violet1 dark:text-white md:text-4xl lg:text-5xl'>
+                <h1 className='text-3xl font-extrabold tracking-tight text-light-violet1 dark:text-darkMode-violet12 md:text-4xl lg:text-5xl'>
                   Strategies
                 </h1>
-                <p className='mt-6 max-w-3xl text-xl text-light-gray dark:text-darkMode-gray dark:opacity-80'>
+                <p className='mt-6 max-w-3xl text-xl text-light-violet1 opacity-80 dark:text-darkMode-gray dark:opacity-80'>
                   Join your favorite content creator in a strategy for limited-time drops,
                   rewards, achievements, and many more benefits.
                 </p>
@@ -110,9 +110,9 @@ export function AppAbstract() {
                     key={strategies.name}
                     className='flex flex-col rounded-2xl bg-light-violet2 shadow-xl dark:bg-mauve'>
                     <div className='relative flex-1 px-6 pt-16 pb-8 md:px-8'>
-                      <div className='absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-light-violet7 p-5 shadow-lg dark:bg-darkMode-violet7'>
+                      <div className='absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-light-violet7 p-3 shadow-lg dark:bg-darkMode-violet7'>
                         <strategies.icon
-                          className='h-6 w-6 text-light-violet12 dark:text-darkMode-violet12'
+                          className='h-10 w-10 text-light-violet12 dark:text-darkMode-violet12'
                           aria-hidden='true'
                         />
                       </div>
@@ -122,7 +122,7 @@ export function AppAbstract() {
                       <p className='text-gray-500 mt-4 text-base'>
                         {strategies.description}
                       </p>
-                      <p className='mt-2 text-right text-sm text-light-violet8 dark:text-darkMode-violet8'>
+                      <p className='mt-2 text-right text-sm text-light-violet8 dark:text-darkMode-violet11'>
                         {strategies.comingSoon ? 'Coming soon...' : ''}
                       </p>
                     </div>
