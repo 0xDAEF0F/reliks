@@ -5,6 +5,8 @@ import { useTheme } from 'next-themes'
 import { useMoralis } from 'react-moralis'
 import toast from 'react-hot-toast'
 import to from 'await-to-js'
+import { MdLogout } from 'react-icons/md'
+import { HiOutlineMoon } from 'react-icons/hi'
 
 export default function MobileMenu() {
   const [isNavOpen, setIsNavOpen] = useState(false)
@@ -82,7 +84,10 @@ export default function MobileMenu() {
                 <a
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
                   className='flex w-full cursor-pointer items-center justify-between rounded-md px-1 py-2 text-base font-medium text-black opacity-60 hover:bg-light-violet5 hover:opacity-100 dark:text-white dark:hover:bg-darkMode-violet5'>
-                  <p>Night Mode</p>
+                  <span className='flex items-center gap-2'>
+                    <HiOutlineMoon size={26} />
+                    <span>Night Mode</span>
+                  </span>
                   <Switch
                     checked={theme === 'dark'}
                     onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -127,7 +132,8 @@ export default function MobileMenu() {
                       toast.success('Logged out succesfully.')
                       setIsNavOpen(false)
                     }}>
-                    Logout
+                    <MdLogout size={26} />
+                    <span className='ml-1'>Logout</span>
                   </button>
                 ) : (
                   <button

@@ -72,7 +72,7 @@ function Header() {
                 <button
                   className='font-semibold text-black opacity-70 transition duration-100 hover:opacity-100 dark:text-white'
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-                  <HiOutlineSun className='dark:fill-white' size={20} />
+                  <HiOutlineMoon className='dark:fill-white' size={20} />
                 </button>
               ) : null}
             </ul>
