@@ -41,7 +41,7 @@ export default function MobileMenu() {
   return (
     <>
       <nav>
-        <section className='flex md:hidden'>
+        <section className='flex'>
           <button onClick={() => setIsNavOpen((prev) => !prev)}>
             {!isNavOpen ? (
               <div className='space-y-2'>

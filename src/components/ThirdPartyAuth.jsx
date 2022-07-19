@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import toast from 'react-hot-toast'
+import { ImYoutube2 } from 'react-icons/im'
 
 export default function SocialAppAuth({ connectYoutube }) {
   const notSupportedToast = () =>
@@ -10,8 +11,8 @@ export default function SocialAppAuth({ connectYoutube }) {
       <div>
         <button
           onClick={connectYoutube}
-          className='bg-red-100 mt-5 flex w-full items-center justify-center rounded-lg py-2 shadow-md hover:opacity-70 focus:border-light-violet7 focus:outline-none focus:ring-2 focus:ring-light-violet7 focus:ring-offset-2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7'>
-          <Image width={16} height={16} src='/googleLogo.png' alt='metamask' />
+          className='mt-5 flex w-full items-center justify-center rounded-lg bg-error py-2 shadow-md hover:opacity-70 focus:border-light-violet7 focus:outline-none focus:ring-2 focus:ring-light-violet7 focus:ring-offset-2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7'>
+          <ImYoutube2 className='h-6 w-6 text-darkMode-violet1 dark:text-white' />
           <p className='pl-2 text-sm font-semibold'>Continue with Youtube</p>
         </button>
         <button
