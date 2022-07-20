@@ -3,13 +3,14 @@ import Image from 'next/image'
 import { getLastCreators } from '../util/getLastCreators'
 import { NoCreators } from '../components/NoCreators'
 import SignUpAsCreatorBanner from '../components/SignUpAsCreatorBanner'
+import Footer from '../components/Footer'
 
 export default function explore({ creators }) {
   return (
     <>
       <Header />
-      <SignUpAsCreatorBanner />
-      <div className='mx-auto max-w-3xl px-4 pb-16 sm:py-0 sm:px-6 lg:max-w-7xl lg:px-8 '>
+      <SignUpAsCreatorBanner xclass='hidden' />
+      <div className='mx-auto max-w-3xl px-4 pt-28 pb-16 sm:px-6  md:pt-24  lg:max-w-7xl lg:px-8 '>
         <h2 id='products-heading' className='mb-12 text-4xl font-semibold'>
           Explore Creators
         </h2>

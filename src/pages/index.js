@@ -5,6 +5,7 @@ import { AppAbstract } from '../components/AppAbstract'
 import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
 import { useMoralis } from 'react-moralis'
+import Footer from '../components/Footer'
 
 export default function Home() {
   const { query } = useRouter()
@@ -28,8 +29,9 @@ export default function Home() {
   return (
     <>
       <Header />
-      <SignUpAsCreatorBanner />
+      <SignUpAsCreatorBanner xclass='invisible hidden md:block' />
       <AppAbstract />
+      <Footer />
     </>
   )
 }

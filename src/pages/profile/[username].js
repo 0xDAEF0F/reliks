@@ -82,10 +82,10 @@ export default function Profile({ creator }) {
   return (
     <>
       <Header />
-      <SignUpAsCreatorBanner />
-      <div className='mx-auto max-w-6xl py-20 md:pt-0 '>
+      <SignUpAsCreatorBanner xclass='hidden' />
+      <div className='mx-auto max-w-6xl py-20'>
         <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-violet6 dark:bg-darkMode-violet2'>
-          <div className='block'>
+          <div className='block rounded-lg md:rounded-md md:px-8 md:pt-4'>
             {creator?.coverPhoto ? (
               <Image
                 src={creator?.coverPhoto}
@@ -93,7 +93,7 @@ export default function Profile({ creator }) {
                 height={220}
                 quality={100}
                 priority
-                className='object-cover object-center md:rounded-t-lg'
+                className='rounded-md object-cover object-center'
                 layout='responsive'
                 alt='banner'
               />
@@ -119,7 +119,7 @@ export default function Profile({ creator }) {
                   )}
                 </div>
               </div>
-              <div className='ml-0 -mt-9 text-center md:-mt-0 md:ml-3 md:text-left'>
+              <div className='ml-0 -mt-9 text-center md:-mt-1 md:ml-3 md:text-left'>
                 <div className='ml-1 text-3xl font-semibold text-light-violet12 dark:text-darkMode-violet12'>
                   {creator?.channelTitle ? creator?.channelTitle : <SkeletonText />}
                 </div>

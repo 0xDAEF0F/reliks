@@ -41,7 +41,7 @@ export function AppAbstract() {
 
   return (
     <main>
-      <div className='pt-24 md:pt-20 lg:overflow-hidden'>
+      <div className='mb-10 pt-24 lg:overflow-hidden'>
         <div className='mx-auto max-w-7xl lg:px-8'>
           <div className='lg:grid lg:grid-cols-2 lg:gap-8'>
             <div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left'>
@@ -108,7 +108,7 @@ export function AppAbstract() {
                 {strategies.map((strategies) => (
                   <div
                     key={strategies.name}
-                    className='flex flex-col rounded-2xl bg-light-violet2 shadow-xl dark:bg-mauve'>
+                    className='flex flex-col rounded-2xl bg-light-violet2 shadow-xl dark:bg-darkMode-violet2'>
                     <div className='relative flex-1 px-6 pt-16 pb-8 md:px-8'>
                       <div className='absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-light-violet7 p-3 shadow-lg dark:bg-darkMode-violet7'>
                         <strategies.icon

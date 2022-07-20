@@ -3,7 +3,7 @@ import { HiOutlineSpeakerphone, HiX } from 'react-icons/hi'
 import CreatorSignUpModal from './CreatorSignUpModal'
 import { useMoralis } from 'react-moralis'
 
-export default function SignUpAsCreatorBanner() {
+export default function SignUpAsCreatorBanner({ xclass }) {
   const { user } = useMoralis()
 
   function isCreator() {
@@ -16,7 +16,7 @@ export default function SignUpAsCreatorBanner() {
   return (
     <div
       className={`relative z-10 pt-16 md:pt-20 ${
-        !open || isCreator() ? 'hidden md:invisible md:block' : ''
+        !open || isCreator() ? `${xclass}` : ''
       }`}>
       <div className='fixed w-full bg-light-violet9  dark:bg-light-violet9'>
         <div className='mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8'>
