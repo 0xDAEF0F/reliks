@@ -1,6 +1,9 @@
+import Axios from 'axios'
 import { FaDiscord } from 'react-icons/fa'
 import { MdWaterDrop } from 'react-icons/md'
 import { CgSandClock } from 'react-icons/cg'
+import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 
 const features = [
   {
@@ -21,7 +24,30 @@ const features = [
   },
 ]
 
+async function getEthPrice() {
+  const response = await Axios.get(
+    'https://deep-index.moralis.io/api/v2/erc20/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/price?chain=eth',
+    {
+      headers: {
+        accept: 'application/json',
+        'X-API-Key': process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+      },
+    }
+  )
+  return Number(response.data.usdPrice)
+}
+
 export function JoinLair() {
+  const [ethPrice, setEthPrice] = useState(0)
+  const [lairEntryPrice, setLairEntryPrice] = useState(0)
+
+  useEffect(() => {
+    // ETH/USD RATE
+    getEthPrice()
+      .then((price) => setEthPrice(price))
+      .catch(() => toast.error('Could not update ETH price.'))
+  }, [])
+
   return (
     <div>
       <div className='mx-10 '>
@@ -67,7 +93,7 @@ export function JoinLair() {
                   <p className='relative grid grid-cols-2'>
                     <span className='flex flex-col text-center'>
                       <span className='text-xl font-extrabold  tracking-tight text-white md:text-5xl'>
-                        1 ETH
+                        {lairEntryPrice} ETH
                       </span>
                       <span className='text-cyan-100 mt-2 text-base font-medium'>
                         Creator Fee
@@ -80,7 +106,7 @@ export function JoinLair() {
                     <span>
                       <span className='flex flex-col text-center'>
                         <span className='text-xl font-extrabold tracking-tight text-white md:text-5xl'>
-                          1500
+                          ${ethPrice.toLocaleString('us', { maximumFractionDigits: 0 })}
                         </span>
                         <span className='text-cyan-100 mt-2 text-base font-medium'>
                           USD

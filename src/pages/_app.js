@@ -3,11 +3,12 @@ import '../styles/globals.css'
 import { MoralisProvider } from 'react-moralis'
 import { Toaster } from 'react-hot-toast'
 
+const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL
+const appId = process.env.NEXT_PUBLIC_MORALIS_APP_ID
+
 function MyApp({ Component, pageProps }) {
   return (
-    <MoralisProvider
-      serverUrl={process.env.NEXT_PUBLIC_SERVER_URL}
-      appId={process.env.NEXT_PUBLIC_MORALIS_APP_ID}>
+    <MoralisProvider serverUrl={serverUrl} appId={appId}>
       <ThemeProvider forcedTheme={Component.theme || undefined} attribute='class'>
         <Toaster />
         <Component {...pageProps} />
