@@ -64,7 +64,7 @@ export default function explore({ creators }) {
 }
 
 export async function getStaticProps() {
-  const creators = await getLastCreators(6)
+  const creators = await getLastCreators(3)
   return {
     props: {
       creators,
