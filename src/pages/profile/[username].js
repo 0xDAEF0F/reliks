@@ -12,6 +12,34 @@ import NoStrategies from '../../components/NoStrategies'
 import { JoinLair } from '../../components/JoinLair'
 import { useMoralis } from 'react-moralis'
 
+export const SkeletonBanner = () => {
+  return (
+    <>
+      <div className='flex h-24 w-full md:h-64'>
+        <div className='w-full animate-pulse rounded-lg rounded-b-none bg-light-violet3  dark:bg-darkMode-bordergray dark:opacity-20'></div>
+      </div>
+    </>
+  )
+}
+
+export const SkeletonPP = () => {
+  return (
+    <>
+      <div className='mt-2 flex h-24 md:mt-4'>
+        <div className='w-full animate-pulse rounded-full bg-light-violet3  dark:bg-darkMode-bordergray dark:opacity-20'></div>
+      </div>
+    </>
+  )
+}
+
+export const SkeletonText = () => {
+  return (
+    <>
+      <div className='mb:mt-0 mt-1 flex h-8 w-full animate-pulse justify-center rounded-full bg-light-violet3 dark:bg-darkMode-bordergray  dark:opacity-20 md:w-4/5'></div>
+    </>
+  )
+}
+
 function Profile() {
   const router = useRouter()
   const [creator, setCreator] = useState({})
@@ -70,56 +98,85 @@ function Profile() {
       <div className='mx-auto max-w-6xl py-20 md:pt-0 '>
         <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-violet6 dark:bg-darkMode-violet2'>
           <div className='block'>
-            <Image
-              src={creator.coverPhoto || '/wp.png'}
-              width={1000}
-              height={220}
-              quality={100}
-              priority
-              className='object-cover object-center md:rounded-t-lg'
-              layout='responsive'
-              alt='banner'
-            />
+            {creator.coverPhoto ? (
+              <Image
+                src={creator.coverPhoto}
+                width={1000}
+                height={220}
+                quality={100}
+                priority
+                className='object-cover object-center md:rounded-t-lg'
+                layout='responsive'
+                alt='banner'
+              />
+            ) : (
+              <SkeletonBanner />
+            )}
           </div>
           <div className='mx-auto mb-12 h-full items-start border-b border-dotted border-light-violet6 pt-4 dark:border-darkMode-violet6 md:flex md:justify-between'>
             <div className='flex flex-col items-center md:mx-10 md:flex-row'>
               <div className='relative -inset-y-9'>
                 <div className='relative h-24 w-24 rounded-full shadow-md'>
-                  <Image
-                    src={creator.pfp || '/pp.jpg'}
-                    className='rounded-full object-cover object-center'
-                    quality={100}
-                    priority
-                    layout='fill'
-                    alt='profile picture'
-                  />
+                  {creator.pfp ? (
+                    <Image
+                      src={creator.pfp}
+                      className='rounded-full object-cover object-center'
+                      quality={100}
+                      priority
+                      layout='fill'
+                      alt='profile picture'
+                    />
+                  ) : (
+                    <SkeletonPP />
+                  )}
                 </div>
               </div>
               <div className='ml-0 -mt-9 text-center md:-mt-0 md:ml-3 md:text-left'>
-                <p className='ml-1 text-3xl font-semibold text-light-violet12 dark:text-darkMode-violet12'>
-                  {creator.channelTitle}
-                </p>
+                <div className='ml-1 text-3xl font-semibold text-light-violet12 dark:text-darkMode-violet12'>
+                  {creator.channelTitle ? creator.channelTitle : <SkeletonText />}
+                </div>
                 <div className='flex flex-col items-center md:flex-row md:items-end'>
                   <button
                     onClick={copy2Clipboard}
                     title='Copy'
-                    className='mt-1 h-auto w-36 rounded-full bg-light-violet3 py-1 px-2 hover:bg-light-violet4 active:bg-light-violet5 dark:bg-darkMode-violet3 dark:hover:bg-darkMode-violet4 dark:hover:text-darkMode-gray dark:active:bg-darkMode-violet5 md:mt-1'>
+                    className='ml-1 mt-1 h-6 w-36 rounded-full bg-light-violet3 px-2 hover:bg-light-violet4 active:bg-light-violet5 dark:bg-darkMode-violet3 dark:hover:bg-darkMode-violet4 dark:hover:text-darkMode-gray dark:active:bg-darkMode-violet5 md:mt-1'>
                     <div className='flex items-center justify-between'>
-                      <div className='relative h-5 w-5'>
-                        <Image src='/ethereum.svg' alt='MetaMask logo' layout='fill' />
+                      <div className='block'>
+                        <Image
+                          src='/ethereum.svg'
+                          height={14}
+                          width={14}
+                          alt='MetaMask logo'
+                          layout='fixed'
+                        />
                       </div>
-                      <p className='h-5 truncate pl-1 text-left text-sm font-semibold opacity-60'>
+                      <p className='truncate pl-1 text-left text-sm font-semibold opacity-60'>
                         {userAddress}
                       </p>
                     </div>
                   </button>
-                  <p className='opacity-85 mt-1 ml-1 text-xs text-light-gray dark:text-darkMode-gray'>
-                    Joined:{' '}
-                    {creator &&
-                      new Date(creator.createdAt).toLocaleDateString(undefined, options)}
-                  </p>
+                  <div className='opacity-85 mt-1 ml-1 text-xs text-light-gray dark:text-darkMode-gray'>
+                    {creator.createdAt ? (
+                      <>
+                        <span>Joined: </span>
+                        <span>
+                          {creator &&
+                            new Date(creator.createdAt).toLocaleDateString(
+                              undefined,
+                              options
+                            )}
+                        </span>
+                      </>
+                    ) : null}
+                  </div>
                 </div>
-                <p className='mx-auto mt-4 w-2/4 pb-5 md:ml-2'>{creator.bio}</p>
+                {creator.bio ? (
+                  <p className='mx-auto mt-4 w-2/4 pb-5 md:ml-2'>{creator.bio}</p>
+                ) : (
+                  <div className='pb-10 md:ml-2'>
+                    <br />
+                  </div>
+                )}
               </div>
             </div>
             <div className='mr-2 mb-2 -mt-14 flex justify-end md:mt-0 md:mr-10'>
