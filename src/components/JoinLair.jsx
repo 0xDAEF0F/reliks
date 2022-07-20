@@ -47,8 +47,10 @@ async function getLairEntryPrice(address, provider) {
   const initialLairEntry = ethers.utils.formatEther(await lairContract.initialLairEntry())
   if (!(await lairContract.lairFull())) return +initialLairEntry
   // LAIR FULL
-  // TODO: NEED WORK ON THIS PART
-  return 0
+  const smallestWhaleIdx = await lairContract.whaleLimit()
+  const smallestWhale = await lairContract.whaleArr(smallestWhaleIdx - 1)
+  const smallestWhaleGrant = ethers.utils.formatEther(smallestWhale.grant)
+  return +smallestWhaleGrant * 1.05
 }
 
 export function JoinLair({ lairAddr }) {
@@ -70,6 +72,21 @@ export function JoinLair({ lairAddr }) {
       .catch(() => toast.error('Could not update ETH price.'))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const joinLair = async () => {
+    try {
+      const prov = (await enableWeb3()).getSigner()
+      const contract = new ethers.Contract(lairAddr, abi, prov)
+      const txn = await contract.enterLair({
+        value: ethers.utils.parseEther(String(lairEntryPrice)),
+      })
+      toast.success(`Success. TXN: ${txn.hash}`, { duration: 5 })
+      console.log(txn)
+    } catch (err) {
+      toast.error(`error: ${err.message}`)
+      console.error(err)
+    }
+  }
 
   return (
     <div>
@@ -116,10 +133,10 @@ export function JoinLair({ lairAddr }) {
                   <p className='relative grid grid-cols-2'>
                     <span className='flex flex-col text-center'>
                       <span className='text-xl font-extrabold  tracking-tight text-white md:text-5xl'>
-                        {lairEntryPrice} ETH
+                        {lairEntryPrice}
                       </span>
                       <span className='text-cyan-100 mt-2 text-base font-medium'>
-                        Creator Fee
+                        Creator Fee (ETH)
                       </span>
                       <br />
                     </span>
@@ -141,6 +158,7 @@ export function JoinLair({ lairAddr }) {
                   </p>
                 </div>
                 <a
+                  onClick={joinLair}
                   href='#'
                   className='flex w-full  items-center justify-center rounded-md bg-mauve py-2 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:py-4 md:px-10'>
                   Join Lair
