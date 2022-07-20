@@ -69,13 +69,13 @@ export default function Profile({ creator }) {
         return <NoStrategies />
       case 2:
         // POV USER -- CREATOR STRATEGY TRUE
-        return <JoinLair />
+        return <JoinLair lairAddr={creator?.whaleStrategy[0]} />
       case 3:
         // POV CREATOR -- CREATOR STRATEGY FALSE
         return <CreateLair />
       case 4:
         // POV CREATOR -- CREATOR STRATEGY TRUE
-        return <JoinLair />
+        return <JoinLair lairAddr={creator?.whaleStrategy[0]} />
     }
   }
 

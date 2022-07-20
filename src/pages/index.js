@@ -24,6 +24,7 @@ export default function Home() {
       // need to pull user data from db again
       refetchUserData()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query.creatorFlow])
 
   return (

@@ -4,6 +4,10 @@ import { MdWaterDrop } from 'react-icons/md'
 import { CgSandClock } from 'react-icons/cg'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
+import Moralis from 'moralis'
+import { useMoralis } from 'react-moralis'
+import { abi } from '../util/deployWhale'
+const ethers = Moralis.web3Library
 
 const features = [
   {
@@ -37,15 +41,34 @@ async function getEthPrice() {
   return Number(response.data.usdPrice)
 }
 
-export function JoinLair() {
+async function getLairEntryPrice(address, provider) {
+  const lairContract = new ethers.Contract(address, abi, provider)
+  // LAIR !== FULL
+  const initialLairEntry = ethers.utils.formatEther(await lairContract.initialLairEntry())
+  if (!(await lairContract.lairFull())) return +initialLairEntry
+  // LAIR FULL
+  // TODO: NEED WORK ON THIS PART
+  return 0
+}
+
+export function JoinLair({ lairAddr }) {
   const [ethPrice, setEthPrice] = useState(0)
   const [lairEntryPrice, setLairEntryPrice] = useState(0)
+  const { enableWeb3 } = useMoralis()
 
   useEffect(() => {
+    // LAIR ENTRY COST
+    enableWeb3()
+      .then(async (provider) => {
+        const lairEntryPrice = await getLairEntryPrice(lairAddr, provider)
+        setLairEntryPrice(lairEntryPrice)
+      })
+      .catch(() => toast.error('Could not retrieve lair information.'))
     // ETH/USD RATE
     getEthPrice()
       .then((price) => setEthPrice(price))
       .catch(() => toast.error('Could not update ETH price.'))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -106,7 +129,9 @@ export function JoinLair() {
                     <span>
                       <span className='flex flex-col text-center'>
                         <span className='text-xl font-extrabold tracking-tight text-white md:text-5xl'>
-                          ${ethPrice.toLocaleString('us', { maximumFractionDigits: 0 })}
+                          {(lairEntryPrice * ethPrice).toLocaleString('us', {
+                            maximumFractionDigits: 0,
+                          })}
                         </span>
                         <span className='text-cyan-100 mt-2 text-base font-medium'>
                           USD
