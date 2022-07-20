@@ -8,13 +8,14 @@ import toast from 'react-hot-toast'
 import { TiSocialYoutubeCircular } from 'react-icons/ti'
 import Link from 'next/link'
 import { CreateLair } from '../../components/CreateLair'
-// import { JoinLair } from '../../components/JoinLair'
 import NoStrategies from '../../components/NoStrategies'
 import { JoinLair } from '../../components/JoinLair'
+import { useMoralis } from 'react-moralis'
 
 function Profile() {
   const router = useRouter()
-  const [user, setUser] = useState({})
+  const [creator, setCreator] = useState({})
+  const { user } = useMoralis()
 
   // TODO: Change to getStaticProps or getServerSideProps
   useEffect(() => {
@@ -22,7 +23,7 @@ function Profile() {
     Axios.post('/api/getCreatorInformation', {
       username: router.query.username,
     })
-      .then((res) => (!res.data ? router.push('/') : setUser(res.data)))
+      .then((res) => (!res.data ? router.push('/') : setCreator(res.data)))
       .catch(() => router.push('/'))
   }, [router.query])
 
@@ -31,9 +32,36 @@ function Profile() {
     toast.success('Address copied to clipboard.')
   }
 
-  const userAddress = user.ethAddress
-  const youtubeLink = user.youtubeCredentials?.channelId
+  const userAddress = creator.ethAddress
+  const youtubeLink = creator.youtubeCredentials?.channelId
   const options = { year: 'numeric', month: 'long' }
+
+  function calculateSideComponent() {
+    const isUserTheCreator = user && user.getUsername() === router.query.username
+    const doesCreatorHaveLair = creator?.whaleStrategy?.length > 0
+
+    if (!isUserTheCreator && !doesCreatorHaveLair) return 1
+    if (!isUserTheCreator && doesCreatorHaveLair) return 2
+    if (isUserTheCreator && !doesCreatorHaveLair) return 3
+    if (isUserTheCreator && doesCreatorHaveLair) return 4
+  }
+
+  const SideComponent = () => {
+    switch (calculateSideComponent()) {
+      case 1:
+        // POV USER -- CREATOR STRATEGY FALSE
+        return <NoStrategies />
+      case 2:
+        // POV USER -- CREATOR STRATEGY TRUE
+        return <JoinLair />
+      case 3:
+        // POV CREATOR -- CREATOR STRATEGY FALSE
+        return <CreateLair />
+      case 4:
+        // POV CREATOR -- CREATOR STRATEGY TRUE
+        return <JoinLair />
+    }
+  }
 
   return (
     <>
@@ -43,7 +71,7 @@ function Profile() {
         <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-violet6 dark:bg-darkMode-violet2'>
           <div className='block'>
             <Image
-              src={user.coverPhoto || '/wp.png'}
+              src={creator.coverPhoto || '/wp.png'}
               width={1000}
               height={220}
               quality={100}
@@ -58,7 +86,7 @@ function Profile() {
               <div className='relative -inset-y-9'>
                 <div className='relative h-24 w-24 rounded-full shadow-md'>
                   <Image
-                    src={user.pfp || '/pp.jpg'}
+                    src={creator.pfp || '/pp.jpg'}
                     className='rounded-full object-cover object-center'
                     quality={100}
                     priority
@@ -69,7 +97,7 @@ function Profile() {
               </div>
               <div className='ml-0 -mt-9 text-center md:-mt-0 md:ml-3 md:text-left'>
                 <p className='ml-1 text-3xl font-semibold text-light-violet12 dark:text-darkMode-violet12'>
-                  {user.channelTitle}
+                  {creator.channelTitle}
                 </p>
                 <div className='flex flex-col items-center md:flex-row md:items-end'>
                   <button
@@ -87,11 +115,11 @@ function Profile() {
                   </button>
                   <p className='opacity-85 mt-1 ml-1 text-xs text-light-gray dark:text-darkMode-gray'>
                     Joined:{' '}
-                    {user &&
-                      new Date(user.createdAt).toLocaleDateString(undefined, options)}
+                    {creator &&
+                      new Date(creator.createdAt).toLocaleDateString(undefined, options)}
                   </p>
                 </div>
-                <p className='mx-auto mt-4 w-2/4 pb-5 md:ml-2'>{user.bio}</p>
+                <p className='mx-auto mt-4 w-2/4 pb-5 md:ml-2'>{creator.bio}</p>
               </div>
             </div>
             <div className='mr-2 mb-2 -mt-14 flex justify-end md:mt-0 md:mr-10'>
@@ -105,9 +133,7 @@ function Profile() {
               </Link>
             </div>
           </div>
-          <NoStrategies />
-          {/* <JoinLair /> */}
-          {/* <CreateLair /> */}
+          {SideComponent()}
           <br />
         </div>
       </div>
