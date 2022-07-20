@@ -18,6 +18,31 @@ export async function getLastCreators(last) {
   return map(users, extractCreatorPublicInformation)
 }
 
+export async function getCreatorInformation(username) {
+  const query = new Moralis.Query(Moralis.User)
+  query.equalTo('username', username)
+  const results = await query.find({ useMasterKey: true })
+  // no matching user
+  if (results.length < 1) throw new Error()
+  const user = results[0]
+  // user is not a creator
+  if (user.get('verifiedSocialPlatforms').length < 1) throw new Error()
+  return extractCreatorPublicInformation(user)
+}
+
+export async function getAllUsernames() {
+  const query = new Moralis.Query(Moralis.User)
+  query.containsAll('verifiedSocialPlatforms', ['youtube'])
+  const results = await query.find({ useMasterKey: true })
+  return results.map((user) => {
+    return {
+      params: {
+        username: user.getUsername(),
+      },
+    }
+  })
+}
+
 export function extractCreatorPublicInformation(user) {
   const youtubeCredentials = user.get('youtubeCredentials')
   const { refreshToken, ...rest } = youtubeCredentials

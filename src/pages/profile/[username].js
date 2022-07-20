@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react'
-import Axios from 'axios'
 import Header from '../../components/Header'
 import SignUpAsCreatorBanner from '../../components/SignUpAsCreatorBanner'
 import { useRouter } from 'next/router'
@@ -11,6 +9,7 @@ import { CreateLair } from '../../components/CreateLair'
 import NoStrategies from '../../components/NoStrategies'
 import { JoinLair } from '../../components/JoinLair'
 import { useMoralis } from 'react-moralis'
+import { getAllUsernames, getCreatorInformation } from '../../util/getLastCreators'
 
 export const SkeletonBanner = () => {
   return (
@@ -40,28 +39,17 @@ export const SkeletonText = () => {
   )
 }
 
-function Profile() {
+export default function Profile({ creator }) {
   const router = useRouter()
-  const [creator, setCreator] = useState({})
   const { user } = useMoralis()
-
-  // TODO: Change to getStaticProps or getServerSideProps
-  useEffect(() => {
-    if (!router.query?.username) return
-    Axios.post('/api/getCreatorInformation', {
-      username: router.query.username,
-    })
-      .then((res) => (!res.data ? router.push('/') : setCreator(res.data)))
-      .catch(() => router.push('/'))
-  }, [router.query])
 
   function copy2Clipboard() {
     navigator.clipboard.writeText(userAddress)
     toast.success('Address copied to clipboard.')
   }
 
-  const userAddress = creator.ethAddress
-  const youtubeLink = creator.youtubeCredentials?.channelId
+  const userAddress = creator?.ethAddress
+  const youtubeLink = creator?.youtubeCredentials?.channelId
   const options = { year: 'numeric', month: 'long' }
 
   function calculateSideComponent() {
@@ -98,9 +86,9 @@ function Profile() {
       <div className='mx-auto max-w-6xl py-20 md:pt-0 '>
         <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-violet6 dark:bg-darkMode-violet2'>
           <div className='block'>
-            {creator.coverPhoto ? (
+            {creator?.coverPhoto ? (
               <Image
-                src={creator.coverPhoto}
+                src={creator?.coverPhoto}
                 width={1000}
                 height={220}
                 quality={100}
@@ -117,9 +105,9 @@ function Profile() {
             <div className='flex flex-col items-center md:mx-10 md:flex-row'>
               <div className='relative -inset-y-9'>
                 <div className='relative h-24 w-24 rounded-full shadow-md'>
-                  {creator.pfp ? (
+                  {creator?.pfp ? (
                     <Image
-                      src={creator.pfp}
+                      src={creator?.pfp}
                       className='rounded-full object-cover object-center'
                       quality={100}
                       priority
@@ -133,7 +121,7 @@ function Profile() {
               </div>
               <div className='ml-0 -mt-9 text-center md:-mt-0 md:ml-3 md:text-left'>
                 <div className='ml-1 text-3xl font-semibold text-light-violet12 dark:text-darkMode-violet12'>
-                  {creator.channelTitle ? creator.channelTitle : <SkeletonText />}
+                  {creator?.channelTitle ? creator?.channelTitle : <SkeletonText />}
                 </div>
                 <div className='flex flex-col items-center md:flex-row md:items-end'>
                   <button
@@ -156,12 +144,12 @@ function Profile() {
                     </div>
                   </button>
                   <div className='opacity-85 mt-1 ml-1 text-xs text-light-gray dark:text-darkMode-gray'>
-                    {creator.createdAt ? (
+                    {creator?.createdAt ? (
                       <>
                         <span>Joined: </span>
                         <span>
                           {creator &&
-                            new Date(creator.createdAt).toLocaleDateString(
+                            new Date(creator?.createdAt).toLocaleDateString(
                               undefined,
                               options
                             )}
@@ -170,8 +158,8 @@ function Profile() {
                     ) : null}
                   </div>
                 </div>
-                {creator.bio ? (
-                  <p className='mx-auto mt-4 w-2/4 pb-5 md:ml-2'>{creator.bio}</p>
+                {creator?.bio ? (
+                  <p className='mx-auto mt-4 w-2/4 pb-5 md:ml-2'>{creator?.bio}</p>
                 ) : (
                   <div className='pb-10 md:ml-2'>
                     <br />
@@ -198,4 +186,20 @@ function Profile() {
   )
 }
 
-export default Profile
+export async function getStaticProps({ params }) {
+  const username = params.username
+  const userData = await getCreatorInformation(username)
+  return {
+    props: {
+      creator: userData,
+    },
+  }
+}
+
+export async function getStaticPaths() {
+  const usernames = await getAllUsernames()
+  return {
+    paths: usernames,
+    fallback: false,
+  }
+}
