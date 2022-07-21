@@ -1,59 +1,30 @@
 import { useState } from 'react'
 import { Tab } from '@headlessui/react'
-import { FaDiscord } from 'react-icons/fa'
-import { MdWaterDrop } from 'react-icons/md'
-import { CgSandClock } from 'react-icons/cg'
-import { GiClothes } from 'react-icons/gi'
-import { FaPlus } from 'react-icons/fa'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const features = [
-  {
-    name: 'Discord server',
-    description:
-      "Join your favorite creators' server, and access the exclusive whales-only chat.",
-    icon: FaDiscord,
-  },
-  {
-    name: 'NFT drops',
-    description: 'Flex your NFT drops granted by Reliqs and your creator.',
-    icon: MdWaterDrop,
-  },
-  {
-    name: 'Limited-time Rewards',
-    description: 'Unique rewards granted each season.',
-    icon: CgSandClock,
-  },
-]
-// const checklist = [
-//   'Unlimited projects',
-//   'No per user fees',
-//   'Unlimited storage',
-//   '24/7 support',
-//   'Cancel any time',
-//   '14 days free',
-// ]
-
-function Strategies() {
-  return <div>1</div>
-}
-
-function OwnedNft() {
-  return <div>2</div>
-}
-
-function Activity() {
+function Lair() {
+  // Show the current count of the lair, users data, current lair entry price.
   return <div>3</div>
 }
 
-export default function Tabs() {
+function Discord() {
+  // Show the discord server users data.
+  return <div>1</div>
+}
+
+function Drops() {
+  // Airdrop a NFT to all the lair by only submiting the image source and metadata.
+  return <div>2</div>
+}
+
+export default function TabsCreator() {
   let [categories] = useState({
-    Strategies: Strategies(),
-    "Nft's": OwnedNft(),
-    Activity: Activity(),
+    Lair: Lair(),
+    Discord: Discord(),
+    Drops: Drops(),
   })
 
   return (

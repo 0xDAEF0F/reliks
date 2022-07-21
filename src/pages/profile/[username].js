@@ -10,6 +10,8 @@ import NoStrategies from '../../components/NoStrategies'
 import { JoinLair } from '../../components/JoinLair'
 import { useMoralis } from 'react-moralis'
 import { getAllUsernames, getCreatorInformation } from '../../util/getLastCreators'
+import JoinedLair from '../../components/JoinedLair'
+import Dashboard from '../../components/Dashboard'
 
 export const SkeletonBanner = () => {
   return (
@@ -75,7 +77,10 @@ export default function Profile({ creator }) {
         return <CreateLair />
       case 4:
         // POV CREATOR -- CREATOR STRATEGY TRUE
-        return <JoinLair lairAddr={creator?.whaleStrategy[0]} />
+        return <Dashboard />
+      case 5:
+        // POV USER -- JOINED STRATEGY
+        return <JoinedLair />
     }
   }
 
@@ -83,7 +88,7 @@ export default function Profile({ creator }) {
     <>
       <Header />
       <SignUpAsCreatorBanner xclass='hidden' />
-      <div className='mx-auto max-w-6xl py-20'>
+      <div className='mx-auto max-w-6xl md:py-20 '>
         <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-violet6 dark:bg-darkMode-violet2'>
           <div className='block rounded-lg md:rounded-md md:px-8 md:pt-4'>
             {creator?.coverPhoto ? (
@@ -101,7 +106,7 @@ export default function Profile({ creator }) {
               <SkeletonBanner />
             )}
           </div>
-          <div className='mx-auto mb-12 h-full items-start border-b border-dotted border-light-violet6 pt-4 dark:border-darkMode-violet6 md:flex md:justify-between'>
+          <div className='mx-auto h-full items-start border-b border-dotted border-light-violet6 pt-4 dark:border-darkMode-violet6 md:flex md:justify-between'>
             <div className='flex flex-col items-center md:mx-10 md:flex-row'>
               <div className='relative -inset-y-9'>
                 <div className='relative h-24 w-24 rounded-full shadow-md'>
