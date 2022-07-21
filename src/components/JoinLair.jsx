@@ -41,51 +41,50 @@ async function getEthPrice() {
   return Number(response.data.usdPrice)
 }
 
-async function getLairEntryPrice(address, provider) {
-  const lairContract = new ethers.Contract(address, abi, provider)
-  // LAIR !== FULL
-  const initialLairEntry = ethers.utils.formatEther(await lairContract.initialLairEntry())
-  if (!(await lairContract.lairFull())) return +initialLairEntry
-  // LAIR FULL
-  const smallestWhaleIdx = await lairContract.whaleLimit()
-  const smallestWhale = await lairContract.whaleArr(smallestWhaleIdx - 1)
-  const smallestWhaleGrant = ethers.utils.formatEther(smallestWhale.grant)
-  return +smallestWhaleGrant * 1.05
-}
-
 export function JoinLair({ lairAddr }) {
   const [ethPrice, setEthPrice] = useState(0)
   const [lairEntryPrice, setLairEntryPrice] = useState(0)
-  const { enableWeb3 } = useMoralis()
+  const { web3 } = useMoralis()
 
   useEffect(() => {
+    if (!web3) return
     // LAIR ENTRY COST
-    enableWeb3()
-      .then(async (provider) => {
-        const lairEntryPrice = await getLairEntryPrice(lairAddr, provider)
-        setLairEntryPrice(lairEntryPrice)
-      })
-      .catch(() => toast.error('Could not retrieve lair information.'))
+    displayLairEntryPrice()
     // ETH/USD RATE
     getEthPrice()
       .then((price) => setEthPrice(price))
       .catch(() => toast.error('Could not update ETH price.'))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [web3])
 
   const joinLair = async () => {
     try {
-      const prov = (await enableWeb3()).getSigner()
-      const contract = new ethers.Contract(lairAddr, abi, prov)
+      const contract = new ethers.Contract(lairAddr, abi, web3.getSigner())
       const txn = await contract.enterLair({
         value: ethers.utils.parseEther(String(lairEntryPrice)),
       })
-      toast.success(`Success. TXN: ${txn.hash}`, { duration: 5 })
+      toast.success(`TXN: ${txn.hash}`)
       console.log(txn)
     } catch (err) {
       toast.error(`error: ${err.message}`)
       console.error(err)
     }
+  }
+
+  const displayLairEntryPrice = async () => {
+    const lairContract = new ethers.Contract(lairAddr, abi, web3)
+    // LAIR !== FULL
+    const isFull = await lairContract.lairFull()
+    if (!isFull) {
+      const initialLairEntryBigNum = await lairContract.initialLairEntry()
+      setLairEntryPrice(ethers.utils.formatEther(initialLairEntryBigNum))
+      return
+    }
+    // LAIR FULL
+    const smallestWhaleIdx = await lairContract.whaleLimit()
+    const smallestWhale = await lairContract.whaleArr(smallestWhaleIdx - 1)
+    const smallestWhaleGrant = ethers.utils.formatEther(smallestWhale.grant)
+    setLairEntryPrice((+smallestWhaleGrant * 1.05).toFixed(2))
   }
 
   return (

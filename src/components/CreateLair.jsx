@@ -45,9 +45,9 @@ export function CreateLair() {
         whales,
         Moralis.web3Library.utils.parseEther(String(price))
       )
-      toast.success('contract address: ', contract.address)
+      toast.success(`contract address: ${contract.address}`)
       await contract.deployed()
-      toast.success('contract deployed succesfully.')
+      toast.success(`contract deployed succesfully`)
       user.add('whaleStrategy', contract.address)
       await user.save()
     } catch (err) {

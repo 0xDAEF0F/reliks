@@ -12,6 +12,7 @@ import { useMoralis } from 'react-moralis'
 import { getAllUsernames, getCreatorInformation } from '../../util/getLastCreators'
 import JoinedLair from '../../components/JoinedLair'
 import Dashboard from '../../components/Dashboard'
+import { useEffect } from 'react'
 
 export const SkeletonBanner = () => {
   return (
@@ -43,7 +44,11 @@ export const SkeletonText = () => {
 
 export default function Profile({ creator }) {
   const router = useRouter()
-  const { user } = useMoralis()
+  const { user, web3, enableWeb3 } = useMoralis()
+
+  useEffect(() => {
+    if (!web3) enableWeb3()
+  }, [])
 
   function copy2Clipboard() {
     navigator.clipboard.writeText(userAddress)
@@ -77,7 +82,8 @@ export default function Profile({ creator }) {
         return <CreateLair />
       case 4:
         // POV CREATOR -- CREATOR STRATEGY TRUE
-        return <Dashboard />
+        return <JoinLair lairAddr={creator?.whaleStrategy[0]} />
+      // return <Dashboard />
       case 5:
         // POV USER -- JOINED STRATEGY
         return <JoinedLair />

@@ -9,7 +9,7 @@ import Footer from '../components/Footer'
 
 export default function Home() {
   const { query } = useRouter()
-  const { refetchUserData } = useMoralis()
+  const { refetchUserData, web3, enableWeb3 } = useMoralis()
 
   // tracks for changes in tokens query param
   useEffect(() => {
@@ -26,6 +26,10 @@ export default function Home() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query.creatorFlow])
+
+  useEffect(() => {
+    if (!web3) enableWeb3()
+  }, [])
 
   return (
     <>
