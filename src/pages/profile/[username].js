@@ -94,7 +94,7 @@ export default function Profile({ creator }) {
     <>
       <Header />
       <SignUpAsCreatorBanner xclass='hidden' />
-      <div className='mx-auto max-w-6xl md:py-20 '>
+      <div className='mx-auto max-w-6xl py-20 '>
         <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-violet6 dark:bg-darkMode-violet2'>
           <div className='block rounded-lg md:rounded-md md:px-8 md:pt-4'>
             {creator?.coverPhoto ? (
