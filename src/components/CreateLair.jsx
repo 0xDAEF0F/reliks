@@ -101,21 +101,21 @@ export function CreateLair() {
                   <div className='mx-auto mt-3 text-left sm:mt-0'>
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <h2 className='text-3xl font-semibold leading-6 text-light-violet12 dark:text-darkMode-violet12'>
-                        Whale Strategy
+                        Whales&apos; Lair
                       </h2>
                       <div className='mx-auto mt-5 flex flex-col gap-5'>
                         {/* number of whales */}
 
                         <div>
                           <div>
-                            <div className='text-base text-light-violet1 dark:text-darkMode-gray dark:opacity-80'>
-                              Maximum amount of whales permitted in the lair in any given
-                              moment:
+                            <div className='mb-2 text-base text-light-violet1 dark:text-darkMode-gray dark:opacity-80'>
+                              Maximum amount of whales allowed in the lair at any given
+                              moment.
                             </div>
                             <label
                               htmlFor='whales'
-                              className='block text-sm font-bold text-light-violet12 dark:text-darkMode-violet12'>
-                              Noº whales
+                              className='mb-1 block text-sm font-bold text-light-violet12 dark:text-darkMode-violet12'>
+                              Noº whales:
                             </label>
                           </div>
                           <div>
@@ -132,13 +132,13 @@ export function CreateLair() {
                         {/* price */}
 
                         <div>
-                          <div className='text-base text-light-violet1 dark:text-darkMode-gray dark:opacity-80'>
-                            Initial cost of entry to the lair (before lair is full):
+                          <div className='mb-2 text-base text-light-violet1 dark:text-darkMode-gray dark:opacity-80'>
+                            Initial cost of entry to the lair (before lair is full).
                           </div>
                           <label
                             htmlFor='price'
-                            className='block text-sm font-bold text-light-violet12 dark:text-darkMode-violet12'>
-                            Price
+                            className='mb-1 block text-sm font-bold text-light-violet12 dark:text-darkMode-violet12'>
+                            Price:
                           </label>
                           <div className='relative mt-1 rounded-md shadow-sm'>
                             <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
