@@ -2,11 +2,11 @@ import Axios from 'axios'
 import { FaDiscord } from 'react-icons/fa'
 import { MdWaterDrop } from 'react-icons/md'
 import { CgSandClock } from 'react-icons/cg'
-import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import Moralis from 'moralis'
 import { useMoralis } from 'react-moralis'
 import { abi } from '../util/deployWhale'
+import useSWR from 'swr'
 const ethers = Moralis.web3Library
 
 const features = [
@@ -41,27 +41,30 @@ async function getEthPrice() {
   return Number(response.data.usdPrice)
 }
 
-export function JoinLair({ lairAddr }) {
-  const [ethPrice, setEthPrice] = useState(0)
-  const [lairEntryPrice, setLairEntryPrice] = useState(0)
-  const { web3 } = useMoralis()
+function getLairEntryFetcher(web3Provider) {
+  return async (address) => {
+    const lairContract = new ethers.Contract(address, abi, web3Provider)
+    // LAIR !== FULL
+    const isFull = await lairContract.lairFull()
+    if (!isFull) return lairContract.initialLairEntry()
+    // LAIR FULL
+    const smallestWhaleIdx = await lairContract.whaleLimit()
+    const smallestWhale = await lairContract.whaleArr(smallestWhaleIdx - 1)
+    return smallestWhale.grant
+  }
+}
 
-  useEffect(() => {
-    if (!web3) return
-    // LAIR ENTRY COST
-    displayLairEntryPrice()
-    // ETH/USD RATE
-    getEthPrice()
-      .then((price) => setEthPrice(price))
-      .catch(() => toast.error('Could not update ETH price.'))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [web3])
+export function JoinLair({ lairAddr }) {
+  const { web3 } = useMoralis()
+  // TODO: if component is revalidating show another component.
+  const { data: lairEntryPrice } = useSWR(lairAddr, getLairEntryFetcher(web3))
+  const { data: ethPrice } = useSWR('ethPrice', getEthPrice)
 
   const joinLair = async () => {
     try {
       const contract = new ethers.Contract(lairAddr, abi, web3.getSigner())
       const txn = await contract.enterLair({
-        value: ethers.utils.parseEther(String(lairEntryPrice)),
+        value: lairEntryPrice,
       })
       toast.success(`TXN: ${txn.hash}`)
       console.log(txn)
@@ -69,22 +72,6 @@ export function JoinLair({ lairAddr }) {
       toast.error(`error: ${err.message}`)
       console.error(err)
     }
-  }
-
-  const displayLairEntryPrice = async () => {
-    const lairContract = new ethers.Contract(lairAddr, abi, web3)
-    // LAIR !== FULL
-    const isFull = await lairContract.lairFull()
-    if (!isFull) {
-      const initialLairEntryBigNum = await lairContract.initialLairEntry()
-      setLairEntryPrice(ethers.utils.formatEther(initialLairEntryBigNum))
-      return
-    }
-    // LAIR FULL
-    const smallestWhaleIdx = await lairContract.whaleLimit()
-    const smallestWhale = await lairContract.whaleArr(smallestWhaleIdx - 1)
-    const smallestWhaleGrant = ethers.utils.formatEther(smallestWhale.grant)
-    setLairEntryPrice((+smallestWhaleGrant * 1.05).toFixed(2))
   }
 
   return (
@@ -132,7 +119,7 @@ export function JoinLair({ lairAddr }) {
                   <p className='relative grid grid-cols-2'>
                     <span className='flex flex-col text-center'>
                       <span className='text-xl font-extrabold  tracking-tight text-white md:text-5xl'>
-                        {lairEntryPrice}
+                        {lairEntryPrice && ethers.utils.formatEther(lairEntryPrice)}
                       </span>
                       <span className='text-cyan-100 mt-2 text-base font-medium'>
                         Creator Fee (ETH)
@@ -145,9 +132,13 @@ export function JoinLair({ lairAddr }) {
                     <span>
                       <span className='flex flex-col text-center'>
                         <span className='text-xl font-extrabold tracking-tight text-white md:text-5xl'>
-                          {(lairEntryPrice * ethPrice).toLocaleString('us', {
-                            maximumFractionDigits: 0,
-                          })}
+                          {lairEntryPrice &&
+                            ethPrice &&
+                            (
+                              +ethers.utils.formatEther(lairEntryPrice) * ethPrice
+                            ).toLocaleString('us', {
+                              maximumFractionDigits: 0,
+                            })}
                         </span>
                         <span className='text-cyan-100 mt-2 text-base font-medium'>
                           USD
