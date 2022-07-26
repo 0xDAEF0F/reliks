@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Dialog, Transition } from '@headlessui/react'
 import { useForm } from 'react-hook-form'
 import { AiOutlineClose } from 'react-icons/ai'
-import { createWhaleFactory } from '../util/deployWhale'
+import { createWhaleFactory } from '../../util/deployWhale'
 import toast from 'react-hot-toast'
 
 export default function ModalWhaleContract() {

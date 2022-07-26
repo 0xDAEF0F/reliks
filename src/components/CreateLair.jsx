@@ -29,17 +29,12 @@ const features = [
 
 export function CreateLair() {
   const { handleSubmit, register } = useForm()
-  const { user, enableWeb3, isWeb3Enabled } = useMoralis()
+  const { user, web3 } = useMoralis()
 
   const deployWhale = async ({ whales, price }) => {
     try {
-      let signer
-      if (!isWeb3Enabled) {
-        const provider = await enableWeb3()
-        signer = provider.getSigner()
-      }
       // need to pass signer to Factory with dynamic chainId's
-      const WhaleFactory = createWhaleFactory(signer)
+      const WhaleFactory = createWhaleFactory(web3.getSigner())
       const contract = await WhaleFactory.deploy(
         process.env.NEXT_PUBLIC_APP_ADDRESS,
         whales,
@@ -55,6 +50,7 @@ export function CreateLair() {
     }
   }
 
+  // TODO: This function needs validation.
   const onSubmit = (data) => deployWhale(data)
 
   return (
