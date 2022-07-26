@@ -29,7 +29,7 @@ const features = [
 
 export function CreateLair() {
   const { handleSubmit, register } = useForm()
-  const { user, web3 } = useMoralis()
+  const { web3, setUserData } = useMoralis()
 
   const deployWhale = async ({ whales, price }) => {
     try {
@@ -43,8 +43,7 @@ export function CreateLair() {
       toast.success(`contract address: ${contract.address}`)
       await contract.deployed()
       toast.success(`contract deployed succesfully`)
-      user.add('whaleStrategy', contract.address)
-      await user.save()
+      await setUserData({ whaleStrategy: [contract.address] })
     } catch (err) {
       toast.error('could not deploy contract')
     }

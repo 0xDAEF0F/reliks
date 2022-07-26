@@ -61,12 +61,12 @@ export default function Profile({ creator }) {
 
   function calculateSideComponent() {
     const isUserTheCreator = user && user.getUsername() === router.query.username
-    const doesCreatorHaveLair = creator?.whaleStrategy?.length > 0
+    const doesCreatorHaveLair = creator?.whaleStrategy?.length
 
     if (!isUserTheCreator && !doesCreatorHaveLair) return 1
     if (!isUserTheCreator && doesCreatorHaveLair) return 2
-    if (isUserTheCreator && !doesCreatorHaveLair) return 3
-    if (isUserTheCreator && doesCreatorHaveLair) return 4
+    if (isUserTheCreator && !user.get('whaleStrategy')?.length) return 3
+    if (isUserTheCreator && user.get('whaleStrategy')?.length) return 4
   }
 
   const SideComponent = () => {
@@ -82,7 +82,7 @@ export default function Profile({ creator }) {
         return <CreateLair />
       case 4:
         // POV CREATOR -- CREATOR STRATEGY TRUE
-        return <JoinLair lairAddr={creator?.whaleStrategy[0]} />
+        return <JoinLair lairAddr={user.get('whaleStrategy')[0]} />
       // return <Dashboard />
       case 5:
         // POV USER -- JOINED STRATEGY
