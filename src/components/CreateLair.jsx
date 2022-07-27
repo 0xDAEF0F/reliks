@@ -28,7 +28,11 @@ const features = [
 ]
 
 export function CreateLair() {
-  const { handleSubmit, register } = useForm()
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm()
   const { web3, setUserData } = useMoralis()
 
   const deployWhale = async ({ whales, price }) => {
@@ -100,7 +104,6 @@ export function CreateLair() {
                       </h2>
                       <div className='mx-auto mt-5 flex flex-col gap-5'>
                         {/* number of whales */}
-
                         <div>
                           <div>
                             <div className='mb-2 text-base text-light-violet1 dark:text-darkMode-gray dark:opacity-80'>
@@ -110,22 +113,31 @@ export function CreateLair() {
                             <label
                               htmlFor='whales'
                               className='mb-1 block text-sm font-bold text-light-violet12 dark:text-darkMode-violet12'>
-                              Noº whales:
+                              Noº whales*
                             </label>
                           </div>
                           <div>
                             <input
-                              {...register('whales', { required: true })}
-                              type='text'
+                              {...register('whales', {
+                                required: true,
+                                min: 5,
+                                max: 100,
+                              })}
+                              type='number'
                               name='whales'
                               id='whales'
-                              className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
+                              className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                               placeholder='15'
                             />
+                            {/* error whale number */}
+                            {errors.whales && (
+                              <p className='mt-2 rounded-md border-2 border-error bg-darkMode-violet3 py-1 text-center text-sm font-semibold text-error'>
+                                Whale count must be from 5 to 100
+                              </p>
+                            )}
                           </div>
                         </div>
                         {/* price */}
-
                         <div>
                           <div className='mb-2 text-base text-light-violet1 dark:text-darkMode-gray dark:opacity-80'>
                             Initial cost of entry to the lair (before lair is full).
@@ -133,7 +145,7 @@ export function CreateLair() {
                           <label
                             htmlFor='price'
                             className='mb-1 block text-sm font-bold text-light-violet12 dark:text-darkMode-violet12'>
-                            Price:
+                            Price*
                           </label>
                           <div className='relative mt-1 rounded-md shadow-sm'>
                             <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
@@ -148,13 +160,13 @@ export function CreateLair() {
                             </div>
                             <input
                               {...register('price', { required: true })}
-                              type='text'
+                              type='number'
                               name='price'
                               id='price'
                               className='w-full rounded-md border-light-bordergray bg-white pl-8 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                               placeholder='0'
                             />
-                            <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
+                            <div className='pointer-events-none absolute inset-y-0 right-6 flex items-center pr-3'>
                               <span className=' sm:text-sm' id='price-currency'>
                                 ETH
                               </span>

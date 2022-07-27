@@ -20,7 +20,7 @@ export default function Home() {
       toast.error('Please create a Youtube channel.')
     }
     if (query.creatorFlow === 'success') {
-      toast.success('succesfully creator validation')
+      toast.success('Creator validation completed.')
       // need to pull user data from db again
       refetchUserData()
     }
