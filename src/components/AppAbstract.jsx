@@ -9,14 +9,15 @@ const strategies = [
     name: 'Whales Lair',
     href: '#',
     description:
-      "Immerse within your creators' whale-exclusive discord chat room and enjoy whale-only benefits.",
+      "Immerse within your creators' lair (discord room) and enjoy whale-exclusive rewards.",
     comingSoon: false,
     icon: GiSpermWhale,
   },
   {
     name: 'Badges',
     href: '#',
-    description: "Badges symbolize achievements earned within your creators' ecosystem.",
+    description:
+      "Badges are a reward based system that symbolize achievements earned within your creators' ecosystem.",
     comingSoon: true,
     icon: TbBadges,
   },
@@ -24,7 +25,7 @@ const strategies = [
     name: 'Chests',
     href: '#',
     description:
-      'Chests grant you gems you can sell, trade, and exchange for limited time prizes.',
+      'Subscription chests grant you gems that you can sell, trade, and exchange for prizes.',
     comingSoon: true,
     icon: GiOpenTreasureChest,
   },
@@ -97,11 +98,11 @@ export function AppAbstract() {
               </div>
               <div className='relative mx-auto max-w-7xl py-12 px-4 sm:py-20 sm:px-6 lg:px-8'>
                 <h1 className='text-3xl font-extrabold tracking-tight text-light-violet1 dark:text-darkMode-violet12 md:text-4xl lg:text-5xl'>
-                  Strategies
+                  Highlights
                 </h1>
                 <p className='mt-6 max-w-3xl text-xl text-light-violet1 opacity-80 dark:text-darkMode-gray dark:opacity-80'>
-                  Join your favorite content creator in a strategy for limited-time drops,
-                  rewards, achievements, and many more benefits.
+                  Join your favorite content creators for limited-time drops, rewards,
+                  achievements, and many more benefits.
                 </p>
               </div>
             </div>
