@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { GiSpermWhale, GiOpenTreasureChest } from 'react-icons/gi'
 import { TbBadges, TbArrowNarrowDown } from 'react-icons/tb'
+import { useTheme } from 'next-themes'
 
 const strategies = [
   {
@@ -30,6 +31,7 @@ const strategies = [
 ]
 export function AppAbstract() {
   const [top, setTop] = useState(true)
+  const { theme } = useTheme()
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -72,7 +74,7 @@ export function AppAbstract() {
                 {/* To fix lightMode asset */}
                 <img
                   className='h-80 w-full lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-max lg:max-w-none'
-                  src='/asset.svg'
+                  src={theme === 'dark' ? 'asset.svg' : 'assetlm.svg'}
                   alt=''
                 />
               </div>
