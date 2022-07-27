@@ -18,7 +18,7 @@ export default function SignUpAsCreatorBanner({ xclass }) {
       className={`relative z-10 pt-16 md:pt-20 ${
         !open || isCreator() ? `${xclass}` : ''
       }`}>
-      <div className='fixed w-full bg-light-violet9  dark:bg-light-violet9'>
+      <div className='fixed w-full border-light-violet6  bg-light-violet10 dark:border-darkMode-violet6 dark:bg-darkMode-violet10'>
         <div className='mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8'>
           <div className='flex flex-wrap items-center justify-between'>
             <div className='flex w-0 flex-1 items-center'>
