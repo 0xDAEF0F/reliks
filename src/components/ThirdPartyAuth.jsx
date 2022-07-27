@@ -11,7 +11,7 @@ export default function SocialAppAuth({ connectYoutube }) {
       <div>
         <button
           onClick={connectYoutube}
-          className='mt-5 flex w-full items-center justify-center rounded-lg bg-error py-2 shadow-md hover:opacity-70 focus:border-light-violet7 focus:outline-none focus:ring-2 focus:ring-light-violet7 focus:ring-offset-2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7'>
+          className='mt-5 flex w-full items-center justify-center rounded-lg bg-[#FF0000] py-2 shadow-md hover:opacity-70 focus:border-light-violet7 focus:outline-none focus:ring-2 focus:ring-light-violet7 focus:ring-offset-2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7'>
           <ImYoutube2 className='h-6 w-6 text-darkMode-violet1 dark:text-white' />
           <p className='pl-2 text-sm font-semibold'>Continue with Youtube</p>
         </button>
