@@ -7,6 +7,8 @@ import Moralis from 'moralis'
 import { useMoralis } from 'react-moralis'
 import { abi } from '../util/deployWhale'
 import useSWR from 'swr'
+import Image from 'next/image'
+import { useForm } from 'react-hook-form'
 const ethers = Moralis.web3Library
 
 const features = [
@@ -46,11 +48,11 @@ function getLairEntryFetcher(web3Provider) {
     const lairContract = new ethers.Contract(address, abi, web3Provider)
     // LAIR !== FULL
     const isFull = await lairContract.lairFull()
-    if (!isFull) return lairContract.initialLairEntry()
+    if (!isFull) return +ethers.utils.formatEther(await lairContract.initialLairEntry())
     // LAIR FULL
     const smallestWhaleIdx = await lairContract.whaleLimit()
     const smallestWhale = await lairContract.whaleArr(smallestWhaleIdx - 1)
-    return smallestWhale.grant
+    return +ethers.utils.formatEther(smallestWhale.grant)
   }
 }
 
@@ -69,6 +71,11 @@ export function JoinLair({ lairAddr }) {
   // TODO: if component is revalidating show another component.
   const { data: lairEntryPrice } = useSWR(lairAddr, getLairEntryFetcher(web3))
   const { data: ethPrice } = useSWR('ethPrice', getEthPrice)
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm()
 
   // DEBUG: You can call any contract with this snippet
   // const { data } = useSWR(
@@ -77,11 +84,11 @@ export function JoinLair({ lairAddr }) {
   //   contractFetcher(web3)
   // )
 
-  const joinLair = async () => {
+  const joinLair = async (value) => {
     try {
       const contract = new ethers.Contract(lairAddr, abi, web3.getSigner())
       const txn = await contract.enterLair({
-        value: lairEntryPrice,
+        value,
       })
       toast.success(`TXN: ${txn.hash}`)
       console.log(txn)
@@ -130,16 +137,16 @@ export function JoinLair({ lairAddr }) {
               </div>
             </div>
             <div className='lg:flex lg:items-center lg:justify-end  lg:px-0 lg:pl-8'>
-              <div className='mx-auto mt-8 w-full max-w-lg space-y-8 rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 p-4 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:mx-0 lg:bg-none'>
-                <div>
+              <div className='mx-auto w-full max-w-lg rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 p-4 pb-3 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:mx-0 lg:bg-none'>
+                <div className='mb-5'>
                   <h2 className='sr-only'>Price</h2>
                   <p className='relative grid grid-cols-2'>
                     <span className='flex flex-col text-center'>
                       <span className='text-xl font-extrabold  tracking-tight text-white md:text-5xl'>
-                        {lairEntryPrice && ethers.utils.formatEther(lairEntryPrice)}
+                        {lairEntryPrice || 0}
                       </span>
                       <span className='text-cyan-100 mt-2 text-base font-medium'>
-                        Creator Fee (ETH)
+                        Min ETH to Enter Lair
                       </span>
                       <br />
                     </span>
@@ -149,13 +156,9 @@ export function JoinLair({ lairAddr }) {
                     <span>
                       <span className='flex flex-col text-center'>
                         <span className='text-xl font-extrabold tracking-tight text-white md:text-5xl'>
-                          {lairEntryPrice &&
-                            ethPrice &&
-                            (
-                              +ethers.utils.formatEther(lairEntryPrice) * ethPrice
-                            ).toLocaleString('us', {
-                              maximumFractionDigits: 0,
-                            })}
+                          {(lairEntryPrice * ethPrice).toLocaleString('us', {
+                            maximumFractionDigits: 0,
+                          })}
                         </span>
                         <span className='text-cyan-100 mt-2 text-base font-medium'>
                           USD
@@ -164,12 +167,54 @@ export function JoinLair({ lairAddr }) {
                     </span>
                   </p>
                 </div>
-                <a
-                  onClick={joinLair}
-                  href='#'
-                  className='flex w-full  items-center justify-center rounded-md bg-mauve py-2 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:py-4 md:px-10'>
-                  Join Lair
-                </a>
+                {/* Amount To Join Lair */}
+                <form
+                  onSubmit={handleSubmit((a) =>
+                    joinLair(ethers.utils.parseEther(a.price))
+                  )}>
+                  <label
+                    htmlFor='price'
+                    className='mb-2 block text-sm font-medium text-white'>
+                    Enter Amount*
+                  </label>
+                  <div className='relative mt-1 rounded-md'>
+                    <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
+                      <Image width={9} height={14} src='/ethereum.svg' alt='eth' />
+                    </div>
+                    <input
+                      {...register('price', {
+                        required: true,
+                        min: lairEntryPrice || 0,
+                      })}
+                      name='price'
+                      id='price'
+                      type='number'
+                      step='.1'
+                      className='block w-full rounded-md pl-7 pr-12 dark:text-black sm:text-sm'
+                      placeholder={1 && lairEntryPrice}
+                      aria-describedby='price-currency'
+                    />
+                    <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
+                      <span
+                        className='text-gray-500 dark:text-black sm:text-sm'
+                        id='price-currency'>
+                        ETH
+                      </span>
+                    </div>
+                  </div>
+                  {/* error whale number */}
+                  {errors.price && (
+                    <p className='mt-2 rounded-md border-2 border-error bg-darkMode-violet3 py-1 text-center text-sm font-semibold text-error'>
+                      Amount must be greater than {lairEntryPrice}
+                    </p>
+                  )}
+                  <input
+                    className='mt-4 flex w-full  items-center justify-center rounded-md bg-mauve py-2 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:py-4 md:px-10'
+                    type='submit'
+                    value='Join Lair'
+                    id='price'
+                  />
+                </form>
               </div>
             </div>
           </div>
