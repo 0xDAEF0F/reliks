@@ -56,16 +56,6 @@ function getLairEntryFetcher(web3Provider) {
   }
 }
 
-// pass this function to SWR with a provider and you have
-// a fetcher that can call any contract.
-// function contractFetcher(provider) {
-//   return (...args) => {
-//     const [addr, abi, methodToCall, ...rest] = args
-//     const contract = new ethers.Contract(addr, abi, provider)
-//     return contract[methodToCall](...rest)
-//   }
-// }
-
 export function JoinLair({ lairAddr }) {
   const { web3 } = useMoralis()
   // TODO: if component is revalidating show another component.
@@ -76,13 +66,6 @@ export function JoinLair({ lairAddr }) {
     register,
     formState: { errors },
   } = useForm()
-
-  // DEBUG: You can call any contract with this snippet
-  // const { data } = useSWR(
-  //   // substitute isWhale for a method name and address for args.
-  //   [lairAddr, abi, 'isWhale', '0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
-  //   contractFetcher(web3)
-  // )
 
   const joinLair = async (value) => {
     try {

@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 import { TiSocialYoutubeCircular } from 'react-icons/ti'
-import Link from 'next/link'
 import { CreateLair } from '../../components/CreateLair'
 import NoStrategies from '../../components/NoStrategies'
 import { JoinLair } from '../../components/JoinLair'
@@ -51,12 +50,10 @@ export default function Profile({ creator }) {
   }, [])
 
   function copy2Clipboard() {
-    navigator.clipboard.writeText(userAddress)
+    navigator.clipboard.writeText(creator.ethAddress)
     toast.success('Address copied to clipboard.')
   }
 
-  const userAddress = creator?.ethAddress
-  const youtubeLink = creator?.youtubeCredentials?.channelId
   const options = { year: 'numeric', month: 'long' }
 
   function calculateSideComponent() {
@@ -150,7 +147,7 @@ export default function Profile({ creator }) {
                         />
                       </div>
                       <p className='truncate pl-1 text-left text-sm font-semibold opacity-60'>
-                        {userAddress}
+                        {creator.ethAddress}
                       </p>
                     </div>
                   </button>
@@ -179,14 +176,15 @@ export default function Profile({ creator }) {
               </div>
             </div>
             <div className='mr-2 mb-2 -mt-14 flex justify-end md:mt-0 md:mr-10'>
-              <Link href={youtubeLink || '#'}>
-                <a>
-                  <TiSocialYoutubeCircular
-                    size={50}
-                    className='text-light-gray opacity-80 hover:opacity-60 dark:text-darkMode-gray'
-                  />
-                </a>
-              </Link>
+              <a
+                target='_blank'
+                rel='noreferrer'
+                href={`https://www.youtube.com/channel/${creator.channelId}`}>
+                <TiSocialYoutubeCircular
+                  size={50}
+                  className='text-light-gray opacity-80 hover:opacity-60 dark:text-darkMode-gray'
+                />
+              </a>
             </div>
           </div>
           {SideComponent()}

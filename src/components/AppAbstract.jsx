@@ -60,14 +60,13 @@ export function AppAbstract() {
                   base, get supported, and in return, grant rewards in the form of NFTs
                   and token drops.
                 </p>
-
-                <Link href='https://alkaline-ceres-b4f.notion.site/Light-Paper-8e94cdbc4d944705aed046465d4de9ea'>
-                  <a
-                    target='_blank'
-                    className='text-xl text-light-violet10 hover:text-light-violet11 dark:text-darkMode-violet10 dark:hover:text-darkMode-violet11'>
-                    Lite Paper&nbsp;&rarr;
-                  </a>
-                </Link>
+                <a
+                  href='https://alkaline-ceres-b4f.notion.site/Light-Paper-8e94cdbc4d944705aed046465d4de9ea'
+                  rel='noreferrer'
+                  target='_blank'
+                  className='text-xl text-light-violet10 hover:text-light-violet11 dark:text-darkMode-violet10 dark:hover:text-darkMode-violet11'>
+                  Lite Paper&nbsp;&rarr;
+                </a>
               </div>
             </div>
             <div className='mx-auto mt-12 lg:relative lg:m-0'>
