@@ -120,7 +120,7 @@ export function JoinLair({ lairAddr }) {
               </div>
             </div>
             <div className='mt-10 lg:flex lg:items-center lg:justify-end lg:px-0 lg:pl-8'>
-              <div className='mx-auto w-full max-w-lg rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 p-6 p-4 pb-3 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:mx-0 lg:bg-none'>
+              <div className='mx-auto w-full max-w-lg rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 p-6 pb-3 dark:from-darkMode-violet8 dark:to-darkMode-violet9 md:p-4 lg:mx-0 lg:bg-none'>
                 <div className='mb-5 py-1'>
                   <h2 className='sr-only'>Price</h2>
                   <p className='relative grid grid-cols-2'>
