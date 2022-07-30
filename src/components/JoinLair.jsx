@@ -119,26 +119,27 @@ export function JoinLair({ lairAddr }) {
                 </dl>
               </div>
             </div>
-            <div className='lg:flex lg:items-center lg:justify-end  lg:px-0 lg:pl-8'>
-              <div className='mx-auto w-full max-w-lg rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 p-4 pb-3 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:mx-0 lg:bg-none'>
-                <div className='mb-5'>
+            <div className='mt-10 lg:flex lg:items-center lg:justify-end lg:px-0 lg:pl-8'>
+              <div className='mx-auto w-full max-w-lg rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 p-6 p-4 pb-3 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:mx-0 lg:bg-none'>
+                <div className='mb-5 py-1'>
                   <h2 className='sr-only'>Price</h2>
                   <p className='relative grid grid-cols-2'>
                     <span className='flex flex-col text-center'>
-                      <span className='text-xl font-extrabold  tracking-tight text-white md:text-5xl'>
+                      <span className='text-3xl font-extrabold  tracking-tight text-white md:text-5xl'>
                         {lairEntryPrice || 0}
                       </span>
-                      <span className='text-cyan-100 mt-2 text-base font-medium'>
-                        Min ETH to Enter Lair
-                      </span>
+                      <div className='text-cyan-100 mt-2 text-base font-medium'>
+                        <span>Min ETH </span>
+                        <span className='block'>to Enter Lair</span>
+                      </div>
                       <br />
                     </span>
-                    <span className='absolute flex h-12 w-full items-center justify-center text-5xl text-white'>
+                    <span className='absolute flex h-12 w-full items-center justify-center text-3xl text-white md:text-5xl'>
                       ≈
                     </span>
                     <span>
                       <span className='flex flex-col text-center'>
-                        <span className='text-xl font-extrabold tracking-tight text-white md:text-5xl'>
+                        <span className='text-3xl font-extrabold tracking-tight text-white md:text-5xl'>
                           {(lairEntryPrice * ethPrice).toLocaleString('us', {
                             maximumFractionDigits: 0,
                           })}
@@ -160,8 +161,8 @@ export function JoinLair({ lairAddr }) {
                     className='mb-2 block text-sm font-medium text-white'>
                     Enter Amount*
                   </label>
-                  <div className='relative mt-1 rounded-md'>
-                    <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
+                  <div className='relative mt-1 w-full rounded-2xl border-light-bordergray bg-white pl-10 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'>
+                    <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4'>
                       <Image width={9} height={14} src='/ethereum.svg' alt='eth' />
                     </div>
                     <input
@@ -173,7 +174,7 @@ export function JoinLair({ lairAddr }) {
                       id='price'
                       type='number'
                       step='.1'
-                      className='block w-full rounded-md pl-7 pr-12 dark:text-black sm:text-sm'
+                      className='block w-full rounded-2xl border-light-bordergray bg-white pr-12 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:text-black dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                       placeholder={1 && lairEntryPrice}
                       aria-describedby='price-currency'
                     />
