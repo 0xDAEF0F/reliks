@@ -95,7 +95,7 @@ export function CreateLair() {
               </div>
             </div>
             <div className='rounded-lg lg:flex lg:items-center lg:justify-end  lg:px-0 lg:pl-8'>
-              <div className='mx-auto mt-8 w-full space-y-8 rounded-lg from-light-violet8 to-light-violet9 p-4 dark:bg-gradient-to-r dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:mx-0 lg:bg-none'>
+              <div className='mx-auto mt-8 w-full space-y-8 rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 p-4 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:mx-0 lg:bg-none'>
                 <div className='sm:flex sm:items-start'>
                   <div className='mx-auto mt-3 text-left sm:mt-0'>
                     <form onSubmit={handleSubmit(onSubmit)}>
