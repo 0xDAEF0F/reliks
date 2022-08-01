@@ -48,7 +48,7 @@ export function extractCreatorPublicInformation(user) {
   const { refreshToken, ...rest } = youtubeCredentials
   const ethAddress = user.get('ethAddress')
   const createdAt = user.get('createdAt')
-  const whaleStrategy = user.get('whaleStrategy') || null
+  const whaleStrategy = user.get('whaleStrategy')
   return {
     ...rest,
     ethAddress,

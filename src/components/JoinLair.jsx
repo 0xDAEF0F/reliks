@@ -56,10 +56,10 @@ function getLairEntryFetcher(web3Provider) {
   }
 }
 
-export function JoinLair({ lairAddr }) {
+export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
   const { web3 } = useMoralis()
   // TODO: if component is revalidating show another component.
-  const { data: lairEntryPrice } = useSWR(lairAddr, getLairEntryFetcher(web3))
+  const { data: lairEntryPrice } = useSWR(lairAddress, getLairEntryFetcher(web3))
   const { data: ethPrice } = useSWR('ethPrice', getEthPrice)
   const {
     handleSubmit,
@@ -69,7 +69,7 @@ export function JoinLair({ lairAddr }) {
 
   const joinLair = async (value) => {
     try {
-      const contract = new ethers.Contract(lairAddr, abi, web3.getSigner())
+      const contract = new ethers.Contract(lairAddress, abi, web3.getSigner())
       const txn = await contract.enterLair({
         value,
       })
@@ -126,7 +126,7 @@ export function JoinLair({ lairAddr }) {
                   <p className='relative grid grid-cols-2'>
                     <span className='text-cyan-100 flex flex-col text-center font-medium'>
                       <span className='mb-2 text-3xl font-extrabold  tracking-tight text-white md:text-5xl'>
-                        {lairEntryPrice || 0}
+                        {lairEntryPrice || initialLairEntry}
                       </span>
                       Min ETH
                       <br />
@@ -138,7 +138,9 @@ export function JoinLair({ lairAddr }) {
                     <span>
                       <span className='flex flex-col text-center'>
                         <span className='text-3xl font-extrabold tracking-tight text-white md:text-5xl'>
-                          {(lairEntryPrice * ethPrice).toLocaleString('us', {
+                          {(
+                            (lairEntryPrice || initialLairEntry) * ethPrice
+                          ).toLocaleString('us', {
                             maximumFractionDigits: 0,
                           })}
                         </span>
@@ -166,14 +168,14 @@ export function JoinLair({ lairAddr }) {
                     <input
                       {...register('price', {
                         required: true,
-                        min: lairEntryPrice || 0,
+                        min: lairEntryPrice || initialLairEntry,
                       })}
                       name='price'
                       id='price'
                       type='number'
                       step='.1'
                       className='block w-full rounded-2xl border-light-bordergray bg-white pr-12 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2  dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
-                      placeholder={1 && lairEntryPrice}
+                      placeholder={lairEntryPrice || initialLairEntry}
                       aria-describedby='price-currency'
                     />
                     <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
