@@ -62,8 +62,8 @@ export default function Profile({ creator }) {
 
     if (!isUserTheCreator && !doesCreatorHaveLair) return 1
     if (!isUserTheCreator && doesCreatorHaveLair) return 2
-    if (isUserTheCreator && !user.get('whaleStrategy')?.length) return 3
-    if (isUserTheCreator && user.get('whaleStrategy')?.length) return 4
+    if (isUserTheCreator && !user.get('whaleStrategy')?.lairAddress) return 3
+    if (isUserTheCreator && user.get('whaleStrategy')?.lairAddress) return 4
   }
 
   const SideComponent = () => {
@@ -73,13 +73,13 @@ export default function Profile({ creator }) {
         return <NoStrategies />
       case 2:
         // POV USER -- CREATOR STRATEGY TRUE
-        return <JoinLair lairAddr={creator?.whaleStrategy[0]} />
+        return <JoinLair whaleStrategy={creator?.whaleStrategy} />
       case 3:
         // POV CREATOR -- CREATOR STRATEGY FALSE
         return <CreateLair />
       case 4:
         // POV CREATOR -- CREATOR STRATEGY TRUE
-        return <JoinLair lairAddr={user.get('whaleStrategy')[0]} />
+        return <JoinLair whaleStrategy={user.get('whaleStrategy')} />
       // return <Dashboard />
       case 5:
         // POV USER -- JOINED STRATEGY

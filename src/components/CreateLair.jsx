@@ -47,7 +47,9 @@ export function CreateLair() {
       toast.success(`contract address: ${contract.address}`)
       await contract.deployed()
       toast.success(`contract deployed succesfully`)
-      await setUserData({ whaleStrategy: [contract.address] })
+      await setUserData({
+        whaleStrategy: { lairAddress: contract.address, initialLairEntry: +price },
+      })
     } catch (err) {
       toast.error('could not deploy contract')
     }
