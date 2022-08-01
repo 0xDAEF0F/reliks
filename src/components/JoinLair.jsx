@@ -124,15 +124,13 @@ export function JoinLair({ lairAddr }) {
                 <div className='mb-5 py-1'>
                   <h2 className='sr-only'>Price</h2>
                   <p className='relative grid grid-cols-2'>
-                    <span className='flex flex-col text-center'>
-                      <span className='text-3xl font-extrabold  tracking-tight text-white md:text-5xl'>
+                    <span className='text-cyan-100 flex flex-col text-center font-medium'>
+                      <span className='mb-2 text-3xl font-extrabold  tracking-tight text-white md:text-5xl'>
                         {lairEntryPrice || 0}
                       </span>
-                      <div className='text-cyan-100 mt-2 text-base font-medium'>
-                        <span>Min ETH </span>
-                        <span className='block'>to Enter Lair</span>
-                      </div>
+                      Min ETH
                       <br />
+                      to Enter Lair
                     </span>
                     <span className='absolute flex h-12 w-full items-center justify-center text-3xl text-white md:text-5xl'>
                       ≈
@@ -174,14 +172,12 @@ export function JoinLair({ lairAddr }) {
                       id='price'
                       type='number'
                       step='.1'
-                      className='block w-full rounded-2xl border-light-bordergray bg-white pr-12 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:text-black dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
+                      className='block w-full rounded-2xl border-light-bordergray bg-white pr-12 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2  dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                       placeholder={1 && lairEntryPrice}
                       aria-describedby='price-currency'
                     />
                     <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
-                      <span
-                        className='text-gray-500 dark:text-black sm:text-sm'
-                        id='price-currency'>
+                      <span className='text-gray-500  sm:text-sm' id='price-currency'>
                         ETH
                       </span>
                     </div>
