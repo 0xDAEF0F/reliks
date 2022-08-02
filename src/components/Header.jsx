@@ -111,7 +111,7 @@ function Header() {
                       <li>
                         <button
                           onClick={() => login()}
-                          className='whitespace-nowrap rounded-3xl bg-light-violet9 px-5 py-2 text-light-violet1 hover:bg-light-violet10 dark:bg-darkMode-violet9 dark:hover:bg-darkMode-violet10'>
+                          className='whitespace-nowrap rounded-3xl bg-gradient-to-bl from-light-violet5 via-light-violet10 to-light-violet5 px-5 py-2 text-light-violet1 hover:brightness-90 dark:from-darkMode-violet5 dark:via-darkMode-violet10 dark:to-darkMode-violet5 dark:hover:opacity-75'>
                           Connect
                         </button>
                       </li>

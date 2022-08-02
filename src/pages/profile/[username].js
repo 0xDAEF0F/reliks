@@ -13,7 +13,7 @@ import { getAllUsernames, getCreatorInformation } from '../../util/getLastCreato
 import JoinedLair from '../../components/JoinedLair'
 import Dashboard from '../../components/Dashboard'
 import { useEffect } from 'react'
-import LairInfo from '../../components/LairInfo'
+import LairTable from '../../components/LairTable'
 
 export const SkeletonBanner = () => {
   return (
@@ -190,8 +190,8 @@ export default function Profile({ creator }) {
             </div>
           </div>
           {SideComponent()}
-          {/* <LairInfo /> */}
           <br />
+          {/* <LairTable /> */}
         </div>
       </div>
     </>
