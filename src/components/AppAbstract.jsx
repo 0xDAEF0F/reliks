@@ -33,6 +33,7 @@ const strategies = [
 export function AppAbstract() {
   const [top, setTop] = useState(true)
   const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -41,6 +42,9 @@ export function AppAbstract() {
     window.addEventListener('scroll', scrollHandler)
     return () => window.removeEventListener('scroll', scrollHandler)
   }, [top])
+
+  useEffect(() => setMounted(true), [])
+  if (!mounted) return null
 
   return (
     <main>
