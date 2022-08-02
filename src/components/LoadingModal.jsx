@@ -1,9 +1,14 @@
 import React, { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import ReactLoading from 'react-loading'
-
-export default function LoadingModal() {
-  const [open, setOpen] = useState(true)
+import { chunk } from 'lodash'
+import { flatMap } from 'lodash'
+import { IoIosCheckmarkCircle } from 'react-icons/io'
+export function LoadingModal({ open, setOpen, txn, loading }) {
+  // Formats Hash into chunks with new lines
+  const formattedTxn = flatMap(chunk(txn.hash, txn.hash?.length / 3), (chunk) =>
+    chunk.concat('\n')
+  ).join('')
 
   return (
     <>
@@ -40,9 +45,25 @@ export default function LoadingModal() {
               <div className='inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all dark:bg-mauve sm:my-8 sm:max-w-lg sm:p-6 sm:px-10 sm:align-middle'>
                 <div className='sm:flex sm:items-center'>
                   <div className='mt-3 text-center sm:mt-0 '>
-                    <ReactLoading type='balls' className='mx-auto' color='#6e56cf' />
-                    <span className='block'>Lorem ipsum, dolor sit amet.</span>
-                    <span className='block'>Lorem ipsum, dolor sit amet.</span>
+                    {loading ? (
+                      <ReactLoading type='balls' className='mx-auto' color='#6e56cf' />
+                    ) : (
+                      <div className='flex justify-center '>
+                        <IoIosCheckmarkCircle size={30} color='#22bb33' />
+                      </div>
+                    )}
+                    <h3 className='m-2 text-base font-bold text-light-violet4 '>
+                      Transaction Hash:
+                    </h3>
+                    {/* TODO: Change this to <a/> and redirect to block scanner */}
+                    <p className='whitespace-pre-wrap text-sm underline decoration-light-violet8 decoration-solid underline-offset-2 hover:decoration-light-violet9'>
+                      {formattedTxn}
+                    </p>
+                    <button
+                      onClick={() => setOpen(false)}
+                      className='mt-4 rounded-md border-2 border-light-violet8 py-1 px-3 text-sm font-semibold'>
+                      Close
+                    </button>
                   </div>
                 </div>
               </div>

@@ -5,10 +5,12 @@ import { CgSandClock } from 'react-icons/cg'
 import toast from 'react-hot-toast'
 import Moralis from 'moralis'
 import { useMoralis } from 'react-moralis'
-import { abi } from '../util/deployWhale'
+import { abi, createWhaleContract } from '../util/deployWhale'
 import useSWR from 'swr'
 import Image from 'next/image'
 import { useForm } from 'react-hook-form'
+import { LoadingModal } from './LoadingModal'
+import { useEffect, useState } from 'react'
 const ethers = Moralis.web3Library
 
 const features = [
@@ -66,6 +68,29 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
     register,
     formState: { errors },
   } = useForm()
+  const { user } = useMoralis()
+  const [modalOpen, setModalOpen] = useState(false)
+  const [currentTxn, setCurrentTxn] = useState({})
+
+  const lairContract = createWhaleContract(lairAddress, web3)
+
+  useEffect(() => {
+    if (!lairContract?.provider || !currentTxn.hash) return
+
+    console.log('mounting lairContract listener.')
+    lairContract.once(
+      lairContract.filters.LogNewWhale(currentTxn.value, user.get('ethAddress')),
+      (amount, old, newAddr) => {
+        console.log(amount, old, newAddr)
+        setCurrentTxn({ ...currentTxn, loading: false })
+      }
+    )
+
+    return () => {
+      console.log('unmounting listener lairContract.')
+      lairContract.removeAllListeners('LogNewWhale')
+    }
+  }, [currentTxn.hash])
 
   const joinLair = async (value) => {
     try {
@@ -73,8 +98,8 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
       const txn = await contract.enterLair({
         value,
       })
-      toast.success(`TXN: ${txn.hash}`)
-      console.log(txn)
+      setModalOpen(true)
+      setCurrentTxn({ hash: txn.hash, value, loading: true })
     } catch (err) {
       toast.error(`error: ${err.message}`)
       console.error(err)
@@ -83,6 +108,12 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
 
   return (
     <div>
+      <LoadingModal
+        open={modalOpen}
+        setOpen={setModalOpen}
+        txn={currentTxn}
+        loading={currentTxn.loading}
+      />
       <div className='mx-10 mt-10'>
         <div className='relative'>
           <div className='absolute inset-0' aria-hidden='true'>
