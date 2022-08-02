@@ -69,11 +69,10 @@ export function AppAbstract() {
                 </a>
               </div>
             </div>
-            <div className='mx-auto mt-12 lg:relative lg:m-0'>
+            <div className='mx-auto md:mt-12 lg:relative lg:m-0'>
               <div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0'>
-                {/* To fix lightMode asset */}
                 <img
-                  className='h-80 w-full lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-max lg:max-w-none'
+                  className='h-60 w-full lg:absolute lg:inset-y-0 lg:right-0 lg:h-5/6 lg:w-max xl:h-full'
                   src={theme === 'dark' ? 'asset.svg' : 'assetlm.svg'}
                   alt=''
                 />
@@ -86,7 +85,7 @@ export function AppAbstract() {
                 ? 'invisible'
                 : 'flex animate-pulse flex-col items-center transition duration-1000 ease-in-out'
             }`}>
-            <p>Scroll down to see more</p>
+            <p className='mt-10 md:mt-0'>Scroll down to see more</p>
             <TbArrowNarrowDown />
           </div>
           <div className='mt-28'>
@@ -124,7 +123,7 @@ export function AppAbstract() {
                       <p className='text-gray-500 mt-4 text-base'>
                         {strategies.description}
                       </p>
-                      <p className='mt-2 text-right text-sm text-light-violet8 dark:text-darkMode-violet11'>
+                      <p className='mt-2 text-right text-sm italic text-light-gray opacity-75 dark:text-darkMode-gray'>
                         {strategies.comingSoon ? 'Coming soon...' : ''}
                       </p>
                     </div>

@@ -3,7 +3,8 @@ import SignUpAsCreatorBanner from '../../components/SignUpAsCreatorBanner'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
-import { TiSocialYoutubeCircular } from 'react-icons/ti'
+import { BiLinkAlt } from 'react-icons/bi'
+import { TbArrowUpRight } from 'react-icons/tb'
 import { CreateLair } from '../../components/CreateLair'
 import NoStrategies from '../../components/NoStrategies'
 import { JoinLair } from '../../components/JoinLair'
@@ -12,6 +13,7 @@ import { getAllUsernames, getCreatorInformation } from '../../util/getLastCreato
 import JoinedLair from '../../components/JoinedLair'
 import Dashboard from '../../components/Dashboard'
 import { useEffect } from 'react'
+import LairInfo from '../../components/LairInfo'
 
 export const SkeletonBanner = () => {
   return (
@@ -167,7 +169,7 @@ export default function Profile({ creator }) {
                   </div>
                 </div>
                 {creator?.bio ? (
-                  <p className='mx-auto mt-4 w-2/4 pb-5 md:ml-2'>{creator?.bio}</p>
+                  <p className='mx-auto mt-4 mb-10 w-3/4 md:ml-2'>{creator?.bio}</p>
                 ) : (
                   <div className='pb-10 md:ml-2'>
                     <br />
@@ -175,19 +177,20 @@ export default function Profile({ creator }) {
                 )}
               </div>
             </div>
-            <div className='mr-2 mb-2 -mt-14 flex justify-end md:mt-0 md:mr-10'>
+            <div className='mr-1 mb-2 -mt-4 flex justify-end text-light-gray opacity-80 hover:text-light-violet11 dark:text-darkMode-gray dark:hover:text-darkMode-violet11 md:mt-0 md:mr-8'>
               <a
                 target='_blank'
+                className='group flex items-center gap-1'
                 rel='noreferrer'
                 href={`https://www.youtube.com/channel/${creator.channelId}`}>
-                <TiSocialYoutubeCircular
-                  size={50}
-                  className='text-light-gray opacity-80 hover:opacity-60 dark:text-darkMode-gray'
-                />
+                <BiLinkAlt size={18} />
+                <span className='text-sm font-semibold'>Youtube</span>
+                <TbArrowUpRight className='invisible group-hover:visible' size={17} />
               </a>
             </div>
           </div>
           {SideComponent()}
+          {/* <LairInfo /> */}
           <br />
         </div>
       </div>

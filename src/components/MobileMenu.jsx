@@ -1,5 +1,5 @@
 import { Switch } from '@headlessui/react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import LinkChevron from './LinkChevron'
 import { useTheme } from 'next-themes'
 import { useMoralis } from 'react-moralis'
@@ -9,14 +9,10 @@ import { MdLogout } from 'react-icons/md'
 import { HiOutlineMoon } from 'react-icons/hi'
 
 export default function MobileMenu() {
+  const [mounted, setMounted] = useState(false)
+  const { logout, user, isAuthenticated, authenticate } = useMoralis()
   const [isNavOpen, setIsNavOpen] = useState(false)
   const { theme, setTheme } = useTheme()
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-  }
-
-  const { logout, user, isAuthenticated, authenticate } = useMoralis()
 
   function isCreator() {
     const verifiedSocialPlatforms = user?.get('verifiedSocialPlatforms')
@@ -37,6 +33,13 @@ export default function MobileMenu() {
     if (!usr) toast.error(`Could not sign in. Please try again.`)
     setIsNavOpen(false)
   }
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
+
+  useEffect(() => setMounted(true), [])
+  if (!mounted) return null
 
   return (
     <>
@@ -74,20 +77,14 @@ export default function MobileMenu() {
               <li>
                 <LinkChevron title={'Explore'} to={'/explore'} xClass='w-full' />
               </li>
-              {/* <li>
-                <LinkChevron title={'Stats'} to={'/stats'} xClass='w-full' />
-              </li>
-              <li>
-                <LinkChevron title={'About us'} to={'/about'} xClass='w-full' />
-              </li> */}
               <li>
                 <a
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
                   className='flex w-full cursor-pointer items-center justify-between rounded-md px-1 py-2 text-base font-medium text-black opacity-60 hover:bg-light-violet5 hover:opacity-100 dark:text-white dark:hover:bg-darkMode-violet5'>
-                  <span className='flex items-center gap-2'>
+                  <div className='flex items-center gap-2'>
                     <HiOutlineMoon size={26} />
                     <span>Night Mode</span>
-                  </span>
+                  </div>
                   <Switch
                     checked={theme === 'dark'}
                     onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
