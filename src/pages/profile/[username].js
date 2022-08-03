@@ -112,21 +112,23 @@ export default function Profile({ creator }) {
             )}
           </div>
           <div className='mx-auto h-full items-start border-b border-dotted border-light-violet6 pt-4 dark:border-darkMode-violet6 md:flex md:justify-between'>
-            <div className='flex flex-col items-center md:mx-10 md:flex-row'>
+            <div className='flex flex-col items-center md:mx-8 md:flex-row'>
               <div className='relative -inset-y-9'>
-                <div className='relative h-24 w-24 rounded-full shadow-md'>
-                  {creator?.pfp ? (
-                    <Image
-                      src={creator?.pfp}
-                      className='rounded-full object-cover object-center'
-                      quality={100}
-                      priority
-                      layout='fill'
-                      alt='profile picture'
-                    />
-                  ) : (
-                    <SkeletonPP />
-                  )}
+                <div className='rounded-full border border-light-violet5 border-opacity-50 bg-light-violet1 p-2 dark:border-darkMode-violet5  dark:border-opacity-100 dark:bg-darkMode-violet1'>
+                  <div className='relative h-24 w-24 rounded-full'>
+                    {creator?.pfp ? (
+                      <Image
+                        src={creator?.pfp}
+                        className='rounded-full object-cover object-center'
+                        quality={100}
+                        priority
+                        layout='fill'
+                        alt='profile picture'
+                      />
+                    ) : (
+                      <SkeletonPP />
+                    )}
+                  </div>
                 </div>
               </div>
               <div className='ml-0 -mt-9 text-center md:-mt-1 md:ml-3 md:text-left'>

@@ -76,17 +76,6 @@ function Header() {
                       Explore
                     </a>
                   </Link>
-                  {/* <Link href=''>
-                    <a className='font-semibold text-black opacity-70 transition duration-100 hover:opacity-100 dark:text-white'>
-                      Stats
-                    </a>
-                  </Link>
-                  <Link href=''>
-                    <a className='whitespace-nowrap font-semibold text-black opacity-70 transition duration-100 hover:opacity-100 dark:text-white'>
-                      About us
-                    </a>
-                  </Link> */}
-                  {/* END TEMPORARY LINKS */}
                 </div>
 
                 {!isAuthenticated ? (

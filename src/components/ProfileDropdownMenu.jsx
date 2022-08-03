@@ -49,13 +49,15 @@ export default function ProfileDropdownMenu() {
     <div>
       <Menu as='div' className='relative inline-block text-left'>
         <div>
-          <Menu.Button className='relative h-12 w-12 rounded-full bg-white p-1 shadow-md hover:opacity-90 dark:bg-black dark:shadow-darkMode-bordergray'>
-            <Image
-              src={youtubeCreds?.pfp || '/pp.jpg'}
-              className='rounded-full'
-              layout='fill'
-              alt='pp'
-            />
+          <Menu.Button className='rounded-full border border-light-violet5 border-opacity-50 bg-light-violet1 p-1 dark:border-darkMode-violet5 dark:border-opacity-100 dark:bg-darkMode-violet1'>
+            <div className='relative h-12 w-12'>
+              <Image
+                src={youtubeCreds?.pfp || '/pp.jpg'}
+                className='rounded-full'
+                layout='fill'
+                alt='pp'
+              />
+            </div>
           </Menu.Button>
         </div>
         <Transition
