@@ -16,8 +16,8 @@ export default function TabsUser({ creator }) {
   return (
     <div>
       <Tab.Group>
-        <div className=''>
-          <Tab.List className='bg-gray-200 flex w-full space-x-1 rounded-xl p-1 '>
+        <div className='mb-5'>
+          <Tab.List className='flex w-full space-x-1 p-1'>
             {Object.keys(categories).map((category) => (
               <Tab
                 key={category}
@@ -26,8 +26,8 @@ export default function TabsUser({ creator }) {
                     'w-full py-2.5 text-sm font-medium leading-5',
                     'focus:outline-none ',
                     selected
-                      ? 'border-b-4 border-darkMode-violet6'
-                      : 'hover:bg-light-violet2 hover:brightness-90 dark:hover:bg-darkMode-violet2 dark:hover:brightness-75'
+                      ? 'border-b-4 border-darkMode-violet6 text-darkMode-violet11'
+                      : 'dark:hover:brightness-40 text-darkMode-gray hover:bg-light-violet2 hover:text-darkMode-violet11 hover:brightness-90 dark:text-opacity-75 dark:hover:bg-darkMode-violet2'
                   )
                 }>
                 {category}
@@ -37,7 +37,7 @@ export default function TabsUser({ creator }) {
         </div>
         <Tab.Panels>
           {Object.values(categories).map((category, idx) => (
-            <Tab.Panel className='mt-10 focus:outline-none' key={idx}>
+            <Tab.Panel className='mt-1 focus:outline-none' key={idx}>
               {category}
             </Tab.Panel>
           ))}

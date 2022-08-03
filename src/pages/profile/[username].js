@@ -7,11 +7,9 @@ import { BiLinkAlt } from 'react-icons/bi'
 import { TbArrowUpRight } from 'react-icons/tb'
 import { CreateLair } from '../../components/CreateLair'
 import NoStrategies from '../../components/NoStrategies'
-import { JoinLair } from '../../components/JoinLair'
 import { useMoralis } from 'react-moralis'
 import { getAllUsernames, getCreatorInformation } from '../../util/getLastCreators'
-import JoinedLair from '../../components/JoinedLair'
-import Dashboard from '../../components/Dashboard'
+
 import { useEffect } from 'react'
 import LairTable from '../../components/LairTable'
 import TabsUser from '../../components/TabsUser'
@@ -57,7 +55,7 @@ export default function Profile({ creator }) {
         // POV CREATOR -- CREATOR STRATEGY TRUE
         return <LairTable />
       case 5:
-        // POV USER -- JOINED STRATEGY (To do: add different tabs for a joined user )
+        // POV USER -- JOINED STRATEGY (To do: add another tab for a joined user )
         return <LairTable />
     }
   }

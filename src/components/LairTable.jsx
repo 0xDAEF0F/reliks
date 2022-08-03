@@ -33,18 +33,18 @@ const people = [
 export default function LairTable() {
   return (
     <div className='flex flex-col space-y-2'>
-      <div className='flex justify-between'>
-        <div className='ml-5'>
-          <p className='text-2xl font-semibold text-light-violet11 dark:text-darkMode-violet11'>
-            Lair table
-          </p>
-          <p className='px-1 py-2 text-sm italic text-light-gray opacity-75 dark:text-darkMode-gray'>
+      <div>
+        <h2 className='ml-10 text-base font-medium uppercase tracking-wide text-light-violet11 dark:text-darkMode-violet11'>
+          Lair Table
+        </h2>
+        <div className='flex justify-between'>
+          <p className='ml-5 px-1 py-2 text-sm italic text-light-gray opacity-75 dark:text-darkMode-gray'>
             Current lair price: 5 ETH
           </p>
+          <p className='mr-5 px-1 py-2 text-sm italic text-light-gray opacity-75 dark:text-darkMode-gray'>
+            Capacity: 5/20
+          </p>
         </div>
-        <p className='mr-5 px-1 py-2 text-sm italic text-light-gray opacity-75 dark:text-darkMode-gray'>
-          Capacity: 5/20
-        </p>
       </div>
       <div className=' overflow-x-auto sm:-mx-6 lg:-mx-8'>
         <div className='inline-block min-w-full align-middle sm:px-6 lg:px-8'>
