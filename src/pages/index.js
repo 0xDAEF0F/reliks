@@ -36,7 +36,6 @@ export default function Home() {
       <Header />
       <SignUpAsCreatorBanner xclass='invisible hidden md:block' />
       <AppAbstract />
-      <Footer />
     </>
   )
 }

@@ -59,9 +59,7 @@ export default function explore({ creators }) {
           <NoCreators />
         )}
       </div>
-      <br />
-      <br />
-      <Footer />
+      <div className='h-20' />
     </>
   )
 }
