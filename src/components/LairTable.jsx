@@ -2,6 +2,7 @@ import Link from 'next/link'
 import EmptyTable from './EmptyTable'
 import { TbArrowUpRight } from 'react-icons/tb'
 
+// TEMPORARY
 const people = [
   {
     address: '0xtkjn7we908r7w9e087r',
@@ -32,10 +33,10 @@ const people = [
 
 export default function LairTable() {
   return (
-    <div className='flex flex-col space-y-2'>
+    <div className='mt-4 flex flex-col space-y-2'>
       <div>
-        <h2 className='ml-10 text-base font-medium uppercase tracking-wide text-light-violet11 dark:text-darkMode-violet11'>
-          Lair Table
+        <h2 className='ml-8 text-base font-medium uppercase tracking-wide text-light-violet11 dark:text-darkMode-violet11'>
+          Lair Status
         </h2>
         <div className='flex justify-between'>
           <p className='ml-5 px-1 py-2 text-sm italic text-light-gray opacity-75 dark:text-darkMode-gray'>

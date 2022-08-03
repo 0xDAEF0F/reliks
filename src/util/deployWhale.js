@@ -1,5 +1,5 @@
 import Moralis from 'moralis'
-const ethers = Moralis.web3Library
+export const ethers = Moralis.web3Library
 
 export const abi = JSON.parse(`[
 	{

@@ -1,25 +1,4 @@
-import { FaDiscord } from 'react-icons/fa'
-import { MdWaterDrop } from 'react-icons/md'
-import { CgSandClock } from 'react-icons/cg'
-
-const features = [
-  {
-    name: 'Discord server',
-    description:
-      "Join your favorite creators' server, and access the exclusive whales-only chat.",
-    icon: FaDiscord,
-  },
-  {
-    name: 'NFT drops',
-    description: 'Flex your NFT drops granted by Reliqs and your creator.',
-    icon: MdWaterDrop,
-  },
-  {
-    name: 'Limited-time Rewards',
-    description: 'Unique rewards granted each season.',
-    icon: CgSandClock,
-  },
-]
+import { BenefitsLairPanel } from './BenefitsLairPanel'
 
 export default function NoStrategies() {
   return (
@@ -30,34 +9,7 @@ export default function NoStrategies() {
             <div className='inset-y-0 right-0 w-1/2 bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
           </div>
           <div className='relative mx-auto max-w-7xl lg:grid lg:grid-cols-2 lg:px-8'>
-            <div className='px-4 sm:px-6 lg:px-0 lg:pr-8'>
-              <div className='mx-auto max-w-lg lg:mx-0'>
-                <h2 className='text-base font-medium uppercase tracking-wide text-light-violet11 dark:text-darkMode-violet11'>
-                  Whales Lair
-                </h2>
-                <p className='mt-2 text-2xl font-semibold sm:text-3xl'>Benefits</p>
-                <dl className='mt-12 space-y-10'>
-                  {features.map((feature) => (
-                    <div key={feature.name} className='relative'>
-                      <dt>
-                        <div className='absolute flex h-12 w-12 items-center justify-center  rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 object-cover dark:from-darkMode-violet8 dark:to-darkMode-violet9 '>
-                          <feature.icon
-                            className='h-6 w-6 text-white'
-                            aria-hidden='true'
-                          />
-                        </div>
-                        <p className='ml-16 text-lg font-medium leading-6 text-darkMode-violet10'>
-                          {feature.name}
-                        </p>
-                      </dt>
-                      <dd className='mt-2 ml-16 text-base text-light-gray opacity-75 dark:text-darkMode-gray'>
-                        {feature.description}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            </div>
+            <BenefitsLairPanel />
             <div className='lg:flex lg:items-center lg:justify-end  lg:px-0 lg:pl-8'>
               <div className='mx-auto mt-8 w-full max-w-lg space-y-8 rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 p-4 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:mx-0 lg:bg-none'>
                 <div className='mx-auto max-w-3xl rounded-lg border-2 border-dashed border-light-violet12 p-12 text-center dark:border-darkMode-violet12'>
@@ -76,7 +28,7 @@ export default function NoStrategies() {
                     />
                   </svg>
                   <h3 className='mt-2 text-sm font-medium text-light-violet1 dark:text-darkMode-violet12'>
-                    This creator has no registered strategy
+                    Creator has not created Lair.
                   </h3>
                 </div>
               </div>

@@ -10,7 +10,7 @@ function classNames(...classes) {
 export default function TabsUser({ creator }) {
   let [categories] = useState({
     Join: <JoinLair whaleStrategy={creator?.whaleStrategy} />,
-    Lair: LairTable(),
+    Lair: <LairTable />,
   })
 
   return (

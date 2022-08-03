@@ -1,6 +1,6 @@
 export default function EmptyTable() {
   return (
-    <div className='mx-auto rounded-lg border-2 border-dashed border-darkMode-violet11 p-4 text-center'>
+    <div className='mx-auto grid h-80 place-content-center rounded-lg border-2 border-dashed border-darkMode-violet11 p-4'>
       <svg
         className='text-gray-400 mx-auto h-12 w-12'
         fill='none'
@@ -16,7 +16,7 @@ export default function EmptyTable() {
         />
       </svg>
       <h3 className='mt-2 text-sm font-medium text-light-violet11 dark:text-darkMode-violet11'>
-        There are currently no registered users
+        There are no whales in lair.
       </h3>
     </div>
   )

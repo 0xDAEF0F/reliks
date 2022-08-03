@@ -11,7 +11,6 @@ import to from 'await-to-js'
 
 export default function CreatorSignUpModal() {
   const [open, setOpen] = useState(false)
-  // isAuthenticating, logout, account not used currently
   const { authenticate, isAuthenticated, user } = useMoralis()
 
   const login = async () => {
@@ -97,7 +96,7 @@ export default function CreatorSignUpModal() {
               leave='ease-in duration-200'
               leaveFrom='opacity-100 translate-y-0 sm:scale-100'
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'>
-              <div className='sm:w-fullll inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all dark:bg-mauve sm:my-8 sm:max-w-lg sm:p-6 sm:px-10 sm:align-middle'>
+              <div className='inline-block w-full transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all dark:bg-mauve sm:my-8 sm:w-full sm:max-w-lg sm:p-6 sm:px-10 sm:align-middle'>
                 <div className='absolute top-0 right-0 hidden pt-4 pr-6 sm:block'>
                   <button
                     type='button'
@@ -106,12 +105,10 @@ export default function CreatorSignUpModal() {
                     <AiOutlineClose size={18} />
                   </button>
                 </div>
-                <div className='sm:flex sm:items-start'>
-                  <div className='mt-3 text-center sm:mt-0 sm:text-left'>
-                    <BulletSteps current={calculateStep()} total={2} />
-                    <br />
-                    {Modal()}
-                  </div>
+                <div className='mt-3 text-center sm:mt-0 sm:text-left'>
+                  <BulletSteps current={calculateStep()} total={2} />
+                  <br />
+                  <Modal />
                 </div>
               </div>
             </Transition.Child>
