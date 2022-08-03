@@ -50,9 +50,7 @@ export default function LairTable() {
         <div className='inline-block min-w-full align-middle sm:px-6 lg:px-8'>
           <div className='overflow-hidden rounded-b-lg'>
             {people.length > 0 ? (
-              <table
-                style={{ 'border-spacing': '0px 0.2rem' }}
-                className='border- min-w-full'>
+              <table style={{ borderSpacing: '0px 0.2rem' }} className='min-w-full'>
                 <thead className='border-y border-light-bordergray dark:border-darkMode-violet7'>
                   <tr>
                     <th
