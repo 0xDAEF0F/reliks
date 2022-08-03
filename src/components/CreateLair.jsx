@@ -1,11 +1,14 @@
 import { useMoralis } from 'react-moralis'
-import Moralis from 'moralis'
+import { ethers } from '../util/deployWhale'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
 import { useForm } from 'react-hook-form'
 import { createWhaleFactory } from '../util/deployWhale'
 import { IoCloseCircleSharp } from 'react-icons/io5'
 import { BenefitsLairPanel } from './BenefitsLairPanel'
+const {
+  utils: { parseEther },
+} = ethers
 
 export function CreateLair() {
   const {
@@ -22,7 +25,7 @@ export function CreateLair() {
       const contract = await WhaleFactory.deploy(
         process.env.NEXT_PUBLIC_APP_ADDRESS,
         whales,
-        Moralis.web3Library.utils.parseEther(String(price))
+        parseEther(String(price))
       )
       toast.success(`contract address: ${contract.address}`)
       await contract.deployed()

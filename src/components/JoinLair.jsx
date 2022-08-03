@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Moralis from 'moralis'
 import Axios from 'axios'
 import toast from 'react-hot-toast'
 import useSWR from 'swr'
@@ -10,7 +9,11 @@ import { abi, createWhaleContract } from '../util/deployWhale'
 import { useForm } from 'react-hook-form'
 import { LoadingModal } from './LoadingModal'
 import { BenefitsLairPanel } from './BenefitsLairPanel'
-const ethers = Moralis.web3Library
+import { ethers } from '../util/deployWhale'
+
+const {
+  utils: { parseEther, formatEther },
+} = ethers
 
 async function getEthPrice() {
   const response = await Axios.get(
@@ -30,11 +33,11 @@ function getLairEntryFetcher(web3Provider) {
     const lairContract = new ethers.Contract(address, abi, web3Provider)
     // LAIR !== FULL
     const isFull = await lairContract.lairFull()
-    if (!isFull) return +ethers.utils.formatEther(await lairContract.initialLairEntry())
+    if (!isFull) return +formatEther(await lairContract.initialLairEntry())
     // LAIR FULL
     const smallestWhaleIdx = await lairContract.whaleLimit()
     const smallestWhale = await lairContract.whaleArr(smallestWhaleIdx - 1)
-    return +ethers.utils.formatEther(smallestWhale.grant)
+    return +formatEther(smallestWhale.grant)
   }
 }
 
@@ -70,6 +73,7 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
       console.log('unmounting listener lairContract.')
       lairContract.removeAllListeners('LogNewWhale')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTxn.hash])
 
   const joinLair = async (value) => {
@@ -134,10 +138,7 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
                   </p>
                 </div>
                 {/* Amount To Join Lair */}
-                <form
-                  onSubmit={handleSubmit((a) =>
-                    joinLair(ethers.utils.parseEther(a.price))
-                  )}>
+                <form onSubmit={handleSubmit((a) => joinLair(parseEther(a.price)))}>
                   <label
                     htmlFor='price'
                     className='mb-2 block text-sm font-medium text-white'>

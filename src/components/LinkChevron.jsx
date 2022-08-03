@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { MdOutlineExplore, MdAccountCircle, MdLogout } from 'react-icons/md'
-import { IoMdMoon } from 'react-icons/io'
+import { MdOutlineExplore, MdAccountCircle } from 'react-icons/md'
 
 const icons = {
   Explore: <MdOutlineExplore size={26} />,

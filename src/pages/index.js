@@ -29,7 +29,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!web3) enableWeb3()
-  }, [])
+  }, [web3, enableWeb3])
 
   return (
     <>

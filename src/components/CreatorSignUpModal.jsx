@@ -11,7 +11,6 @@ import to from 'await-to-js'
 
 export default function CreatorSignUpModal() {
   const [open, setOpen] = useState(false)
-  // isAuthenticating, logout, account not used currently
   const { authenticate, isAuthenticated, user } = useMoralis()
 
   const login = async () => {
@@ -109,7 +108,7 @@ export default function CreatorSignUpModal() {
                 <div className='mt-3 text-center sm:mt-0 sm:text-left'>
                   <BulletSteps current={calculateStep()} total={2} />
                   <br />
-                  {Modal()}
+                  <Modal />
                 </div>
               </div>
             </Transition.Child>
