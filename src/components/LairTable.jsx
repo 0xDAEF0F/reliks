@@ -80,7 +80,7 @@ export default function LairTable() {
                       <td className='whitespace-nowrap px-6 py-4 text-sm font-medium text-light-gray opacity-75 dark:text-darkMode-gray'>
                         <div className='flex'>
                           <div className='group flex cursor-pointer opacity-80 hover:text-light-violet11 dark:hover:text-darkMode-violet11'>
-                            <Link href={`https://blockscan/address/${person.address}`}>
+                            <Link href={`https://etherscan.io/address/${person.address}`}>
                               <a className='flex' target='_blank'>
                                 {person.address}
                                 <TbArrowUpRight
