@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import { FaDiscord } from 'react-icons/fa'
 import { MdWaterDrop } from 'react-icons/md'
+import { IoCloseCircleSharp } from 'react-icons/io5'
 import { CgSandClock } from 'react-icons/cg'
 import toast from 'react-hot-toast'
 import Moralis from 'moralis'
@@ -192,7 +193,7 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
                     className='mb-2 block text-sm font-medium text-white'>
                     Enter Amount*
                   </label>
-                  <div className='relative mt-1 w-full rounded-2xl border-light-bordergray bg-white pl-10 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'>
+                  <div className='relative mt-1 w-full rounded-2xl'>
                     <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4'>
                       <Image width={9} height={14} src='/ethereum.svg' alt='eth' />
                     </div>
@@ -205,7 +206,11 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
                       id='price'
                       type='number'
                       step='.1'
-                      className='block w-full rounded-2xl border-light-bordergray bg-white pr-12 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2  dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
+                      className={`${
+                        errors.price
+                          ? ' border border-error focus:border-error focus:ring-error'
+                          : 'border-light-bordergray  focus:border-light-violet7 focus:ring-light-violet7  dark:border-mauve'
+                      } block w-full rounded-2xl  bg-white  pl-8  pr-12 shadow-sm disabled:cursor-not-allowed disabled:opacity-50 dark:bg-darkMode-violet2 sm:text-sm`}
                       placeholder={lairEntryPrice || initialLairEntry}
                       aria-describedby='price-currency'
                     />
@@ -215,14 +220,22 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
                       </span>
                     </div>
                   </div>
+
                   {/* error whale number */}
-                  {errors.price && (
-                    <p className='mt-2 rounded-md border-2 border-error bg-darkMode-violet3 py-1 text-center text-sm font-semibold text-error'>
-                      Amount must be greater than {lairEntryPrice}
-                    </p>
-                  )}
+                  <div className='mb-4 h-4'>
+                    {errors.price && (
+                      <div className='flex items-center'>
+                        <IoCloseCircleSharp className='birder text-[#942f1e] dark:text-[#ff1a60] ' />
+
+                        <p className=' text-xs font-semibold text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
+                          Amount must be greater or equal than{' '}
+                          {lairEntryPrice || initialLairEntry}
+                        </p>
+                      </div>
+                    )}
+                  </div>
                   <input
-                    className='mt-4 flex w-full  items-center justify-center rounded-md bg-mauve py-2 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:py-4 md:px-10'
+                    className='flex w-full  items-center justify-center rounded-md bg-mauve py-2 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:py-4 md:px-10'
                     type='submit'
                     value='Join Lair'
                     id='price'
