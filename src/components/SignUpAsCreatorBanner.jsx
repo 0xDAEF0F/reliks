@@ -41,7 +41,7 @@ export default function SignUpAsCreatorBanner({ xclass }) {
               <button
                 onClick={() => setOpen(false)}
                 type='button'
-                className='-mr-1 flex rounded-md p-2 hover:bg-light-violet10 focus:outline-none focus:ring-2 focus:ring-white dark:hover:bg-darkMode-violet10 sm:-mr-2'>
+                className='-mr-1 flex rounded-md p-2 hover:bg-light-violet11 focus:outline-none focus:ring-2 focus:ring-white dark:hover:bg-darkMode-violet11 sm:-mr-2'>
                 <span className='sr-only'>Dismiss</span>
                 <HiX size={20} color='white' aria-hidden='true' />
               </button>
