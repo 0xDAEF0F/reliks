@@ -4,6 +4,11 @@ import ReactLoading from 'react-loading'
 import { chunk } from 'lodash'
 import { flatMap } from 'lodash'
 import { IoIosCheckmarkCircle } from 'react-icons/io'
+import { AiOutlineClose } from 'react-icons/ai'
+import { TbArrowUpRight } from 'react-icons/tb'
+import { BiLinkAlt } from 'react-icons/bi'
+
+import Link from 'next/link'
 export function LoadingModal({ open, setOpen, txn, loading }) {
   // Formats Hash into chunks with new lines
   const formattedTxn = flatMap(chunk(txn.hash, txn.hash?.length / 3), (chunk) =>
@@ -42,7 +47,15 @@ export function LoadingModal({ open, setOpen, txn, loading }) {
               leave='ease-in duration-200'
               leaveFrom='opacity-100 translate-y-0 sm:scale-100'
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'>
-              <div className='inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all dark:bg-mauve sm:my-8 sm:max-w-lg sm:p-6 sm:px-10 sm:align-middle'>
+              <div className='inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-center align-bottom shadow-xl transition-all dark:bg-mauve sm:my-8 sm:max-w-lg sm:p-6 sm:px-10 sm:align-middle'>
+                <div className='absolute top-0 right-0 hidden pt-4 pr-6 sm:block'>
+                  <button
+                    type='button'
+                    className='rounded-md text-light-gray focus:outline-none focus:ring-2 focus:ring-light-violet7 dark:text-darkMode-gray dark:focus:ring-darkMode-violet7'
+                    onClick={() => setOpen(false)}>
+                    <AiOutlineClose size={18} />
+                  </button>
+                </div>
                 <div className='sm:flex sm:items-center'>
                   <div className='mt-3 text-center sm:mt-0 '>
                     {loading ? (
@@ -55,15 +68,21 @@ export function LoadingModal({ open, setOpen, txn, loading }) {
                     <h3 className='m-2 text-base font-bold text-light-violet4 '>
                       Transaction Hash:
                     </h3>
-                    {/* TODO: Change this to <a/> and redirect to block scanner */}
-                    <p className='whitespace-pre-wrap text-sm underline decoration-light-violet8 decoration-solid underline-offset-2 hover:decoration-light-violet9'>
-                      {formattedTxn}
-                    </p>
-                    <button
-                      onClick={() => setOpen(false)}
-                      className='mt-4 rounded-md border-2 border-light-violet8 py-1 px-3 text-sm font-semibold'>
-                      Close
-                    </button>
+
+                    <div className='group flex cursor-pointer underline opacity-50 hover:text-light-violet11 dark:hover:text-darkMode-violet11'>
+                      <Link href={`https://etherscan.io/tx/${formattedTxn}`}>
+                        <a className='flex gap-1' target='_blank'>
+                          <BiLinkAlt size={18} />
+                          <p className='whitespace-nowrap text-sm font-medium'>
+                            {formattedTxn}0xiub2iububkhnkjhn23
+                          </p>
+                          <TbArrowUpRight
+                            className='invisible group-hover:visible'
+                            size={17}
+                          />
+                        </a>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
