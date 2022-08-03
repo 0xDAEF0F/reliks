@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { GiSpermWhale, GiOpenTreasureChest } from 'react-icons/gi'
+import { GiOpenTreasureChest } from 'react-icons/gi'
+import { FaUsers } from 'react-icons/fa'
 import { TbBadges, TbArrowNarrowDown } from 'react-icons/tb'
 import { useTheme } from 'next-themes'
 
@@ -11,7 +11,7 @@ const strategies = [
     description:
       "Immerse within your creators' lair (discord room) and enjoy whale-exclusive rewards.",
     comingSoon: false,
-    icon: GiSpermWhale,
+    icon: FaUsers,
   },
   {
     name: 'Badges',

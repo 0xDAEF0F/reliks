@@ -75,7 +75,7 @@ export default function LairTable() {
                 <tbody>
                   {people.map((person) => (
                     <tr
-                      className='bg-light-violet1 dark:bg-darkMode-violet1'
+                      className='bg-light-violet1 hover:bg-light-violet2 dark:bg-darkMode-violet1 dark:hover:bg-darkMode-violet2'
                       key={person.address}>
                       <td className='whitespace-nowrap px-6 py-4 text-sm font-medium text-light-gray opacity-75 dark:text-darkMode-gray'>
                         <div className='flex'>
