@@ -4,6 +4,7 @@ import toast from 'react-hot-toast'
 import Image from 'next/image'
 import { useForm } from 'react-hook-form'
 import { createWhaleFactory } from '../util/deployWhale'
+import { IoCloseCircleSharp } from 'react-icons/io5'
 import { BenefitsLairPanel } from './BenefitsLairPanel'
 
 export function CreateLair() {
@@ -51,7 +52,7 @@ export function CreateLair() {
                     <h2 className='text-3xl font-semibold leading-6 text-light-violet12 dark:text-darkMode-violet12'>
                       Whales&apos; Lair
                     </h2>
-                    <div className='mx-auto mt-5 flex flex-col gap-5'>
+                    <div className='mx-auto mt-5 flex flex-col gap-2'>
                       {/* number of whales */}
                       <div>
                         <div>
@@ -75,15 +76,24 @@ export function CreateLair() {
                             type='number'
                             name='whales'
                             id='whales'
-                            className='w-full rounded-md border-light-bordergray bg-white shadow-sm focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
+                            className={`${
+                              errors.whales
+                                ? ' border border-error focus:border-error focus:ring-error'
+                                : 'border-light-bordergray  focus:border-light-violet7 focus:ring-light-violet7 '
+                            } w-full rounded-md bg-white  shadow-sm disabled:cursor-not-allowed  disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 sm:text-sm`}
                             placeholder='15'
                           />
                           {/* error whale number */}
-                          {errors.whales && (
-                            <p className='mt-2 rounded-md border-2 border-error bg-darkMode-violet3 py-1 text-center text-sm font-semibold text-error'>
-                              Whale count must be from 5 to 100
-                            </p>
-                          )}
+                          <div className='h-4'>
+                            {errors.whales && (
+                              <div className='flex items-center'>
+                                <IoCloseCircleSharp className='birder text-[#942f1e] dark:text-[#ff1a60] ' />
+                                <p className=' text-xs font-semibold text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
+                                  Whale count must be from 5 to 100
+                                </p>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
                       {/* price */}
@@ -112,7 +122,11 @@ export function CreateLair() {
                             type='number'
                             name='price'
                             id='price'
-                            className='w-full rounded-md border-light-bordergray bg-white pl-8 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
+                            className={`${
+                              errors.price
+                                ? ' border border-error focus:border-error focus:ring-error'
+                                : 'border-light-bordergray  focus:border-light-violet7 focus:ring-light-violet7  dark:border-mauve'
+                            } w-full rounded-md  bg-white pl-8 shadow-sm  disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 sm:text-sm`}
                             placeholder='0'
                           />
                           <div className='pointer-events-none absolute inset-y-0 right-6 flex items-center pr-3'>
@@ -121,8 +135,20 @@ export function CreateLair() {
                             </span>
                           </div>
                         </div>
+                        {/* error whale number */}
+                        <div className='h-4'>
+                          {errors.price && (
+                            <div className='flex items-center'>
+                              <IoCloseCircleSharp className='birder text-[#942f1e] dark:text-[#ff1a60] ' />
+                              <p className=' text-xs font-semibold text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
+                                Min 0.1 ETH
+                              </p>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                      <div>
+
+                      <div className='mt-5 md:mt-0'>
                         <input
                           className='flex w-full  cursor-pointer items-center justify-center rounded-md bg-mauve py-2 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:py-4 md:px-10'
                           type='submit'
