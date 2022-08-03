@@ -91,7 +91,7 @@ export function CreateLair() {
                             {errors.whales && (
                               <div className='flex items-center'>
                                 <IoCloseCircleSharp className='birder text-[#942f1e] dark:text-[#ff1a60] ' />
-                                <p className=' text-xs font-semibold text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
+                                <p className='text-sm font-semibold tracking-wide text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
                                   Whale count must be from 5 to 100
                                 </p>
                               </div>
@@ -143,7 +143,7 @@ export function CreateLair() {
                           {errors.price && (
                             <div className='flex items-center'>
                               <IoCloseCircleSharp className='birder text-[#942f1e] dark:text-[#ff1a60] ' />
-                              <p className=' text-xs font-semibold text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
+                              <p className='text-sm font-semibold tracking-wide text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
                                 Min 0.1 ETH
                               </p>
                             </div>

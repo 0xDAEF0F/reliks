@@ -178,7 +178,7 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
                       <div className='flex items-center'>
                         <IoCloseCircleSharp className='birder text-[#942f1e] dark:text-[#ff1a60] ' />
 
-                        <p className=' text-xs font-semibold text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
+                        <p className='text-sm font-semibold  tracking-wide text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
                           Amount must be greater or equal than{' '}
                           {lairEntryPrice || initialLairEntry}
                         </p>
