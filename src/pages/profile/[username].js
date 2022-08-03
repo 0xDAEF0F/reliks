@@ -9,7 +9,6 @@ import { CreateLair } from '../../components/CreateLair'
 import NoStrategies from '../../components/NoStrategies'
 import { useMoralis } from 'react-moralis'
 import { getAllUsernames, getCreatorInformation } from '../../util/getLastCreators'
-
 import { useEffect } from 'react'
 import LairTable from '../../components/LairTable'
 import TabsUser from '../../components/TabsUser'
@@ -20,7 +19,7 @@ export default function Profile({ creator }) {
 
   useEffect(() => {
     if (!web3) enableWeb3()
-  }, [])
+  }, [web3, enableWeb3])
 
   function copy2Clipboard() {
     navigator.clipboard.writeText(creator.ethAddress)
@@ -31,7 +30,7 @@ export default function Profile({ creator }) {
 
   function calculateSideComponent() {
     const isUserTheCreator = user && user.getUsername() === router.query.username
-    const doesCreatorHaveLair = creator.whaleStrategy?.length
+    const doesCreatorHaveLair = creator.whaleStrategy?.lairAddress
 
     if (!isUserTheCreator && !doesCreatorHaveLair) return 1
     if (!isUserTheCreator && doesCreatorHaveLair) return 2
@@ -47,7 +46,6 @@ export default function Profile({ creator }) {
       case 2:
         // POV USER -- CREATOR STRATEGY TRUE
         return <TabsUser creator={creator} />
-      // return <JoinLair whaleStrategy={creator?.whaleStrategy} />
       case 3:
         // POV CREATOR -- CREATOR STRATEGY FALSE
         return <CreateLair />
@@ -156,7 +154,6 @@ export default function Profile({ creator }) {
           </div>
           {SideComponent()}
           <br />
-          {/* <LairTable /> */}
         </div>
       </div>
     </>
