@@ -1,3 +1,7 @@
+import Link from 'next/link'
+import EmptyTable from './EmptyTable'
+import { TbArrowUpRight } from 'react-icons/tb'
+
 const people = [
   {
     address: '0xtkjn7we908r7w9e087r',
@@ -44,48 +48,64 @@ export default function LairTable() {
       </div>
       <div className=' overflow-x-auto sm:-mx-6 lg:-mx-8'>
         <div className='inline-block min-w-full align-middle sm:px-6 lg:px-8'>
-          <div className='border-gray-200 overflow-hidden rounded-b-lg'>
-            <table
-              style={{ 'border-spacing': '0px 0.2rem' }}
-              className='border- min-w-full'>
-              <thead className=' border-b border-light-bordergray dark:border-darkMode-violet7'>
-                <tr>
-                  <th
-                    scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider dark:text-darkMode-violet12'>
-                    Eth Address
-                  </th>
-                  <th
-                    scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider dark:text-darkMode-violet12'>
-                    Entry Price
-                  </th>
-                  <th
-                    scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider dark:text-darkMode-violet12'>
-                    Joined Date
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {people.map((person) => (
-                  <tr
-                    className='bg-light-violet1 dark:bg-darkMode-violet1'
-                    key={person.address}>
-                    <td className=' whitespace-nowrap px-6 py-4 text-sm font-medium text-light-gray opacity-75 dark:text-darkMode-gray'>
-                      {person.address}
-                    </td>
-
-                    <td className='whitespace-nowrap px-6 py-4 text-sm text-light-gray opacity-75 dark:text-darkMode-gray'>
-                      {person.price} ETH
-                    </td>
-                    <td className='whitespace-nowrap px-6 py-4 text-sm text-light-gray opacity-75 dark:text-darkMode-gray'>
-                      {person.date}
-                    </td>
+          <div className='overflow-hidden rounded-b-lg'>
+            {people.length > 0 ? (
+              <table
+                style={{ 'border-spacing': '0px 0.2rem' }}
+                className='border- min-w-full'>
+                <thead className=' border-b border-light-bordergray dark:border-darkMode-violet7'>
+                  <tr>
+                    <th
+                      scope='col'
+                      className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider dark:text-darkMode-violet12'>
+                      Eth Address
+                    </th>
+                    <th
+                      scope='col'
+                      className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider dark:text-darkMode-violet12'>
+                      Entry Price
+                    </th>
+                    <th
+                      scope='col'
+                      className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider dark:text-darkMode-violet12'>
+                      Joined Date
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {people.map((person) => (
+                    <tr
+                      className='bg-light-violet1 dark:bg-darkMode-violet1'
+                      key={person.address}>
+                      <td className='whitespace-nowrap px-6 py-4 text-sm font-medium text-light-gray opacity-75 dark:text-darkMode-gray'>
+                        <div className='flex'>
+                          <div className='group flex cursor-pointer opacity-80 hover:text-light-violet11 dark:hover:text-darkMode-violet11'>
+                            <Link href={`https://blockscan/address/${person.address}`}>
+                              <a className='flex' target='_blank'>
+                                {person.address}
+                                <TbArrowUpRight
+                                  className='invisible group-hover:visible'
+                                  size={17}
+                                />
+                              </a>
+                            </Link>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td className='whitespace-nowrap px-6 py-4 text-sm text-light-gray opacity-75 dark:text-darkMode-gray'>
+                        {person.price} ETH
+                      </td>
+                      <td className='whitespace-nowrap px-6 py-4 text-sm text-light-gray opacity-75 dark:text-darkMode-gray'>
+                        {person.date}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <EmptyTable />
+            )}
           </div>
         </div>
       </div>
