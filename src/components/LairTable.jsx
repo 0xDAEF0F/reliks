@@ -53,7 +53,7 @@ export default function LairTable() {
               <table
                 style={{ 'border-spacing': '0px 0.2rem' }}
                 className='border- min-w-full'>
-                <thead className=' border-b border-light-bordergray dark:border-darkMode-violet7'>
+                <thead className='border-y border-light-bordergray dark:border-darkMode-violet7'>
                   <tr>
                     <th
                       scope='col'
@@ -75,7 +75,7 @@ export default function LairTable() {
                 <tbody>
                   {people.map((person) => (
                     <tr
-                      className='bg-light-violet1 hover:bg-light-violet2 dark:bg-darkMode-violet1 dark:hover:bg-darkMode-violet2'
+                      className=' odd:bg-light-violet3 even:bg-light-violet2 odd:dark:bg-darkMode-violet3 even:dark:bg-darkMode-violet2'
                       key={person.address}>
                       <td className='whitespace-nowrap px-6 py-4 text-sm font-medium text-light-gray opacity-75 dark:text-darkMode-gray'>
                         <div className='flex'>

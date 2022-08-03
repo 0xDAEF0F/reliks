@@ -15,34 +15,6 @@ import Dashboard from '../../components/Dashboard'
 import { useEffect } from 'react'
 import LairTable from '../../components/LairTable'
 
-export const SkeletonBanner = () => {
-  return (
-    <>
-      <div className='flex h-24 w-full md:h-64'>
-        <div className='w-full animate-pulse rounded-lg rounded-b-none bg-light-violet3  dark:bg-darkMode-bordergray dark:opacity-20'></div>
-      </div>
-    </>
-  )
-}
-
-export const SkeletonPP = () => {
-  return (
-    <>
-      <div className='mt-2 flex h-24 md:mt-4'>
-        <div className='w-full animate-pulse rounded-full bg-light-violet3  dark:bg-darkMode-bordergray dark:opacity-20'></div>
-      </div>
-    </>
-  )
-}
-
-export const SkeletonText = () => {
-  return (
-    <>
-      <div className='mb:mt-0 mt-1 flex h-8 w-full animate-pulse justify-center rounded-full bg-light-violet3 dark:bg-darkMode-bordergray  dark:opacity-20 md:w-4/5'></div>
-    </>
-  )
-}
-
 export default function Profile({ creator }) {
   const router = useRouter()
   const { user, web3, enableWeb3 } = useMoralis()
@@ -60,7 +32,7 @@ export default function Profile({ creator }) {
 
   function calculateSideComponent() {
     const isUserTheCreator = user && user.getUsername() === router.query.username
-    const doesCreatorHaveLair = creator?.whaleStrategy?.length
+    const doesCreatorHaveLair = creator.whaleStrategy?.length
 
     if (!isUserTheCreator && !doesCreatorHaveLair) return 1
     if (!isUserTheCreator && doesCreatorHaveLair) return 2
@@ -96,44 +68,36 @@ export default function Profile({ creator }) {
       <div className='mx-auto max-w-6xl py-20 '>
         <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-violet6 dark:bg-darkMode-violet2'>
           <div className='block rounded-lg md:rounded-md md:px-8 md:pt-4'>
-            {creator?.coverPhoto ? (
-              <Image
-                src={creator?.coverPhoto}
-                width={1000}
-                height={220}
-                quality={100}
-                priority
-                className='rounded-md object-cover object-center'
-                layout='responsive'
-                alt='banner'
-              />
-            ) : (
-              <SkeletonBanner />
-            )}
+            <Image
+              src={creator?.coverPhoto}
+              width={1000}
+              height={220}
+              quality={100}
+              priority
+              className='rounded-md object-cover object-center'
+              layout='responsive'
+              alt='banner'
+            />
           </div>
           <div className='mx-auto h-full items-start border-b border-dotted border-light-violet6 pt-4 dark:border-darkMode-violet6 md:flex md:justify-between'>
             <div className='flex flex-col items-center md:mx-8 md:flex-row'>
               <div className='relative -inset-y-9'>
                 <div className='rounded-full border border-light-violet5 border-opacity-50 bg-light-violet1 p-2 dark:border-darkMode-violet5  dark:border-opacity-100 dark:bg-darkMode-violet1'>
                   <div className='relative h-24 w-24 rounded-full'>
-                    {creator?.pfp ? (
-                      <Image
-                        src={creator?.pfp}
-                        className='rounded-full object-cover object-center'
-                        quality={100}
-                        priority
-                        layout='fill'
-                        alt='profile picture'
-                      />
-                    ) : (
-                      <SkeletonPP />
-                    )}
+                    <Image
+                      src={creator?.pfp}
+                      className='rounded-full object-cover object-center'
+                      quality={100}
+                      priority
+                      layout='fill'
+                      alt='profile picture'
+                    />
                   </div>
                 </div>
               </div>
               <div className='ml-0 -mt-9 text-center md:-mt-1 md:ml-3 md:text-left'>
                 <div className='ml-1 text-3xl font-semibold text-light-violet12 dark:text-darkMode-violet12'>
-                  {creator?.channelTitle ? creator?.channelTitle : <SkeletonText />}
+                  {creator?.channelTitle}
                 </div>
                 <div className='flex flex-col items-center md:flex-row md:items-end'>
                   <button

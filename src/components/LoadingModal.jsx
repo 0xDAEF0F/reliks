@@ -65,23 +65,25 @@ export function LoadingModal({ open, setOpen, txn, loading }) {
                         <IoIosCheckmarkCircle size={30} color='#22bb33' />
                       </div>
                     )}
-                    <h3 className='m-2 text-base font-bold text-light-violet4 '>
+                    <h3 className='m-2 text-base font-bold text-black dark:text-light-violet4 '>
                       Transaction Hash:
                     </h3>
 
-                    <div className='group flex cursor-pointer underline opacity-50 hover:text-light-violet11 dark:hover:text-darkMode-violet11'>
-                      <Link href={`https://etherscan.io/tx/${formattedTxn}`}>
-                        <a className='flex gap-1' target='_blank'>
-                          <BiLinkAlt size={18} />
-                          <p className='whitespace-nowrap text-sm font-medium'>
-                            {formattedTxn}0xiub2iububkhnkjhn23
-                          </p>
-                          <TbArrowUpRight
-                            className='invisible group-hover:visible'
-                            size={17}
-                          />
-                        </a>
-                      </Link>
+                    <div className='group flex cursor-pointer underline opacity-50  hover:text-light-violet11 dark:hover:text-darkMode-violet11'>
+                      <a
+                        className='flex gap-1'
+                        href={`https://etherscan.io/tx/${formattedTxn}`}
+                        rel='noreferrer'
+                        target='_blank'>
+                        <BiLinkAlt size={18} />
+                        <p className='whitespace-pre-wrap text-sm font-medium'>
+                          {formattedTxn}
+                        </p>
+                        <TbArrowUpRight
+                          className='invisible group-hover:visible'
+                          size={17}
+                        />
+                      </a>
                     </div>
                   </div>
                 </div>
