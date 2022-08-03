@@ -1,30 +1,16 @@
 import { useState } from 'react'
 import { Tab } from '@headlessui/react'
+import LairTable from './LairTable'
+import { JoinLair } from './JoinLair'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-function Lair() {
-  // Show the current count of the lair, users data, current lair entry price.
-  return <div>2</div>
-}
-
-function Discord() {
-  // Show some discord server data and button with discord server invitation.
-  return <div>1</div>
-}
-
-function Drops() {
-  // Airdrop a NFT to all the lair by only submiting the image source and metadata.
-  return <div>2</div>
-}
-
-export default function TabsUser() {
+export default function TabsUser({ creator }) {
   let [categories] = useState({
-    Lair: Lair(),
-    Discord: Discord(),
-    Drops: Drops(),
+    Join: <JoinLair whaleStrategy={creator?.whaleStrategy} />,
+    Lair: LairTable(),
   })
 
   return (

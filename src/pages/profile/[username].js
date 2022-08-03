@@ -14,6 +14,7 @@ import JoinedLair from '../../components/JoinedLair'
 import Dashboard from '../../components/Dashboard'
 import { useEffect } from 'react'
 import LairTable from '../../components/LairTable'
+import TabsUser from '../../components/TabsUser'
 
 export default function Profile({ creator }) {
   const router = useRouter()
@@ -47,17 +48,17 @@ export default function Profile({ creator }) {
         return <NoStrategies />
       case 2:
         // POV USER -- CREATOR STRATEGY TRUE
-        return <JoinLair whaleStrategy={creator?.whaleStrategy} />
+        return <TabsUser creator={creator} />
+      // return <JoinLair whaleStrategy={creator?.whaleStrategy} />
       case 3:
         // POV CREATOR -- CREATOR STRATEGY FALSE
         return <CreateLair />
       case 4:
         // POV CREATOR -- CREATOR STRATEGY TRUE
-        return <JoinLair whaleStrategy={user.get('whaleStrategy')} />
-      // return <Dashboard />
+        return <LairTable />
       case 5:
-        // POV USER -- JOINED STRATEGY
-        return <JoinedLair />
+        // POV USER -- JOINED STRATEGY (To do: add different tabs for a joined user )
+        return <LairTable />
     }
   }
 
