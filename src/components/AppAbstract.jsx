@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { GiOpenTreasureChest } from 'react-icons/gi'
-import { FaUsers } from 'react-icons/fa'
-import { TbBadges, TbArrowNarrowDown } from 'react-icons/tb'
+import { GiCheckedShield, GiOpenTreasureChest, GiSpermWhale } from 'react-icons/gi'
+import { TbArrowNarrowDown } from 'react-icons/tb'
 import { useTheme } from 'next-themes'
 
 const strategies = [
@@ -11,7 +10,7 @@ const strategies = [
     description:
       "Immerse within your creators' lair (discord room) and enjoy whale-exclusive rewards.",
     comingSoon: false,
-    icon: FaUsers,
+    icon: GiSpermWhale,
   },
   {
     name: 'Badges',
@@ -19,7 +18,7 @@ const strategies = [
     description:
       "Badges are a reward based system that symbolize achievements earned within your creators' ecosystem.",
     comingSoon: true,
-    icon: TbBadges,
+    icon: GiCheckedShield,
   },
   {
     name: 'Chests',
