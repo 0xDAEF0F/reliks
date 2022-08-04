@@ -82,10 +82,10 @@ export default function ProfileDropdownMenu() {
                   </MyLink>
                 </Menu.Item>
               ) : (
-                <button className='flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm hover:bg-light-violet5 dark:hover:bg-darkMode-violet5'>
+                <div className='flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm hover:bg-light-violet5 dark:hover:bg-darkMode-violet5'>
                   <FaUserAlt />
                   <CreatorSignUpModal xClass='absolute pl-6 py-1 pr-14' />
-                </button>
+                </div>
               )}
               <Menu.Item>
                 <a
