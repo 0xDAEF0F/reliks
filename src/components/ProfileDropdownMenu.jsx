@@ -9,6 +9,7 @@ import Link from 'next/link'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import CreatorSignUpModal from './CreatorSignUpModal'
 
 // eslint-disable-next-line react/display-name
 const MyLink = forwardRef((props, ref) => {
@@ -80,7 +81,12 @@ export default function ProfileDropdownMenu() {
                     <p>Profile</p>
                   </MyLink>
                 </Menu.Item>
-              ) : null}
+              ) : (
+                <button className='flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm hover:bg-light-violet5 dark:hover:bg-darkMode-violet5'>
+                  <FaUserAlt />
+                  <CreatorSignUpModal xClass='absolute pl-6 py-1 pr-14' />
+                </button>
+              )}
               <Menu.Item>
                 <a
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -116,7 +122,6 @@ export default function ProfileDropdownMenu() {
                 </a>
               </Menu.Item>
             </div>
-
             <div className='px-1 py-1'>
               <Menu.Item>
                 <button

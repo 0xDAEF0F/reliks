@@ -9,7 +9,7 @@ import ThirdPartyAuth from './ThirdPartyAuth'
 import toast from 'react-hot-toast'
 import to from 'await-to-js'
 
-export default function CreatorSignUpModal() {
+export default function CreatorSignUpModal({ xClass }) {
   const [open, setOpen] = useState(false)
   const { authenticate, isAuthenticated, user } = useMoralis()
 
@@ -60,9 +60,7 @@ export default function CreatorSignUpModal() {
   return (
     <>
       {/* Button to open modal*/}
-      <button
-        className='border-transparent flex items-center justify-center rounded-md border bg-white px-4 py-2 text-sm font-medium text-light-violet11 shadow-sm hover:bg-light-violet4 active:bg-light-violet5'
-        onClick={() => setOpen(true)}>
+      <button className={xClass} onClick={() => setOpen(true)}>
         Sign Up As Creator
       </button>
 

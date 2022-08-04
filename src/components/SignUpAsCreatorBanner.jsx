@@ -35,7 +35,7 @@ export default function SignUpAsCreatorBanner({ xclass }) {
               </p>
             </div>
             <div className='order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto'>
-              <CreatorSignUpModal />
+              <CreatorSignUpModal xClass='border-transparent flex items-center justify-center rounded-md border bg-white px-4 py-2 text-sm font-medium text-light-violet11 shadow-sm hover:bg-light-violet4 active:bg-light-violet5' />
             </div>
             <div className='order-2 flex-shrink-0 sm:order-3 sm:ml-3'>
               <button
