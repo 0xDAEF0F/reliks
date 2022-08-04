@@ -100,8 +100,8 @@ function Header() {
                       <li>
                         <button
                           onClick={() => login()}
-                          className='whitespace-nowrap rounded-3xl bg-gradient-to-bl from-light-violet8 via-light-violet9 to-light-violet9 px-5 py-2 text-light-violet1 hover:brightness-90 dark:from-darkMode-violet5 dark:via-darkMode-violet8 dark:to-darkMode-violet5 dark:hover:opacity-75'>
-                          Connect
+                          className='whitespace-nowrap rounded-3xl bg-gradient-to-tr from-light-violet8 via-light-violet10 to-light-violet8 px-5 py-3 text-light-violet1 hover:brightness-90 dark:from-[#4568dc]  dark:to-[#bb46a4] dark:hover:opacity-75'>
+                          Connect Wallet
                         </button>
                       </li>
                     </ul>
