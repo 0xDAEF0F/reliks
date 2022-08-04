@@ -149,7 +149,6 @@ export default function Profile({ creator }) {
             </div>
           </div>
           {SideComponent()}
-          <br />
         </div>
       </div>
     </>

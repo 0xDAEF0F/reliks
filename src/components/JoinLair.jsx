@@ -108,7 +108,7 @@ export function JoinLair({ lairInfo: { lairAddress, initialLairEntry } }) {
         loading={currentTxn.loading}
       />
 
-      <div className='relative mx-10'>
+      <div className='relative mx-10 mb-10'>
         <div className='absolute inset-0' aria-hidden='true'>
           <div className='inset-y-0 right-0 w-1/2 bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
         </div>
