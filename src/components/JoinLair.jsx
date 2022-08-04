@@ -91,112 +91,112 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
   }
 
   return (
-    <div>
+    <>
       <LoadingModal
         open={modalOpen}
         setOpen={setModalOpen}
         txn={currentTxn}
         loading={currentTxn.loading}
       />
-      <div className='mx-10'>
-        <div className='relative'>
-          <div className='absolute inset-0' aria-hidden='true'>
-            <div className='inset-y-0 right-0 w-1/2 bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
-          </div>
-          <div className='relative mx-auto max-w-7xl lg:grid lg:grid-cols-2 lg:px-8'>
-            <BenefitsLairPanel />
-            <div className='mt-10 lg:flex lg:items-center lg:justify-end lg:px-0 lg:pl-8'>
-              <div className='mx-auto w-full max-w-lg rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 p-6 pb-3 dark:from-darkMode-violet8 dark:to-darkMode-violet9 md:p-4 lg:mx-0 lg:bg-none'>
-                <div className='mb-5 py-1'>
-                  <h2 className='sr-only'>Price</h2>
-                  <p className='relative grid grid-cols-2'>
-                    <span className='text-cyan-100 flex flex-col text-center font-medium'>
-                      <span className='mb-2 text-3xl font-extrabold  tracking-tight text-white md:text-5xl'>
-                        {lairEntryPrice || initialLairEntry}
-                      </span>
-                      Min ETH
-                      <br />
-                      to Enter Lair
+
+      <div className='relative mx-10'>
+        <div className='absolute inset-0' aria-hidden='true'>
+          <div className='inset-y-0 right-0 w-1/2 bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
+        </div>
+        <div className='relative mx-auto max-w-7xl lg:grid lg:grid-cols-2 lg:px-8'>
+          <BenefitsLairPanel />
+          <div className='mt-10 lg:flex lg:items-center lg:justify-end lg:px-0 lg:pl-8'>
+            <div className='mx-auto w-full max-w-lg rounded-lg bg-gradient-to-r from-light-violet8 to-light-violet9 p-6 pb-3 dark:from-darkMode-violet8 dark:to-darkMode-violet9 md:p-4 lg:mx-0 lg:bg-none'>
+              <div className='mb-5 py-1'>
+                <h2 className='sr-only'>Price</h2>
+                <p className='relative grid grid-cols-2'>
+                  <span className='text-cyan-100 flex flex-col text-center font-medium'>
+                    <span className='mb-2 text-3xl font-extrabold  tracking-tight text-white md:text-5xl'>
+                      {lairEntryPrice || initialLairEntry}
                     </span>
-                    <span className='absolute flex h-12 w-full items-center justify-center text-3xl text-white md:text-5xl'>
-                      ≈
-                    </span>
-                    <span>
-                      <span className='flex flex-col text-center'>
-                        <span className='text-3xl font-extrabold tracking-tight text-white md:text-5xl'>
-                          {(
-                            (lairEntryPrice || initialLairEntry) * ethPrice
-                          ).toLocaleString('us', {
+                    Min ETH
+                    <br />
+                    to Enter Lair
+                  </span>
+                  <span className='absolute flex h-12 w-full items-center justify-center text-3xl text-white md:text-5xl'>
+                    ≈
+                  </span>
+                  <span>
+                    <span className='flex flex-col text-center'>
+                      <span className='text-3xl font-extrabold tracking-tight text-white md:text-5xl'>
+                        {((lairEntryPrice || initialLairEntry) * ethPrice).toLocaleString(
+                          'us',
+                          {
                             maximumFractionDigits: 0,
-                          })}
-                        </span>
-                        <span className='text-cyan-100 mt-2 text-base font-medium'>
-                          USD
-                        </span>
+                          }
+                        )}
+                      </span>
+                      <span className='text-cyan-100 mt-2 text-base font-medium'>
+                        USD
                       </span>
                     </span>
-                  </p>
-                </div>
-                {/* Amount To Join Lair */}
-                <form onSubmit={handleSubmit((a) => joinLair(parseEther(a.price)))}>
-                  <label
-                    htmlFor='price'
-                    className='mb-2 block text-sm font-medium text-white'>
-                    Enter Amount*
-                  </label>
-                  <div className='relative mt-1 w-full rounded-2xl'>
-                    <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4'>
-                      <Image width={9} height={14} src='/ethereum.svg' alt='eth' />
-                    </div>
-                    <input
-                      {...register('price', {
-                        required: true,
-                        min: lairEntryPrice || initialLairEntry,
-                      })}
-                      name='price'
-                      id='price'
-                      type='number'
-                      step='.1'
-                      className={`${
-                        errors.price
-                          ? ' border border-error focus:border-error focus:ring-error'
-                          : 'border-light-bordergray  focus:border-light-violet7 focus:ring-light-violet7  dark:border-mauve'
-                      } block w-full rounded-2xl  bg-white  pl-8  pr-12 shadow-sm disabled:cursor-not-allowed disabled:opacity-50 dark:bg-darkMode-violet2 sm:text-sm`}
-                      placeholder={lairEntryPrice || initialLairEntry}
-                      aria-describedby='price-currency'
-                    />
-                    <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
-                      <span className='text-gray-500  sm:text-sm' id='price-currency'>
-                        ETH
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* error whale number */}
-                  <div className='mb-4 h-4'>
-                    {errors.price && (
-                      <div className='flex items-center'>
-                        <IoCloseCircleSharp className='birder text-[#942f1e] dark:text-[#ff1a60] ' />
-
-                        <p className='text-sm font-semibold  tracking-wide text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
-                          Amount must be greater or equal than{' '}
-                          {lairEntryPrice || initialLairEntry}
-                        </p>
-                      </div>
-                    )}
+                  </span>
+                </p>
+              </div>
+              {/* Amount To Join Lair */}
+              <form onSubmit={handleSubmit((a) => joinLair(parseEther(a.price)))}>
+                <label
+                  htmlFor='price'
+                  className='mb-2 block text-sm font-medium text-white'>
+                  Enter Amount*
+                </label>
+                <div className='relative mt-1 w-full rounded-2xl'>
+                  <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4'>
+                    <Image width={9} height={14} src='/ethereum.svg' alt='eth' />
                   </div>
                   <input
-                    className='flex w-full  items-center justify-center rounded-md bg-mauve py-2 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:py-4 md:px-10'
-                    type='submit'
-                    value='Join Lair'
+                    {...register('price', {
+                      required: true,
+                      min: lairEntryPrice || initialLairEntry,
+                    })}
+                    name='price'
                     id='price'
+                    type='number'
+                    step='.1'
+                    className={`${
+                      errors.price
+                        ? ' border border-error focus:border-error focus:ring-error'
+                        : 'border-light-bordergray  focus:border-light-violet7 focus:ring-light-violet7  dark:border-mauve'
+                    } block w-full rounded-2xl  bg-white  pl-8  pr-12 shadow-sm disabled:cursor-not-allowed disabled:opacity-50 dark:bg-darkMode-violet2 sm:text-sm`}
+                    placeholder={lairEntryPrice || initialLairEntry}
+                    aria-describedby='price-currency'
                   />
-                </form>
-              </div>
+                  <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
+                    <span className='text-gray-500  sm:text-sm' id='price-currency'>
+                      ETH
+                    </span>
+                  </div>
+                </div>
+
+                {/* error whale number */}
+                <div className='mb-4 h-4'>
+                  {errors.price && (
+                    <div className='flex items-center'>
+                      <IoCloseCircleSharp className='birder text-[#942f1e] dark:text-[#ff1a60] ' />
+
+                      <p className='text-sm font-semibold  tracking-wide text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
+                        Amount must be greater or equal than{' '}
+                        {lairEntryPrice || initialLairEntry}
+                      </p>
+                    </div>
+                  )}
+                </div>
+                <input
+                  className='flex w-full  items-center justify-center rounded-md bg-mauve py-2 px-8 text-lg font-medium leading-6 text-light-violet1 hover:opacity-80 dark:bg-white dark:text-darkMode-violet1 md:py-4 md:px-10'
+                  type='submit'
+                  value='Join Lair'
+                  id='price'
+                />
+              </form>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
