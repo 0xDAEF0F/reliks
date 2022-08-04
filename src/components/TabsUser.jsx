@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Tab } from '@headlessui/react'
 import LairTable from './LairTable'
 import { JoinLair } from './JoinLair'
@@ -7,11 +6,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function TabsUser({ creator }) {
-  let [categories] = useState({
-    Join: <JoinLair whaleStrategy={creator?.whaleStrategy} />,
-    Lair: <LairTable />,
-  })
+export default function TabsUser({ lairInfo }) {
+  const categories = {
+    Join: <JoinLair lairInfo={lairInfo} />,
+    Lair: <LairTable lairInfo={lairInfo} />,
+  }
 
   return (
     <div>

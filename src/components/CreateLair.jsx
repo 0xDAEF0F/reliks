@@ -38,8 +38,13 @@ export function CreateLair() {
       toast.success(`contract deployed succesfully`)
       // setCurrentTxn({ hash: contract.address, loading: true })
 
+      // TODO: Need to make a model for this lair information
       await setUserData({
-        whaleStrategy: { lairAddress: contract.address, initialLairEntry: +price },
+        whaleStrategy: {
+          lairAddress: contract.address,
+          initialLairEntry: +price,
+          whaleCount: whales,
+        },
       })
       // setCurrentTxn({ ...currentTxn, loading: false })
     } catch (err) {
@@ -101,8 +106,8 @@ export function CreateLair() {
                     {errors.whales && (
                       <div className='flex items-center'>
                         <IoCloseCircleSharp className='birder text-[#942f1e] dark:text-[#ff1a60] ' />
-                        <p className='text-sm font-semibold tracking-wide text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
-                          Whale count must be from 5 to 100
+                        <p className='ml-1 text-sm font-semibold tracking-wide text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
+                          Min 5 - Max 100
                         </p>
                       </div>
                     )}
@@ -111,7 +116,7 @@ export function CreateLair() {
                 {/* price */}
                 <div>
                   <div className='mb-2 text-base text-light-violet1 dark:text-darkMode-gray dark:opacity-80'>
-                    Initial cost of entry to the lair (before lair is full).
+                    Initial Lair Entry Cost
                   </div>
                   <label
                     htmlFor='price'
@@ -125,7 +130,7 @@ export function CreateLair() {
                       </span>
                     </div>
                     <input
-                      {...register('price', { required: true })}
+                      {...register('price', { required: true, min: 0.1 })}
                       type='number'
                       name='price'
                       id='price'

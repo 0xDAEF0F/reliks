@@ -25,8 +25,6 @@ export default function Profile({ creator }) {
     toast.success('Address copied to clipboard.')
   }
 
-  const options = { year: 'numeric', month: 'long' }
-
   function calculateSideComponent() {
     const isUserTheCreator = user && user.getUsername() === router.query.username
     const doesCreatorHaveLair = creator.whaleStrategy?.lairAddress
@@ -44,16 +42,16 @@ export default function Profile({ creator }) {
         return <NoStrategies />
       case 2:
         // POV USER -- CREATOR STRATEGY TRUE
-        return <TabsUser creator={creator} />
+        return <TabsUser lairInfo={creator.whaleStrategy} />
       case 3:
         // POV CREATOR -- CREATOR STRATEGY FALSE
         return <CreateLair />
       case 4:
         // POV CREATOR -- CREATOR STRATEGY TRUE
-        return <LairTable />
+        return <LairTable lairInfo={creator.whaleStrategy} />
       case 5:
         // POV USER -- JOINED STRATEGY (To do: add another tab for a joined user )
-        return <LairTable />
+        return <LairTable lairInfo={creator.whaleStrategy} />
     }
   }
 
@@ -120,10 +118,10 @@ export default function Profile({ creator }) {
                         <span>Joined: </span>
                         <span>
                           {creator &&
-                            new Date(creator?.createdAt).toLocaleDateString(
-                              undefined,
-                              options
-                            )}
+                            new Date(creator?.createdAt).toLocaleDateString(undefined, {
+                              year: 'numeric',
+                              month: 'long',
+                            })}
                         </span>
                       </>
                     ) : null}

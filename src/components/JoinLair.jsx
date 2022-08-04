@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 import useSWR from 'swr'
 import Image from 'next/image'
 import { IoCloseCircleSharp } from 'react-icons/io5'
-import { useMoralis } from 'react-moralis'
+import { useMoralis, useNewMoralisObject } from 'react-moralis'
 import { abi, createWhaleContract } from '../util/deployWhale'
 import { useForm } from 'react-hook-form'
 import { LoadingModal } from './LoadingModal'
@@ -41,7 +41,7 @@ function getLairEntryFetcher(web3Provider) {
   }
 }
 
-export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
+export function JoinLair({ lairInfo: { lairAddress, initialLairEntry } }) {
   const { web3 } = useMoralis()
   // TODO: if component is revalidating show another component.
   const { data: lairEntryPrice } = useSWR(lairAddress, getLairEntryFetcher(web3))
@@ -54,6 +54,7 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
   const { user } = useMoralis()
   const [modalOpen, setModalOpen] = useState(false)
   const [currentTxn, setCurrentTxn] = useState({})
+  const { save } = useNewMoralisObject('Whale')
 
   const lairContract = createWhaleContract(lairAddress, web3)
 
@@ -63,8 +64,16 @@ export function JoinLair({ whaleStrategy: { lairAddress, initialLairEntry } }) {
     console.log('mounting lairContract listener.')
     lairContract.once(
       lairContract.filters.LogNewWhale(currentTxn.value, user.get('ethAddress')),
-      (amount, old, newAddr) => {
-        console.log(amount, old, newAddr)
+      (amount, newWhaleAddr) => {
+        // save the new txn to database
+        save(
+          { lairAddress, amount: +formatEther(amount), whale: newWhaleAddr },
+          {
+            onSuccess: (whale) => console.log(whale),
+            onError: (error) => console.log(error),
+          }
+        )
+        // modify the component state
         setCurrentTxn({ ...currentTxn, loading: false })
       }
     )
