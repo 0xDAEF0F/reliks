@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { TbArrowUpRight } from 'react-icons/tb'
 import { BiLinkAlt } from 'react-icons/bi'
 import Header from '../../components/Header'
-import SignUpAsCreatorBanner from '../../components/SignUpAsCreatorBanner'
 import { CreateLair } from '../../components/CreateLair'
 import NoStrategies from '../../components/NoStrategies'
 import LairTable from '../../components/LairTable'
@@ -61,7 +60,6 @@ export default function Profile({ creator }) {
   return (
     <>
       <Header />
-      <SignUpAsCreatorBanner xclass='hidden' />
       <div className='mx-auto max-w-6xl py-20 '>
         <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-violet6 dark:bg-darkMode-violet2'>
           <div className='block rounded-lg md:rounded-md md:px-8 md:pt-4'>
