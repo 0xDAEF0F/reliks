@@ -52,7 +52,7 @@ export default function LairTable({ lairInfo }) {
                 </thead>
                 <tbody>
                   {whalesArr.map((whale, i) => {
-                    const whaleAddr = whale.get('whale')
+                    const whaleAddr = whale.get('address')
                     const entryPrice = whale.get('amount')
                     const entryDate = whale.get('createdAt')
                     return (

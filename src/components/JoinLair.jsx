@@ -67,7 +67,7 @@ export function JoinLair({ lairInfo: { lairAddress, initialLairEntry } }) {
       (amount, newWhaleAddr) => {
         // save the new txn to database
         save(
-          { lairAddress, amount: +formatEther(amount), whale: newWhaleAddr },
+          { lairAddress, amount: +formatEther(amount), address: newWhaleAddr },
           {
             onSuccess: (whale) => console.log(whale),
             onError: (error) => console.log(error),
