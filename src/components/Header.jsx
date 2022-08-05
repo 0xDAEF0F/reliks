@@ -8,6 +8,8 @@ import ProfileDropdownMenu from './ProfileDropdownMenu'
 import MobileMenu from './MobileMenu'
 import toast from 'react-hot-toast'
 import to from 'await-to-js'
+import Image from 'next/image'
+import Logo from './Logo'
 
 function Header() {
   const [top, setTop] = useState(true)
@@ -40,16 +42,14 @@ function Header() {
         'dark:shadow-zinc-700 bg-light-violet1 shadow-lg backdrop-blur-sm dark:bg-darkMode-violet1 dark:bg-opacity-90 dark:shadow-sm'
       }`}>
       <div className='mx-auto max-w-6xl px-6'>
-        <div className='flex h-16 items-center justify-between md:h-20'>
+        <div className='flex h-20 items-center justify-between'>
           {/* App name & logo */}
-          <Link href='/' className='flex items-center'>
-            <a className='flex-shrink-0'>Reliqs</a>
-          </Link>
+          <Logo />
           <div className='mx-5 w-full md:mx-10'>
             <label htmlFor='search' className='sr-only'>
               Search
             </label>
-            <div className='relative'>
+            <div className='relative hidden md:flex'>
               <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center'></div>
               <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
                 <AiOutlineSearch className='h-5 w-5 opacity-60' aria-hidden='true' />
@@ -58,7 +58,7 @@ function Header() {
                 disabled
                 id='search'
                 name='search'
-                className='w-full rounded-2xl border-light-bordergray bg-white pl-10 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
+                className='h-10 w-full rounded-2xl border-light-bordergray bg-white pl-10 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
                 placeholder='Search for a creator'
                 type='search'
               />
@@ -69,14 +69,14 @@ function Header() {
               <ul className='flex flex-grow items-center justify-end'>
                 <div className='hidden space-x-14 lg:block'>
                   <Link href='/explore'>
-                    <a className='font-semibold text-black opacity-70 transition duration-100 hover:opacity-100 dark:text-white'>
+                    <a className='rounded-md px-2 py-3 font-semibold text-black opacity-70 transition duration-100 hover:bg-light-bordergray hover:opacity-100 dark:text-white dark:hover:bg-darkMode-violet5 '>
                       Explore
                     </a>
                   </Link>
                 </div>
                 {!isAuthenticated && (
                   <button
-                    className='ml-10 hidden font-semibold text-black opacity-70 transition duration-100 hover:opacity-100 dark:text-white lg:block'
+                    className='ml-10 hidden rounded-md px-3 py-3 font-semibold text-black text-opacity-70 transition duration-100 hover:bg-light-bordergray hover:text-opacity-100 dark:text-white dark:hover:bg-darkMode-violet5 lg:block'
                     onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
                     <ThemeIcon />
                   </button>
@@ -92,7 +92,7 @@ function Header() {
                   ) : (
                     <button
                       onClick={login}
-                      className='whitespace-nowrap rounded-3xl bg-gradient-to-tr from-light-violet8 via-light-violet10 to-light-violet8 px-5 py-3 text-light-violet1 hover:brightness-90 dark:from-[#4568dc]  dark:to-[#bb46a4] dark:hover:opacity-75'>
+                      className='whitespace-nowrap rounded-3xl bg-gradient-to-tr from-light-violet8 via-light-violet10 to-light-violet8 px-5 py-3 font-semibold text-light-violet1 hover:brightness-90 dark:from-[#4568dc]  dark:to-[#bb46a4] dark:hover:opacity-75'>
                       Connect Wallet
                     </button>
                   )}

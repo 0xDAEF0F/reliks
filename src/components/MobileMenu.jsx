@@ -7,6 +7,7 @@ import toast from 'react-hot-toast'
 import to from 'await-to-js'
 import { MdLogout } from 'react-icons/md'
 import { HiOutlineMoon } from 'react-icons/hi'
+import { AiOutlineSearch } from 'react-icons/ai'
 
 export default function MobileMenu() {
   const [mounted, setMounted] = useState(false)
@@ -70,10 +71,26 @@ export default function MobileMenu() {
           <nav
             className={
               isNavOpen
-                ? 'absolute left-0 z-10 mt-12 flex h-screen w-full flex-col bg-light-violet2 px-5 dark:bg-darkMode-violet2'
+                ? 'absolute left-0 z-10 mt-14 flex h-screen w-full flex-col bg-light-violet2 px-5 dark:bg-darkMode-violet2'
                 : 'hidden'
             }>
-            <ul className='mt-10 space-y-10'>
+            <ul className='mt-5 space-y-10'>
+              <li>
+                <div className='relative flex md:invisible'>
+                  <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center'></div>
+                  <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
+                    <AiOutlineSearch className='h-5 w-5 opacity-60' aria-hidden='true' />
+                  </div>
+                  <input
+                    disabled
+                    id='search'
+                    name='search'
+                    className='w-full rounded-2xl border-light-bordergray bg-white pl-10 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
+                    placeholder='Search for a creator'
+                    type='search'
+                  />
+                </div>
+              </li>
               <li>
                 <LinkChevron title={'Explore'} to={'/explore'} xClass='w-full' />
               </li>
