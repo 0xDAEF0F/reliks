@@ -20,7 +20,7 @@ export function CreateLair({ deployLair }) {
           <BenefitsLairPanel />
           <div className='mt-8 w-full sm:flex sm:items-start md:pl-8 lg:mx-0 lg:bg-none'>
             <form
-              className='mx-auto mt-3 rounded-2xl bg-gradient-to-r from-light-violet8 to-light-violet9 p-4 text-left dark:from-darkMode-violet8 dark:to-darkMode-violet9 sm:mt-0'
+              className='mx-auto mb-5 mt-3 rounded-2xl bg-gradient-to-r from-light-violet8 to-light-violet9 p-4 text-left dark:from-darkMode-violet8 dark:to-darkMode-violet9 sm:mt-0 md:mb-0'
               onSubmit={handleSubmit((a) => deployLair(a))}>
               <h2 className='text-3xl font-semibold leading-6 text-light-violet12 dark:text-darkMode-violet12'>
                 Whales&apos; Lair
