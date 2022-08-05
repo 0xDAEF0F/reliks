@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
 import { useRouter } from 'next/router'
 import { TbArrowUpRight } from 'react-icons/tb'
@@ -11,10 +11,15 @@ import TabsUser from '../../components/TabsUser'
 import { getAllUsernames, getCreatorInformation } from '../../util/getLastCreators'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
+import { createWhaleFactory } from '../../util/deployWhale'
+import { CreateLairLoadingModal } from '../../components/CreateLairLoadingModal'
+import { ethers } from '../../util/deployWhale'
 
 export default function Profile({ creator }) {
   const router = useRouter()
-  const { user, web3, enableWeb3 } = useMoralis()
+  const { user, web3, enableWeb3, setUserData } = useMoralis()
+  const [isModalOpen, setModalOpen] = useState(false)
+  const [currentTxn, setCurrentTxn] = useState({})
 
   useEffect(() => {
     if (!web3) enableWeb3()
@@ -35,6 +40,49 @@ export default function Profile({ creator }) {
     if (isUserTheCreator && user.get('whaleStrategy')?.lairAddress) return 4
   }
 
+  async function deployLair({ whales, price }) {
+    try {
+      const WhaleFactory = createWhaleFactory(web3.getSigner())
+      const contract = await WhaleFactory.deploy(
+        process.env.NEXT_PUBLIC_APP_ADDRESS,
+        whales,
+        ethers.utils.parseEther(String(price))
+      )
+
+      setModalOpen(true)
+
+      setCurrentTxn({
+        loading: true,
+        lairAddress: contract.address,
+        error: false,
+        hash: contract.deployTransaction.hash,
+      })
+
+      await contract.deployed()
+
+      toast.success(`contract deployed succesfully`)
+
+      setCurrentTxn({
+        loading: false,
+        lairAddress: contract.address,
+        error: false,
+        hash: contract.deployTransaction.hash,
+      })
+
+      // TODO: Need to make a model for this lair information
+      await setUserData({
+        whaleStrategy: {
+          lairAddress: contract.address,
+          initialLairEntry: +price,
+          whaleCount: whales,
+        },
+      })
+    } catch (err) {
+      setCurrentTxn((prev) => ({ ...prev, error: true }))
+      toast.error('could not deploy contract')
+    }
+  }
+
   const SideComponent = () => {
     switch (calculateSideComponent()) {
       case 1:
@@ -45,7 +93,7 @@ export default function Profile({ creator }) {
         return <TabsUser lairInfo={creator.whaleStrategy} />
       case 3:
         // POV CREATOR -- CREATOR STRATEGY FALSE
-        return <CreateLair />
+        return <CreateLair deployLair={deployLair} />
       case 4:
         // POV CREATOR -- CREATOR STRATEGY TRUE
         return <LairTable lairInfo={creator.whaleStrategy} />
@@ -57,6 +105,11 @@ export default function Profile({ creator }) {
 
   return (
     <>
+      <CreateLairLoadingModal
+        currentTxn={currentTxn}
+        open={isModalOpen}
+        setOpen={setModalOpen}
+      />
       <Header />
       <div className='mx-auto max-w-6xl py-20 '>
         <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-violet6 dark:bg-darkMode-violet2'>

@@ -7,7 +7,7 @@ import { IoCloseCircleSharp } from 'react-icons/io5'
 import { useMoralis, useNewMoralisObject } from 'react-moralis'
 import { abi, createWhaleContract } from '../util/deployWhale'
 import { useForm } from 'react-hook-form'
-import { LoadingModal } from './LoadingModal'
+import { JoinLairLoadingModal } from './JoinLairLoadingModal'
 import { BenefitsLairPanel } from './BenefitsLairPanel'
 import { ethers } from '../util/deployWhale'
 
@@ -101,13 +101,12 @@ export function JoinLair({ lairInfo: { lairAddress, initialLairEntry } }) {
 
   return (
     <>
-      <LoadingModal
+      <JoinLairLoadingModal
         open={modalOpen}
         setOpen={setModalOpen}
         txn={currentTxn}
         loading={currentTxn.loading}
       />
-
       <div className='relative ml-1 mr-10'>
         <div className='absolute inset-0' aria-hidden='true'>
           <div className='inset-y-0 right-0 w-1/2 bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
@@ -181,7 +180,6 @@ export function JoinLair({ lairInfo: { lairAddress, initialLairEntry } }) {
                     </span>
                   </div>
                 </div>
-
                 {/* error whale number */}
                 <div className='mb-4 h-4'>
                   {errors.price && (

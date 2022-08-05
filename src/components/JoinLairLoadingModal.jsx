@@ -8,7 +8,7 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { TbArrowUpRight } from 'react-icons/tb'
 import { BiLinkAlt } from 'react-icons/bi'
 
-export function LoadingModal({ open, setOpen, txn, loading }) {
+export function JoinLairLoadingModal({ open, setOpen, txn, loading }) {
   // Formats Hash into chunks with new lines
   const formattedTxn = flatMap(chunk(txn.hash, txn.hash?.length / 3), (chunk) =>
     chunk.concat('\n')

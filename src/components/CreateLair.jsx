@@ -1,65 +1,17 @@
-import { useState } from 'react'
-import { useMoralis } from 'react-moralis'
-import { ethers } from '../util/deployWhale'
-import toast from 'react-hot-toast'
 import Image from 'next/image'
 import { useForm } from 'react-hook-form'
-import { createWhaleFactory } from '../util/deployWhale'
 import { IoCloseCircleSharp } from 'react-icons/io5'
 import { BenefitsLairPanel } from './BenefitsLairPanel'
-import { LoadingModal } from './LoadingModal'
-const {
-  utils: { parseEther },
-} = ethers
 
-export function CreateLair() {
+export function CreateLair({ deployLair }) {
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm()
-  const { web3, setUserData } = useMoralis()
-  const [modalOpen, setModalOpen] = useState(false)
-  const [currentTxn, setCurrentTxn] = useState({})
-
-  const deployWhale = async ({ whales, price }) => {
-    try {
-      // need to pass signer to Factory with dynamic chainId's
-      const WhaleFactory = createWhaleFactory(web3.getSigner())
-      const contract = await WhaleFactory.deploy(
-        process.env.NEXT_PUBLIC_APP_ADDRESS,
-        whales,
-        parseEther(String(price))
-      )
-      toast.success(`contract address: ${contract.address}`)
-      // setModalOpen(true)
-
-      await contract.deployed()
-      toast.success(`contract deployed succesfully`)
-      // setCurrentTxn({ hash: contract.address, loading: true })
-
-      // TODO: Need to make a model for this lair information
-      await setUserData({
-        whaleStrategy: {
-          lairAddress: contract.address,
-          initialLairEntry: +price,
-          whaleCount: whales,
-        },
-      })
-      // setCurrentTxn({ ...currentTxn, loading: false })
-    } catch (err) {
-      toast.error('could not deploy contract')
-    }
-  }
 
   return (
     <>
-      {/* <LoadingModal
-        open={modalOpen}
-        setOpen={setModalOpen}
-        txn={currentTxn}
-        loading={currentTxn.loading}
-      /> */}
       <div className='relative mx-10 mt-10'>
         <div className='absolute inset-0' aria-hidden='true'>
           <div className='inset-y-0 right-0 w-1/2 bg-light-violet9 bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
@@ -69,7 +21,7 @@ export function CreateLair() {
           <div className='mt-8 w-full sm:flex sm:items-start md:pl-8 lg:mx-0 lg:bg-none'>
             <form
               className='mx-auto mt-3 rounded-2xl bg-gradient-to-r from-light-violet8 to-light-violet9 p-4 text-left dark:from-darkMode-violet8 dark:to-darkMode-violet9 sm:mt-0'
-              onSubmit={handleSubmit((a) => deployWhale(a))}>
+              onSubmit={handleSubmit((a) => deployLair(a))}>
               <h2 className='text-3xl font-semibold leading-6 text-light-violet12 dark:text-darkMode-violet12'>
                 Whales&apos; Lair
               </h2>
