@@ -133,10 +133,11 @@ export default function MobileMenu() {
                     <span className='ml-1'>Logout</span>
                   </button>
                 ) : (
-                  <button className=' w-full whitespace-nowrap rounded-3xl bg-gradient-to-tr from-light-violet8 via-light-violet10 to-light-violet8 px-5 py-3 text-light-violet1 hover:brightness-90 dark:from-[#4568dc]  dark:to-[#bb46a4] dark:hover:opacity-75'>
-                    {() => {
+                  <button
+                    className='w-full whitespace-nowrap rounded-3xl bg-gradient-to-tr from-light-violet8 via-light-violet10 to-light-violet8 px-5 py-3 text-light-violet1 hover:brightness-90 dark:from-[#4568dc]  dark:to-[#bb46a4] dark:hover:opacity-75'
+                    onClick={() => {
                       login()
-                    }}
+                    }}>
                     Connect wallet
                   </button>
                 )}
