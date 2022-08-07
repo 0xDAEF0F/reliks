@@ -1,13 +1,13 @@
 import { Switch } from '@headlessui/react'
 import { useState, useEffect } from 'react'
-import LinkChevron from './LinkChevron'
+import LinkIcon from './LinkIcon'
 import { useTheme } from 'next-themes'
 import { useMoralis } from 'react-moralis'
 import toast from 'react-hot-toast'
 import to from 'await-to-js'
 import { MdLogout } from 'react-icons/md'
 import { HiOutlineMoon } from 'react-icons/hi'
-import { AiOutlineSearch } from 'react-icons/ai'
+import SearchBar from './SearchBar'
 
 export default function MobileMenu() {
   const [mounted, setMounted] = useState(false)
@@ -76,23 +76,10 @@ export default function MobileMenu() {
             }>
             <ul className='mt-5 space-y-10'>
               <li>
-                <div className='relative flex md:invisible'>
-                  <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center'></div>
-                  <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-                    <AiOutlineSearch className='h-5 w-5 opacity-60' aria-hidden='true' />
-                  </div>
-                  <input
-                    disabled
-                    id='search'
-                    name='search'
-                    className='w-full rounded-2xl border-light-bordergray bg-white pl-10 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
-                    placeholder='Search for a creator'
-                    type='search'
-                  />
-                </div>
+                <SearchBar xClass='flex md:invisible' />
               </li>
               <li>
-                <LinkChevron title={'Explore'} to={'/explore'} xClass='w-full' />
+                <LinkIcon title={'Explore'} to={'/explore'} xClass='w-full' />
               </li>
               <li>
                 <a
@@ -130,7 +117,7 @@ export default function MobileMenu() {
               </li>
               <li>
                 {isCreator() ? (
-                  <LinkChevron
+                  <LinkIcon
                     title={'Profile'}
                     to={`/profile/${user.getUsername()}`}
                     xClass='w-full'
@@ -151,7 +138,7 @@ export default function MobileMenu() {
                   </button>
                 ) : (
                   <button
-                    className='w-full whitespace-nowrap rounded-3xl bg-gradient-to-tr from-light-violet8 via-light-violet10 to-light-violet8 px-5 py-3 text-light-violet1 hover:brightness-90 dark:from-[#4568dc]  dark:to-[#bb46a4] dark:hover:opacity-75'
+                    className='w-full whitespace-nowrap rounded-3xl bg-gradient-to-tr from-light-violet8 via-light-violet10 to-light-violet8 px-5 py-3 font-semibold text-light-violet1 hover:brightness-90 dark:from-[#4568dc]  dark:to-[#bb46a4] dark:hover:opacity-75'
                     onClick={() => {
                       login()
                     }}>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi'
-import { AiOutlineSearch } from 'react-icons/ai'
+import SearchBar from './SearchBar'
 import { useMoralis } from 'react-moralis'
 import ProfileDropdownMenu from './ProfileDropdownMenu'
 import MobileMenu from './MobileMenu'
@@ -46,23 +46,7 @@ function Header() {
           {/* App name & logo */}
           <Logo />
           <div className='mx-5 w-full md:mx-10'>
-            <label htmlFor='search' className='sr-only'>
-              Search
-            </label>
-            <div className='relative hidden md:flex'>
-              <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center'></div>
-              <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-                <AiOutlineSearch className='h-5 w-5 opacity-60' aria-hidden='true' />
-              </div>
-              <input
-                disabled
-                id='search'
-                name='search'
-                className='h-10 w-full rounded-2xl border-light-bordergray bg-white pl-10 shadow-sm focus:border-light-violet7 focus:ring-light-violet7 disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 dark:focus:border-darkMode-violet7 dark:focus:ring-darkMode-violet7 sm:text-sm'
-                placeholder='Search for a creator'
-                type='search'
-              />
-            </div>
+            <SearchBar xClass='hidden md:flex' />
           </div>
           <div className='flex justify-center px-2 lg:justify-end'>
             <div className='lg:block'>

@@ -6,7 +6,7 @@ const icons = {
   Profile: <MdAccountCircle size={26} />,
 }
 
-export default function LinkChevron({ title, to, xClass }) {
+export default function LinkIcon({ title, to, xClass }) {
   return (
     <Link href={to}>
       <a

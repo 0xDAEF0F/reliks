@@ -24,7 +24,7 @@ const features = [
 
 export function BenefitsLairPanel() {
   return (
-    <div className='mb-10 px-4 sm:px-6 lg:px-0 lg:pr-8'>
+    <div className='mb-10 mt-5 px-4 sm:px-6 lg:px-0 lg:pr-8'>
       <div className='mx-auto max-w-lg lg:mx-0'>
         <h2 className='text-base font-medium uppercase tracking-wide text-light-violet11 dark:text-darkMode-violet11'>
           The Lair

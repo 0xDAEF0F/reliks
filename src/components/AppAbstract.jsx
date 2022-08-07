@@ -51,7 +51,7 @@ export function AppAbstract() {
         <div className='mx-auto max-w-7xl lg:px-8'>
           <div className='lg:grid lg:grid-cols-2 lg:gap-8'>
             <div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left'>
-              <div className='lg:py-24'>
+              <div className='lg:my-24'>
                 <h1 className='mt-4 text-4xl font-extrabold tracking-tight text-mauve dark:text-darkMode-violet12 sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl'>
                   <span className='block'>Unite with</span>
                   <span className='block text-light-violet11 dark:text-darkMode-violet11'>
@@ -72,10 +72,10 @@ export function AppAbstract() {
                 </a>
               </div>
             </div>
-            <div className='mx-auto md:mt-12 lg:relative lg:m-0'>
+            <div className='relative mx-auto mt-12 lg:m-0'>
               <div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0'>
                 <img
-                  className='h-60 w-full lg:absolute lg:inset-y-0 lg:right-0 lg:h-5/6 lg:w-max xl:h-full'
+                  className='h-80 w-full md:h-80 lg:absolute lg:inset-y-0 lg:right-0 lg:h-5/6 lg:w-max '
                   src={theme === 'dark' ? 'asset.svg' : 'assetlm.svg'}
                   alt=''
                 />
@@ -94,14 +94,14 @@ export function AppAbstract() {
           <div className='mt-28'>
             <div className='relative pb-32'>
               <div className='absolute inset-0'>
-                <div className='h-full w-full rounded-lg bg-light-violet9 object-cover dark:bg-gradient-to-r dark:from-darkMode-violet8  dark:to-darkMode-violet9' />
+                <div className='h-full w-full rounded-lg bg-light-violet9 object-cover dark:bg-gradient-to-r dark:from-darkMode-violet8  dark:to-darkMode-violet10' />
                 <div className='inset-0mix-blend-multiply absolute' aria-hidden='true' />
               </div>
               <div className='relative mx-auto max-w-7xl py-12 px-4 sm:py-20 sm:px-6 lg:px-8'>
-                <h1 className='text-3xl font-extrabold tracking-tight text-light-violet1 dark:text-darkMode-violet12 md:text-4xl lg:text-5xl'>
+                <h1 className='text-3xl font-extrabold tracking-tight text-light-violet2 dark:text-darkMode-violet12 md:text-4xl lg:text-5xl'>
                   Highlights
                 </h1>
-                <p className='mt-6 max-w-3xl text-xl text-light-violet1 opacity-80 dark:text-darkMode-gray dark:opacity-80'>
+                <p className='mt-6 max-w-3xl text-justify text-xl text-light-violet1 opacity-80 dark:text-darkMode-gray dark:opacity-80'>
                   Join your favorite content creators for limited-time drops, rewards,
                   achievements, and many more benefits.
                 </p>
@@ -123,10 +123,10 @@ export function AppAbstract() {
                       <h3 className='text-xl font-medium text-light-violet11 dark:text-darkMode-violet11'>
                         {strategies.name}
                       </h3>
-                      <p className='text-gray-500 mt-4 text-base'>
+                      <p className='text-gray-500 mt-4 text-justify text-base'>
                         {strategies.description}
                       </p>
-                      <p className='mt-2 text-right text-sm italic text-light-gray opacity-75 dark:text-darkMode-gray'>
+                      <p className='mt-2 animate-pulse flex-col items-center text-right text-sm italic text-light-gray opacity-75 transition duration-1000 ease-in-out dark:text-darkMode-gray'>
                         {strategies.comingSoon ? 'Coming soon...' : ''}
                       </p>
                     </div>
