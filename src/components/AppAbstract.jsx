@@ -73,15 +73,12 @@ export function AppAbstract() {
                 </a>
               </div>
             </div>
-            <div className='relative mx-auto mt-12 lg:m-0'>
-              <div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0'>
-                <Image
-                  className='h-80 w-full md:h-80 lg:absolute lg:inset-y-0 lg:right-0 lg:h-5/6 lg:w-max '
-                  src={theme === 'dark' ? '/asset.svg' : '/assetlm.svg'}
-                  layout='fill'
-                  alt='app abstract image'
-                />
-              </div>
+            <div className='relative mx-auto my-10 h-80 md:mx-28 lg:my-0 lg:h-5/6 lg:w-5/6'>
+              <Image
+                src={theme === 'dark' ? '/asset.svg' : '/assetlm.svg'}
+                layout='fill'
+                alt='app abstract image'
+              />
             </div>
           </div>
           <div
