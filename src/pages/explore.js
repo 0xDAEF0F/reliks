@@ -2,12 +2,19 @@ import Header from '../components/Header'
 import Image from 'next/image'
 import { getLastCreators } from '../util/getLastCreators'
 import { NoCreators } from '../components/NoCreators'
-
 import Footer from '../components/Footer'
+import Head from 'next/head'
 
 export default function explore({ creators }) {
   return (
     <>
+      <Head>
+        <title>Explore | Reliks</title>
+        <meta
+          name='description'
+          content='Check out your favorite content creators subscribed to Reliks, and be part of the ecosystem.'
+        />
+      </Head>
       <Header />
       <div className='mx-auto max-w-3xl px-4 pt-28 pb-16 sm:px-6  md:pt-24  lg:max-w-7xl lg:px-8 '>
         <h2 id='products-heading' className='mb-12 text-4xl font-semibold'>

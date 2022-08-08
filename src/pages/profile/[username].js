@@ -15,6 +15,7 @@ import { createWhaleFactory } from '../../util/deployWhale'
 import { CreateLairLoadingModal } from '../../components/CreateLairLoadingModal'
 import { ethers } from '../../util/deployWhale'
 import Footer from '../../components/Footer'
+import Head from 'next/head'
 
 export default function Profile({ creator }) {
   const router = useRouter()
@@ -106,6 +107,9 @@ export default function Profile({ creator }) {
 
   return (
     <>
+      <Head>
+        <title>Profile | {creator?.channelTitle}</title>
+      </Head>
       <CreateLairLoadingModal
         currentTxn={currentTxn}
         open={isModalOpen}
@@ -224,6 +228,6 @@ export async function getStaticPaths() {
   const usernames = await getAllUsernames()
   return {
     paths: usernames,
-    fallback: false,
+    fallback: 'blocking',
   }
 }

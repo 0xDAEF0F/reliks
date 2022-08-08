@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
 import { useMoralis } from 'react-moralis'
 import Footer from '../components/Footer'
+import Head from 'next/head'
 
 export default function Home() {
   const { query } = useRouter()
@@ -33,6 +34,9 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Home | Reliks</title>
+      </Head>
       <Header />
       <SignUpAsCreatorBanner xclass='invisible hidden md:block' />
       <AppAbstract />
