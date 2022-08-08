@@ -12,7 +12,7 @@ export function CreateLair({ deployLair }) {
 
   return (
     <>
-      <div className='relative mx-10 mt-10'>
+      <div className='relative'>
         <div className='absolute inset-0' aria-hidden='true'>
           <div className='inset-y-0 right-0 w-1/2 bg-light-violet9 bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
         </div>
@@ -58,7 +58,7 @@ export function CreateLair({ deployLair }) {
                     {errors.whales && (
                       <div className='flex items-center'>
                         <IoCloseCircleSharp className='birder text-[#942f1e] dark:text-[#ff1a60] ' />
-                        <p className='ml-1 text-sm font-semibold tracking-wide text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
+                        <p className='text-sm font-semibold tracking-wide text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
                           Min 5 - Max 100
                         </p>
                       </div>

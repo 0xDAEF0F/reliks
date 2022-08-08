@@ -60,6 +60,7 @@ export default function explore({ creators }) {
         )}
       </div>
       <div className='h-20' />
+      <Footer />
     </>
   )
 }

@@ -14,6 +14,7 @@ import toast from 'react-hot-toast'
 import { createWhaleFactory } from '../../util/deployWhale'
 import { CreateLairLoadingModal } from '../../components/CreateLairLoadingModal'
 import { ethers } from '../../util/deployWhale'
+import Footer from '../../components/Footer'
 
 export default function Profile({ creator }) {
   const router = useRouter()
@@ -204,6 +205,7 @@ export default function Profile({ creator }) {
           {SideComponent()}
         </div>
       </div>
+      <Footer />
     </>
   )
 }

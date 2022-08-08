@@ -1,5 +1,6 @@
 import Header from '../components/Header'
 import Link from 'next/link'
+import Footer from '../components/Footer'
 
 export default function FourZeroFour() {
   return (
@@ -31,6 +32,7 @@ export default function FourZeroFour() {
           </main>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
