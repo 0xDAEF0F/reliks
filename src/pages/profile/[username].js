@@ -228,6 +228,6 @@ export async function getStaticPaths() {
   const usernames = await getAllUsernames()
   return {
     paths: usernames,
-    fallback: 'blocking',
+    fallback: false,
   }
 }
