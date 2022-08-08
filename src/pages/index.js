@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
 import { useMoralis } from 'react-moralis'
 import Footer from '../components/Footer'
+import Head from 'next/head'
 
 export default function Home() {
   const { query } = useRouter()
@@ -33,6 +34,20 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Home | Reliks</title>
+        <meta
+          name='description'
+          content='Reliks is a platform for content creators to connect with their fan base, get supported, and in return, grant rewards in the form of NFTs, fungible tokens, and physical items.'
+        />
+        <meta property='og:title' content='Reliks' />
+        <meta
+          property='og:description'
+          content='Join your favorite content creators ecosystem.'
+        />
+        {/* TODO: Pending image (image that appears when sharing the link across social platforms) */}
+        {/* <meta property='og:image' content=''/> */}
+      </Head>
       <Header />
       <SignUpAsCreatorBanner xclass='invisible hidden md:block' />
       <AppAbstract />
