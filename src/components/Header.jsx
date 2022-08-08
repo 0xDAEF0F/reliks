@@ -49,7 +49,7 @@ function Header() {
           </div>
           <div className='flex justify-center px-2 lg:justify-end'>
             <div className='lg:block'>
-              <ul className='flex flex-grow items-center justify-end'>
+              <div className='flex flex-grow items-center justify-end'>
                 <div className='hidden space-x-14 lg:block'>
                   <Link href='/explore'>
                     <a className='rounded-md px-2 py-3 font-semibold text-black opacity-70 transition duration-100 hover:bg-light-bordergray hover:opacity-100 dark:text-white dark:hover:bg-darkMode-violet5 '>
@@ -59,6 +59,7 @@ function Header() {
                 </div>
                 {!isAuthenticated && (
                   <button
+                    aria-label='theme switch'
                     className='ml-10 hidden rounded-md px-3 py-3 font-semibold text-black text-opacity-70 transition duration-100 hover:bg-light-bordergray hover:text-opacity-100 dark:text-white dark:hover:bg-darkMode-violet5 lg:block'
                     onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
                     <ThemeIcon />
@@ -80,7 +81,7 @@ function Header() {
                     </button>
                   )}
                 </div>
-              </ul>
+              </div>
             </div>
           </div>
         </div>

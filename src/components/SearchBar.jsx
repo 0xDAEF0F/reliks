@@ -9,6 +9,7 @@ function SearchBar({ xClass }) {
       <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
         <AiOutlineSearch className='h-5 w-5 opacity-60' aria-hidden='true' />
       </div>
+      {/* TODO: ARIA IDs are not unique */}
       <input
         disabled
         id='search'

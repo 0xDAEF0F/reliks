@@ -10,7 +10,7 @@ import Head from 'next/head'
 
 export default function Home() {
   const { query } = useRouter()
-  const { refetchUserData, web3, enableWeb3 } = useMoralis()
+  const { refetchUserData } = useMoralis()
 
   // tracks for changes in tokens query param
   useEffect(() => {
@@ -28,14 +28,21 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query.creatorFlow])
 
-  useEffect(() => {
-    if (!web3) enableWeb3()
-  }, [web3, enableWeb3])
-
   return (
     <>
       <Head>
         <title>Home | Reliks</title>
+        <meta
+          name='description'
+          content='Reliks is a platform for content creators to connect with their fan base, get supported, and in return, grant rewards in the form of NFTs, fungible tokens, and physical items.'
+        />
+        <meta property='og:title' content='Reliks' />
+        <meta
+          property='og:description'
+          content='Join your favorite content creators ecosystem.'
+        />
+        {/* TODO: Pending image (image that appears when sharing the link across social platforms) */}
+        {/* <meta property='og:image' content=''/> */}
       </Head>
       <Header />
       <SignUpAsCreatorBanner xclass='invisible hidden md:block' />
