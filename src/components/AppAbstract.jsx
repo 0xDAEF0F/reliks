@@ -125,7 +125,7 @@ export function AppAbstract() {
                       <p className='text-gray-500 mt-4 text-justify text-base'>
                         {strategies.description}
                       </p>
-                      <span className='mt-2 animate-pulse flex-col items-center text-right text-sm italic text-light-gray opacity-75 transition duration-1000 ease-in-out dark:text-darkMode-gray'>
+                      <span className='mt-2 block animate-pulse text-right text-sm italic text-light-gray opacity-75 transition duration-1000 ease-in-out dark:text-darkMode-gray'>
                         {strategies.comingSoon ? 'Coming soon...' : ''}
                       </span>
                     </div>
