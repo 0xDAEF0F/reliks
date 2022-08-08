@@ -82,7 +82,7 @@ export default function MobileMenu() {
                 <LinkIcon title={'Explore'} to={'/explore'} xClass='w-full' />
               </li>
               <li>
-                <a
+                <div
                   onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
                   className='flex w-full cursor-pointer items-center justify-between rounded-md px-1 py-2 text-base font-medium text-black opacity-60 hover:bg-light-violet5 hover:opacity-100 dark:text-white dark:hover:bg-darkMode-violet5'>
                   <div className='flex items-center gap-2'>
@@ -113,7 +113,7 @@ export default function MobileMenu() {
                       )}
                     />
                   </Switch>
-                </a>
+                </div>
               </li>
               <li>
                 {isCreator() ? (
