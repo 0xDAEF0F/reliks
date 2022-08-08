@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { GiCheckedShield, GiOpenTreasureChest, GiSpermWhale } from 'react-icons/gi'
 import { TbArrowNarrowDown } from 'react-icons/tb'
 import { useTheme } from 'next-themes'
+import Image from 'next/image'
 
 const strategies = [
   {
@@ -74,10 +75,11 @@ export function AppAbstract() {
             </div>
             <div className='relative mx-auto mt-12 lg:m-0'>
               <div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0'>
-                <img
+                <Image
                   className='h-80 w-full md:h-80 lg:absolute lg:inset-y-0 lg:right-0 lg:h-5/6 lg:w-max '
-                  src={theme === 'dark' ? 'asset.svg' : 'assetlm.svg'}
-                  alt=''
+                  src={theme === 'dark' ? '/asset.svg' : '/assetlm.svg'}
+                  layout='fill'
+                  alt='app abstract image'
                 />
               </div>
             </div>
@@ -98,9 +100,9 @@ export function AppAbstract() {
                 <div className='inset-0mix-blend-multiply absolute' aria-hidden='true' />
               </div>
               <div className='relative mx-auto max-w-7xl py-12 px-4 sm:py-20 sm:px-6 lg:px-8'>
-                <h1 className='text-3xl font-extrabold tracking-tight text-light-violet2 dark:text-darkMode-violet12 md:text-4xl lg:text-5xl'>
+                <h2 className='text-3xl font-extrabold tracking-tight text-light-violet2 dark:text-darkMode-violet12 md:text-4xl lg:text-5xl'>
                   Highlights
-                </h1>
+                </h2>
                 <p className='mt-6 max-w-3xl text-justify text-xl text-light-violet1 opacity-80 dark:text-darkMode-gray dark:opacity-80'>
                   Join your favorite content creators for limited-time drops, rewards,
                   achievements, and many more benefits.
@@ -126,9 +128,9 @@ export function AppAbstract() {
                       <p className='text-gray-500 mt-4 text-justify text-base'>
                         {strategies.description}
                       </p>
-                      <p className='mt-2 animate-pulse flex-col items-center text-right text-sm italic text-light-gray opacity-75 transition duration-1000 ease-in-out dark:text-darkMode-gray'>
+                      <span className='mt-2 animate-pulse flex-col items-center text-right text-sm italic text-light-gray opacity-75 transition duration-1000 ease-in-out dark:text-darkMode-gray'>
                         {strategies.comingSoon ? 'Coming soon...' : ''}
-                      </p>
+                      </span>
                     </div>
                   </div>
                 ))}

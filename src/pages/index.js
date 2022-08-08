@@ -34,9 +34,6 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Home | Reliks</title>
-      </Head>
       <Header />
       <SignUpAsCreatorBanner xclass='invisible hidden md:block' />
       <AppAbstract />

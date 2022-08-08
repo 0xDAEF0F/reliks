@@ -17,9 +17,9 @@ export default function explore({ creators }) {
       </Head>
       <Header />
       <div className='mx-auto max-w-3xl px-4 pt-28 pb-16 sm:px-6  md:pt-24  lg:max-w-7xl lg:px-8 '>
-        <h2 id='products-heading' className='mb-12 text-4xl font-semibold'>
+        <h1 id='products-heading' className='mb-12 text-4xl font-semibold'>
           Explore Creators
-        </h2>
+        </h1>
         {creators.length > 0 ? (
           <div className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 2xl:grid-cols-4'>
             {creators.map((creator, i) => (
@@ -32,8 +32,7 @@ export default function explore({ creators }) {
                     src={creator.coverPhoto}
                     width={800}
                     height={400}
-                    // TODO: CHANGE
-                    alt='temporary alt'
+                    alt='cover photo from social network.'
                     className='h-full w-full object-cover object-center'
                   />
                 </div>
@@ -45,14 +44,13 @@ export default function explore({ creators }) {
                         className='h-full w-full rounded-lg object-cover object-center'
                         width={80}
                         height={80}
-                        // TODO: CHANGE
-                        alt='temporary alt'
+                        alt='profile picture from social network'
                       />
                     </div>
                     <div className='mt-2 ml-2'>
-                      <p className='text-xl font-bold text-light-violet12 dark:text-darkMode-violet12'>
+                      <h2 className='text-xl font-bold text-light-violet12 dark:text-darkMode-violet12'>
                         {creator.name}
-                      </p>
+                      </h2>
                       <p className='text-xs text-light-gray dark:text-darkMode-gray'>
                         Joined: {creator.createdAt}
                       </p>

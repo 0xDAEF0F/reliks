@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi'
+import { HiOutlineSun } from 'react-icons/hi'
+import { IoMoonOutline } from 'react-icons/io5'
 import SearchBar from './SearchBar'
 import { useMoralis } from 'react-moralis'
 import ProfileDropdownMenu from './ProfileDropdownMenu'
 import MobileMenu from './MobileMenu'
 import toast from 'react-hot-toast'
 import to from 'await-to-js'
-import Image from 'next/image'
 import Logo from './Logo'
 
 function Header() {
@@ -33,7 +33,7 @@ function Header() {
   }
 
   const ThemeIcon = () =>
-    theme === 'light' ? <HiOutlineMoon size={20} /> : <HiOutlineSun size={20} />
+    theme === 'light' ? <IoMoonOutline size={20} /> : <HiOutlineSun size={20} />
 
   return (
     <header
@@ -43,7 +43,6 @@ function Header() {
       }`}>
       <div className='mx-auto max-w-6xl px-6'>
         <div className='flex h-20 items-center justify-between'>
-          {/* App name & logo */}
           <Logo />
           <div className='mx-5 w-full md:mx-10'>
             <SearchBar xClass='hidden md:flex' />
