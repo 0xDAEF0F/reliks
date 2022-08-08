@@ -73,7 +73,7 @@ export function AppAbstract() {
                 </a>
               </div>
             </div>
-            <div className='relative mx-auto my-10 h-80 md:mx-28 lg:my-0 lg:h-5/6 lg:w-5/6'>
+            <div className='relative mx-auto my-10 h-80 md:mx-44 lg:my-0 lg:h-5/6 lg:w-5/6'>
               <Image
                 src={theme === 'dark' ? '/asset.svg' : '/assetlm.svg'}
                 layout='fill'
