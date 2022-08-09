@@ -8,6 +8,11 @@ const masterKey = process.env.MORALIS_MASTER_KEY
 
 Moralis.start({ serverUrl, appId, masterKey })
 
+const BASE_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://www.reliks.xyz'
+    : 'http://localhost:3000'
+
 export default async function handler(req, res) {
   try {
     const { state, code } = req.query
@@ -47,11 +52,11 @@ export default async function handler(req, res) {
     user.set('verifiedSocialPlatforms', ['youtube'])
     await user.save(null, { useMasterKey: true })
 
-    res.redirect('http://localhost:3000?creatorFlow=success')
+    res.redirect(`${BASE_URL}?creatorFlow=success`)
   } catch (err) {
     console.log(err.message)
     if (err.message === 'User has no channel.')
-      return res.redirect('http://localhost:3000?creatorFlow=nochannel')
-    res.redirect('http://localhost:3000?creatorFlow=fail')
+      return res.redirect(`${BASE_URL}?creatorFlow=nochannel`)
+    res.redirect(`${BASE_URL}?creatorFlow=fail`)
   }
 }
