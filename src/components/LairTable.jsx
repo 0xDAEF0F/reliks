@@ -6,7 +6,7 @@ import { useMoralisQuery } from 'react-moralis'
 export default function LairTable({ lairInfo }) {
   const { data: whalesArr } = useMoralisQuery(
     'Whale',
-    (query) => query.equalTo('lairAddress', lairInfo.lairAddress),
+    (query) => query.equalTo('lairAddress', lairInfo?.lairAddress),
     [],
     { autoFetch: true }
   )
@@ -19,10 +19,10 @@ export default function LairTable({ lairInfo }) {
         </h2>
         <div className='flex justify-between'>
           <p className='ml-5 px-1 py-2 text-sm italic text-light-gray opacity-75 dark:text-darkMode-gray'>
-            Lair Entry Price: {lairInfo.initialLairEntry} ETH
+            Lair Entry Price: {lairInfo?.initialLairEntry} ETH
           </p>
           <p className='mr-5 px-1 py-2 text-sm italic text-light-gray opacity-75 dark:text-darkMode-gray'>
-            Capacity: {lairInfo.whaleCount} whales
+            Capacity: {lairInfo?.whaleCount} whales
           </p>
         </div>
       </div>
