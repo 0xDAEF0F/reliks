@@ -50,8 +50,8 @@ export function CreateLairLoadingModal({ currentTxn, open, setOpen }) {
               leave='ease-in duration-200'
               leaveFrom='opacity-100 translate-y-0 sm:scale-100'
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'>
-              <div className='inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-center align-bottom shadow-xl transition-all dark:bg-mauve sm:my-8 sm:max-w-lg sm:p-6 sm:px-10 sm:align-middle'>
-                <div className='absolute top-0 right-0 hidden pt-4 pr-6 sm:block'>
+              <div className=' inline-block w-full transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-center align-bottom shadow-xl transition-all dark:bg-mauve sm:max-w-xs sm:align-middle'>
+                <div className='absolute top-0 right-0 pt-4 pr-6'>
                   <button
                     type='button'
                     className='rounded-md text-light-gray focus:outline-none focus:ring-2 focus:ring-light-violet7 dark:text-darkMode-gray dark:focus:ring-darkMode-violet7'
@@ -59,30 +59,54 @@ export function CreateLairLoadingModal({ currentTxn, open, setOpen }) {
                     <AiOutlineClose size={18} />
                   </button>
                 </div>
-                <div className='sm:flex sm:items-center'>
-                  <div className='mt-3 text-center sm:mt-0 '>
-                    <StatusIcon />
-                    <h3 className='m-2 text-base font-bold text-black dark:text-light-violet4 '>
-                      Txn Hash:
-                    </h3>
-                    <div className='group flex cursor-pointer underline opacity-50  hover:text-light-violet11 dark:hover:text-darkMode-violet11'>
-                      <a
-                        className='flex gap-1'
-                        href={`https://etherscan.io/tx/${hash}`}
-                        rel='noreferrer'
-                        target='_blank'>
-                        <BiLinkAlt size={18} />
-                        <p className='whitespace-pre-wrap text-sm font-medium'>
-                          {formattedHash}
-                        </p>
-                        <TbArrowUpRight
-                          className='invisible group-hover:visible'
-                          size={17}
-                        />
-                      </a>
-                    </div>
-                    <br />
-                    <p>Lair Address: {lairAddress}</p>
+                <div className='mt-3 flex flex-col items-center text-center sm:mt-0'>
+                  <StatusIcon />
+                  <h3 className='my-1 text-base font-bold text-black dark:text-light-violet4 '>
+                    Txn Hash:
+                  </h3>
+                  <div
+                    className={
+                      formattedHash
+                        ? 'group flex cursor-pointer underline opacity-50  hover:text-light-violet11 dark:hover:text-darkMode-violet11'
+                        : 'hidden'
+                    }>
+                    <a
+                      className='flex gap-1'
+                      href={`https://etherscan.io/tx/${hash}`}
+                      rel='noreferrer'
+                      target='_blank'>
+                      <BiLinkAlt size={18} />
+                      <p className='w-min whitespace-pre-wrap text-xs font-normal'>
+                        {formattedHash}
+                      </p>
+                      <TbArrowUpRight
+                        className='invisible group-hover:visible'
+                        size={17}
+                      />
+                    </a>
+                  </div>
+                  <br />
+                  <h3 className='my-1 text-base font-bold text-black dark:text-light-violet4 '>
+                    Lair Address:
+                  </h3>
+                  <div
+                    className={
+                      lairAddress
+                        ? 'group flex cursor-pointer underline opacity-50  hover:text-light-violet11 dark:hover:text-darkMode-violet11'
+                        : 'invisible'
+                    }>
+                    <a
+                      className='flex gap-1'
+                      href={`https://etherscan.io/address/${lairAddress}`}
+                      rel='noreferrer'
+                      target='_blank'>
+                      <BiLinkAlt size={18} />
+                      <p className='w-min whitespace-pre-wrap text-xs '>{lairAddress}</p>
+                      <TbArrowUpRight
+                        className='invisible group-hover:visible'
+                        size={17}
+                      />
+                    </a>
                   </div>
                 </div>
               </div>
