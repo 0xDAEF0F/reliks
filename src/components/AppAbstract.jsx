@@ -93,11 +93,11 @@ export function AppAbstract() {
           <div className='mt-28'>
             <div className='relative pb-32'>
               <div className='absolute inset-0'>
-                <div className='h-full w-full rounded-lg bg-light-violet9 object-cover dark:bg-gradient-to-r dark:from-darkMode-violet8  dark:to-darkMode-violet10' />
+                <div className='h-full w-full rounded-lg bg-gradient-to-tr from-light-violet10  via-light-violet9 to-light-violet8 object-cover dark:bg-gradient-to-r dark:from-darkMode-violet8 dark:via-darkMode-violet9  dark:to-darkMode-violet10' />
                 <div className='inset-0mix-blend-multiply absolute' aria-hidden='true' />
               </div>
               <div className='relative mx-auto max-w-7xl py-12 px-4 sm:py-20 sm:px-6 lg:px-8'>
-                <h2 className='text-3xl font-extrabold tracking-tight text-light-violet2 dark:text-darkMode-violet12 md:text-4xl lg:text-5xl'>
+                <h2 className='text-3xl font-extrabold tracking-tight text-light-violet3 dark:text-darkMode-violet12 md:text-4xl lg:text-5xl'>
                   Highlights
                 </h2>
                 <p className='mt-6 max-w-3xl text-xl text-light-violet1 opacity-80 dark:text-darkMode-gray dark:opacity-80'>

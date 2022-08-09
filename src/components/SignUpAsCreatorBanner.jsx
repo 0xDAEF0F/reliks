@@ -15,7 +15,7 @@ export default function SignUpAsCreatorBanner({ xclass }) {
   const [open, setOpen] = useState(true)
   return (
     <div className={`relative z-10 pt-20 ${!open || isCreator() ? `${xclass}` : ''}`}>
-      <div className='fixed w-full border-light-violet6  bg-light-violet10 dark:border-darkMode-violet6 dark:bg-darkMode-violet10'>
+      <div className='fixed w-full  bg-light-violet9  dark:bg-darkMode-violet9'>
         <div className='mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8'>
           <div className='flex flex-wrap items-center justify-between'>
             <div className='flex w-0 flex-1 items-center'>
@@ -38,7 +38,7 @@ export default function SignUpAsCreatorBanner({ xclass }) {
               <button
                 onClick={() => setOpen(false)}
                 type='button'
-                className='-mr-1 flex rounded-md p-2 hover:bg-light-violet9 focus:outline-none focus:ring-2 focus:ring-white dark:hover:bg-darkMode-violet9 sm:-mr-2'>
+                className='-mr-1 flex rounded-md p-2 hover:bg-light-violet10 focus:outline-none focus:ring-2 focus:ring-white dark:hover:bg-darkMode-violet10 sm:-mr-2'>
                 <span className='sr-only'>Dismiss</span>
                 <HiX size={20} color='white' aria-hidden='true' />
               </button>
