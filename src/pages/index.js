@@ -32,6 +32,17 @@ export default function Home() {
     <>
       <Head>
         <title>Home | Reliks</title>
+        <meta
+          name='description'
+          content='Reliks is a platform for content creators to connect with their fan base, get supported, and in return, grant rewards in the form of NFTs, and physical items.'
+        />
+        <meta property='og:title' content='Reliks' />
+        <meta
+          property='og:description'
+          content='Join your favorite content creators ecosystem.'
+        />
+        {/* TODO: Pending image (image that appears when sharing the link across social platforms) */}
+        {/* <meta property='og:image' content=''/> */}
       </Head>
       <Header />
       <SignUpAsCreatorBanner xclass='invisible hidden md:block' />
