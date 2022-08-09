@@ -34,7 +34,7 @@ export default function Home() {
         <title>Home | Reliks</title>
         <meta
           name='description'
-          content='Reliks is a platform for content creators to connect with their fan base, get supported, and in return, grant rewards in the form of NFTs, fungible tokens, and physical items.'
+          content='Reliks is a platform for content creators to connect with their fan base, get supported, and in return, grant rewards in the form of NFTs, and physical items.'
         />
         <meta property='og:title' content='Reliks' />
         <meta
