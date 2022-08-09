@@ -13,7 +13,7 @@ export async function getLastCreators(last) {
   const query = new Moralis.Query(Moralis.User)
   query.containsAll('verifiedSocialPlatforms', ['youtube'])
   const results = await query.find({ useMasterKey: true })
-  if (results.length < 1) return res.send([])
+  if (results.length < 1) return []
   const users = slice(results, 0, last)
   return map(users, extractCreatorPublicInformation)
 }

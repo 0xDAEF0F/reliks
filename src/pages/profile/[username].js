@@ -108,7 +108,7 @@ export default function Profile({ creator }) {
   return (
     <>
       <Head>
-        <title>Profile | {creator?.channelTitle}</title>
+        <title>{`Profile | ${creator?.channelTitle}`}</title>
       </Head>
       <CreateLairLoadingModal
         currentTxn={currentTxn}
@@ -228,6 +228,6 @@ export async function getStaticPaths() {
   const usernames = await getAllUsernames()
   return {
     paths: usernames,
-    fallback: 'blocking',
+    fallback: false,
   }
 }
