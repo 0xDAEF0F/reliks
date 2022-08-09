@@ -100,7 +100,7 @@ export function AppAbstract() {
                 <h2 className='text-3xl font-extrabold tracking-tight text-light-violet2 dark:text-darkMode-violet12 md:text-4xl lg:text-5xl'>
                   Highlights
                 </h2>
-                <p className='mt-6 max-w-3xl text-justify text-xl text-light-violet1 opacity-80 dark:text-darkMode-gray dark:opacity-80'>
+                <p className='mt-6 max-w-3xl text-xl text-light-violet1 opacity-80 dark:text-darkMode-gray dark:opacity-80'>
                   Join your favorite content creators for limited-time drops, rewards,
                   achievements, and many more benefits.
                 </p>
@@ -122,7 +122,7 @@ export function AppAbstract() {
                       <h3 className='text-xl font-medium text-light-violet11 dark:text-darkMode-violet11'>
                         {strategies.name}
                       </h3>
-                      <p className='text-gray-500 mt-4 text-justify text-base'>
+                      <p className='text-gray-500 mt-4 text-base'>
                         {strategies.description}
                       </p>
                       <span className='mt-2 block animate-pulse text-right text-sm italic text-light-gray opacity-75 transition duration-1000 ease-in-out dark:text-darkMode-gray'>
