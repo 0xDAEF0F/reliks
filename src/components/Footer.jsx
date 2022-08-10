@@ -60,7 +60,7 @@ export default function Footer() {
             &copy; 2022 Reliks, Inc. All rights reserved.
           </p>
           <div className='flex justify-center md:justify-start'>
-            <Link href='privacy-policy'>
+            <Link href='/privacy-policy'>
               <a
                 target='_blank'
                 className='ml-0 text-center text-xs text-light-gray underline opacity-70 hover:text-light-violet10 dark:text-darkMode-gray dark:hover:text-darkMode-violet10 md:ml-5 md:text-left'>
