@@ -80,6 +80,7 @@ export default function Profile({ creator }) {
         },
       })
     } catch (err) {
+      console.log(err.message)
       setCurrentTxn((prev) => ({ ...prev, error: true }))
       toast.error('could not deploy contract')
     }

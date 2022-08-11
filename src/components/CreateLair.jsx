@@ -82,10 +82,11 @@ export function CreateLair({ deployLair }) {
                       </span>
                     </div>
                     <input
-                      {...register('price', { required: true, min: 0.1 })}
+                      {...register('price', { required: true, min: 0.05 })}
                       type='number'
                       name='price'
                       id='price'
+                      step='any'
                       className={`${
                         errors.price
                           ? ' border border-error focus:border-error focus:ring-error'
@@ -105,7 +106,7 @@ export function CreateLair({ deployLair }) {
                       <div className='flex items-center'>
                         <IoCloseCircleSharp className='birder text-[#942f1e] dark:text-[#ff1a60] ' />
                         <p className='text-sm font-semibold tracking-wide text-[#942e2e] opacity-100  dark:text-error dark:brightness-125'>
-                          Min 0.1 ETH
+                          Min 0.05 ETH
                         </p>
                       </div>
                     )}
