@@ -14,6 +14,10 @@ export function CreateLairLoadingModal({ currentTxn, open, setOpen }) {
     chunk.concat('\n')
   ).join('')
 
+  const formattedAddress = flatMap(chunk(lairAddress, lairAddress?.length / 2), (chunk) =>
+    chunk.concat('\n')
+  ).join('')
+
   const StatusIcon = () => {
     if (error) return <BiErrorCircle color='red' />
     if (loading) return <ReactLoading type='balls' color='#6e56cf' />
@@ -101,7 +105,9 @@ export function CreateLairLoadingModal({ currentTxn, open, setOpen }) {
                       rel='noreferrer'
                       target='_blank'>
                       <BiLinkAlt size={18} />
-                      <p className='w-min whitespace-pre-wrap text-xs '>{lairAddress}</p>
+                      <p className='w-min whitespace-pre-wrap text-xs '>
+                        {formattedAddress}
+                      </p>
                       <TbArrowUpRight
                         className='invisible group-hover:visible'
                         size={17}
