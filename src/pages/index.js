@@ -31,12 +31,12 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | Reliks</title>
+        <title>Home | reliks</title>
         <meta
           name='description'
-          content='Reliks is a platform for content creators to connect with their fan base, get supported, and in return, grant rewards in the form of NFTs, and physical items.'
+          content='reliks is a platform for content creators to connect with their fan base, get supported, and in return, grant rewards in the form of NFTs, and physical items.'
         />
-        <meta property='og:title' content='Reliks' />
+        <meta property='og:title' content='reliks' />
         <meta
           property='og:description'
           content='Join your favorite content creators ecosystem.'

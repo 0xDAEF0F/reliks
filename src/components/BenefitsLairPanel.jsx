@@ -12,7 +12,7 @@ const features = [
   },
   {
     name: 'NFT drops',
-    description: 'Flex your NFT drops granted by Reliks and your creator.',
+    description: 'Flex your NFT drops granted by reliks and your creator.',
     icon: MdWaterDrop,
   },
   {

@@ -60,7 +60,7 @@ export default function Footer() {
         </div>
         <div className='mt-8 md:order-1 md:mt-0'>
           <p className='text-center text-light-gray opacity-70 dark:text-darkMode-gray'>
-            &copy; 2022 Reliks, Inc. All rights reserved.
+            &copy; 2022 reliks, Inc. All rights reserved.
           </p>
           <div className='flex justify-center md:justify-start'>
             <Link href='/privacy-policy'>

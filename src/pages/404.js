@@ -7,7 +7,7 @@ export default function FourZeroFour() {
   return (
     <>
       <Head>
-        <title>404 | Reliks</title>
+        <title>404 | reliks</title>
       </Head>
       <Header />
       <div className='min-h-screen px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8'>

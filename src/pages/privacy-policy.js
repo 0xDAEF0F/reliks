@@ -16,9 +16,9 @@ function PrivacyPolicy() {
           </div>
           <div className='space-y-2 text-justify'>
             <p>
-              At Reliks, accessible from www.reliks.xyz, one of our main priorities is the
+              At reliks, accessible from www.reliks.xyz, one of our main priorities is the
               privacy of our visitors. This Privacy Policy document contains types of
-              information that is collected and recorded by Reliks and how we use it.
+              information that is collected and recorded by reliks and how we use it.
             </p>
             <p>
               If you have additional questions or require more information about our
@@ -29,7 +29,7 @@ function PrivacyPolicy() {
         <div className='text-justify'>
           <h2 className='mb-5 text-xl font-bold text-darkMode-violet10'>Log Files</h2>
           <p>
-            Reliks follows a standard procedure of using log files. These files log
+            reliks follows a standard procedure of using log files. These files log
             visitors when they visit websites. All hosting companies do this and a part of
             hosting services&apos; analytics. The information collected by log files
             include internet protocol (IP) addresses, browser type, Internet Service
@@ -49,19 +49,19 @@ function PrivacyPolicy() {
           <div className='space-y-2'>
             <p>
               You may consult this list to find the Privacy Policy for each of the
-              advertising partners of Reliks.
+              advertising partners of reliks.
             </p>
             <p>
               Third-party ad servers or ad networks uses technologies like cookies,
               JavaScript, or Web Beacons that are used in their respective advertisements
-              and links that appear on Reliks, which are sent directly to users&apos;
+              and links that appear on reliks, which are sent directly to users&apos;
               browser. They automatically receive your IP address when this occurs. These
               technologies are used to measure the effectiveness of their advertising
               campaigns and/or to personalize the advertising content that you see on
               websites that you visit.
             </p>
             <p>
-              Note that Reliks has no access to or control over these cookies that are
+              Note that reliks has no access to or control over these cookies that are
               used by third-party advertisers.
             </p>
           </div>
@@ -72,7 +72,7 @@ function PrivacyPolicy() {
           </h2>
           <div className='space-y-2'>
             <p>
-              Reliks&apos;s Privacy Policy does not apply to other advertisers or
+              reliks&apos;s Privacy Policy does not apply to other advertisers or
               websites. Thus, we are advising you to consult the respective Privacy
               Policies of these third-party ad servers for more detailed information. It
               may include their practices and instructions about how to opt-out of certain
@@ -96,7 +96,7 @@ function PrivacyPolicy() {
               and/or monitor and guide their online activity.
             </p>
             <p>
-              Reliks does not knowingly collect any Personal Identifiable Information from
+              reliks does not knowingly collect any Personal Identifiable Information from
               children under the age of 13. If you think that your child provided this
               kind of information on our website, we strongly encourage you to contact us
               immediately and we will do our best efforts to promptly remove such
@@ -111,7 +111,7 @@ function PrivacyPolicy() {
           <p>
             This Privacy Policy applies only to our online activities and is valid for
             visitors to our website with regards to the information that they shared
-            and/or collect in Reliks. This policy is not applicable to any information
+            and/or collect in reliks. This policy is not applicable to any information
             collected offline or via channels other than this website.
           </p>
         </div>

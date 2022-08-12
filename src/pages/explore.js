@@ -9,10 +9,10 @@ export default function explore({ creators }) {
   return (
     <>
       <Head>
-        <title>Explore | Reliks</title>
+        <title>Explore | reliks</title>
         <meta
           name='description'
-          content='Check out your favorite content creators subscribed to Reliks, and be part of the ecosystem.'
+          content='Check out your favorite content creators subscribed to reliks, and be part of the ecosystem.'
         />
       </Head>
       <Header />

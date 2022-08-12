@@ -60,7 +60,7 @@ export function AppAbstract() {
                   </span>
                 </h1>
                 <p className='mt-3 mb-2 text-base text-light-gray dark:text-darkMode-gray sm:mt-5 sm:text-xl lg:text-lg xl:text-xl'>
-                  Reliks is a platform for content creators to connect with their fan
+                  reliks is a platform for content creators to connect with their fan
                   base, get supported, and in return, grant rewards in the form of NFTs
                   and token drops.
                 </p>
