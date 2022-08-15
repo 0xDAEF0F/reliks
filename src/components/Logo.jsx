@@ -1,19 +1,32 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
 function Logo() {
-  const { theme } = useTheme()
-  const ThemeLogo = () =>
-    theme === 'light' ? (
-      <Image layout='fixed' alt='Logo' height={30} width={120} src='/logolm.svg' />
-    ) : (
-      <Image layout='fixed' alt='Logo' height={30} width={120} src='/logodm.svg' />
-    )
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+
+  // Only render UI that uses the current theme when the page is mounted on the client
+  // Avoid hydration mismatch error
+  useEffect(() => setMounted(true), [])
+  if (!mounted) return null
+
+  const ThemeLogo = () => {
+    switch (resolvedTheme) {
+      case 'light':
+        return '/logolm.svg'
+      case 'dark':
+        return '/logodm.svg'
+      default:
+        return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+    }
+  }
+
   return (
     <Link href='/'>
       <a className='relative flex items-center'>
-        <ThemeLogo />
+        <Image layout='fixed' alt='Logo' height={30} width={120} src={ThemeLogo()} />
       </a>
     </Link>
   )

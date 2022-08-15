@@ -32,7 +32,7 @@ const strategies = [
 ]
 export function AppAbstract() {
   const [top, setTop] = useState(true)
-  const { theme } = useTheme()
+  const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -43,8 +43,22 @@ export function AppAbstract() {
     return () => window.removeEventListener('scroll', scrollHandler)
   }, [top])
 
+  // Only render UI that uses the current theme when the page is mounted on the client
+  // Avoid hydration mismatch error
   useEffect(() => setMounted(true), [])
+
   if (!mounted) return null
+
+  const srcAsset = () => {
+    switch (resolvedTheme) {
+      case 'light':
+        return '/assetlm.svg'
+      case 'dark':
+        return '/asset.svg'
+      default:
+        return '/asset.svg'
+    }
+  }
 
   return (
     <main>
@@ -74,11 +88,7 @@ export function AppAbstract() {
               </div>
             </div>
             <div className='relative mx-auto my-10 h-80 md:mx-44 lg:my-0 lg:h-5/6 lg:w-5/6'>
-              <Image
-                src={theme === 'dark' ? '/asset.svg' : '/assetlm.svg'}
-                layout='fill'
-                alt='app abstract image'
-              />
+              <Image src={srcAsset()} layout='fill' alt='app abstract image' />
             </div>
           </div>
           <div

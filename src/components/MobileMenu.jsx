@@ -8,12 +8,13 @@ import to from 'await-to-js'
 import { MdLogout } from 'react-icons/md'
 import { HiOutlineMoon } from 'react-icons/hi'
 import SearchBar from './SearchBar'
+import SwitchToggle from './SwitchToggle'
 
 export default function MobileMenu() {
   const [mounted, setMounted] = useState(false)
   const { logout, user, isAuthenticated, authenticate } = useMoralis()
   const [isNavOpen, setIsNavOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, theme, setTheme } = useTheme()
 
   function isCreator() {
     const verifiedSocialPlatforms = user?.get('verifiedSocialPlatforms')
@@ -35,10 +36,8 @@ export default function MobileMenu() {
     setIsNavOpen(false)
   }
 
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-  }
-
+  // Only render UI that uses the current theme when the page is mounted on the client
+  // Avoid hydration mismatch error
   useEffect(() => setMounted(true), [])
   if (!mounted) return null
 
@@ -89,30 +88,10 @@ export default function MobileMenu() {
                     <HiOutlineMoon size={26} />
                     <span>Night Mode</span>
                   </div>
-                  <Switch
-                    checked={theme === 'dark'}
+                  <SwitchToggle
+                    checked={resolvedTheme}
                     onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-                    className='relative inline-flex h-5 w-10 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-light-violet7 focus:ring-offset-2 dark:focus:ring-darkMode-violet7'>
-                    <span className='sr-only'>Use night mode</span>
-                    <span
-                      aria-hidden='true'
-                      className='pointer-events-none absolute h-full w-full rounded-md'
-                    />
-                    <span
-                      aria-hidden='true'
-                      className={classNames(
-                        theme === 'dark' ? 'bg-darkMode-violet9' : 'bg-black',
-                        'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out'
-                      )}
-                    />
-                    <span
-                      aria-hidden='true'
-                      className={classNames(
-                        theme === 'dark' ? 'translate-x-5' : 'translate-x-0',
-                        'pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-black bg-white shadow ring-0 transition-transform duration-200 ease-in-out dark:border-darkMode-violet7'
-                      )}
-                    />
-                  </Switch>
+                  />
                 </div>
               </li>
               <li>

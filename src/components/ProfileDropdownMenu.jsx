@@ -1,4 +1,4 @@
-import { Menu, Transition, Switch } from '@headlessui/react'
+import { Menu, Transition } from '@headlessui/react'
 import { Fragment, forwardRef } from 'react'
 import { useMoralis } from 'react-moralis'
 import { HiMoon } from 'react-icons/hi'
@@ -10,6 +10,7 @@ import toast from 'react-hot-toast'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import CreatorSignUpModal from './CreatorSignUpModal'
+import SwitchToggle from './SwitchToggle'
 
 // eslint-disable-next-line react/display-name
 const MyLink = forwardRef((props, ref) => {
@@ -24,15 +25,11 @@ const MyLink = forwardRef((props, ref) => {
 })
 
 export default function ProfileDropdownMenu() {
-  const { theme, setTheme } = useTheme()
+  const { theme, resolvedTheme, setTheme } = useTheme()
   const { logout, user } = useMoralis()
   const router = useRouter()
 
   const youtubeCreds = user && user.get('youtubeCredentials')
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-  }
 
   function isCreator() {
     const verifiedSocialPlatforms = user.get('verifiedSocialPlatforms')
@@ -95,30 +92,10 @@ export default function ProfileDropdownMenu() {
                     <HiMoon size={18} />
                     <p>Night Mode</p>
                   </div>
-                  <Switch
-                    checked={theme === 'dark'}
+                  <SwitchToggle
+                    checked={resolvedTheme}
                     onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-                    className='relative inline-flex h-5 w-10 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-light-violet7 focus:ring-offset-2 dark:focus:ring-darkMode-violet7'>
-                    <span className='sr-only'>Use night mode</span>
-                    <span
-                      aria-hidden='true'
-                      className='pointer-events-none absolute h-full w-full rounded-md'
-                    />
-                    <span
-                      aria-hidden='true'
-                      className={classNames(
-                        theme === 'dark' ? 'bg-darkMode-violet9' : 'bg-black',
-                        'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out'
-                      )}
-                    />
-                    <span
-                      aria-hidden='true'
-                      className={classNames(
-                        theme === 'dark' ? 'translate-x-5' : 'translate-x-0',
-                        'pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-light-violet7 bg-white shadow ring-0 transition-transform duration-200 ease-in-out dark:border-darkMode-violet7'
-                      )}
-                    />
-                  </Switch>
+                  />
                 </a>
               </Menu.Item>
             </div>

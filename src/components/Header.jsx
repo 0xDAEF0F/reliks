@@ -13,7 +13,8 @@ import Logo from './Logo'
 
 function Header() {
   const [top, setTop] = useState(true)
-  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
   const { authenticate, isAuthenticated } = useMoralis()
 
   useEffect(() => {
@@ -32,8 +33,21 @@ function Header() {
     if (!usr) toast.error(`Could not sign in. Please try again.`)
   }
 
-  const ThemeIcon = () =>
-    theme === 'light' ? <IoMoonOutline size={20} /> : <HiOutlineSun size={20} />
+  // Only render UI that uses the current theme when the page is mounted on the client
+  // Avoid hydration mismatch error
+  useEffect(() => setMounted(true), [])
+  if (!mounted) return null
+
+  const ThemeIcon = () => {
+    switch (resolvedTheme) {
+      case 'light':
+        return <IoMoonOutline size={20} />
+      case 'dark':
+        return <HiOutlineSun size={20} />
+      default:
+        return <IoMoonOutline size={20} />
+    }
+  }
 
   return (
     <header
@@ -61,8 +75,10 @@ function Header() {
                   <button
                     aria-label='theme switch'
                     className='ml-10 hidden rounded-md px-3 py-3 font-semibold text-black text-opacity-70 transition duration-100 hover:bg-light-bordergray hover:text-opacity-100 dark:text-white dark:hover:bg-darkMode-violet5 lg:block'
-                    onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-                    <ThemeIcon />
+                    onClick={() =>
+                      setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
+                    }>
+                    {ThemeIcon()}
                   </button>
                 )}
                 <div className='block lg:hidden'>
