@@ -44,8 +44,6 @@ function Header() {
         return <IoMoonOutline size={20} />
       case 'dark':
         return <HiOutlineSun size={20} />
-      default:
-        return <IoMoonOutline size={20} />
     }
   }
 

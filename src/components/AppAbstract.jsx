@@ -33,7 +33,6 @@ const strategies = [
 export function AppAbstract() {
   const [top, setTop] = useState(true)
   const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -42,12 +41,6 @@ export function AppAbstract() {
     window.addEventListener('scroll', scrollHandler)
     return () => window.removeEventListener('scroll', scrollHandler)
   }, [top])
-
-  // Only render UI that uses the current theme when the page is mounted on the client
-  // Avoid hydration mismatch error
-  useEffect(() => setMounted(true), [])
-
-  if (!mounted) return null
 
   const srcAsset = () => {
     switch (resolvedTheme) {

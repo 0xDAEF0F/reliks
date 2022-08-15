@@ -25,7 +25,7 @@ const MyLink = forwardRef((props, ref) => {
 })
 
 export default function ProfileDropdownMenu() {
-  const { theme, resolvedTheme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
   const { logout, user } = useMoralis()
   const router = useRouter()
 
@@ -86,7 +86,7 @@ export default function ProfileDropdownMenu() {
               )}
               <Menu.Item>
                 <a
-                  onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+                  onClick={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
                   className='flex w-full cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm hover:bg-light-bordergray dark:hover:bg-darkMode-violet5'>
                   <div className='flex items-center justify-end gap-2'>
                     <HiMoon size={18} />
@@ -94,7 +94,9 @@ export default function ProfileDropdownMenu() {
                   </div>
                   <SwitchToggle
                     checked={resolvedTheme}
-                    onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+                    onChange={() =>
+                      setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
+                    }
                   />
                 </a>
               </Menu.Item>

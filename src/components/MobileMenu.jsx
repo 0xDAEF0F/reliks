@@ -1,4 +1,3 @@
-import { Switch } from '@headlessui/react'
 import { useState, useEffect } from 'react'
 import LinkIcon from './LinkIcon'
 import { useTheme } from 'next-themes'
@@ -14,7 +13,7 @@ export default function MobileMenu() {
   const [mounted, setMounted] = useState(false)
   const { logout, user, isAuthenticated, authenticate } = useMoralis()
   const [isNavOpen, setIsNavOpen] = useState(false)
-  const { resolvedTheme, theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
 
   function isCreator() {
     const verifiedSocialPlatforms = user?.get('verifiedSocialPlatforms')
@@ -82,7 +81,7 @@ export default function MobileMenu() {
               </li>
               <li>
                 <div
-                  onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+                  onClick={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
                   className='flex w-full cursor-pointer items-center justify-between rounded-md px-1 py-2 text-base font-medium text-black opacity-60 hover:bg-light-violet5 hover:opacity-100 dark:text-white dark:hover:bg-darkMode-violet5'>
                   <div className='flex items-center gap-2'>
                     <HiOutlineMoon size={26} />
@@ -90,7 +89,9 @@ export default function MobileMenu() {
                   </div>
                   <SwitchToggle
                     checked={resolvedTheme}
-                    onChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+                    onChange={() =>
+                      setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
+                    }
                   />
                 </div>
               </li>
