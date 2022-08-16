@@ -16,6 +16,7 @@ import { CreateLairLoadingModal } from '../../components/CreateLairLoadingModal'
 import { ethers } from '../../util/deployWhale'
 import Footer from '../../components/Footer'
 import Head from 'next/head'
+import to from 'await-to-js'
 
 export default function Profile({ creator }) {
   const router = useRouter()
@@ -217,11 +218,13 @@ export default function Profile({ creator }) {
 
 export async function getStaticProps({ params }) {
   const username = params.username
-  const userData = await getCreatorInformation(username)
+  const [err, userData] = await to(getCreatorInformation(username))
+  if (err) return { notFound: true }
   return {
     props: {
       creator: userData,
     },
+    revalidate: 10,
   }
 }
 
@@ -229,6 +232,6 @@ export async function getStaticPaths() {
   const usernames = await getAllUsernames()
   return {
     paths: usernames,
-    fallback: false,
+    fallback: 'blocking',
   }
 }

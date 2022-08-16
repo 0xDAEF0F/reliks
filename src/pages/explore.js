@@ -76,5 +76,6 @@ export async function getStaticProps() {
     props: {
       creators,
     },
+    revalidate: 60,
   }
 }
