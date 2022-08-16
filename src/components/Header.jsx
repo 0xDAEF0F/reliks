@@ -26,11 +26,15 @@ function Header() {
   }, [top])
 
   const login = async () => {
+    if (!window.ethereum || !window.ethereum.on) {
+      toast.error('Please Install MetaMask.')
+      return
+    }
     const [, usr] = await to(
       authenticate({ signingMessage: 'Please Sign Message to Log In.' })
     )
     if (usr) toast.success('Succesfully Signed In.')
-    if (!usr) toast.error(`Could not sign in. Please try again.`)
+    if (!usr) toast.error(`Could Not Sign In. Please Check Metamask.`)
   }
 
   // Only render UI that uses the current theme when the page is mounted on the client
