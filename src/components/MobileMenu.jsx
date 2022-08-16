@@ -22,7 +22,10 @@ export default function MobileMenu() {
   }
 
   const login = async () => {
-    console.log('object')
+    if (!window.ethereum || !window.ethereum.on) {
+      toast.error('Please Install MetaMask.')
+      return
+    }
     if (isAuthenticated) {
       toast.success('Already Signed In.')
       return
@@ -31,7 +34,7 @@ export default function MobileMenu() {
       authenticate({ signingMessage: 'Please Sign Message to Log In.' })
     )
     if (usr) toast.success('Succesfully Signed In.')
-    if (!usr) toast.error(`Could not sign in. Please try again.`)
+    if (!usr) toast.error(`Could not sign in. Please Check Metamask.`)
     setIsNavOpen(false)
   }
 
