@@ -12,18 +12,9 @@ import to from 'await-to-js'
 import Logo from './Logo'
 
 function Header() {
-  const [top, setTop] = useState(true)
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme, setTheme } = useTheme()
   const { authenticate, isAuthenticated } = useMoralis()
-
-  useEffect(() => {
-    const scrollHandler = () => {
-      window.pageYOffset > 10 ? setTop(false) : setTop(true)
-    }
-    window.addEventListener('scroll', scrollHandler)
-    return () => window.removeEventListener('scroll', scrollHandler)
-  }, [top])
 
   const login = async () => {
     if (!window.ethereum || !window.ethereum.on) {
@@ -52,11 +43,7 @@ function Header() {
   }
 
   return (
-    <header
-      className={`fixed z-20 w-full md:bg-opacity-90 ${
-        !top &&
-        'dark:shadow-zinc-700 bg-light-violet1 shadow-lg backdrop-blur-sm dark:bg-darkMode-violet1 dark:bg-opacity-90 dark:shadow-sm'
-      }`}>
+    <header className='dark:shadow-zinc-700 fixed z-20 w-full bg-light-violet2 shadow-sm backdrop-blur-sm dark:bg-darkMode-violet1 dark:bg-opacity-90 dark:shadow-darkMode-violet2 md:bg-opacity-90'>
       <div className='mx-auto max-w-6xl px-6'>
         <div className='flex h-20 items-center justify-between'>
           <Logo />
