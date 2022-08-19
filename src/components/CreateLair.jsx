@@ -14,7 +14,7 @@ export function CreateLair({ deployLair }) {
     <>
       <div className='relative'>
         <div className='absolute inset-0' aria-hidden='true'>
-          <div className='inset-y-0 right-0 w-1/2 bg-light-violet9 bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
+          <div className='inset-y-0 right-0 w-1/2 rounded-br-md bg-light-violet9 bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
         </div>
         <div className='relative mx-auto max-w-7xl lg:grid lg:grid-cols-2 lg:px-8'>
           <BenefitsLairPanel />
@@ -48,7 +48,7 @@ export function CreateLair({ deployLair }) {
                     id='whales'
                     className={`${
                       errors.whales
-                        ? ' border border-error focus:border-error focus:ring-error'
+                        ? ' border border-error focus:border-error focus:ring-error dark:border-error'
                         : 'border-light-bordergray  focus:border-light-violet7 focus:ring-light-violet7 '
                     } w-full rounded-md bg-white  shadow-sm disabled:cursor-not-allowed  disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 sm:text-sm`}
                     placeholder='15'
@@ -89,7 +89,7 @@ export function CreateLair({ deployLair }) {
                       step='any'
                       className={`${
                         errors.price
-                          ? ' border border-error focus:border-error focus:ring-error'
+                          ? ' border border-error focus:border-error focus:ring-error  dark:border-error'
                           : 'border-light-bordergray  focus:border-light-violet7 focus:ring-light-violet7  dark:border-mauve'
                       } w-full rounded-md  bg-white pl-8 shadow-sm  disabled:cursor-not-allowed disabled:opacity-50 dark:border-mauve dark:bg-darkMode-violet2 sm:text-sm`}
                       placeholder='0'

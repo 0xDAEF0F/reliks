@@ -8,6 +8,7 @@ import { CreateLair } from '../../components/CreateLair'
 import NoStrategies from '../../components/NoStrategies'
 import LairTable from '../../components/LairTable'
 import TabsUser from '../../components/TabsUser'
+import TabsCreator from '../../components/TabsCreator'
 import { getAllUsernames, getCreatorInformation } from '../../util/getLastCreators'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
@@ -88,7 +89,7 @@ export default function Profile({ creator }) {
   }
 
   const SideComponent = () => {
-    switch (calculateSideComponent()) {
+    switch (4) {
       case 1:
         // POV USER -- CREATOR STRATEGY FALSE
         return <NoStrategies />
@@ -100,7 +101,7 @@ export default function Profile({ creator }) {
         return <CreateLair deployLair={deployLair} />
       case 4:
         // POV CREATOR -- CREATOR STRATEGY TRUE
-        return <LairTable lairInfo={creator.whaleStrategy} />
+        return <TabsCreator lairInfo={creator.whaleStrategy} />
       case 5:
         // POV USER -- JOINED STRATEGY (To do: add another tab for a joined user )
         return <LairTable lairInfo={creator.whaleStrategy} />

@@ -14,7 +14,7 @@ export default function TabsUser({ lairInfo }) {
 
   return (
     <Tab.Group>
-      <Tab.List className='flex w-full space-x-1'>
+      <Tab.List className='flex w-full'>
         {Object.keys(categories).map((category) => (
           <Tab
             key={category}
@@ -33,7 +33,7 @@ export default function TabsUser({ lairInfo }) {
       </Tab.List>
       <Tab.Panels>
         {Object.values(categories).map((category, idx) => (
-          <Tab.Panel className='mt-1 focus:outline-none' key={idx}>
+          <Tab.Panel className='focus:outline-none' key={idx}>
             {category}
           </Tab.Panel>
         ))}

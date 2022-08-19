@@ -1,35 +1,20 @@
-import { useState } from 'react'
 import { Tab } from '@headlessui/react'
+import Airdrop from './Airdrop'
+import LairTable from './LairTable'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-function Lair() {
-  // Show the current count of the lair, users data, current lair entry price.
-  return <div>3</div>
-}
-
-function Discord() {
-  // Show the discord server users data.
-  return <div>1</div>
-}
-
-function Drops() {
-  // Airdrop a NFT to all the lair by only submiting the image source and metadata.
-  return <div>2</div>
-}
-
-export default function TabsCreator() {
-  let [categories] = useState({
-    Lair: Lair(),
-    Discord: Discord(),
-    Drops: Drops(),
-  })
+export default function TabsCreator({ lairInfo }) {
+  const categories = {
+    Lair: <LairTable lairInfo={lairInfo} />,
+    Airdrop: <Airdrop />,
+  }
 
   return (
     <Tab.Group>
-      <Tab.List className='bg-gray-200 flex w-full space-x-1 rounded-xl p-1 '>
+      <Tab.List className='flex w-full'>
         {Object.keys(categories).map((category) => (
           <Tab
             key={category}
@@ -38,7 +23,7 @@ export default function TabsCreator() {
                 'w-full py-2.5 text-sm font-medium leading-5',
                 'focus:outline-none ',
                 selected
-                  ? 'border-b-4 border-darkMode-violet6'
+                  ? 'border-b-4 border-darkMode-violet6 text-light-violet11 dark:text-darkMode-violet11'
                   : 'hover:bg-light-violet2 hover:brightness-90 dark:hover:bg-darkMode-violet2 dark:hover:brightness-75'
               )
             }>
@@ -46,10 +31,9 @@ export default function TabsCreator() {
           </Tab>
         ))}
       </Tab.List>
-
       <Tab.Panels>
         {Object.values(categories).map((category, idx) => (
-          <Tab.Panel className='mt-10 focus:outline-none' key={idx}>
+          <Tab.Panel className='focus:outline-none' key={idx}>
             {category}
           </Tab.Panel>
         ))}
