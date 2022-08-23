@@ -24,7 +24,7 @@ export async function fetchUserChannel(token) {
   if (!response.data.items) throw new Error('User has no channel.')
   const channel = response.data.items[0]
   return {
-    pfp: channel?.snippet?.thumbnails?.default?.url,
+    pfp: channel?.snippet?.thumbnails?.high?.url,
     channelTitle: channel?.brandingSettings?.channel?.title,
     bio: channel?.brandingSettings?.channel?.description,
     coverPhoto: channel?.brandingSettings?.image?.bannerExternalUrl + '=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
