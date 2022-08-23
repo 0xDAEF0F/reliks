@@ -118,16 +118,16 @@ export default function Profile({ creator }) {
         setOpen={setModalOpen}
       />
       <Header />
-      <div className='mx-auto max-w-6xl py-20 '>
+      <div className='mx-auto max-w-6xl py-20'>
         <div className='relative rounded-lg rounded-b-lg border border-light-bordergray bg-light-violet2 shadow-sm dark:border-darkMode-violet6 dark:bg-darkMode-violet2'>
-          <div className='block rounded-lg md:rounded-md md:px-8 md:pt-4'>
+          <div className='block'>
             <Image
               src={creator?.coverPhoto}
               width={1000}
               height={220}
               quality={100}
               priority
-              className='rounded-md object-cover object-center'
+              className='rounded-t-md object-cover object-center'
               layout='responsive'
               alt='banner'
             />
@@ -136,7 +136,7 @@ export default function Profile({ creator }) {
             <div className='flex flex-col items-center md:mx-8 md:flex-row'>
               <div className='relative -inset-y-9'>
                 <div className='rounded-full border border-light-violet5 border-opacity-50 bg-light-violet1 p-2 dark:border-darkMode-violet5  dark:border-opacity-100 dark:bg-darkMode-violet1'>
-                  <div className='relative h-24 w-24 rounded-full'>
+                  <div className='relative h-28 w-28 rounded-full'>
                     <Image
                       src={creator?.pfp}
                       className='rounded-full object-cover object-center'

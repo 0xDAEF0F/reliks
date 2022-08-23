@@ -109,7 +109,7 @@ export function JoinLair({ lairInfo: { lairAddress, initialLairEntry } }) {
       />
       <div className='relative'>
         <div className='absolute inset-0' aria-hidden='true'>
-          <div className='inset-y-0 right-0 w-1/2 bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
+          <div className='inset-y-0 right-0 w-1/2 rounded-br-md bg-gradient-to-r from-light-violet8 to-light-violet9 dark:from-darkMode-violet8 dark:to-darkMode-violet9 lg:absolute' />
         </div>
         <div className='relative mx-auto max-w-7xl lg:grid lg:grid-cols-2 lg:px-8'>
           <BenefitsLairPanel />
