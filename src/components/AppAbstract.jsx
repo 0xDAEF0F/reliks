@@ -80,8 +80,10 @@ export function AppAbstract() {
                 </a>
               </div>
             </div>
-            <div className='relative mx-auto my-10 h-80 md:mx-44 lg:my-0 lg:h-5/6 lg:w-5/6'>
-              <Image src={srcAsset()} layout='fill' alt='app abstract image' />
+            <div className='relative h-full w-full mt-10'>
+              <div className='lg:absolute inset-y-0 right-0 h-80 lg:h-5/6 w-80'>
+                <Image src={srcAsset()} layout='fill' alt='app abstract image' />
+              </div>
             </div>
           </div>
           <div
