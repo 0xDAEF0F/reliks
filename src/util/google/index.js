@@ -27,7 +27,7 @@ export async function fetchUserChannel(token) {
     pfp: channel?.snippet?.thumbnails?.default?.url,
     channelTitle: channel?.brandingSettings?.channel?.title,
     bio: channel?.brandingSettings?.channel?.description,
-    coverPhoto: channel?.brandingSettings?.image?.bannerExternalUrl,
+    coverPhoto: channel?.brandingSettings?.image?.bannerExternalUrl + '=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
     channelId: channel?.id,
   }
 }
